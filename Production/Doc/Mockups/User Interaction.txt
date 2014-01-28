@@ -1,0 +1,10 @@
+Starting a game, the user would connect to the server by clicking the server connect button. Type in the server ip address, then click the “ok” button. Then click games button, then click a game from a list. After hitting the start button the game would start.
+
+
+Manual control of the missile, the user controls the direction the turret move by clicking the directional buttons. Firing the missile just requires the user to aim the missile and click the fire button.
+
+Aborting a game in progress, after the game starts the user can click the cancel button to bring back the main window.
+
+Video on/off. In the main window the user would click the video on /off  toggle switch.
+
+To connect to twitter, click the twitter button put in the user name and password and press ok.
