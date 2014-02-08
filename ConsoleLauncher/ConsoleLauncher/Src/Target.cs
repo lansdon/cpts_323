@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace hw1_page_lansdon
+namespace LauncherClient
 {
     public class Target
     {

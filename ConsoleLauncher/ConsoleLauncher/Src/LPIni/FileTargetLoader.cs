@@ -10,7 +10,7 @@ using System.IO;
  * 
  *  Created by: Lansdon Page
  */
-namespace hw1_page_lansdon
+namespace LauncherClient
 {
     abstract public class FileTargetLoader
     {

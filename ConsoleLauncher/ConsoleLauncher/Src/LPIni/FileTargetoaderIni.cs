@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace hw1_page_lansdon
+namespace LauncherClient
 {
     enum TargetFields
     {
@@ -13,11 +13,11 @@ namespace hw1_page_lansdon
     };
 
 
-    public class FileLTargetoaderIni : FileTargetLoader
+    public class FileTargetoaderIni : FileTargetLoader
     {
  
         // Constructor
-        public FileLTargetoaderIni(String filepath) : base(filepath)
+        public FileTargetoaderIni(String filepath) : base(filepath)
         {
 
         }
@@ -46,13 +46,15 @@ namespace hw1_page_lansdon
                 } 
                 
                 // NAME
-                else if (currentAttributeNum == TargetFields.F_NAME && lineId == "name") {
+                else if (currentAttributeNum == TargetFields.F_NAME && lineId == "name") 
+                {
                     currentTarget.name = lineValue;
                     currentAttributeNum++;
                 } 
                 
                 // X
-                else if (currentAttributeNum == TargetFields.F_X && lineId == "x") {
+                else if (currentAttributeNum == TargetFields.F_X && lineId == "x") 
+                {
                     double x = -1.0;
                     if (Double.TryParse(lineValue, out x))
                     {
@@ -63,7 +65,8 @@ namespace hw1_page_lansdon
                } 
                 
                 // Y
-                else if (currentAttributeNum == TargetFields.F_Y && lineId == "y") {
+                else if (currentAttributeNum == TargetFields.F_Y && lineId == "y") 
+                {
                     double y = -1.0;
                     if (Double.TryParse(lineValue, out y))
                     {
@@ -74,7 +77,8 @@ namespace hw1_page_lansdon
                 } 
                 
                 // Z
-                else if (currentAttributeNum == TargetFields.F_Z && lineId == "z") {
+                else if (currentAttributeNum == TargetFields.F_Z && lineId == "z") 
+                {
                     double z = -1.0;
                     if (Double.TryParse(lineValue, out z))
                     {
@@ -85,7 +89,8 @@ namespace hw1_page_lansdon
                 } 
                 
                 // FRIEND
-                else if (currentAttributeNum == TargetFields.F_FRIEND && lineId == "friend") {
+                else if (currentAttributeNum == TargetFields.F_FRIEND && lineId == "friend") 
+                {
                     currentTarget.Friend =  (lineValue.ToLower() == "true" ) ? true : false;
                     currentAttributeNum++;
                 }
@@ -101,7 +106,8 @@ namespace hw1_page_lansdon
                  } 
                 
                 // FLASHRATE
-                else if (currentAttributeNum == TargetFields.F_FLASH && lineId == "flashrate") {
+                else if (currentAttributeNum == TargetFields.F_FLASH && lineId == "flashrate") 
+                {
                         int flashRate = 0;
                         if (Int32.TryParse(lineValue, out flashRate))
                         {

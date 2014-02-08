@@ -43,10 +43,11 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Src\LPIni\FileLTargetoaderIni.cs" />
+    <Compile Include="Src\Controller.cs" />
+    <Compile Include="Src\LPIni\FileTargetoaderIni.cs" />
     <Compile Include="Src\LPIni\FileTargetLoader.cs" />
     <Compile Include="Src\LPIni\Program.cs" />
-    <Compile Include="Src\LPIni\Target.cs" />
+    <Compile Include="Src\Target.cs" />
     <Compile Include="Src\tweety%27s ini\myException.cs" />
     <Compile Include="Src\tweety%27s ini\Program.cs" />
     <Compile Include="Src\tweety%27s ini\Target.cs" />
