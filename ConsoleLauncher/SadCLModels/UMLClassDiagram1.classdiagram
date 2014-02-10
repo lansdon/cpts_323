@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="8bf4428b-cfe9-44b7-8be8-fde393adf8ca" name="UMLClassDiagram1" linkedPackageId="38a3c4a4-b9c1-4a85-bd27-a210dbe5f788" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <profileInstances>
+    <packageHasProfileInstances Id="20404074-a63c-4ce5-afef-af7e88610e8b">
+      <profileInstance Id="4a54ddf1-3354-457d-9304-0fc9a128f780" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="fd6011a9-2aa5-4592-86c3-425411bac722">
+      <profileInstance Id="e2f6420b-9918-4f14-876d-38d0ce11190b" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="9e10ff20-9732-47ee-9fcd-c9130e30d6b7" name="Controller" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="2d197d56-2866-4667-a3b8-5619134b0d1e" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="6bf49fee-b6f3-4f3b-bb3f-ee20d2478832" name="Launcher" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="6a41f8f7-0cdb-4a13-8443-eb06e8237bb9" />
+        <ownedAttributesInternal>
+          <property Id="999b2202-b2f1-4e54-bec6-f97fdb74d314" name="phiAdjustment" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="dacbc390-9b98-4c74-a3fb-1b33b5ea9ad8" />
+          </property>
+          <property Id="8ed339d6-3800-421b-b45c-b7fac6865cde" name="thetaAdjustment" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="a1cd4bf5-d8f8-4fc0-8d7a-27399dbf19f9" />
+          </property>
+          <property Id="aacfcbc1-cf5b-4052-9a8a-3819872a5516" name="rocketCount" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="a9ef96dc-370a-42b6-aa0e-43ffa6c193e9" />
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation Id="ddafbbba-a85b-4184-8845-310fcc72a390" name="Instance" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="32921507-7a96-42e6-a8dc-a2d01abb67c4" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="64607c81-3f9f-4f0c-af2b-805e7c2bae91" name="launcherType" direction="In" isUnique="false">
+                  <elementDefinition Id="00ba569d-fe7d-4eae-a825-fefacb3c0a5d" />
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="aff4210c-910a-4566-ae0e-bc01934b41ca" name="FireAtCoords" visibility="Private" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="51d9281b-af20-4221-b772-e1d721543b9c" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="07d1dd40-a887-496b-ae30-89843d440cf0" name="Vec3 loc" direction="In" isUnique="false">
+                  <elementDefinition Id="d5982e50-17f6-416d-b8a8-3c8bcc1e9a78" />
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="76e53ecd-7eff-447e-8d97-523b7a79f3a9" name="Calibrate" visibility="Private" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="a2e08253-9092-4fae-af28-01f32b1a5b09" />
+          </operation>
+          <operation Id="21c7f325-fe5d-4624-8e80-a8f21533a1e9" name="MoveBy" visibility="Private" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="14d92698-7027-47e0-bfed-8c9a07ca116c" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="873f063a-32bb-446d-be25-736bc8f7c5ea" name="double theta" direction="In" isUnique="false">
+                  <elementDefinition Id="c0525571-7ae1-4a32-bc42-0acbfdffd9cd" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="8af8017d-2a87-4b1f-98b4-2218f09fdbc7" name="double phi" direction="In" isUnique="false">
+                  <elementDefinition Id="6f9472bd-355a-4b75-b159-3ad7f5dbe9e7" />
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="49be8d75-1113-4214-b5a5-685acf2be8b6" name="MoveAbsolute" visibility="Private" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="ddfe4d47-2b51-4ff8-82db-720ca51d61e3" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="78e4ef01-660f-4b3a-954c-675cdc538b66" name="double theta" direction="In" isUnique="false">
+                  <elementDefinition Id="89447387-a13b-4a26-88e7-d447bfd07530" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="ba22efc8-e228-43a1-8d92-b48cd31258ec" name="double phi" direction="In" isUnique="false">
+                  <elementDefinition Id="81dc57e8-d167-4507-bf42-a1c8f998be19" />
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="d0c4a45d-605f-466e-b390-62b86b88c439" name="Reload" visibility="Private" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="de3ebfb7-6aec-4d04-8943-264d5c88e740" />
+          </operation>
+          <operation Id="30418b22-efb1-457d-80f3-540987c3a1d3" name="Operation1" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="2bc5e39d-6a2c-4958-99b4-f63937694439" />
+          </operation>
+          <operation Id="74b201e1-d8e7-4e5b-9f57-7871e3353b6d" name="FireUsingAngles" visibility="Private" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="11df034a-5b72-4e1b-8337-988754b55fad" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="3aac2400-1967-449c-9f80-d37d0d8e209f" name="double theta" direction="In" isUnique="false">
+                  <elementDefinition Id="564ce71d-f2b2-4e90-98b2-1d0876d4aea9" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="70c182af-245e-47b5-a577-c1829763ec54" name="double phi" direction="In" isUnique="false">
+                  <elementDefinition Id="85306183-5cd3-4ded-b85a-4a76eb37770c" />
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="c4810318-e0af-47dd-a18e-8cb5be51fd98" name="FireAtCurrentPosition" visibility="Private" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="da7f77e3-0847-4926-8808-6070fc721549" />
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="9f2e48c7-52e3-4116-814d-f40ce1e0e4bf" name="FileLoader" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="f9182e13-02e2-4542-903d-ea6d8b979e78" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="1214f9d9-6367-4481-a92a-12074a48c760" name="Targets" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="565e2726-ff95-40b4-9ce3-a749db17d67e" />
+        <ownedAttributesInternal>
+          <property Id="2f861961-430c-44e5-9d38-d434fc73caaa" name="targets" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="d4a26b75-d877-42df-ab3c-7161af3800d9" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="2b4e010e-afc7-4d89-a89a-f8bacb6a2c9b" LastKnownName="List&lt;Target&gt;" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation Id="65778f08-7794-48d9-bb95-55eb87b03597" name="Instance" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="cc8522a3-5c94-4625-9e71-79d1adf19868" />
+          </operation>
+          <operation Id="0a28552c-bbe6-4a78-9da2-ad49188565a4" name="FriendlyTargets" visibility="Private" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="b6a2c1ed-6ff5-4642-9a03-498ff0cdfaec" />
+          </operation>
+          <operation Id="fb603666-9f39-40fd-b233-da2158165794" name="EnemyTargets" visibility="Private" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="f0de7051-3cc2-4fdd-bb62-c415596211e0" />
+          </operation>
+          <operation Id="67796dad-948a-49af-98e9-e7b4861f2ce0" name="Find" visibility="Private" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="134582d9-914d-4449-86ae-e572f001ebff" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="3b521516-8577-46d5-a098-17ed251c78b5" name="string name" direction="In" isUnique="false">
+                  <elementDefinition Id="34e96dd5-e810-4454-bb89-cd1f812c2f78" />
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="1957303f-2c18-4ec9-afc4-401521d200c9" name="CheekyLauncher" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="caa286cb-e797-4e4c-af40-c2f8af845888" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="3c4b986c-31a6-4dfd-adb8-3312e8753eae" name="MockLauncher" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="a008de27-53b2-4f2d-8273-ead1deb2570e" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="144c465e-b972-4e7a-9343-fb30149e31fc" name="FileLoaderIni" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="9d0ff605-1c3a-42f6-926c-538dae2a1056" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="2b4e010e-afc7-4d89-a89a-f8bacb6a2c9b" name="List&lt;Target&gt;" isAbstract="false" isLeaf="false" cachedFullName="List&lt;Target&gt;">
+        <elementDefinition Id="d86cb9d6-a8f1-416d-ab68-42633e82d330" />
+      </referencedType>
+    </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <Interface Id="14b248e7-6c73-4111-9f65-687b1e0fa01b" name="IRocketLauncher" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="6f830bbb-6323-4fb9-8081-c3356b70c39b" />
+      </Interface>
+    </logicalClassDesignerModelHasTypes>
+  </packagedElements>
+  <package Id="38a3c4a4-b9c1-4a85-bd27-a210dbe5f788" name="SadCLModels">
+    <elementDefinition Id="b2ff25e4-d07f-424a-989d-2c44914557ac" />
+  </package>
+</logicalClassDesignerModel>

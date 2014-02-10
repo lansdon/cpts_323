@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleLauncher", "ConsoleLauncher\ConsoleLauncher.csproj", "{4838CAEC-85ED-459D-80AB-FB296F96A0E1}"
 EndProject
+Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "SadCLModels", "SadCLModels\SadCLModels.modelproj", "{AC3112FC-19FD-4D30-B6BE-9145973C84BE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{4838CAEC-85ED-459D-80AB-FB296F96A0E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4838CAEC-85ED-459D-80AB-FB296F96A0E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4838CAEC-85ED-459D-80AB-FB296F96A0E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC3112FC-19FD-4D30-B6BE-9145973C84BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC3112FC-19FD-4D30-B6BE-9145973C84BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC3112FC-19FD-4D30-B6BE-9145973C84BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC3112FC-19FD-4D30-B6BE-9145973C84BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
