@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="ILauncher.cs" />
     <Compile Include="missleLauncher.cs" />
+    <Compile Include="mockLauncher.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Src\Controller.cs" />

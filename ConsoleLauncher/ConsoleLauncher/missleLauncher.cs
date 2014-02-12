@@ -33,7 +33,7 @@ namespace ConsoleLauncher
             command_Right(10);
         }
 
-        public void moveBy(double y, double x, double z)
+        public void moveBy(double x, double y, double z)
         {
             moveTo(toTheta(x, y), toPhi(x, y, z));
         }
@@ -42,25 +42,50 @@ namespace ConsoleLauncher
         {
             if (myTheta == 0 && myPhi == 0)
             {
-                if (theta < 180)
+                if (theta < 180 && theta > 0)
                 {
                     command_Right((int)((theta) * degreeDelay));
                     myTheta += theta;
                 }
                 else
                 {
-                    command_Left((int)((360 - theta) * degreeDelay));
-                    myTheta -= theta;
+                    if (theta <= 0)
+                    {
+                        theta = theta * (-1);
+                        command_Left((int)((theta) * degreeDelay));
+                        myTheta -= theta;
+                    }
+                    else
+                    {
+                        command_Left((int)((360 - theta) * degreeDelay));
+                        myTheta -= 360 - theta;
+                    }
+                    
                 }
-                if (phi < 180)
+                if (phi < 180 && phi > 0)
                 {
                     command_Up((int)(phi * degreeDelay));
                     myPhi += phi;
+                    if (myPhi > 30)
+                        myPhi = 30;
                 }
                 else if (phi > 300)
                 {
-                    command_Down((int)((360 - phi) * degreeDelay));
-                    myPhi -= phi;
+                    if (phi <= 0)
+                    {
+                        phi = phi * (-1);
+                        command_Down((int)((phi) * degreeDelay));
+                        myPhi -= phi;
+                        if (myPhi < -5)
+                            myPhi = -5;
+                    }
+                    else
+                    {
+                        command_Down((int)((360 - phi) * degreeDelay));
+                        myPhi -= 360 - phi;
+                        if (myPhi < -5)
+                            myPhi = -5;
+                    }
                 }
                 
             }
@@ -75,7 +100,7 @@ namespace ConsoleLauncher
                     theta -= 360;
                 }
                 if (myPhi < 180)
-                phi = myPhi - phi;
+                phi = phi - myPhi;
             else
                 phi = phi + myPhi;
                 if (phi > 360)
@@ -93,18 +118,22 @@ namespace ConsoleLauncher
                     {
                         theta = theta * (-1);
                         command_Left((int)((theta) * degreeDelay));
+                        myTheta -= theta;
                     }
                     else
                     {
                         command_Left((int)((360 - theta) * degreeDelay));
+                        myTheta -= 360 - theta;
                     }
-                    myTheta -= theta;
+                    
                 }
                
                 if (phi < 180 && phi > 0)
                 {
                     command_Up((int)(phi * degreeDelay));
                     myPhi += phi;
+                    if (myPhi > 30)
+                        myPhi = 30;
                 }
                 else 
                 {
@@ -112,12 +141,18 @@ namespace ConsoleLauncher
                     {
                         phi = phi * (-1);
                         command_Down((int)((phi) * degreeDelay));
+                        myPhi -= phi;
+                        if (myPhi < -5)
+                            myPhi = -5;
                     }
                     else
                     {
                         command_Down((int)((360 - phi) * degreeDelay));
+                        myPhi -= 360 - phi;
+                        if (myPhi < -5)
+                            myPhi = -5;
                     }
-                    myPhi -= phi;
+                    
                 }
             }
 
@@ -344,20 +379,24 @@ namespace ConsoleLauncher
             this.DevicePresent = false;
         }
 
+
+        //Function to convert x, y to a theta for spherical coordinates.
         double toTheta(double x, double y)
         {
             if (x >= 0)
-                return (Math.Atan2(y, x) * (180 / Math.PI));
+                return (Math.Atan2(x, y) * (180 / Math.PI));
             else
-                return ((Math.Atan2(y, x) * (180 / Math.PI)) + 180);
+                return (180 - (Math.Atan2(x, y) * (180 / Math.PI)));
         }
+
+        //function to convert the x, y, z to phi for spherical coordinates.
         double toPhi(double x, double y, double z)
         {
             double squaredRoot = Math.Sqrt((x * x) + (y * y));
             if (z >= 0)
-                return (Math.Atan2(z, squaredRoot) * (180 / Math.PI));
+                return (90 - (Math.Atan2(squaredRoot,z ) * (180 / Math.PI)));
             else
-                return ((Math.Atan2(z, squaredRoot) * (180 / Math.PI)) + 180);
+                return (90 - (180 -( Math.Atan2( squaredRoot,z) * (180 / Math.PI))));
         }
        
     }

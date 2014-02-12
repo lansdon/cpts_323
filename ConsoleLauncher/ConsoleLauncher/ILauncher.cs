@@ -13,7 +13,7 @@ namespace ConsoleLauncher
         void moveLeft();
         void moveRight();
         void moveBy(double x, double y, double z);
-        void moveTo(double phi, double thata);
+        void moveTo(double theta, double phi);
         void fire();
         void fireAt(double x, double y, double z);
         void calibrate();

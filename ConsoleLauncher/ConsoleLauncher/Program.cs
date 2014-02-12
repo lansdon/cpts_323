@@ -19,11 +19,11 @@ namespace LauncherClient
             missileLauncher gun = new missileLauncher();
             gun.moveBy(-11,-10,5);
             gun.fire();
-            gun.moveTo(200, 0);
+            gun.moveTo(50, 0);
             gun.fire();
-            //gun.fireAt(1,5, 4);
-            //gun.fireAt(1, 5, 1);
-            //gun.fireAt(1,5, -3);
+            gun.fireAt(1,5, 4);
+            gun.fireAt(1, 5, 1);
+            gun.fireAt(1,5, -3);
 
         }
     }
