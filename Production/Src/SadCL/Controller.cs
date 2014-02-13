@@ -68,7 +68,7 @@ namespace SadCL
 
         private void MainLoop() {
             // Menu loop runs until process command returns false
-            while (ProcessCommand())
+            while ( ProcessCommand() )
             {
                 // Add extra logic/events inbetween commands here
 
@@ -117,11 +117,11 @@ namespace SadCL
             }
             else if (command == Commands.MOVE.ToString())
             {
-                CmdMove();
+                CmdMove(commands);
             }
             else if (command == Commands.MOVEBY.ToString())
             {
-                CmdMoveBy();
+                CmdMoveBy(commands);
             }
             else if (command == Commands.RELOAD.ToString())
             {
@@ -140,6 +140,42 @@ namespace SadCL
 
 
         /*
+         * ARGUMENT CONVERSIONS
+         */
+        private bool doubleArgument(string[] args, int argNum, out double result) 
+        {
+            if ( args.Count() > argNum ) 
+            {
+                result = Double.Parse(args[argNum]);
+                return true;
+            }
+            result = 0.0;
+            return false;
+        }
+
+        private bool intArgument(string[] args, int argNum, out int result)
+        {
+            if (args.Count() > argNum)
+            {
+                result = int.Parse(args[argNum]);
+                return true;
+            }
+            result = 0;
+            return false;
+        }
+
+        private bool stringArgument(string[] args, int argNum, out string result)
+        {
+            if (args.Count() > argNum)
+            {
+                result = args[argNum];
+                return true;
+            }
+            result ="";
+            return false;
+        }
+
+        /*
          * COMMANDS - All logic is defined in these methods for running a command
          */
 
@@ -152,22 +188,45 @@ namespace SadCL
         private void CmdFriends()
         {
             Console.WriteLine("CmdFriends");
+            throw new NotImplementedException();
            
         }
 
         private void CmdKill()
         {
             Console.WriteLine("CmdKill");
+            throw new NotImplementedException();
         }
 
-        private void CmdMove()
+        private void CmdMove(string[] args)
         {
-            Console.WriteLine("CmdMove");
-          
+            double phi = 0.0, theta = 0.0;
+            if (doubleArgument(args, 1, out phi) && doubleArgument(args, 2, out theta))
+            {
+                launcher.moveTo(theta, phi);
+            }
+            else
+            {
+                Console.WriteLine("Error Parsing Phi Theta arguments for MOVE command.");
+            }
+            Console.WriteLine("CmdMove: Phi = {0}, Theta = {1}", phi, theta);      
         }
 
-        private void CmdMoveBy()
+        private void CmdMoveBy(string[] args)
         {
+            double phi = 0.0, theta = 0.0;
+            if (doubleArgument(args, 1, out phi) && doubleArgument(args, 2, out theta))
+            {
+//                launcher.moveBy(theta, phi);
+                // ******** WARNING *****
+                // The spec sheet says this should take phi theta! Our function takes x, y z. Problem!
+                throw new NotImplementedException();
+            }
+            else
+            {
+                Console.WriteLine("Error Parsing Phi Theta arguments for MOVE command.");
+            }
+            Console.WriteLine("CmdMove: Phi = {0}, Theta = {1}", phi, theta);
             Console.WriteLine("CmdMoveBy");
 //            launcher.moveBy()
         }
@@ -175,17 +234,23 @@ namespace SadCL
         private void CmdReload()
         {
             Console.WriteLine("CmdReload");
+ 
+            
+            // NEED THE TARGET SINGLETON!
+            throw new NotImplementedException();
 
         }
 
         void CmdStatus()
         {
             Console.WriteLine("CmdStatus");
+            throw new NotImplementedException();
         }
 
         void CmdScounderels()
         {
             Console.WriteLine("CmdScounderels");
+            throw new NotImplementedException();
         }
 
 
