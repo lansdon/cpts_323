@@ -14,7 +14,6 @@ namespace SadCL
     // Type safe enums! Isn't that neat?
     public sealed class Commands
     {
-
         private readonly String command;
         private readonly int value;
 
@@ -44,8 +43,9 @@ namespace SadCL
 
     class Controller
     {
-        private List<SadLibrary.Target> targets; // = new List<Target>();
+        private List<SadLibrary.Target> targets = new List<Target>();
 
+        private SadLibrary.Launcher.BaseLauncher launcher = SadLibrary.Launcher.LauncherFactory.NewLauncher(LauncherType.LAUNCH_TYPE_MOCK);
 
         /*
          *  This is the main entrypoint for the program. This class will
@@ -58,11 +58,13 @@ namespace SadCL
             // Do all the setup stuff here!! Initialize all the sub systems etc.
             LoadTargetsFromFile(args.Count() > 0 ? args[0] : "targets.ini");
 
+            
+
 
             // Start the program loop after initialization is done
+            Console.WriteLine("Fire a gun! Launch a missile! DO SOME DAMAGE! (Ready to go, sir!)");
             MainLoop();
         }
-
 
         private void MainLoop() {
             // Menu loop runs until process command returns false
@@ -72,6 +74,7 @@ namespace SadCL
 
             }
         }
+
         void LoadTargetsFromFile(string filename)
         {
             FileTargetoaderIni fLoader = new FileTargetoaderIni(filename);
@@ -143,11 +146,13 @@ namespace SadCL
         private void CmdFire()
         {
             Console.WriteLine("CmdFire");
+            launcher.fire();
         }
 
         private void CmdFriends()
         {
             Console.WriteLine("CmdFriends");
+           
         }
 
         private void CmdKill()
@@ -158,16 +163,19 @@ namespace SadCL
         private void CmdMove()
         {
             Console.WriteLine("CmdMove");
+          
         }
 
         private void CmdMoveBy()
         {
             Console.WriteLine("CmdMoveBy");
+//            launcher.moveBy()
         }
 
         private void CmdReload()
         {
             Console.WriteLine("CmdReload");
+
         }
 
         void CmdStatus()

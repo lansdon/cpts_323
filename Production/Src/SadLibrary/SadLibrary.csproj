@@ -44,7 +44,9 @@
   <ItemGroup>
     <Compile Include="FileLoader\FileTargetLoader.cs" />
     <Compile Include="FileLoader\FileTargetoaderIni.cs" />
+    <Compile Include="Launcher\BaseLauncher.cs" />
     <Compile Include="Launcher\ILauncher.cs" />
+    <Compile Include="Launcher\LauncherFactory.cs" />
     <Compile Include="Launcher\missleLauncher.cs" />
     <Compile Include="Launcher\mockLauncher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

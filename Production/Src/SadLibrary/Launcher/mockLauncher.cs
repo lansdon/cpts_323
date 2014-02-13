@@ -4,51 +4,51 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SadLibrary
+namespace SadLibrary.Launcher
 {
-    class mockLauncher : ILauncher  
+    public class mockLauncher : BaseLauncher
     {
-        public void moveUp()
+        public override void moveUp()
         {
             Console.WriteLine("Moving up! Sir!");
         }
 
-        public void moveDown()
+        public override void moveDown()
         {
             Console.WriteLine("Moving down! Sir!");
         }
 
-        public void moveLeft()
+        public override void moveLeft()
         {
             Console.WriteLine("Moving left! Sir!");
         }
 
-        public void moveRight()
+        public override void moveRight()
         {
             Console.WriteLine("Moving right! sir!");
         }
 
-        public void moveBy(double x, double y, double z)
+        public override void moveBy(double x, double y, double z)
         {
             Console.WriteLine("Pointing to {0}, {1}, {2}! Sir!", x, y, z);
         }
 
-        public void moveTo(double theta, double phi)
+        public override void moveTo(double theta, double phi)
         {
             Console.WriteLine("Pointing to {0} mark {1}! Sir!", theta, phi);
         }
 
-        public void fire()
+        public override void fire()
         {
             Console.WriteLine("FIRE!FIRE!FIRE!");
         }
 
-        public void fireAt(double x, double y, double z)
+        public override void fireAt(double x, double y, double z)
         {
             Console.WriteLine("Firing at target located {0}, {1}, {2}! Sir!", x, y, z);
         }
 
-        public void calibrate()
+        public override void calibrate()
         {
             Console.WriteLine("Reseting to start! Sir!");
         }

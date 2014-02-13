@@ -7,38 +7,36 @@ using System.Threading.Tasks;
 using UsbLibrary;
 
 
-namespace SadLibrary
+namespace SadLibrary.Launcher
 {
-    class missileLauncher : ILauncher 
+    public class missileLauncher : BaseLauncher
     {
-        double myPhi, myTheta;
-        double degreeDelay=19;
-        public void moveUp()
+        public override void moveUp()
         {
             command_Up(10);
         }
 
-        public void moveDown()
+        public override void moveDown()
         {
             command_Down(10);
         }
 
-        public void moveLeft()
+        public override void moveLeft()
         {
             command_Left(10);
         }
 
-        public void moveRight()
+        public override void moveRight()
         {
             command_Right(10);
         }
 
-        public void moveBy(double x, double y, double z)
+        public override void moveBy(double x, double y, double z)
         {
             moveTo(toTheta(x, y), toPhi(x, y, z));
         }
 
-        public void moveTo(double theta, double phi)
+        public override void moveTo(double theta, double phi)
         {
             if (myTheta == 0 && myPhi == 0)
             {
@@ -160,18 +158,18 @@ namespace SadLibrary
                
            
         }
-        public void fire()
+        public override void fire()
         {
             command_Fire();
         }
 
-        public void fireAt(double x, double y, double z)
+        public override void fireAt(double x, double y, double z)
         {
             moveBy(x, y, z);
             command_Fire();
         }
 
-        public void calibrate()
+        public override void calibrate()
         {
             command_reset();
             myPhi = 0;
