@@ -234,17 +234,17 @@ namespace SadCL
         private void CmdReload()
         {
             Console.WriteLine("CmdReload");
- 
-            
+   
             // NEED THE TARGET SINGLETON!
-            throw new NotImplementedException();
-
+            launcher.reload();
         }
 
         void CmdStatus()
         {
             Console.WriteLine("CmdStatus");
-            throw new NotImplementedException();
+            Console.WriteLine("Launcher: {0}", launcher.name);
+            Console.WriteLine("Missiles: {0} of {1}", launcher.missileCount, launcher.MAX_MISSILE_COUNT);
+            
         }
 
         void CmdScounderels()

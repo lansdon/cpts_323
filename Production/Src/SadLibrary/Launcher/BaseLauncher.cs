@@ -11,6 +11,15 @@ namespace SadLibrary.Launcher
     {
         protected double myPhi, myTheta;
         protected double degreeDelay = 19;
+        public uint missileCount;
+        public uint MAX_MISSILE_COUNT = 4;
+        public string name = "";
+
+        public void reload()
+        {
+            missileCount = MAX_MISSILE_COUNT;
+        }
+
         public virtual void moveUp()
         {
  	        throw new NotImplementedException();

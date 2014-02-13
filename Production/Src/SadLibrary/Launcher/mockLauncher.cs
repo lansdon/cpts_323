@@ -8,6 +8,15 @@ namespace SadLibrary.Launcher
 {
     public class mockLauncher : BaseLauncher
     {
+
+        public mockLauncher()
+        {
+            name = "Meatless Meat";
+
+            calibrate();
+            reload();
+        }
+
         public override void moveUp()
         {
             Console.WriteLine("Moving up! Sir!");
@@ -40,7 +49,16 @@ namespace SadLibrary.Launcher
 
         public override void fire()
         {
-            Console.WriteLine("FIRE!FIRE!FIRE!");
+            if (missileCount > 0)
+            {
+                Console.WriteLine("FIRE!FIRE!FIRE!");
+ //               command_Fire();
+                --missileCount;
+            }
+            else
+            {
+                Console.WriteLine("I just can’t do it cap’tin, we just don’t have tha power");
+            }
         }
 
         public override void fireAt(double x, double y, double z)
@@ -51,6 +69,7 @@ namespace SadLibrary.Launcher
         public override void calibrate()
         {
             Console.WriteLine("Reseting to start! Sir!");
+            reload();
         }
     }
 }

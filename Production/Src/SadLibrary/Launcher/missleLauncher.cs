@@ -160,7 +160,15 @@ namespace SadLibrary.Launcher
         }
         public override void fire()
         {
-            command_Fire();
+            if (missileCount > 0)
+            {
+                command_Fire();
+                --missileCount;
+            }
+            else
+            {
+                Console.WriteLine("I just can’t do it cap’tin, we just don’t have tha power");
+            }
         }
 
         public override void fireAt(double x, double y, double z)
@@ -199,7 +207,7 @@ namespace SadLibrary.Launcher
 
         public missileLauncher()
         {
-
+            name = "Oblitzerater";
 
             this.UP = new byte[10];
             this.UP[1] = 2;
@@ -327,6 +335,8 @@ namespace SadLibrary.Launcher
                 this.moveMissileLauncher(this.RIGHT, 2750);
                 this.moveMissileLauncher(this.UP, 2000);
                 this.moveMissileLauncher(this.DOWN, 600);
+
+                reload();
             }
         }
 
