@@ -7,8 +7,41 @@ using SadLibrary;
 
 
 
+
 namespace SadCL
 {
+
+    // Type safe enums! Isn't that neat?
+    public sealed class Commands
+    {
+
+        private readonly String command;
+        private readonly int value;
+
+        public static readonly Commands EXIT = new Commands(1, "EXIT");
+//        public static readonly Commands PRINT = new Commands(2, "PRINT");
+//        public static readonly Commands IS_FRIEND = new Commands(3, "IS_FRIEND");
+        public static readonly Commands FIRE = new Commands(4, "FIRE");
+        public static readonly Commands MOVE = new Commands(5, "MOVE");
+        public static readonly Commands MOVEBY = new Commands(6, "MOVEBY");
+        public static readonly Commands RELOAD = new Commands(7, "RELOAD");
+        public static readonly Commands SCOUNDRELS = new Commands(8, "SCOUNDRELS");
+        public static readonly Commands FRIENDS = new Commands(9, "FRIENDS");
+        public static readonly Commands KILL = new Commands(10, "KILL");
+        public static readonly Commands STATUS = new Commands(11, "STATUS");
+
+        private Commands(int value, String cmd)
+        {
+            this.command = cmd;
+            this.value = value;
+        }
+
+        public override String ToString()
+        {
+            return command;
+        }
+    }
+
     class Controller
     {
         private List<SadLibrary.Target> targets; // = new List<Target>();
@@ -32,64 +65,10 @@ namespace SadCL
 
 
         private void MainLoop() {
-            // Menu loop
-            while (true)
+            // Menu loop runs until process command returns false
+            while (ProcessCommand())
             {
-                Console.Write("Command->");
-                string input = Console.ReadLine();
-                String [] commands = input.Split(new Char[] {' '});
-                string command = "";
-                string arg = "";
-                if (commands.Count() > 0) command = commands[0].ToLower();
-                if (commands.Count() > 1) arg = commands[1].ToLower();
- 
-                if (command.ToLower() == "print")
-                {
-                    // Argument Provided - Search for the specific object
-                    if(arg.Length > 0) {
-                       Target result = targets.Find(x => x.name.ToLower() == arg);
-                       if (result != null)
-                       {
-                           Console.WriteLine("Name={0}", result.name);
-                           Console.WriteLine("X={0}", result.X);
-                           Console.WriteLine("Y={0}", result.Y);
-                           Console.WriteLine("Z={0}", result.Z);
-                           Console.WriteLine("Points={0}", result.Points);
-                           Console.WriteLine("Friend={0}", result.Friend);
-                       }
-                       else Console.WriteLine("{0} not found.", arg);
-                    }
-                    // All targets
-                    else
-                    {
-                        targets.ForEach(delegate(Target target)
-                        {
-                            Console.WriteLine(target.name);
-                        });
-                    }
-                    Console.WriteLine("Target count = {0}", targets.Count);
-                }
-
-                else if (command.ToLower() == "isfriend")
-                {
-                    Target result = targets.Find(x => x.name.ToLower() == arg);
-                    if (result != null)
-                    {
-                        if(result.Friend) {
-                            Console.WriteLine("$5 Love you long time!");
-                        } else {
-                            Console.WriteLine("I'm going to kill you 'til you die from it.");
-                        }
-                    }
-                    else Console.WriteLine("{0} not found.", arg);
-                 }
-
-                else if (command.ToLower() == "exit")
-                {
-                    Console.WriteLine("Bubye!");
-                    break;
-                }
-
+                // Add extra logic/events inbetween commands here
 
             }
         }
@@ -97,6 +76,108 @@ namespace SadCL
         {
             FileTargetoaderIni fLoader = new FileTargetoaderIni(filename);
             this.targets = fLoader.Parse();
+        }
+
+        /*
+         * This will capture all input on the command line and route the commands to it's corresponding method.
+         * 
+         * Returns false if exit condition occurs.
+         * 
+         */
+        bool ProcessCommand()
+        {
+            Console.Write("Command->");
+            string input = Console.ReadLine();
+            String[] commands = input.Split(new Char[] { ' ' });
+            string command = "";
+            string arg = "";
+            if (commands.Count() > 0) command = commands[0].ToUpper();
+            if (commands.Count() > 1) arg = commands[1].ToUpper();
+
+
+            if (command == Commands.EXIT.ToString())
+            {
+                // Return false to indicate program exit
+                return false;
+            }
+            else if (command == Commands.FIRE.ToString())
+            {
+                CmdFire();
+            }
+            else if (command == Commands.FRIENDS.ToString())
+            {
+                CmdFriends();
+            }
+            else if (command == Commands.KILL.ToString())
+            {
+                CmdKill();
+            }
+            else if (command == Commands.MOVE.ToString())
+            {
+                CmdMove();
+            }
+            else if (command == Commands.MOVEBY.ToString())
+            {
+                CmdMoveBy();
+            }
+            else if (command == Commands.RELOAD.ToString())
+            {
+                CmdReload();
+            }
+            else if (command == Commands.SCOUNDRELS.ToString())
+            {
+                CmdScounderels();
+            }
+            else if (command == Commands.STATUS.ToString())
+            {
+                CmdStatus();
+            }
+            return true;    // Always return true, unless EXIT is selected.
+         }
+
+
+        /*
+         * COMMANDS - All logic is defined in these methods for running a command
+         */
+
+        private void CmdFire()
+        {
+            Console.WriteLine("CmdFire");
+        }
+
+        private void CmdFriends()
+        {
+            Console.WriteLine("CmdFriends");
+        }
+
+        private void CmdKill()
+        {
+            Console.WriteLine("CmdKill");
+        }
+
+        private void CmdMove()
+        {
+            Console.WriteLine("CmdMove");
+        }
+
+        private void CmdMoveBy()
+        {
+            Console.WriteLine("CmdMoveBy");
+        }
+
+        private void CmdReload()
+        {
+            Console.WriteLine("CmdReload");
+        }
+
+        void CmdStatus()
+        {
+            Console.WriteLine("CmdStatus");
+        }
+
+        void CmdScounderels()
+        {
+            Console.WriteLine("CmdScounderels");
         }
 
 
