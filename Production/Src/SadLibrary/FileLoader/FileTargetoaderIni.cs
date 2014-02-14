@@ -13,11 +13,11 @@ namespace SadLibrary
     };
 
 
-    public class FileTargetoaderIni : FileTargetLoader
+    public class FileTargetLoaderIni : FileTargetLoader
     {
  
         // Constructor
-        public FileTargetoaderIni(String filepath) : base(filepath)
+        public FileTargetLoaderIni(String filepath) : base(filepath)
         {
 
         }
