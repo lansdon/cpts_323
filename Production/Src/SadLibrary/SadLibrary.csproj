@@ -42,6 +42,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FileLoader\FileLoaderFactory.cs" />
     <Compile Include="FileLoader\FileTargetLoader.cs" />
     <Compile Include="FileLoader\FileTargetoaderIni.cs" />
     <Compile Include="Launcher\BaseLauncher.cs" />
@@ -51,6 +52,7 @@
     <Compile Include="Launcher\mockLauncher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Targets\Target.cs" />
+    <Compile Include="Targets\Target_Singleton.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

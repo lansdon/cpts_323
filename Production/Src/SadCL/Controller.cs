@@ -19,7 +19,7 @@ namespace SadCL
 
         public static readonly Commands EXIT = new Commands(1, "EXIT");
 //        public static readonly Commands PRINT = new Commands(2, "PRINT");
-//        public static readonly Commands IS_FRIEND = new Commands(3, "IS_FRIEND");
+        public static readonly Commands LOAD = new Commands(3, "LOAD");
         public static readonly Commands FIRE = new Commands(4, "FIRE");
         public static readonly Commands MOVE = new Commands(5, "MOVE");
         public static readonly Commands MOVEBY = new Commands(6, "MOVEBY");
@@ -43,7 +43,7 @@ namespace SadCL
 
     class Controller
     {
-        private List<SadLibrary.Target> targets = new List<Target>();
+        private List<SadLibrary.Targets.Target> targets = new List<SadLibrary.Targets.Target>();
 
         private SadLibrary.Launcher.BaseLauncher launcher = SadLibrary.Launcher.LauncherFactory.NewLauncher(LauncherType.LAUNCH_TYPE_MOCK);
 
@@ -56,10 +56,6 @@ namespace SadCL
         public void Run(string[] args)
         {
             // Do all the setup stuff here!! Initialize all the sub systems etc.
-            LoadTargetsFromFile(args.Count() > 0 ? args[0] : "targets.ini");
-
-            
-
 
             // Start the program loop after initialization is done
             Console.WriteLine("Fire a gun! Launch a missile! DO SOME DAMAGE! (Ready to go, sir!)");
@@ -77,8 +73,8 @@ namespace SadCL
 
         void LoadTargetsFromFile(string filename)
         {
-            FileTargetoaderIni fLoader = new FileTargetoaderIni(filename);
-            this.targets = fLoader.Parse();
+            SadLibrary.FileLoader.FileTargetLoader fLoader = SadLibrary.FileLoader.FileLoaderFactory.GetFileLoader(SadLibrary.FileLoader.FileLoaderTypes.FILE_INI, filename);
+            SadLibrary.Targets.Target_Manager.Instance.Target_List = fLoader.Parse();
         }
 
         /*
@@ -103,6 +99,10 @@ namespace SadCL
                 // Return false to indicate program exit
                 return false;
             }
+            else if (command == Commands.LOAD.ToString())
+            {
+                CmdLoad(commands);
+            }
             else if (command == Commands.FIRE.ToString())
             {
                 CmdFire();
@@ -113,7 +113,7 @@ namespace SadCL
             }
             else if (command == Commands.KILL.ToString())
             {
-                CmdKill();
+                CmdKill(commands);
             }
             else if (command == Commands.MOVE.ToString())
             {
@@ -129,7 +129,7 @@ namespace SadCL
             }
             else if (command == Commands.SCOUNDRELS.ToString())
             {
-                CmdScounderels();
+                CmdScoundrels();
             }
             else if (command == Commands.STATUS.ToString())
             {
@@ -138,7 +138,7 @@ namespace SadCL
             return true;    // Always return true, unless EXIT is selected.
          }
 
-
+ 
         /*
          * ARGUMENT CONVERSIONS
          */
@@ -188,14 +188,47 @@ namespace SadCL
         private void CmdFriends()
         {
             Console.WriteLine("CmdFriends");
-            throw new NotImplementedException();
-           
+            List<SadLibrary.Targets.Target> friends = SadLibrary.Targets.Target_Manager.getFriends();
+            foreach (var target in friends)
+            {
+                target.Print();
+            }
+        }
+        private void CmdLoad(string[] args)
+        {
+            string filename;
+            if (stringArgument(args, 1, out filename))
+            {
+                LoadTargetsFromFile(filename);
+            }
+            else
+            {
+                Console.WriteLine("Error Parsing filename arguments for LOAD command.");
+            }
+            Console.WriteLine("LOAD: {0}", filename);
         }
 
-        private void CmdKill()
+
+        private void CmdKill(string[] args)
         {
             Console.WriteLine("CmdKill");
-            throw new NotImplementedException();
+            string targetName;
+            if ( stringArgument(args, 1, out targetName) )
+            {
+                SadLibrary.Targets.Target target = SadLibrary.Targets.Target_Manager.getTarget(targetName);
+                if (target != null && target.Friend == false)
+                {
+                    launcher.fireAt(target.X, target.Y, target.Z);
+                }
+                else
+                {
+                    Console.WriteLine("Sorry Captain, we don’t permit friendly fire, yar");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Error Parsing Target Name arguments for KILL command.");
+            }
         }
 
         private void CmdMove(string[] args)
@@ -247,10 +280,14 @@ namespace SadCL
             
         }
 
-        void CmdScounderels()
+        void CmdScoundrels()
         {
             Console.WriteLine("CmdScounderels");
-            throw new NotImplementedException();
+            List<SadLibrary.Targets.Target> scoundrels = SadLibrary.Targets.Target_Manager.getEnemies();
+            foreach (var target in scoundrels)
+            {
+                target.Print();
+            }
         }
 
 

@@ -10,7 +10,7 @@ using System.IO;
  * 
  *  Created by: Lansdon Page
  */
-namespace SadLibrary
+namespace SadLibrary.FileLoader
 {
     abstract public class FileTargetLoader
     {
@@ -40,7 +40,7 @@ namespace SadLibrary
         }
 
         // Must override parse class for different file types
-        abstract public List<Target> Parse();
+        abstract public List<SadLibrary.Targets.Target> Parse();
  
     }
 }

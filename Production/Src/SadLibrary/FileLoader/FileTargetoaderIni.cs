@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using SadLibrary.Targets;
 
-namespace SadLibrary
+namespace SadLibrary.FileLoader
 {
     enum TargetFields
     {
@@ -13,24 +14,24 @@ namespace SadLibrary
     };
 
 
-    public class FileTargetoaderIni : FileTargetLoader
+    public class FileTargetLoaderIni : FileTargetLoader
     {
  
         // Constructor
-        public FileTargetoaderIni(String filepath) : base(filepath)
+        public FileTargetLoaderIni(String filepath) : base(filepath)
         {
 
         }
 
-        override public List<Target> Parse()
+        override public List<SadLibrary.Targets.Target> Parse()
         {
             // Error, nothig to parse.
-            if (_lines == null) return new List<Target>();
+            if (_lines == null) return new List<SadLibrary.Targets.Target>();
 
  //           const int TARGET_ATTRIBUTE_COUNT = 8;
             TargetFields currentAttributeNum = TargetFields.F_TARGET;
-            Target currentTarget = new Target();        // The target being built.
-            List<Target> result = new List<Target>();
+            SadLibrary.Targets.Target currentTarget = new SadLibrary.Targets.Target();        // The target being built.
+            List<SadLibrary.Targets.Target> result = new List<SadLibrary.Targets.Target>();
             bool error = false;
             for (int i = 0; i < _lines.Count(); ++i)
             {
@@ -51,7 +52,7 @@ namespace SadLibrary
                 // NAME
                 else if (currentAttributeNum == TargetFields.F_NAME && lineId == "name") 
                 {
-                    currentTarget.name = lineValue;
+                    currentTarget.Name = lineValue;
                     currentAttributeNum++;
                 } 
                 
