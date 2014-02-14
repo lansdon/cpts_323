@@ -15,7 +15,7 @@ namespace SadLibrary.Launcher
     public class LauncherFactory
     {
         // Make a launcher! Any kind you want, as long as it's one of the two we support.
-        public static BaseLauncher NewLauncher(LauncherType type)
+        public static ILauncher NewLauncher(LauncherType type)
         {
             if ( type == LauncherType.LAUCH_TYPE_USB )
                 return new missileLauncher();

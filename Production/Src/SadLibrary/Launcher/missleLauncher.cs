@@ -9,34 +9,69 @@ using UsbLibrary;
 
 namespace SadLibrary.Launcher
 {
-    public class missileLauncher : BaseLauncher
+    public class missileLauncher : ILauncher
     {
-        public override void moveUp()
+        protected double myPhi, myTheta;
+        protected double degreeDelay = 19;
+        public uint missileCount;
+        public uint MAX_MISSILE_COUNT = 4;
+        public string name = "";
+     
+
+        public void reload()
+        {
+            missileCount = MAX_MISSILE_COUNT;
+        }
+        public void moveUp()
         {
             command_Up(10);
         }
 
-        public override void moveDown()
+        public void moveDown()
         {
             command_Down(10);
         }
 
-        public override void moveLeft()
+        public void moveLeft()
         {
             command_Left(10);
         }
 
-        public override void moveRight()
+        public void moveRight()
         {
             command_Right(10);
         }
 
-        public override void moveBy(double x, double y, double z)
+        public void moveBy(double theta, double phi)
+        {
+            
+            if (theta < 180 && theta > 0)
+            {
+                command_Right((int)((theta) * degreeDelay));
+                myTheta += theta;
+            }
+            else
+            {
+                if (theta <= 0)
+                {
+                    theta = theta * (-1);
+                    command_Left((int)((theta) * degreeDelay));
+                    myTheta -= theta;
+                }
+                else
+                {
+                    command_Left((int)((360 - theta) * degreeDelay));
+                    myTheta -= 360 - theta;
+                }
+
+            }
+        }
+        public void moveCoords(double x, double y, double z)
         {
             moveTo(toTheta(x, y), toPhi(x, y, z));
         }
 
-        public override void moveTo(double theta, double phi)
+        public void moveTo(double theta, double phi)
         {
             if (myTheta == 0 && myPhi == 0)
             {
@@ -158,7 +193,7 @@ namespace SadLibrary.Launcher
                
            
         }
-        public override void fire()
+        public void fire()
         {
             if (missileCount > 0)
             {
@@ -171,13 +206,13 @@ namespace SadLibrary.Launcher
             }
         }
 
-        public override void fireAt(double x, double y, double z)
+        public void fireAt(double x, double y, double z)
         {
-            moveBy(x, y, z);
+            moveCoords(x, y, z);
             command_Fire();
         }
 
-        public override void calibrate()
+        public void calibrate()
         {
             command_reset();
             myPhi = 0;
@@ -406,6 +441,22 @@ namespace SadLibrary.Launcher
             else
                 return (90 - (180 -( Math.Atan2( squaredRoot,z) * (180 / Math.PI))));
         }
-       
+
+
+
+        public uint getMissleCount()
+        {
+            return missileCount;
+        }
+
+        public string getName()
+        {
+            return name;
+        }
+
+        public uint getMaxCount()
+        {
+            return MAX_MISSILE_COUNT;
+        }
     }
 }

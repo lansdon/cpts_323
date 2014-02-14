@@ -45,7 +45,7 @@ namespace SadCL
     {
         private List<SadLibrary.Targets.Target> targets = new List<SadLibrary.Targets.Target>();
 
-        private SadLibrary.Launcher.BaseLauncher launcher = SadLibrary.Launcher.LauncherFactory.NewLauncher(LauncherType.LAUNCH_TYPE_MOCK);
+        private SadLibrary.Launcher.ILauncher launcher = SadLibrary.Launcher.LauncherFactory.NewLauncher(LauncherType.LAUCH_TYPE_USB);
 
         /*
          *  This is the main entrypoint for the program. This class will
@@ -275,8 +275,8 @@ namespace SadCL
         void CmdStatus()
         {
             Console.WriteLine("CmdStatus");
-            Console.WriteLine("Launcher: {0}", launcher.name);
-            Console.WriteLine("Missiles: {0} of {1}", launcher.missileCount, launcher.MAX_MISSILE_COUNT);
+            Console.WriteLine("Launcher: {0}", launcher.getName());
+            Console.WriteLine("Missiles: {0} of {1}", launcher.getMissleCount(), launcher.getMaxCount());
             
         }
 

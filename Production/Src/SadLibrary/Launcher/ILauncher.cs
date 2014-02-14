@@ -12,10 +12,17 @@ namespace SadLibrary.Launcher
         void moveDown();
         void moveLeft();
         void moveRight();
-        void moveBy(double x, double y, double z);
+        void moveBy(double theta, double phi);
+        void moveCoords(double x, double y, double z);
         void moveTo(double theta, double phi);
         void fire();
         void fireAt(double x, double y, double z);
         void calibrate();
+        uint getMissleCount();
+        string getName();
+        uint getMaxCount();
+        void reload();
+
+
     }
 }
