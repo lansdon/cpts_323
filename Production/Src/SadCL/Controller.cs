@@ -250,12 +250,18 @@ namespace SadCL
             double phi = 0.0, theta = 0.0;
             if (doubleArgument(args, 1, out phi) && doubleArgument(args, 2, out theta))
             {
-                launcher.moveBy(theta, phi);
+//                launcher.moveBy(theta, phi);
+                // ******** WARNING *****
+                // The spec sheet says this should take phi theta! Our function takes x, y z. Problem!
+                throw new NotImplementedException();
             }
             else
             {
-                Console.WriteLine("Error Parsing Phi Theta arguments for MOVEBY command.");
+                Console.WriteLine("Error Parsing Phi Theta arguments for MOVE command.");
             }
+            Console.WriteLine("CmdMove: Phi = {0}, Theta = {1}", phi, theta);
+            Console.WriteLine("CmdMoveBy");
+//            launcher.moveBy()
         }
 
         private void CmdReload()
