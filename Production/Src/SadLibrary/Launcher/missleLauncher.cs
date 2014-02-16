@@ -16,6 +16,8 @@ namespace SadLibrary.Launcher
         public uint missileCount;
         public uint MAX_MISSILE_COUNT = 4;
         public string name = "";
+        int HALF_CIRCLE = 180, FULL_CIRCLE = 360, MAX_UP = 30, MAX_DOWN = 8, MAX_LEFT = -135, MAX_RIGHT = 135;
+
      
 
         public void reload()
@@ -24,31 +26,33 @@ namespace SadLibrary.Launcher
         }
         public void moveUp()
         {
-            command_Up(10);
+            command_Up((int)degreeDelay);
         }
 
         public void moveDown()
         {
-            command_Down(10);
+            command_Down((int)degreeDelay);
         }
 
         public void moveLeft()
         {
-            command_Left(10);
+            command_Left((int)degreeDelay);
         }
 
         public void moveRight()
         {
-            command_Right(10);
+            command_Right((int)degreeDelay);
         }
 
         public void moveBy(double theta, double phi)
         {
             
-            if (theta < 180 && theta > 0)
+            if (theta < HALF_CIRCLE && theta > 0)
             {
                 command_Right((int)((theta) * degreeDelay));
                 myTheta += theta;
+                if (myTheta > MAX_RIGHT)
+                    myTheta = MAX_RIGHT;
             }
             else
             {
@@ -57,11 +61,15 @@ namespace SadLibrary.Launcher
                     theta = theta * (-1);
                     command_Left((int)((theta) * degreeDelay));
                     myTheta -= theta;
+                    if (myTheta < MAX_LEFT)
+                        myTheta = MAX_LEFT;
                 }
                 else
                 {
-                    command_Left((int)((360 - theta) * degreeDelay));
-                    myTheta -= 360 - theta;
+                    command_Left((int)((FULL_CIRCLE - theta) * degreeDelay));
+                    myTheta -= FULL_CIRCLE - theta;
+                    if (myTheta < MAX_LEFT)
+                        myTheta = MAX_LEFT;
                 }
 
             }
@@ -75,10 +83,12 @@ namespace SadLibrary.Launcher
         {
             if (myTheta == 0 && myPhi == 0)
             {
-                if (theta < 180 && theta > 0)
+                if (theta < HALF_CIRCLE && theta > 0)
                 {
                     command_Right((int)((theta) * degreeDelay));
                     myTheta += theta;
+                    if (myTheta > MAX_RIGHT)
+                        myTheta = MAX_RIGHT;
                 }
                 else
                 {
@@ -87,20 +97,24 @@ namespace SadLibrary.Launcher
                         theta = theta * (-1);
                         command_Left((int)((theta) * degreeDelay));
                         myTheta -= theta;
+                        if (myTheta < MAX_LEFT)
+                            myTheta = MAX_LEFT;
                     }
                     else
                     {
-                        command_Left((int)((360 - theta) * degreeDelay));
-                        myTheta -= 360 - theta;
+                        command_Left((int)((FULL_CIRCLE - theta) * degreeDelay));
+                        myTheta -= FULL_CIRCLE - theta;
+                        if (myTheta < MAX_LEFT)
+                            myTheta = MAX_LEFT;
                     }
                     
                 }
-                if (phi < 180 && phi > 0)
+                if (phi < HALF_CIRCLE && phi > 0)
                 {
                     command_Up((int)(phi * degreeDelay));
                     myPhi += phi;
-                    if (myPhi > 30)
-                        myPhi = 30;
+                    if (myPhi > MAX_UP)
+                        myPhi = MAX_UP;
                 }
                 else if (phi > 300)
                 {
@@ -109,41 +123,43 @@ namespace SadLibrary.Launcher
                         phi = phi * (-1);
                         command_Down((int)((phi) * degreeDelay));
                         myPhi -= phi;
-                        if (myPhi < -5)
-                            myPhi = -5;
+                        if (myPhi < -MAX_DOWN)
+                            myPhi = -MAX_DOWN;
                     }
                     else
                     {
-                        command_Down((int)((360 - phi) * degreeDelay));
-                        myPhi -= 360 - phi;
-                        if (myPhi < -5)
-                            myPhi = -5;
+                        command_Down((int)((FULL_CIRCLE - phi) * degreeDelay));
+                        myPhi -= FULL_CIRCLE - phi;
+                        if (myPhi < -MAX_DOWN)
+                            myPhi = -MAX_DOWN;
                     }
                 }
                 
             }
             else
             {
-                if (myTheta > 180)
+                if (myTheta > HALF_CIRCLE)
                     theta = myTheta + theta;
                 else
                     theta = theta - myTheta; 
-                if(theta>360)
+                if(theta>FULL_CIRCLE)
                 {
-                    theta -= 360;
+                    theta -= FULL_CIRCLE;
                 }
-                if (myPhi < 180)
+                if (myPhi < HALF_CIRCLE)
                 phi = phi - myPhi;
             else
                 phi = phi + myPhi;
-                if (phi > 360)
+                if (phi > FULL_CIRCLE)
                 {
-                    phi -= 360;
+                    phi -= FULL_CIRCLE;
                 }
-                if (theta < 180 && theta > 0)
+                if (theta < HALF_CIRCLE && theta > 0)
                 {
                     command_Right((int)((theta) * degreeDelay));
                     myTheta += theta;
+                    if (myTheta > MAX_RIGHT)
+                        myTheta = MAX_RIGHT;
                 }
                 else
                 {
@@ -152,21 +168,25 @@ namespace SadLibrary.Launcher
                         theta = theta * (-1);
                         command_Left((int)((theta) * degreeDelay));
                         myTheta -= theta;
+                        if (myTheta < MAX_LEFT)
+                            myTheta = MAX_LEFT;
                     }
                     else
                     {
-                        command_Left((int)((360 - theta) * degreeDelay));
-                        myTheta -= 360 - theta;
+                        command_Left((int)((FULL_CIRCLE - theta) * degreeDelay));
+                        myTheta -= FULL_CIRCLE - theta;
+                        if (myTheta < MAX_LEFT)
+                            myTheta = MAX_LEFT;
                     }
                     
                 }
                
-                if (phi < 180 && phi > 0)
+                if (phi < HALF_CIRCLE && phi > 0)
                 {
                     command_Up((int)(phi * degreeDelay));
                     myPhi += phi;
-                    if (myPhi > 30)
-                        myPhi = 30;
+                    if (myPhi > MAX_UP)
+                        myPhi = MAX_UP;
                 }
                 else 
                 {
@@ -175,15 +195,15 @@ namespace SadLibrary.Launcher
                         phi = phi * (-1);
                         command_Down((int)((phi) * degreeDelay));
                         myPhi -= phi;
-                        if (myPhi < -5)
-                            myPhi = -5;
+                        if (myPhi < -MAX_DOWN)
+                            myPhi = -MAX_DOWN;
                     }
                     else
                     {
-                        command_Down((int)((360 - phi) * degreeDelay));
-                        myPhi -= 360 - phi;
-                        if (myPhi < -5)
-                            myPhi = -5;
+                        command_Down((int)((FULL_CIRCLE - phi) * degreeDelay));
+                        myPhi -= FULL_CIRCLE - phi;
+                        if (myPhi < -MAX_DOWN)
+                            myPhi = -MAX_DOWN;
                     }
                     
                 }
@@ -427,9 +447,9 @@ namespace SadLibrary.Launcher
         double toTheta(double x, double y)
         {
             if (x >= 0)
-                return (Math.Atan2(x, y) * (180 / Math.PI));
+                return (Math.Atan2(x, y) * (HALF_CIRCLE / Math.PI));
             else
-                return (180 - (Math.Atan2(x, y) * (180 / Math.PI)));
+                return (HALF_CIRCLE - (Math.Atan2(x, y) * (HALF_CIRCLE / Math.PI)));
         }
 
         //function to convert the x, y, z to phi for spherical coordinates.
@@ -437,9 +457,9 @@ namespace SadLibrary.Launcher
         {
             double squaredRoot = Math.Sqrt((x * x) + (y * y));
             if (z >= 0)
-                return (90 - (Math.Atan2(squaredRoot,z ) * (180 / Math.PI)));
+                return (90 - (Math.Atan2(squaredRoot,z ) * (HALF_CIRCLE / Math.PI)));
             else
-                return (90 - (180 -( Math.Atan2( squaredRoot,z) * (180 / Math.PI))));
+                return (90 - (HALF_CIRCLE -( Math.Atan2( squaredRoot,z) * (HALF_CIRCLE / Math.PI))));
         }
 
 
