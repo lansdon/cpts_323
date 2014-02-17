@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="file:///C:/PROGRAM FILES (X86)/MICROSOFT VISUAL STUDIO 12.0/COMMON7/IDE/EXTENSIONS/MICROSOFT/ARCHITECTURE TOOLS/EXTENSIBILITY/Logging/ReverseEngineeringLog.xslt"?>
+<Log xmlns="http://schemas.microsoft.com/VisualStudio/2010/CodeGen.RE.Log" Label="Code Generation/Text Transformation Log">
+  <MessageClass Name="Message" Label="Message" Option="Show informational messages" />
+  <MessageClass Name="Warning" Label="Warning" Option="Show warnings" />
+  <MessageClass Name="Error" Label="Error" Option="Show errors" />
+  <MessageClass Name="Property" Label="Property" Option="Show metadata" />
+  <MessageClass Name="Diagnostic" Label="Message" Option="Show diagnostic messages" />
+  <Message Timestamp="2014-02-17T13:15:36" Importance="High" Text="Reverse Engineering Started." />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: '0a04670c-d0e6-415a-a860-06bf70867cc4' -  (ClassifierTemplateParameter)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'Boolean' -  (PrimitiveType)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'Integer' -  (PrimitiveType)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadCL' -  (Package)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Medium" Text="Element reverse engineered into the UML model: 'SadModel::SadCL::Commands' -  (Class)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadCL::Commands::command' -  (Property)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadCL::Commands::Commands' -  (Operation)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadCL::Commands::Commands::cmd' -  (Parameter)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadCL::Commands::Commands::value' -  (Parameter)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadCL::Commands::EXIT' -  (Property)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadCL::Commands::FIRE' -  (Property)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadCL::Commands::FRIENDS' -  (Property)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadCL::Commands::KILL' -  (Property)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadCL::Commands::LOAD' -  (Property)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadCL::Commands::MOVE' -  (Property)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadCL::Commands::MOVEBY' -  (Property)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadCL::Commands::RELOAD' -  (Property)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadCL::Commands::SCOUNDRELS' -  (Property)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadCL::Commands::STATUS' -  (Property)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadCL::Commands::ToString' -  (Operation)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadCL::Commands::value' -  (Property)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Medium" Text="Element reverse engineered into the UML model: 'SadModel::SadCL::Controller' -  (Class)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadCL::Controller::CmdFire' -  (Operation)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadCL::Controller::CmdFriends' -  (Operation)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadCL::Controller::CmdKill' -  (Operation)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadCL::Controller::CmdKill::args' -  (Parameter)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadCL::Controller::CmdLoad' -  (Operation)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadCL::Controller::CmdLoad::args' -  (Parameter)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadCL::Controller::CmdMove' -  (Operation)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadCL::Controller::CmdMove::args' -  (Parameter)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadCL::Controller::CmdMoveBy' -  (Operation)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadCL::Controller::CmdMoveBy::args' -  (Parameter)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadCL::Controller::CmdReload' -  (Operation)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadCL::Controller::CmdScoundrels' -  (Operation)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadCL::Controller::CmdStatus' -  (Operation)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadCL::Controller::Controller' -  (Operation)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadCL::Controller::doubleArgument' -  (Operation)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadCL::Controller::doubleArgument::argNum' -  (Parameter)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadCL::Controller::doubleArgument::args' -  (Parameter)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadCL::Controller::doubleArgument::result' -  (Parameter)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadCL::Controller::intArgument' -  (Operation)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadCL::Controller::intArgument::argNum' -  (Parameter)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadCL::Controller::intArgument::args' -  (Parameter)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadCL::Controller::intArgument::result' -  (Parameter)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadCL::Controller::launcher' -  (Property)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadCL::Controller::LoadTargetsFromFile' -  (Operation)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadCL::Controller::LoadTargetsFromFile::filename' -  (Parameter)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadCL::Controller::MainLoop' -  (Operation)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadCL::Controller::ProcessCommand' -  (Operation)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadCL::Controller::Run' -  (Operation)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadCL::Controller::Run::args' -  (Parameter)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadCL::Controller::stringArgument' -  (Operation)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadCL::Controller::stringArgument::argNum' -  (Parameter)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadCL::Controller::stringArgument::args' -  (Parameter)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadCL::Controller::stringArgument::result' -  (Parameter)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadCL::Controller::targets' -  (Property)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Medium" Text="Element reverse engineered into the UML model: 'SadModel::SadCL::Program' -  (Class)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadCL::Program::Main' -  (Operation)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadCL::Program::Main::args' -  (Parameter)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadCL::Program::Program' -  (Operation)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadLibrary' -  (Package)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadLibrary::Launcher' -  (Package)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadLibrary::Launcher::ILauncher' -  (Interface)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadLibrary::Targets' -  (Package)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::SadLibrary::Targets::Target' -  (Class)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::System' -  (Package)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::System::Collections' -  (Package)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::System::Collections::Generic' -  (Package)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::System::Collections::Generic::List' -  (Class)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::System::Collections::Generic::List&lt;Target‎&gt;' -  (Class)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'SadModel::System::Double' -  (Class)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'String' -  (PrimitiveType)" />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="High" Text="(3) type(s) fully reverse engineered." />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="High" Text="(5) type(s) partially reverse engineered.  These types were not included in the original selection so their full definitions are not reverse engineered.  Instead, this shallow operation has simply ensured these types exist in the UML model because they are needed in order to fully describe other elements." />
+  <Message Timestamp="2014-02-17T13:15:38" Importance="High" Text="The reverse engineering operation completed with (0) error(s), and (0) warning(s)." />
+</Log>

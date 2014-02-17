@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="19ae978f-944f-473f-9057-7c2cf542fe75"
+  name="UsbLibrary"
+  visibility="Private" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <referencesInternal>
+    <reference
+      Id="084fdc0d-934d-4e31-857c-d6cab92999fa"
+      handle="viewcode://./CodeSchema_Namespace?Namespace%3DUsbLibrary"
+      tag="ViewCode" />
+  </referencesInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="d8943aed-036a-45d5-a578-845a4b8f5d41"
+        name="DataRecievedEventArgs"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="8bc22851-8810-4a3f-b7ea-bb72926b4eaa"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2Fpsf%2FHome%2FDropbox%2Fwsu%2F2014spring%2Fcpts323%2FProduction%2Fsrc%2FSadLibrary%2FUSBLib.DLL Namespace%3DUsbLibrary Type%3DDataRecievedEventArgs"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="58480326-c9bb-40e9-bdb5-d6beaba49d41"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="67999790-0d7e-49e2-a28d-7316edadf3e1">
+                <propertyInstance
+                  Id="fbacdc55-8fe3-42a9-906a-6e787c4d0cc5"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="e46afe07-d523-4430-a6d5-972d1b1521e2">
+                <propertyInstance
+                  Id="ab99d1d8-4330-4977-8b2a-939818e8607d"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="faeddf6a-d4fb-4b9b-b048-ff101090cc3c">
+                <propertyInstance
+                  Id="66e22cf5-de58-49aa-851f-d1635eeaacd0"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="3eb8204b-ab53-4b99-8ee8-7f175a0ee192">
+                <propertyInstance
+                  Id="5f3c7f62-9c27-47e3-9121-62dfb0a4d567"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="27499757-f8db-467e-9936-51f27b8bb4b5">
+                <propertyInstance
+                  Id="24f8c091-752b-44ea-8d7d-620f40f8b6d5"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <generalsInternal>
+          <generalization
+            Id="be8cd728-1764-4b1d-89a2-0b733132712f"
+            isSubstitutable="false">
+            <classMoniker
+              Id="2de49e3f-c1b6-46db-bc8c-3961a1cbd1ce"
+              LastKnownName="EventArgs"
+              LastKnownLocation="Package2_1312.uml" />
+          </generalization>
+        </generalsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="b237c3b7-25d7-432a-881f-84b7ec4251d2"
+        name="UsbHidPort"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="a4f78126-8fe2-4493-825b-33e69588f04e"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2Fpsf%2FHome%2FDropbox%2Fwsu%2F2014spring%2Fcpts323%2FProduction%2Fsrc%2FSadLibrary%2FUSBLib.DLL Namespace%3DUsbLibrary Type%3DUsbHidPort"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="172ce05a-1564-4398-8661-afd56adbbffb"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="f9fbb264-440a-4d5c-9565-9a6fcd1bab4c">
+                <propertyInstance
+                  Id="332ad8fa-e004-44a7-8409-4bf5c6a0203b"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="e5d2db4e-62ae-4206-a958-f9a43adbaebb">
+                <propertyInstance
+                  Id="862d4382-7951-4602-8c18-5a8790b23ba3"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="706140d6-73d6-41bd-82ca-91e9d0c144bd">
+                <propertyInstance
+                  Id="c61ce4b1-1031-49ce-a773-d6dd96f2922a"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="3c30ae4c-ffe7-477a-8f07-a11631c034f8">
+                <propertyInstance
+                  Id="371d74f7-3129-4c30-998a-37bdde0e3ae1"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="b612ae42-135d-488e-88bf-5b18c11a9a4c">
+                <propertyInstance
+                  Id="9d84c47d-0bd0-420a-8b3e-e08c2b8a413f"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

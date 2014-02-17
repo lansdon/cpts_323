@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="e82fd95c-944f-42c0-9207-bf8424c57859"
+  name="SadLibrary"
+  visibility="Private" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <referencesInternal>
+    <reference
+      Id="aae80323-de74-44a0-ab72-853756773a00"
+      handle="viewcode://./CodeSchema_Namespace?Namespace%3DSadLibrary"
+      tag="ViewCode" />
+  </referencesInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="68d087c3-3a9c-4a10-a825-a4f1962c4e7b"
+        LastKnownName="FileLoader"
+        LastKnownLocation="Package1_1312.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="9a0ebdae-5a01-49bb-8404-2511023a9dea"
+        LastKnownName="Targets"
+        LastKnownLocation="Package5_1312.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="2fb0d33c-acd5-477e-a9b5-48fb8dc79372"
+        LastKnownName="Launcher"
+        LastKnownLocation="Package6_1312.uml" />
+    </packageHasNamedElement>
+  </packagedElements>
+</package>
