@@ -229,7 +229,7 @@ namespace SadLibrary.Launcher
         public void fireAt(double x, double y, double z)
         {
             moveCoords(x, y, z);
-            command_Fire();
+            fire();
         }
 
         public void calibrate()
