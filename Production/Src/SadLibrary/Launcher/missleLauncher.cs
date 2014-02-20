@@ -73,6 +73,35 @@ namespace SadLibrary.Launcher
                 }
 
             }
+
+            if (phi < HALF_CIRCLE && phi > 0)
+            {
+                command_Up((int)(phi * degreeDelay));
+                myPhi += phi;
+                if (myPhi > MAX_UP)
+                    myPhi = MAX_UP;
+            }
+            else
+            {
+                if (phi <= 0)
+                {
+                    phi = phi * (-1);
+                    command_Down((int)((phi) * degreeDelay));
+                    myPhi -= phi;
+                    if (myPhi < -MAX_DOWN)
+                        myPhi = -MAX_DOWN;
+                }
+                else
+                {
+                    command_Down((int)((FULL_CIRCLE - phi) * degreeDelay));
+                    myPhi -= FULL_CIRCLE - phi;
+                    if (myPhi < -MAX_DOWN)
+                        myPhi = -MAX_DOWN;
+                }
+
+            }
+ 
+
         }
         public void moveCoords(double x, double y, double z)
         {
