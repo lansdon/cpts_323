@@ -15,14 +15,14 @@ namespace SadGUI
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private ILauncher m_launcher;
+        //private ILauncher m_launcher;
         private string m_name;
         private double m_xPosition;
-
+        
         public MainViewModel(ILauncher launcher, IEnumerable<Target> targets)
         {
-            m_launcher = launcher;
-            FireCommand = new DelegateCommand(Fire);
+           // m_launcher = launcher;
+           
 
             Targets = new ObservableCollection<TargetViewModel>();
             foreach (var target in targets)
@@ -35,6 +35,7 @@ namespace SadGUI
             var t = new Target();
             t.Name = "this is a target";
             TargetsViewModel = new TargetViewModel(t);
+            LauncherViewModel = new LauncherViewModel(launcher);
         }
 
         private void AddTarget()
@@ -50,12 +51,8 @@ namespace SadGUI
         public ObservableCollection<TargetViewModel> Targets
         { get; private set; }
 
-        public void Fire()
-        {
-            m_launcher.fire();
-        }
-
+        public LauncherViewModel LauncherViewModel { get; set; }
         public ICommand AddNewTarget { get; private set; }
-        public ICommand FireCommand { get; set; }
+       
     }
 }
