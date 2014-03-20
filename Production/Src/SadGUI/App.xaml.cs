@@ -31,7 +31,7 @@ namespace SadGUI
                 targets.Add(t);
             }
 
-            ILauncher launcher = LauncherFactory.NewLauncher(0);
+            ILauncher launcher = new missileLauncher();
 
             MainViewModel viewModel = new MainViewModel(launcher, targets);
             window.DataContext = viewModel;

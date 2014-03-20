@@ -58,6 +58,9 @@
     <Compile Include="mizaWindows\launcherUserControl.xaml.cs">
       <DependentUpon>launcherUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="mizaWindows\LauncherUsercontrolWithButtons.xaml.cs">
+      <DependentUpon>LauncherUsercontrolWithButtons.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TargetViewControl.xaml.cs">
       <DependentUpon>TargetViewControl.xaml</DependentUpon>
     </Compile>
@@ -77,6 +80,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="mizaWindows\launcherUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="mizaWindows\LauncherUsercontrolWithButtons.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

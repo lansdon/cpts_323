@@ -16,15 +16,13 @@ using System.Windows.Shapes;
 namespace SadGUI.mizaWindows
 {
     /// <summary>
-    /// Interaction logic for launcherUserControl.xaml
+    /// Interaction logic for LauncherUsercontrolWithButtons.xaml
     /// </summary>
-    public partial class launcherUserControl : UserControl
+    public partial class LauncherUsercontrolWithButtons : UserControl
     {
-        public launcherUserControl()
+        public LauncherUsercontrolWithButtons()
         {
             InitializeComponent();
         }
-
-        
     }
 }

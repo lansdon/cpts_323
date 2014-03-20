@@ -45,7 +45,7 @@ namespace SadCL
     {
         private List<SadLibrary.Targets.Target> targets = new List<SadLibrary.Targets.Target>();
 
-        private SadLibrary.Launcher.ILauncher launcher = SadLibrary.Launcher.LauncherFactory.NewLauncher(LauncherType.LAUCH_TYPE_USB);
+        private SadLibrary.Launcher.ILauncher launcher = SadLibrary.Launcher.LauncherFactory.NewLauncher(LauncherType.LAUNCH_TYPE_USB);
 
         /*
          *  This is the main entrypoint for the program. This class will
