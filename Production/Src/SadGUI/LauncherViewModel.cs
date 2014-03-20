@@ -17,12 +17,13 @@ namespace SadGUI
         public event PropertyChangedEventHandler LauncherPropertyChanged;
         private ILauncher m_launcher;
         private int _phi, _theta;
-        
+        private uint _missileCount;
         public LauncherViewModel(ILauncher launcher)
         {
             m_launcher = launcher;
             _phi = 0;
             _theta = 0;
+            _missileCount = m_launcher.getMissleCount();
             FireCommand = new DelegateCommand(Fire);
             UpCommand = new DelegateCommand(Up);
             DownCommand = new DelegateCommand(Down);
@@ -33,7 +34,15 @@ namespace SadGUI
         
            
        
-      
+        public uint missileCount
+        {
+            get { return (_missileCount); }
+            set
+            {
+                _missileCount = (uint)value;
+               OnPropertyChanged("_missileCount");
+            }
+        }
         public int phi
         {
             get { return _phi; }
@@ -56,6 +65,7 @@ namespace SadGUI
         public void Fire()
         {
             m_launcher.fire();
+            missileCount--;
         }
         public void Up()
         {
@@ -80,6 +90,8 @@ namespace SadGUI
             {
                 LauncherPropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
+            
+           
             m_launcher.moveTo(_theta, _phi);
             
         }

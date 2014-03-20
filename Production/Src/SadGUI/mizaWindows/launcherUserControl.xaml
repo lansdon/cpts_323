@@ -29,25 +29,29 @@
             Orientation="Vertical"
             Grid.Column="1" 
             Grid.Row="0" 
-            Maximum="30" 
+            Maximum="15" 
             Minimum="-5" 
             HorizontalAlignment="Center"
-                
+            AutoToolTipPlacement="BottomRight"    
             Value="{Binding Path=phi, Mode=TwoWay}"
-            SmallChange="1"
+            SmallChange="1" ToolTip="{Binding theta, StringFormat=\{0:D\}}"
             />
         <Slider Name="HorizontalSlider"
             Grid.Column="0"
             Grid.Row="1"
             Orientation="Horizontal"
-            Maximum="135"
-            Minimum="-135"
-            
+            Maximum="120"
+            Minimum="-120"
+            AutoToolTipPlacement="BottomRight"
             
             Value="{Binding Path=theta, Mode=TwoWay, NotifyOnTargetUpdated=True, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"
             SmallChange="1" VerticalAlignment="Center"
             />
-
+        <Label Content="{Binding Path=missileCount}"
+               Grid.Column="1"
+               Grid.Row="1">
+            
+        </Label>
 
     </Grid>
 </UserControl>

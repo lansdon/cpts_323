@@ -145,7 +145,7 @@ namespace SadLibrary.Launcher
                     if (myPhi > MAX_UP)
                         myPhi = MAX_UP;
                 }
-                else if (phi > 300)
+                else if (phi > 300 || phi <= 0)
                 {
                     if (phi <= 0)
                     {
@@ -497,6 +497,7 @@ namespace SadLibrary.Launcher
         {
             return missileCount;
         }
+       
 
         public string getName()
         {

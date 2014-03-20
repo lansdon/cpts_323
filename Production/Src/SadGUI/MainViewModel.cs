@@ -36,6 +36,7 @@ namespace SadGUI
             t.Name = "this is a target";
             TargetsViewModel = new TargetViewModel(t);
             LauncherViewModel = new LauncherViewModel(launcher);
+            
         }
 
         private void AddTarget()
