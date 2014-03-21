@@ -31,17 +31,66 @@ namespace SadGUI
                 OnPropertyChanged("Name");
             }
         }
-
-        public double X
+        public bool Friend
         {
             get
             {
-                return m_target.X;
+                return m_target.Friend;
+            }
+
+            set
+            {
+
+                m_target.Friend = value;
+                OnPropertyChanged("Friend");
+            }
+        }
+        public string CordsToString
+        {
+            get
+            {
+                return m_target.cordsToString();
             }
             set
             {
-                m_target.X = value;
-                OnPropertyChanged("X");
+                m_target.stringToCords(value);
+                OnPropertyChanged("CordsToString");
+            }
+        }
+        public bool Alive
+        {
+            get
+            {
+                return m_target.Alive;
+            }
+            set
+            {
+                m_target.Alive = value;  
+                OnPropertyChanged("Alive");
+            }
+        }
+        public int Points
+        {
+            get
+            {
+                return m_target.Points;
+            }
+            set
+            {
+                m_target.Points = value;
+                OnPropertyChanged("Points");
+            }
+        }
+        public int FlashRate
+        {
+            get
+            {
+                return m_target.FlashRate;
+            }
+            set
+            {
+                m_target.FlashRate = value;
+                OnPropertyChanged("FlashRate");
             }
         }
     }

@@ -16,7 +16,19 @@ namespace SadLibrary.Targets
         public int Points { set; get; }
         public int FlashRate { set; get; }
         public bool Alive { get; set; }
-
+        public string cordsToString()
+        {
+            string temp = string.Format("X: {0}, Y: {1}, Z: {2}",X,Y,Z);
+            return temp;
+        }
+        public void stringToCords(string input)
+        {
+            char[] seperators = new char[]{'X','Y','Z',':',','};
+            string[] parts = input.Split(seperators, StringSplitOptions.RemoveEmptyEntries);
+            X = Convert.ToDouble(parts[0]);
+            Y = Convert.ToDouble(parts[1]);
+            Z = Convert.ToDouble(parts[3]);
+        }
         public void Print() 
         {
             Console.WriteLine("Target: {0}", Name);
