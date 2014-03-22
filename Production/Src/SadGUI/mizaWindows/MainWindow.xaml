@@ -5,32 +5,36 @@
         xmlns:MyWindows="clr-namespace:SadGUI.mizaWindows"
         Title="MainWindow" Height="350" Width="800">
 
+    <!--Main Grid Definition-->
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50*" Name="TopMain"/>
-            <RowDefinition Height="50*" Name="BottomMain"/>
+            <RowDefinition Height="50*"/> <!--Row 1-->
+            <RowDefinition Height="50*"/> <!--Row 2-->
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="30*" Name="LeftMain"/>
-            <ColumnDefinition Width="70*" Name="RightMain"/>
+            <ColumnDefinition Width="30*"/> <!--Column 1-->
+            <ColumnDefinition Width="70*"/> <!--Column 2-->
         </Grid.ColumnDefinitions>
-        
+
+        <!--Video Window Panel Place Holder-->
         <controls:TargetViewControl
-            Grid.Row="{Binding ElementName=TopMain}"
-            Grid.Column="{Binding ElementName=LeftMain}"
+            Grid.Row="0"
+            Grid.Column="0"
             DataContext="{Binding TargetsViewModel}"/>
 
+        <!--Launcher Control Panel-->
         <MyWindows:launcherUserControl
-            Grid.Row="{Binding ElementName=BottomMain}"
-            Grid.Column="{Binding ElementName=LeftMain}"
+            Grid.Row="1"
+            Grid.Column="0"
             DataContext="{Binding LauncherViewModel}"/>
-        
-        <Grid Grid.Column="1" >
+
+        <!--Target Information Panel-->
+        <Grid Grid.Row="0" Grid.Column="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="15*"/>
-                <RowDefinition Height="85*"/>
+                <RowDefinition Height="15*"/><!--Row 1 Catagory Panel-->
+                <RowDefinition Height="85*"/><!--Row 2 Target Panel-->
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0">
+            <Grid Grid.Row="0" Grid.Column="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="20*"/>
                     <ColumnDefinition Width="20*"/>
@@ -47,28 +51,25 @@
                 <Label Grid.Column="6" Content="Flash Rate" VerticalAlignment="Center" HorizontalAlignment="Left"/>
             </Grid>
             <ListBox
-            Grid.Column="0" 
-            Grid.Row="1"
-           
-            HorizontalAlignment="Stretch"
-            Margin="5"
-           ItemsSource="{Binding Path=Targets}"
-            >
+                Grid.Column="0" 
+                Grid.Row="1"
+                 HorizontalContentAlignment="Stretch"
+                Margin="5"
+                ItemsSource="{Binding Path=Targets}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                    <MyWindows:TargetUserControl HorizontalAlignment="Stretch" />
+                        <MyWindows:TargetUserControl  HorizontalAlignment="Stretch"/>
                 </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-
         </Grid>
-        <Grid Grid.Column="1"
-              Grid.Row="1">
+
+        <Grid Grid.Column="1" Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width= "50*"/>
                 <ColumnDefinition Width="50*"/>
             </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0">
+            <Grid Grid.Row="0" Grid.Column="0">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="20*"/>
