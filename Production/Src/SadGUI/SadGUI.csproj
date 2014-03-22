@@ -64,12 +64,12 @@
     <Compile Include="mizaWindows\TargetUserControl.xaml.cs">
       <DependentUpon>TargetUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TargetViewControl.xaml.cs">
+    <Compile Include="mizaWindows\TargetViewControl.xaml.cs">
       <DependentUpon>TargetViewControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="TargetViewModel.cs" />
     <Compile Include="ViewModelBase.cs" />
-    <Page Include="MainWindow.xaml">
+    <Page Include="mizaWindows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -78,7 +78,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="MainViewModel.cs" />
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="mizaWindows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -94,7 +94,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="TargetViewControl.xaml">
+    <Page Include="mizaWindows\TargetViewControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
