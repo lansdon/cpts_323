@@ -19,10 +19,10 @@
         </Grid.ColumnDefinitions>
 
         <!--Video Window Panel Place Holder-->
-        <MyWindows:CameraUserControl
+        <!--<MyWindows:CameraUserControl
             Grid.Row="0"
             Grid.Column="0"
-            DataContext="{Binding TargetsViewModel}"/>
+            DataContext="{Binding TargetsViewModel}"/>-->
 
         <!--Launcher Control Panel-->
         <MyWindows:LauncherUsercontrolWithButtons
