@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
+
 namespace SadGUI
 {
     /// <summary>
@@ -44,7 +45,7 @@ namespace SadGUI
                 targets.Add(t);
             }
 
-            ILauncher launcher = LauncherFactory.NewLauncher(0);
+            ILauncher launcher = LauncherFactory.NewLauncher((LauncherType)1);
 
             MainViewModel viewModel = new MainViewModel(launcher, targets);
             window.DataContext = viewModel;

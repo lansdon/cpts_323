@@ -17,13 +17,13 @@
         </Grid.ColumnDefinitions>
 
         <!--Video Window Panel Place Holder-->
-        <controls:TargetViewControl
+        <MyWindows:CameraUserControl
             Grid.Row="0"
             Grid.Column="0"
             DataContext="{Binding TargetsViewModel}"/>
 
         <!--Launcher Control Panel-->
-        <MyWindows:launcherUserControl
+        <MyWindows:LauncherUsercontrolWithButtons
             Grid.Row="1"
             Grid.Column="0"
             DataContext="{Binding LauncherViewModel}"/>
