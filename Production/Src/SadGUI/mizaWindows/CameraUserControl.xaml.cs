@@ -33,7 +33,7 @@ namespace SadGUI.mizaWindows
  //           haarCascade = new HaarCascade(@"haarcascade_frontalface_alt_tree.xml");
             timer = new DispatcherTimer();
             timer.Tick += new EventHandler(timer_Tick);
-            timer.Interval = new TimeSpan(0, 0, 0, 0, 1);
+            timer.Interval = new TimeSpan(0, 0, 0, 0, 1000/30);
             timer.Start();
         }
 
