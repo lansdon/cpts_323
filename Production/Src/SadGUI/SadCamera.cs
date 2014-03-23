@@ -121,10 +121,5 @@ namespace SadGUI
                 return bs;
             }
         }
-
-
     }
-
-
-
 }
