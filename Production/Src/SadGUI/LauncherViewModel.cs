@@ -14,7 +14,12 @@ namespace SadGUI
 {
     class LauncherViewModel : ViewModelBase
     {
+<<<<<<< HEAD
+        
+        
+=======
         public event PropertyChangedEventHandler LauncherPropertyChanged;
+>>>>>>> 20e01bacfbc510ce4c191b0a3adc4c1341d85c39
         private ILauncher m_launcher;
         private int _phi, _theta;
         private uint _missileCount;
@@ -29,7 +34,8 @@ namespace SadGUI
             DownCommand = new DelegateCommand(Down);
             LeftCommand = new DelegateCommand(Left);
             RightCommand = new DelegateCommand(Right);
-            
+            ReloadCommand = new DelegateCommand(reload);
+            CalibrateCommand = new DelegateCommand(calibrate);
         }
         
            
@@ -39,9 +45,25 @@ namespace SadGUI
             get { return (_missileCount); }
             set
             {
+<<<<<<< HEAD
+               if(_missileCount > 0 || value == 4)
+                   _missileCount = value;
+               
+                   
+               OnPropertyChanged("missileCount");
+               
+=======
                 _missileCount = (uint)value;
                OnPropertyChanged("_missileCount");
+>>>>>>> 20e01bacfbc510ce4c191b0a3adc4c1341d85c39
             }
+        }
+        public void calibrate()
+        {
+            m_launcher.calibrate();
+            missileCount = 4;
+            phi = 0;
+            theta = 0;
         }
         public int phi
         {
@@ -67,6 +89,11 @@ namespace SadGUI
             m_launcher.fire();
             missileCount--;
         }
+        public void reload()
+        {
+            m_launcher.reload();
+            missileCount = 4;
+        }
         public void Up()
         {
             m_launcher.moveUp();
@@ -84,6 +111,9 @@ namespace SadGUI
 
             m_launcher.moveRight();
         }
+<<<<<<< HEAD
+        
+=======
         protected void OnPropertyChanged(string propertyName)
         {
             if (LauncherPropertyChanged != null)
@@ -95,13 +125,15 @@ namespace SadGUI
             m_launcher.moveTo(_theta, _phi);
             
         }
+>>>>>>> 20e01bacfbc510ce4c191b0a3adc4c1341d85c39
         
         public ICommand FireCommand { get; set; }
         public ICommand UpCommand { get; set; }
         public ICommand DownCommand { get; set; }
         public ICommand RightCommand { get; set; }
         public ICommand LeftCommand { get; set; }
-        
+        public ICommand ReloadCommand { get; set; }
+        public ICommand CalibrateCommand { get; set; }
        
     }
 }

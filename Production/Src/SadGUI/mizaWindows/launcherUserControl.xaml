@@ -41,19 +41,29 @@
                 Margin="5"
                 Command="{Binding Path=FireCommand}"
                 >Fire</Button>
-            <Label Name="Theta_label"
+            <TextBox  Name="Theta_label"
                 Grid.Column="1" 
                 Grid.Row="2" 
-                Content="{Binding Path=theta, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                Text="{Binding Path=theta, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Bottom"
-                ></Label>
-            <Label
+                ></TextBox>
+            <TextBox
                 Grid.Column="2" 
                 Grid.Row="1" 
-                Content="{Binding Path=phi, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                Text="{Binding Path=phi, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 HorizontalAlignment="Right"
-                VerticalAlignment="Center"></Label>
+                VerticalAlignment="Center"></TextBox>
+            <Button 
+                Grid.Column="0" 
+                Grid.Row="0" 
+                Command="{Binding ReloadCommand}"
+                Content="Reload"/>
+            <Button 
+                Grid.Column="2"
+                Grid.Row="0"
+                Command="{Binding CalibrateCommand}"
+                Content="Calibrate"/>
         </Grid>
         <Slider Name="VerticalSlider"
             Orientation="Vertical"

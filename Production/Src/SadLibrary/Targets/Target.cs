@@ -18,12 +18,12 @@ namespace SadLibrary.Targets
         public bool Alive { get; set; }
         public string cordsToString()
         {
-            string temp = string.Format("X: {0}, Y: {1}, Z: {2}",X,Y,Z);
+            string temp = string.Format("({0}, {1}, {2})",X,Y,Z);
             return temp;
         }
         public void stringToCords(string input)
         {
-            char[] seperators = new char[]{'X','Y','Z',':',','};
+            char[] seperators = new char[]{'X','Y','Z',':',',','(',')',' '};
             string[] parts = input.Split(seperators, StringSplitOptions.RemoveEmptyEntries);
             X = Convert.ToDouble(parts[0]);
             Y = Convert.ToDouble(parts[1]);
