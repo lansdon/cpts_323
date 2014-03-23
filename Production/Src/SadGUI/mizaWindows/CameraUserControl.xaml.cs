@@ -20,11 +20,11 @@ namespace SadGUI.mizaWindows
         public CameraUserControl()
         {
             InitializeComponent();
-         }
+            SadCamera.Instance.StartCamera(image1);
+        }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            SadCamera.Instance.StartCamera(image1);
         }
 
    }

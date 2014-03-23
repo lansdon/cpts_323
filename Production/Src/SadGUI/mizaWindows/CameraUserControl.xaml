@@ -12,6 +12,7 @@
 	    Margin="10,10,10,10"
 	    VerticalAlignment="Center"
 	    Stretch="Fill"
+        Loaded="Window_Loaded"
             />
     </Grid>
 </UserControl>
