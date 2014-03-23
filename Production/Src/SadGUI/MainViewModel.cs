@@ -37,7 +37,8 @@ namespace SadGUI
             TargetsViewModel = new TargetViewModel(t);
             LauncherViewModel = new LauncherViewModel(launcher);
             VideoCheckBox = new VideoCheckBox();
-            
+            DefaultControlCheckBox = new DefaultControlCheckBox();
+            TwitterFeedCheckBox = new TwitterFeedCheckBox();
         }
 
         private void AddTarget()
@@ -57,5 +58,9 @@ namespace SadGUI
         public ICommand AddNewTarget { get; private set; }
 
         public VideoCheckBox VideoCheckBox { get; set; }
+
+        public DefaultControlCheckBox DefaultControlCheckBox { get; set; }
+
+        public TwitterFeedCheckBox TwitterFeedCheckBox { get; set; }
     }
 }
