@@ -15,17 +15,11 @@ namespace SadGUI.mizaWindows
     /// Interaction logic for CameraUserControl.xaml
     /// </summary>
     public partial class CameraUserControl : UserControl
-    {
-         
+    {    
         public CameraUserControl()
         {
             InitializeComponent();
             SadCamera.Instance.StartCamera(image1);
         }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-        }
-
    }
 }
