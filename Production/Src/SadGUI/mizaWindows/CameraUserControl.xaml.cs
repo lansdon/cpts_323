@@ -15,7 +15,7 @@ namespace SadGUI.mizaWindows
     /// </summary>
     public partial class CameraUserControl : UserControl
     {
-        Capture capture;
+        Capture capture = null;
 //        private HaarCascade haarCascade;
         DispatcherTimer timer;
 
@@ -46,10 +46,10 @@ namespace SadGUI.mizaWindows
             {
                 Image<Gray, Byte> grayFrame = currentFrame.Convert<Gray, Byte>();
 
- //               var detectedFaces = grayFrame.DetectHaarCascade(haarCascade)[0];
+                //               var detectedFaces = grayFrame.DetectHaarCascade(haarCascade)[0];
 
- //               foreach (var face in detectedFaces)
- //                   currentFrame.Draw(face.rect, new Bgr(0, double.MaxValue, 0), 3);
+                //               foreach (var face in detectedFaces)
+                //                   currentFrame.Draw(face.rect, new Bgr(0, double.MaxValue, 0), 3);
 
                 image1.Source = ToBitmapSource(currentFrame);
             }

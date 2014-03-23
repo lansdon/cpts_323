@@ -15,7 +15,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -34,16 +34,23 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Emgu.CV, Version=2.9.0.1922, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
+    <Reference Include="Emgu.CV, Version=2.2.1.1150, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\bin\Emgu.CV.dll</HintPath>
+      <HintPath>..\..\LauncherClient\packages\EmguCV.221.x86.1.0\lib\Emgu.CV.dll</HintPath>
     </Reference>
-    <Reference Include="Emgu.CV.UI">
-      <HintPath>..\bin\Emgu.CV.UI.dll</HintPath>
+    <Reference Include="Emgu.CV.GPU">
+      <HintPath>..\..\LauncherClient\packages\EmguCV.221.x86.1.0\lib\Emgu.CV.GPU.dll</HintPath>
     </Reference>
-    <Reference Include="Emgu.Util, Version=2.9.0.1922, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
+    <Reference Include="Emgu.CV.ML">
+      <HintPath>..\..\LauncherClient\packages\EmguCV.221.x86.1.0\lib\Emgu.CV.ML.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.CV.UI, Version=2.2.1.1150, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\bin\Emgu.Util.dll</HintPath>
+      <HintPath>..\..\LauncherClient\packages\EmguCV.221.x86.1.0\lib\Emgu.CV.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.Util, Version=2.2.1.1150, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\LauncherClient\packages\EmguCV.221.x86.1.0\lib\Emgu.Util.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
@@ -146,6 +153,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <Fakes Include="Fakes\Emgu.CV.fakes" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -160,6 +168,50 @@
       <Project>{ff704dc7-1697-40fe-883c-b80935b13b76}</Project>
       <Name>SadLibrary</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\LauncherClient\packages\EmguCV.221.x64.1.5\opencv\cvextern.dll">
+      <Link>cvextern.dll</Link>
+    </Content>
+    <Content Include="..\..\LauncherClient\packages\EmguCV.221.x64.1.5\opencv\opencv_calib3d220.dll">
+      <Link>opencv_calib3d220.dll</Link>
+    </Content>
+    <Content Include="..\..\LauncherClient\packages\EmguCV.221.x64.1.5\opencv\opencv_contrib220.dll">
+      <Link>opencv_contrib220.dll</Link>
+    </Content>
+    <Content Include="..\..\LauncherClient\packages\EmguCV.221.x64.1.5\opencv\opencv_core220.dll">
+      <Link>opencv_core220.dll</Link>
+    </Content>
+    <Content Include="..\..\LauncherClient\packages\EmguCV.221.x64.1.5\opencv\opencv_features2d220.dll">
+      <Link>opencv_features2d220.dll</Link>
+    </Content>
+    <Content Include="..\..\LauncherClient\packages\EmguCV.221.x64.1.5\opencv\opencv_flann220.dll">
+      <Link>opencv_flann220.dll</Link>
+    </Content>
+    <Content Include="..\..\LauncherClient\packages\EmguCV.221.x64.1.5\opencv\opencv_gpu220.dll">
+      <Link>opencv_gpu220.dll</Link>
+    </Content>
+    <Content Include="..\..\LauncherClient\packages\EmguCV.221.x64.1.5\opencv\opencv_highgui220.dll">
+      <Link>opencv_highgui220.dll</Link>
+    </Content>
+    <Content Include="..\..\LauncherClient\packages\EmguCV.221.x64.1.5\opencv\opencv_imgproc220.dll">
+      <Link>opencv_imgproc220.dll</Link>
+    </Content>
+    <Content Include="..\..\LauncherClient\packages\EmguCV.221.x64.1.5\opencv\opencv_legacy220.dll">
+      <Link>opencv_legacy220.dll</Link>
+    </Content>
+    <Content Include="..\..\LauncherClient\packages\EmguCV.221.x64.1.5\opencv\opencv_ml220.dll">
+      <Link>opencv_ml220.dll</Link>
+    </Content>
+    <Content Include="..\..\LauncherClient\packages\EmguCV.221.x64.1.5\opencv\opencv_objdetect220.dll">
+      <Link>opencv_objdetect220.dll</Link>
+    </Content>
+    <Content Include="..\..\LauncherClient\packages\EmguCV.221.x64.1.5\opencv\opencv_video220.dll">
+      <Link>opencv_video220.dll</Link>
+    </Content>
+    <Content Include="..\..\LauncherClient\packages\EmguCV.221.x64.1.5\opencv\ZedGraph.dll">
+      <Link>ZedGraph.dll</Link>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
