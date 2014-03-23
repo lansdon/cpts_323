@@ -33,6 +33,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Emgu.CV, Version=2.2.1.1150, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -94,6 +97,7 @@
     <Compile Include="mizaWindows\TargetViewControl.xaml.cs">
       <DependentUpon>TargetViewControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SadCamera.cs" />
     <Compile Include="TargetViewModel.cs" />
     <Compile Include="TwitterFeedCheckBox.cs" />
     <Compile Include="VideoCheckBox.cs" />
@@ -172,52 +176,17 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\..\LauncherClient\packages\EmguCV.221.x64.1.5\opencv\cvextern.dll">
-      <Link>cvextern.dll</Link>
-    </Content>
-    <Content Include="..\..\LauncherClient\packages\EmguCV.221.x64.1.5\opencv\opencv_calib3d220.dll">
-      <Link>opencv_calib3d220.dll</Link>
-    </Content>
-    <Content Include="..\..\LauncherClient\packages\EmguCV.221.x64.1.5\opencv\opencv_contrib220.dll">
-      <Link>opencv_contrib220.dll</Link>
-    </Content>
-    <Content Include="..\..\LauncherClient\packages\EmguCV.221.x64.1.5\opencv\opencv_core220.dll">
-      <Link>opencv_core220.dll</Link>
-    </Content>
-    <Content Include="..\..\LauncherClient\packages\EmguCV.221.x64.1.5\opencv\opencv_features2d220.dll">
-      <Link>opencv_features2d220.dll</Link>
-    </Content>
-    <Content Include="..\..\LauncherClient\packages\EmguCV.221.x64.1.5\opencv\opencv_flann220.dll">
-      <Link>opencv_flann220.dll</Link>
-    </Content>
-    <Content Include="..\..\LauncherClient\packages\EmguCV.221.x64.1.5\opencv\opencv_gpu220.dll">
-      <Link>opencv_gpu220.dll</Link>
-    </Content>
-    <Content Include="..\..\LauncherClient\packages\EmguCV.221.x64.1.5\opencv\opencv_highgui220.dll">
-      <Link>opencv_highgui220.dll</Link>
-    </Content>
-    <Content Include="..\..\LauncherClient\packages\EmguCV.221.x64.1.5\opencv\opencv_imgproc220.dll">
-      <Link>opencv_imgproc220.dll</Link>
-    </Content>
-    <Content Include="..\..\LauncherClient\packages\EmguCV.221.x64.1.5\opencv\opencv_legacy220.dll">
-      <Link>opencv_legacy220.dll</Link>
-    </Content>
-    <Content Include="..\..\LauncherClient\packages\EmguCV.221.x64.1.5\opencv\opencv_ml220.dll">
-      <Link>opencv_ml220.dll</Link>
-    </Content>
-    <Content Include="..\..\LauncherClient\packages\EmguCV.221.x64.1.5\opencv\opencv_objdetect220.dll">
-      <Link>opencv_objdetect220.dll</Link>
-    </Content>
-    <Content Include="..\..\LauncherClient\packages\EmguCV.221.x64.1.5\opencv\opencv_video220.dll">
-      <Link>opencv_video220.dll</Link>
-    </Content>
     <Content Include="..\..\LauncherClient\packages\EmguCV.221.x64.1.5\opencv\ZedGraph.dll">
       <Link>ZedGraph.dll</Link>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy $(SolutionDir)\packages\EmguCV.221.x86.1.0\opencv\*.dll $(TargetDir)</PostBuildEvent>
+    <PostBuildEvent>xcopy $(SolutionDir)\packages\EmguCV.221.x86.1.0\opencv\*.dll $(TargetDir)\</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

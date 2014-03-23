@@ -16,7 +16,7 @@ namespace SadGUI
 
         public VideoCheckBox()
         {
-            IsChecked = false;
+            IsChecked = true;
         }
 
         public bool Video_CheckBox_Ischecked
@@ -34,8 +34,14 @@ namespace SadGUI
 
         public void Process_CheckedBox()
         {
-            if (IsChecked == true)
-                IsChecked = !IsChecked;
+            if (IsChecked == true) 
+            {
+                SadCamera.Instance.StartCamera(null);
+            }
+            else
+            {
+                SadCamera.Instance.StopCamera();
+            }
         }
     }
 }
