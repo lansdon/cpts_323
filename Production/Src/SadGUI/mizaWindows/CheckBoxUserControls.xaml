@@ -36,12 +36,16 @@
 
                 <!--Twitter Options: Turn on/off/Setup twitter feed-->
                 <CheckBox
+                        DataContext="{Binding TwitterFeedCheckBox}"
+                        Name="TwitterFeedCheckBox"
                         Grid.Row="1"
                         Content="Twitter Feed"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
                         FontSize="15"
-                        FontWeight="Bold"/>
+                        FontWeight="Bold"
+                        IsThreeState="False"
+                        IsChecked="{Binding TwitterFeedCheckBox, Mode=TwoWay}"/>
 
                 <!--Server Options: Connect/Disconnect/Setup-->
                 <CheckBox
@@ -63,12 +67,16 @@
 
                 <!--Default Control Options:  Unchecked uses slide bar controls, checked uses UDLR controls-->
                 <CheckBox
+                        DataContext="{Binding DefaultControlCheckBox}"
+                        Name="DefaultControlsCheckBox"
                         Grid.Row="4"
                         Content="Default Controls"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
                         FontSize="15"
-                        FontWeight="Bold"/>
+                        FontWeight="Bold"
+                        IsThreeState="False"
+                        IsChecked="{Binding DefaultControl_CheckBox_IsChecked, Mode=TwoWay}"/>
 
             </Grid>
         </Grid>
