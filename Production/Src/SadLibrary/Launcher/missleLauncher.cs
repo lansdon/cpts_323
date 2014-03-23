@@ -497,7 +497,10 @@ namespace SadLibrary.Launcher
         {
             return missileCount;
         }
-       
+        public void setMissileCount(uint value)
+        {
+            missileCount = value;
+        }
 
         public string getName()
         {

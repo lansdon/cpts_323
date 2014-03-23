@@ -14,7 +14,8 @@ namespace SadGUI
 {
     class LauncherViewModel : ViewModelBase
     {
-        public event PropertyChangedEventHandler LauncherPropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
+        
         private ILauncher m_launcher;
         private int _phi, _theta;
         private uint _missileCount;
@@ -23,7 +24,7 @@ namespace SadGUI
             m_launcher = launcher;
             _phi = 0;
             _theta = 0;
-            _missileCount = m_launcher.getMissleCount();
+            _missileCount = 4;
             FireCommand = new DelegateCommand(Fire);
             UpCommand = new DelegateCommand(Up);
             DownCommand = new DelegateCommand(Down);
@@ -36,11 +37,12 @@ namespace SadGUI
        
         public uint missileCount
         {
-            get { return (_missileCount); }
+            get { return _missileCount; }
             set
             {
-                _missileCount = (uint)value;
-               OnPropertyChanged("_missileCount");
+                _missileCount = value;
+               OnPropertyChanged("missileCount");
+               
             }
         }
         public int phi
@@ -49,17 +51,20 @@ namespace SadGUI
             set
             {
                 _phi = value;
-                OnPropertyChanged("_phi");
+                OnPropertyChanged("phi");
+                m_launcher.moveTo(_theta, _phi);
             }
 
         }
+        
         public int theta
         {
             get { return _theta; }
             set
             {
                 _theta = value;
-                OnPropertyChanged("_theta");
+                OnPropertyChanged("theta");
+                m_launcher.moveTo(_theta, _phi);
             }
            }
         public void Fire()
@@ -84,17 +89,17 @@ namespace SadGUI
 
             m_launcher.moveRight();
         }
-        protected override void OnPropertyChanged(string propertyName)
-        {
-            if (LauncherPropertyChanged != null)
-            {
-                LauncherPropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
+        //protected override void OnPropertyChanged(string propertyName)
+        //{
+        //    if (PropertyChanged != null)
+        //    {
+        //       PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        //    }
             
            
-            m_launcher.moveTo(_theta, _phi);
+        //    m_launcher.moveTo(_theta, _phi);
             
-        }
+        //}
         
         public ICommand FireCommand { get; set; }
         public ICommand UpCommand { get; set; }

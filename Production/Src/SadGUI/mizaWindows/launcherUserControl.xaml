@@ -4,7 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="300"
+             DataContext="{Binding LauncherViewModel}">
     <Grid
             Grid.Row="1"
             Grid.Column="0"
@@ -19,12 +20,41 @@
             <ColumnDefinition Width="80*"/>
             <ColumnDefinition Width="20*"/>
         </Grid.ColumnDefinitions>
-        <Button
-                Grid.Column="0"
-                Grid.Row="0"
+        <Grid Grid.Column="0" Grid.Row="0" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50*"/>
+                <RowDefinition Height="80*"/>
+                <RowDefinition Height="50*"/>
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="80*"/>
+                <ColumnDefinition Width="50*"/>
+            </Grid.ColumnDefinitions>
+
+
+            <Button
+                Grid.Column="1"
+                Grid.Row="1"
+                
                 Margin="5"
                 Command="{Binding Path=FireCommand}"
                 >Fire</Button>
+            <Label Name="Theta_label"
+                Grid.Column="1" 
+                Grid.Row="2" 
+                Content="{Binding Path=theta, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                ></Label>
+            <Label
+                Grid.Column="2" 
+                Grid.Row="1" 
+                Content="{Binding Path=phi, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"></Label>
+        </Grid>
         <Slider Name="VerticalSlider"
             Orientation="Vertical"
             Grid.Column="1" 
@@ -46,10 +76,12 @@
             
             Value="{Binding Path=theta, Mode=TwoWay, NotifyOnTargetUpdated=True, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"
             SmallChange="1" VerticalAlignment="Center"
-            />
+            > </Slider>
         <Label Content="{Binding Path=missileCount}"
                Grid.Column="1"
-               Grid.Row="1">
+               Grid.Row="1"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Center">
             
         </Label>
 

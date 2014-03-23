@@ -78,7 +78,10 @@ namespace SadLibrary.Launcher
             reload();
         }
 
-
+        public void setMissileCount(uint value)
+        {
+            missileCount = value;
+        }
         
 
         public void moveCoords(double x, double y, double z)
