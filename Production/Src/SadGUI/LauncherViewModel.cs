@@ -84,7 +84,7 @@ namespace SadGUI
 
             m_launcher.moveRight();
         }
-        protected override void OnPropertyChanged(string propertyName)
+        protected void OnPropertyChanged(string propertyName)
         {
             if (LauncherPropertyChanged != null)
             {
