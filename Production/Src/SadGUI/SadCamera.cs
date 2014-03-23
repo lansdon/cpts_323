@@ -67,7 +67,7 @@ namespace SadGUI
                     _cameraDisabled = true;
                     _cameraOn = false;
                     Font arialFont =  new Font("Arial", 24);
-                    image.Source = loadBitmap((Bitmap)DrawText("Camera Unavailable", arialFont, Color.Red, Color.Black));
+                    _image.Source = loadBitmap((Bitmap)DrawText("Camera Unavailable", arialFont, Color.Red, Color.Black));
                     return;
                 }
             if (_capture == null) return;
