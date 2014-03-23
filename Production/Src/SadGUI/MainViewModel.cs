@@ -36,6 +36,7 @@ namespace SadGUI
             t.Name = "this is a target";
             TargetsViewModel = new TargetViewModel(t);
             LauncherViewModel = new LauncherViewModel(launcher);
+            VideoCheckBox = new VideoCheckBox();
             
         }
 
@@ -54,6 +55,7 @@ namespace SadGUI
 
         public LauncherViewModel LauncherViewModel { get; set; }
         public ICommand AddNewTarget { get; private set; }
-       
+
+        public VideoCheckBox VideoCheckBox { get; set; }
     }
 }

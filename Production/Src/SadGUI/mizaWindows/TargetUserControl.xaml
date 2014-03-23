@@ -4,21 +4,58 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="30" d:DesignWidth="600">
+             d:DesignHeight="60" d:DesignWidth="600">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20*"/>
-            <ColumnDefinition Width="20*"/>
-            <ColumnDefinition Width="20*"/>
-            <ColumnDefinition Width="20*"/>
-            <ColumnDefinition Width="20*"/>
-            <ColumnDefinition Width="20*"/>
-        </Grid.ColumnDefinitions>
-        <Label Content="{Binding Name}" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <Label Content="{Binding Alive}" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <Label Content="{Binding Points}" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <Label Content="{Binding Friend}" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <Label Content="{Binding CordsToString}" Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <Label Content="{Binding FlashRate}" Grid.Column="5" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="15*"/>
+            <!--Row 1 Catagory Panel-->
+            <RowDefinition Height="85*"/>
+            <!--Row 2 Target Panel-->
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Content="Name" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <Label Grid.Column="1" Content="Alive" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <Label Grid.Column="2" Content="Points" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <Label Grid.Column="3" Content="Friend" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <Label Grid.Column="4" Content="Location" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <Label Grid.Column="6" Content="Flash Rate" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+        </Grid>
+        <ListBox
+                Grid.Column="0" 
+                Grid.Row="1"
+                 HorizontalContentAlignment="Stretch"
+                Margin="5"
+                ItemsSource="{Binding Path=Targets}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20*"/>
+                            <ColumnDefinition Width="20*"/>
+                            <ColumnDefinition Width="20*"/>
+                            <ColumnDefinition Width="20*"/>
+                            <ColumnDefinition Width="20*"/>
+                            <ColumnDefinition Width="20*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Content="{Binding Name}" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <Label Content="{Binding Alive}" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <Label Content="{Binding Points}" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <Label Content="{Binding Friend}" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <Label Content="{Binding CordsToString}" Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <Label Content="{Binding FlashRate}" Grid.Column="5" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Grid>
+
+                    <!--<MyWindows:TargetUserControl  HorizontalAlignment="Stretch"/>-->
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </UserControl>

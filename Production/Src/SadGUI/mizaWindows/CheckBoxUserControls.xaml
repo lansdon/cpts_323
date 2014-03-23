@@ -1,0 +1,76 @@
+﻿<UserControl x:Class="SadGUI.mizaWindows.CheckBoxUserControls"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300"
+             d:DesignWidth="700">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width= "30*"/>
+            <ColumnDefinition Width="70*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="0" Grid.Column="0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20*"/>
+                    <RowDefinition Height="20*"/>
+                    <RowDefinition Height="20*"/>
+                    <RowDefinition Height="20*"/>
+                    <RowDefinition Height="20*"/>
+                </Grid.RowDefinitions>
+
+                <!--Video Options: Turn Video feed on and off-->
+                <CheckBox
+                        DataContext="{Binding VideoCheckBox}"
+                        Name="VideoCheckBox"
+                        Grid.Row="0" 
+                        Content="Video On/Off"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        FontSize="15"
+                        FontWeight="Bold"
+                        IsThreeState="False"
+                        IsChecked="{Binding Video_CheckBox_Ischecked, Mode=TwoWay}"/>
+
+                <!--Twitter Options: Turn on/off/Setup twitter feed-->
+                <CheckBox
+                        Grid.Row="1"
+                        Content="Twitter Feed"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        FontSize="15"
+                        FontWeight="Bold"/>
+
+                <!--Server Options: Connect/Disconnect/Setup-->
+                <CheckBox
+                        Grid.Row="2"
+                        Content="Server Connect"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        FontSize="15"
+                        FontWeight="Bold"/>
+
+                <!--Launcher Options: Connect/Disconnect/Setup-->
+                <CheckBox
+                        Grid.Row="3"
+                        Content="Launcher Connect"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        FontSize="15"
+                        FontWeight="Bold"/>
+
+                <!--Default Control Options:  Unchecked uses slide bar controls, checked uses UDLR controls-->
+                <CheckBox
+                        Grid.Row="4"
+                        Content="Default Controls"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        FontSize="15"
+                        FontWeight="Bold"/>
+
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

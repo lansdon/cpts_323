@@ -55,6 +55,9 @@
     </ApplicationDefinition>
     <Compile Include="DelegateCommand.cs" />
     <Compile Include="LauncherViewModel.cs" />
+    <Compile Include="mizaWindows\CheckBoxUserControls.xaml.cs">
+      <DependentUpon>CheckBoxUserControls.xaml</DependentUpon>
+    </Compile>
     <Compile Include="mizaWindows\launcherUserControl.xaml.cs">
       <DependentUpon>launcherUserControl.xaml</DependentUpon>
     </Compile>
@@ -68,7 +71,12 @@
       <DependentUpon>TargetViewControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="TargetViewModel.cs" />
+    <Compile Include="VideoCheckBox.cs" />
     <Compile Include="ViewModelBase.cs" />
+    <Page Include="mizaWindows\CheckBoxUserControls.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="mizaWindows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
