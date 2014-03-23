@@ -14,12 +14,10 @@ namespace SadGUI
 {
     class LauncherViewModel : ViewModelBase
     {
-<<<<<<< HEAD
+
         
         
-=======
-        public event PropertyChangedEventHandler LauncherPropertyChanged;
->>>>>>> 20e01bacfbc510ce4c191b0a3adc4c1341d85c39
+
         private ILauncher m_launcher;
         private int _phi, _theta;
         private uint _missileCount;
@@ -45,17 +43,14 @@ namespace SadGUI
             get { return (_missileCount); }
             set
             {
-<<<<<<< HEAD
+
                if(_missileCount > 0 || value == 4)
                    _missileCount = value;
                
                    
                OnPropertyChanged("missileCount");
                
-=======
-                _missileCount = (uint)value;
-               OnPropertyChanged("_missileCount");
->>>>>>> 20e01bacfbc510ce4c191b0a3adc4c1341d85c39
+
             }
         }
         public void calibrate()
@@ -111,21 +106,7 @@ namespace SadGUI
 
             m_launcher.moveRight();
         }
-<<<<<<< HEAD
-        
-=======
-        protected void OnPropertyChanged(string propertyName)
-        {
-            if (LauncherPropertyChanged != null)
-            {
-                LauncherPropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
-            
-           
-            m_launcher.moveTo(_theta, _phi);
-            
-        }
->>>>>>> 20e01bacfbc510ce4c191b0a3adc4c1341d85c39
+
         
         public ICommand FireCommand { get; set; }
         public ICommand UpCommand { get; set; }
