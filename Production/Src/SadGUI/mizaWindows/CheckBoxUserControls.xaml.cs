@@ -16,12 +16,11 @@ using System.Windows.Shapes;
 namespace SadGUI.mizaWindows
 {
     /// <summary>
-    /// Interaction logic for TargetUserControl.xaml
+    /// Interaction logic for CheckBoxUserControls.xaml
     /// </summary>
-    public partial class TargetUserControl : UserControl
+    public partial class CheckBoxUserControls : UserControl
     {
-
-        public TargetUserControl()
+        public CheckBoxUserControls()
         {
             InitializeComponent();
         }

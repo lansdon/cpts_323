@@ -69,6 +69,8 @@
     <Compile Include="LauncherViewModel.cs" />
     <Compile Include="mizaWindows\CameraUserControl.xaml.cs">
       <DependentUpon>CameraUserControl.xaml</DependentUpon>
+    <Compile Include="mizaWindows\CheckBoxUserControls.xaml.cs">
+      <DependentUpon>CheckBoxUserControls.xaml</DependentUpon>
     </Compile>
     <Compile Include="mizaWindows\launcherUserControl.xaml.cs">
       <DependentUpon>launcherUserControl.xaml</DependentUpon>
@@ -83,8 +85,10 @@
       <DependentUpon>TargetViewControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="TargetViewModel.cs" />
+    <Compile Include="VideoCheckBox.cs" />
     <Compile Include="ViewModelBase.cs" />
     <Page Include="mizaWindows\CameraUserControl.xaml">
+    <Page Include="mizaWindows\CheckBoxUserControls.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -22,7 +22,7 @@ namespace SadLibrary.Launcher
         string getName();
         uint getMaxCount();
         void reload();
-
+        void setMissileCount(uint value);
 
     }
 }
