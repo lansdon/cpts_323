@@ -55,8 +55,8 @@ namespace SadGUI
 
             if (_cameraOn == true) return;
 
-            //Dispose of Capture if it was created before
             if (_capture == null)
+            {
                 try
                 {
                     _capture = new Capture();
@@ -66,10 +66,12 @@ namespace SadGUI
                 {
                     _cameraDisabled = true;
                     _cameraOn = false;
-                    Font arialFont =  new Font("Arial", 24);
+                    Font arialFont = new Font("Arial", 24);
                     _image.Source = loadBitmap((Bitmap)DrawText("Camera Unavailable", arialFont, Color.Red, Color.Black));
                     return;
                 }
+            }
+
             if (_capture == null) return;
             _cameraOn = true;
 
