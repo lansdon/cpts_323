@@ -30,8 +30,7 @@ namespace SadGUI
 
         private void Process_CheckBox()
         {
-            if (IsChecked == true)
-                IsChecked = !IsChecked;
+            
         }
     }
 }
