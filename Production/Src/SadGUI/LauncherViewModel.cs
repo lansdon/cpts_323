@@ -66,7 +66,7 @@ namespace SadGUI
             set
             {
                 _phi = value;
-                OnPropertyChanged("_phi");
+                OnPropertyChanged("phi");
             }
 
         }
@@ -76,7 +76,7 @@ namespace SadGUI
             set
             {
                 _theta = value;
-                OnPropertyChanged("_theta");
+                OnPropertyChanged("theta");
             }
            }
         public void Fire()
@@ -91,20 +91,25 @@ namespace SadGUI
         }
         public void Up()
         {
+            phi++;
             m_launcher.moveUp();
+           
         }
         public void Down()
         {
             m_launcher.moveDown();
+            phi--;
         }
         public void Left()
         {
             m_launcher.moveLeft();
+            theta--;
         }
         public void Right()
         {
 
             m_launcher.moveRight();
+            theta++;
         }
 
         

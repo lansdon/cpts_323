@@ -41,7 +41,7 @@
                 Margin="5"
                 Command="{Binding Path=FireCommand}"
                 >Fire</Button>
-            <TextBox  Name="Theta_label"
+            <TextBox
                 Grid.Column="1" 
                 Grid.Row="2" 
                 Text="{Binding Path=theta, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"

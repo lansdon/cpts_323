@@ -4,7 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="300"
+             DataContext="{Binding LauncherViewModel}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30*"/>
@@ -46,5 +47,61 @@
                 Margin="5"
                 Command="{Binding Path=DownCommand}"
                 >Down</Button>
+        <Button Grid.Column="0" 
+                Grid.Row="0" 
+                Content="Reload" 
+                Margin="5" 
+                Command="{Binding ReloadCommand}"/>
+        <Button Grid.Column="2" 
+                Grid.Row="0" 
+                Content="Calibrate" 
+                Margin="5" 
+                Command="{Binding CalibrateCommand}"/>
+        <Grid Grid.Column="0"
+              Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50*"/>
+                <RowDefinition Height="50*"/>
+                
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+                
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0"
+                   Grid.Row="1"
+                   Content="Theta:"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Right"/>
+            <Label Grid.Column="1"
+                       Grid.Row="1"
+                       Content="{Binding Path=theta, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                       VerticalAlignment="Top"/>
+            <Label Grid.Column="0"
+                   Grid.Row="0"
+                   Content="Phi:"
+                   VerticalAlignment="Bottom"
+                   HorizontalAlignment="Right"/>
+            <Label Grid.Column="1"
+                     Grid.Row="0"
+                     Content="{Binding Path=phi, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     VerticalAlignment="Bottom"/>
+        </Grid>
+        <Grid Grid.Column="2"
+              Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50*"/>
+                <RowDefinition Height="50*"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0"
+                   Content="Missile Count"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Bottom"/>
+            <Label Grid.Row="1"
+                   Content="{Binding Path=missileCount}"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Top"/>
+        </Grid>
     </Grid>
 </UserControl>

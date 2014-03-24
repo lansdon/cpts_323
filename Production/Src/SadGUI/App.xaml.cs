@@ -45,7 +45,7 @@ namespace SadGUI
                 targets.Add(t);
             }
 
-            ILauncher launcher = LauncherFactory.NewLauncher((LauncherType)1);
+            ILauncher launcher = LauncherFactory.NewLauncher((LauncherType)0);
 
             MainViewModel viewModel = new MainViewModel(launcher, targets);
             window.DataContext = viewModel;
