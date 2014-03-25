@@ -103,5 +103,23 @@ namespace SadLibrary.Launcher
         {
             return MAX_MISSILE_COUNT;
         }
+        //Function to convert x, y to a theta for spherical coordinates.
+        public double toTheta(double x, double y)
+        {
+            if (x >= 0)
+                return (Math.Atan2(x, y) * (180 / Math.PI));
+            else
+                return (180 - (Math.Atan2(x, y) * (180 / Math.PI)));
+        }
+
+        //function to convert the x, y, z to phi for spherical coordinates.
+        public double toPhi(double x, double y, double z)
+        {
+            double squaredRoot = Math.Sqrt((x * x) + (y * y));
+            if (z >= 0)
+                return (90 - (Math.Atan2(squaredRoot, z) * (180 / Math.PI)));
+            else
+                return (90 - (180 - (Math.Atan2(squaredRoot, z) * (180 / Math.PI))));
+        }
     }
 }

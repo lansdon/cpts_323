@@ -88,9 +88,7 @@ namespace SadGUI.mizaWindows
             TargetViewModel targetVM = button.DataContext as TargetViewModel;
 
             Target target = targetVM.Target();
-            ILauncher launcher = LauncherFactory.NewLauncher(LauncherType.LAUNCH_TYPE_MOCK);
-            
-            launcher.moveCoords(target.X, target.Y, target.Z);
+            LauncherViewModel.Instance.MoveToCoords(target.X, target.Y, target.Z);
         }
         private void KillTarget(object sender, RoutedEventArgs e)
         {
@@ -103,7 +101,7 @@ namespace SadGUI.mizaWindows
             Target target = targetVM.Target();
             ILauncher launcher = LauncherFactory.NewLauncher(LauncherType.LAUNCH_TYPE_MOCK);
 
-            launcher.fireAt(target.X, target.Y, target.Z);
+            LauncherViewModel.Instance.FireAt(target.X, target.Y, target.Z);
         }
 
     }
