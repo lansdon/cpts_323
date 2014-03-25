@@ -59,20 +59,22 @@ namespace SadGUI
             {
                 try
                 {
-                    //_capture = new Capture();
+                    _capture = new Capture();
                     _cameraDisabled = false;
                 }
                 catch
                 {
-                    _cameraDisabled = true;
-                    _cameraOn = false;
-                    Font arialFont = new Font("Arial", 24);
-                    _image.Source = loadBitmap((Bitmap)DrawText("Camera Unavailable", arialFont, Color.Red, Color.Black));
+                    SetDisabled();
                     return;
                 }
             }
 
-            if (_capture == null) return;
+            // Invalid Camera
+            if (_capture == null)
+            {
+                SetDisabled();
+                return;
+            }
             _cameraOn = true;
 
             Image<Bgr, Byte> currentFrame = _capture.QueryFrame();
@@ -109,6 +111,14 @@ namespace SadGUI
             });
 
             bw.RunWorkerAsync();
+        }
+
+        private void SetDisabled()
+        {
+            _cameraDisabled = true;
+            _cameraOn = false;
+            Font arialFont = new Font("Arial", 24);
+            _image.Source = loadBitmap((Bitmap)DrawText("Camera Unavailable", arialFont, Color.Red, Color.Black));
         }
 
         public void StopCamera()
