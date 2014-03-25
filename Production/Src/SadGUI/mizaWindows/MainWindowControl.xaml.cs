@@ -23,6 +23,13 @@ namespace SadGUI.mizaWindows
         public MainWindowControl()
         {
             InitializeComponent();
+
+            SetBottomLeftFrame(new launcherUserControl());
+        }
+
+        public void SetBottomLeftFrame(Control newFrame)
+        {
+            BottomLeftFrame.NavigationService.Navigate(newFrame);
         }
     }
 }

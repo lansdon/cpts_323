@@ -86,7 +86,7 @@
             
             Value="{Binding Path=theta, Mode=TwoWay, NotifyOnTargetUpdated=True, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"
             SmallChange="1" VerticalAlignment="Center"
-            > </Slider>
+            />
         <Label Content="{Binding Path=missileCount}"
                Grid.Column="1"
                Grid.Row="1"
