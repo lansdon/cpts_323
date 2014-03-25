@@ -16,15 +16,13 @@ using System.Windows.Shapes;
 namespace SadGUI.mizaWindows
 {
     /// <summary>
-    /// Interaction logic for CheckBoxUserControls.xaml
+    /// Interaction logic for DefaultUserControl.xaml
     /// </summary>
-    public partial class CheckBoxUserControls : UserControl
+    public partial class DefaultUserControl : UserControl
     {
-        public CheckBoxUserControls()
+        public DefaultUserControl()
         {
             InitializeComponent();
-
-            ContentControllerManager.Instance().SetContentToController(RightCheckBoxPanel, new DefaultUserControl());
         }
     }
 }

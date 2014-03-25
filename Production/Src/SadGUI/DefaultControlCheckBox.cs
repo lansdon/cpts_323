@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SadGUI;
+using SadGUI.mizaWindows;
 
 namespace SadGUI
 {
@@ -11,7 +13,7 @@ namespace SadGUI
         private bool IsChecked;
         public DefaultControlCheckBox()
         {
-            IsChecked = false;
+            IsChecked = true;
         }
 
         public bool DefaultControl_CheckBox_IsChecked
@@ -30,7 +32,14 @@ namespace SadGUI
         private void Process_CheckBox()
         {
             if (IsChecked == true)
-                IsChecked = !IsChecked;
+            {
+                //ContentControllerManager.Instance().SetContentToController(RightCheckBoxPanel, new launcherUserControl());
+            }
+            else
+            {
+                
+            }
+
         }
     }
 }

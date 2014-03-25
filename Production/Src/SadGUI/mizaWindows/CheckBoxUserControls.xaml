@@ -3,6 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:controls="clr-namespace:SadGUI"
+             xmlns:MyWindows="clr-namespace:SadGUI.mizaWindows"
              mc:Ignorable="d" 
              d:DesignHeight="300"
              d:DesignWidth="700"
@@ -13,7 +15,9 @@
             <ColumnDefinition Width="70*"/>
         </Grid.ColumnDefinitions>
         
-        <StackPanel Grid.Column="1" Name="RightPanel"/>
+        <ContentControl
+            Grid.Column="1" 
+            Name="RightCheckBoxPanel"/>
         
         <Grid Grid.Row="0" Grid.Column="0">
             <Grid>
@@ -62,12 +66,14 @@
 
                 <!--Launcher Options: Connect/Disconnect/Setup-->
                 <CheckBox
+                    DataContext="{Binding LauncherConnectViewModel}"
                         Grid.Row="3"
                         Content="Launcher Connect"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
                         FontSize="15"
-                        FontWeight="Bold"/>
+                        FontWeight="Bold"
+                    IsChecked="{Binding LauncherConnect_CheckBox_IsChecked, Mode=TwoWay}"/>
 
                 <!--Default Control Options:  Unchecked uses slide bar controls, checked uses UDLR controls-->
                 <CheckBox

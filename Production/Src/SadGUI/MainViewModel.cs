@@ -35,7 +35,7 @@ namespace SadGUI
             var t = new Target();
             t.Name = "this is a target";
             TargetsViewModel = new TargetViewModel(t);
-            LauncherViewModel = new LauncherViewModel(launcher);
+            LauncherViewModel = new LauncherViewModel();
             VideoCheckBox = new VideoCheckBox();
             DefaultControlCheckBox = new DefaultControlCheckBox();
             TwitterFeedCheckBox = new TwitterFeedCheckBox();
