@@ -23,6 +23,7 @@ namespace SadLibrary.Launcher
         uint getMaxCount();
         void reload();
         void setMissileCount(uint value);
-
+        double toPhi(double x,double y,double z);
+        double toTheta(double x, double y);
     }
 }
