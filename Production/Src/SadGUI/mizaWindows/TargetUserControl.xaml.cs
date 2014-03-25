@@ -89,7 +89,7 @@ namespace SadGUI.mizaWindows
 
             Target target = targetVM.Target();
             ILauncher launcher = LauncherFactory.NewLauncher(LauncherType.LAUNCH_TYPE_MOCK);
-
+            
             launcher.moveCoords(target.X, target.Y, target.Z);
         }
         private void KillTarget(object sender, RoutedEventArgs e)
