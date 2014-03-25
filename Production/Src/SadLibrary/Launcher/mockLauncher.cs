@@ -86,7 +86,7 @@ namespace SadLibrary.Launcher
 
         public void moveCoords(double x, double y, double z)
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Move to coords {0}, {1}, {2}! Sir!", x, y, z);
         }
 
         public uint getMissleCount()

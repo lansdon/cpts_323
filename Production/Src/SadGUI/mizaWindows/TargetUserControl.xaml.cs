@@ -1,4 +1,5 @@
 ﻿using SadLibrary.FileLoader;
+using SadLibrary.Launcher;
 using SadLibrary.Targets;
 using System;
 using System.Collections.Generic;
@@ -77,5 +78,33 @@ namespace SadGUI.mizaWindows
         {
             // TODO
         }
+
+        private void MoveToTarget(object sender, RoutedEventArgs e)
+        {
+            // cast the sender to a button
+            Button button = sender as Button;
+
+            // find the item that is the datacontext for this button
+            TargetViewModel targetVM = button.DataContext as TargetViewModel;
+
+            Target target = targetVM.Target();
+            ILauncher launcher = LauncherFactory.NewLauncher(LauncherType.LAUNCH_TYPE_MOCK);
+
+            launcher.moveCoords(target.X, target.Y, target.Z);
+        }
+        private void KillTarget(object sender, RoutedEventArgs e)
+        {
+            // cast the sender to a button
+            Button button = sender as Button;
+
+            // find the item that is the datacontext for this button
+            TargetViewModel targetVM = button.DataContext as TargetViewModel;
+
+            Target target = targetVM.Target();
+            ILauncher launcher = LauncherFactory.NewLauncher(LauncherType.LAUNCH_TYPE_MOCK);
+
+            launcher.fireAt(target.X, target.Y, target.Z);
+        }
+
     }
 }

@@ -16,12 +16,11 @@ namespace SadGUI
     public class TargetViewModel : ViewModelBase
     {
         private Target m_target;
-        public ICommand OpenFileCommand { get; set; }
 
         public TargetViewModel(Target target)
         {
             m_target = target;
-            OpenFileCommand = new DelegateCommand(OpenIniFile);
+
         }
 
         public string Name
@@ -33,7 +32,6 @@ namespace SadGUI
 
             set
             {
-
                 m_target.Name = value;
                 OnPropertyChanged("Name");
             }
@@ -47,7 +45,6 @@ namespace SadGUI
 
             set
             {
-
                 m_target.Friend = value;
                 OnPropertyChanged("Friend");
             }
@@ -101,23 +98,9 @@ namespace SadGUI
             }
         }
 
-        public void OpenIniFile()
+        public Target Target() 
         {
-            // Configure open file dialog box
-            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
-            dlg.FileName = "Document"; // Default file name
-            dlg.DefaultExt = ".txt"; // Default file extension
-            dlg.Filter = "Text documents (.txt)|*.txt"; // Filter files by extension 
-
-            // Show open file dialog box
-            Nullable<bool> result = dlg.ShowDialog();
-
-            // Process open file dialog box results 
-            if (result == true)
-            {
-                // Open document 
-                string filename = dlg.FileName;
-            }
-        }
+            return m_target;
+        } 
     }
 }
