@@ -13,7 +13,7 @@ namespace SadGUI
         private bool IsChecked;
         public DefaultControlCheckBox()
         {
-            IsChecked = true;
+            IsChecked = false;
         }
 
         public bool DefaultControl_CheckBox_IsChecked

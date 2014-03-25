@@ -57,7 +57,7 @@
 
                 <!--Server Options: Connect/Disconnect/Setup-->
                 <CheckBox
-                        DataContext="{Binding ServerCheckBox}"
+                        DataContext="{Binding ServerCB}"
                         Grid.Row="2"
                         Content="Server Connect"
                         HorizontalAlignment="Left"

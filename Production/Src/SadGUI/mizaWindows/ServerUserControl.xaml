@@ -6,7 +6,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
              Background="White"
-             DataContext="{Binding Path=ServerViewModel}">
+             DataContext="{Binding Path=ServerVM}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50*"/>

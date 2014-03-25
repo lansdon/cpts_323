@@ -30,12 +30,13 @@ namespace SadGUI
             LCVM = new LauncherConnectViewModel();
             DefaultControlCheckBox = new DefaultControlCheckBox();
             TwitterFeedCheckBox = TwitterFeedCheckBox.instance;
-            ServerCheckBox = new ServerViewModel();
+            ServerVM = new ServerViewModel();
             TWITTER = new TwitterViewModel();
+            ServerCB = ServerCheckBox.instance;
         }
 
         public TargetViewModel TargetsViewModel { get; set; }
-
+        public ServerCheckBox ServerCB { get; set; }
         //public ObservableCollection<TargetViewModel> Targets
         //{ get; private set; }
         public TwitterViewModel TWITTER { get; set; }
@@ -48,6 +49,6 @@ namespace SadGUI
 
         public TwitterFeedCheckBox TwitterFeedCheckBox { get; set; }
 
-        public ServerViewModel ServerCheckBox { get; set; }
+        public ServerViewModel ServerVM { get; set; }
     }
 }

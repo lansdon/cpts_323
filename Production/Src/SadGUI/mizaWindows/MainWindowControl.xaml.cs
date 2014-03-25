@@ -30,7 +30,7 @@ namespace SadGUI.mizaWindows
             ContentController.AddContentControl("BottomRight_CC", BottomRight_CC);
 
             ContentController.SetContentToController(TopLeft_CC, new CameraUserControl());
-            ContentController.SetContentToController(BottomLeft_CC, new launcherUserControl());
+            ContentController.SetContentToController(BottomLeft_CC, new LauncherUsercontrolWithButtons());
             ContentController.SetContentToController(TopRight_CC, new TargetUserControl());
             ContentController.SetContentToController(BottomRight_CC, new CheckBoxUserControls());
         }

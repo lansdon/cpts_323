@@ -10,13 +10,25 @@ using SadGUI;
 namespace SadGUI
 {
     public class ServerCheckBox: ViewModelBase
-    {
+    {   
+        static private ServerCheckBox _instance;
         private bool IsChecked;
         public ServerCheckBox()
         {
             IsChecked = false;
         }
+        static public ServerCheckBox instance
+        {
+            get
+            {
+                if (_instance == null)
+                    _instance = new ServerCheckBox();
 
+
+                return _instance;
+            }
+
+        }
         public bool ServerControl_CheckBox_IsChecked
         {
             get
@@ -27,6 +39,7 @@ namespace SadGUI
             {
                 IsChecked = value;
                 Process_CheckBox();
+                OnPropertyChanged("ServerControl_CheckBox_IsChecked");
             }
         }
 

@@ -28,11 +28,13 @@ namespace SadGUI
         }
         public void Ok()
         {
-            //do something special with the _serverIP.
+            //do something special.
+            ServerCheckBox.instance.ServerControl_CheckBox_IsChecked = false;
         }
         public void Cancel()
         {
             //do something special.
+            ServerCheckBox.instance.ServerControl_CheckBox_IsChecked = false;
         }
         public ICommand OkCommand { get; set; }
         public ICommand CancelCommand { get; set; }
