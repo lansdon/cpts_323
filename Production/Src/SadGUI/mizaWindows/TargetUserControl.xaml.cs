@@ -28,6 +28,7 @@ namespace SadGUI.mizaWindows
         {
             InitializeComponent();
             LoadTargetsFromFile("targets.ini");
+            LoadTargetsFromServerButton.IsEnabled = false;
         }
 
         private void OpenFileCommand(object sender, RoutedEventArgs e)
@@ -67,5 +68,14 @@ namespace SadGUI.mizaWindows
             TargetListBox.ItemsSource = Targets;
         }
 
+        private void ClearTargets(object sender, RoutedEventArgs e)
+        {
+            Targets.Clear();
+        }
+
+         private void LoadTargetsFromServer(object sender, RoutedEventArgs e)
+        {
+            // TODO
+        }
     }
 }
