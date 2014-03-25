@@ -101,6 +101,11 @@ namespace SadGUI
                 OnPropertyChanged("theta");
             }
            }
+        public void MoveToCords(double x, double y, double z)
+        {
+            m_launcher.moveCoords(x, y, z);
+            phi = m_launcher.
+        }
         public void Fire()
         {
             m_launcher.fire();
