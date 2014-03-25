@@ -33,11 +33,11 @@ namespace SadGUI
         {
             if (IsChecked == true)
             {
-                //ContentControllerManager.Instance().SetContentToController(RightCheckBoxPanel, new launcherUserControl());
+                ContentController.SetContentToController("BottomLeft_CC", new launcherUserControl());
             }
             else
             {
-                
+                ContentController.SetContentToController("BottomLeft_CC", new LauncherUsercontrolWithButtons());
             }
 
         }

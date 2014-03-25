@@ -85,7 +85,9 @@ namespace SadGUI
             set
             {
                 _phi = value;
+                m_launcher.moveTo(_theta, _phi);
                 OnPropertyChanged("phi");
+
             }
 
         }
@@ -95,6 +97,7 @@ namespace SadGUI
             set
             {
                 _theta = value;
+                m_launcher.moveTo(_theta, _phi);
                 OnPropertyChanged("theta");
             }
            }

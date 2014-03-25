@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SadGUI;
+using SadGUI.mizaWindows;
 
 namespace SadGUI
 {
@@ -30,7 +32,14 @@ namespace SadGUI
 
         private void Process_CheckBox()
         {
-            
+            if (IsChecked == true)
+            {
+                ContentController.SetContentToController("RightCheckBoxPanel", new TwitterUserControl());
+            }
+            else
+            {
+                ContentController.SetContentToController("RightCheckBoxPanel", new DefaultUserControl());
+            }
         }
     }
 }
