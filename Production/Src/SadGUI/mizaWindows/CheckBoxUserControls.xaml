@@ -66,7 +66,7 @@
 
                 <!--Launcher Options: Connect/Disconnect/Setup-->
                 <CheckBox
-                    DataContext="{Binding LauncherConnectViewModel}"
+                    DataContext="{Binding LCVM}"
                         Grid.Row="3"
                         Content="Launcher Connect"
                         HorizontalAlignment="Left"

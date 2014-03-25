@@ -8,7 +8,7 @@ using SadGUI.mizaWindows;
 
 namespace SadGUI
 {
-    public class LauncherConnectViewModel : ViewModelBase
+    public class LauncherConnectViewModel: ViewModelBase
     {
         private bool _IsChecked;
         public LauncherConnectViewModel()
@@ -26,7 +26,7 @@ namespace SadGUI
             {
                 _IsChecked = value;
                 Process_CheckBox();
-                //OnPropertyChanged("LauncherConnect_CheckBox_IsChecked");
+                OnPropertyChanged("LauncherConnect_CheckBox_IsChecked");
             }
         }
 
