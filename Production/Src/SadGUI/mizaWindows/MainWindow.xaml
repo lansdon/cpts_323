@@ -6,7 +6,6 @@
         WindowState="Normal"
         WindowStyle="ThreeDBorderWindow">
 
-    <MyWindow:MainWindowControl x:Name="MainWindowControl" DataContext="MainWindowControl"/>
-
+    <MyWindow:MainWindowControl x:Name="MainWindowControl" />
 
 </Window>
