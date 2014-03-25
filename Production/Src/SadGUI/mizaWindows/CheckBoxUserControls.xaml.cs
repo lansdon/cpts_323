@@ -23,8 +23,9 @@ namespace SadGUI.mizaWindows
         public CheckBoxUserControls()
         {
             InitializeComponent();
+            ContentController.AddContentControl("RightCheckBoxPanel", RightCheckBoxPanel);
 
-            ContentControllerManager.Instance().SetContentToController(RightCheckBoxPanel, new DefaultUserControl());
+            ContentController.SetContentToController(RightCheckBoxPanel, new DefaultUserControl());
         }
     }
 }
