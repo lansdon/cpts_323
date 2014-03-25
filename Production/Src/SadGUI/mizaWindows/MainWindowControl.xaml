@@ -38,9 +38,9 @@
             Grid.Column="1"/>
 
         <!--Target Information Panel-->
-        <!--<MyWindows:TargetUserControl
+        <MyWindows:TargetUserControl
             Grid.Row="0"
-            Grid.Column="1"/>-->
+            Grid.Column="1"/>
         
         <StackPanel x:Name="BottomLeft" Grid.Row="0" Grid.Column="1" IsEnabled="False"/>
 
