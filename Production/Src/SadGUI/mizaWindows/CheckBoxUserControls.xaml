@@ -62,12 +62,14 @@
 
                 <!--Launcher Options: Connect/Disconnect/Setup-->
                 <CheckBox
+                    DataContext="{Binding LauncherConnectViewModel}"
                         Grid.Row="3"
                         Content="Launcher Connect"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
                         FontSize="15"
-                        FontWeight="Bold"/>
+                        FontWeight="Bold"
+                    IsChecked="{Binding LauncherConnect_CheckBox_IsChecked, Mode=TwoWay}"/>
 
                 <!--Default Control Options:  Unchecked uses slide bar controls, checked uses UDLR controls-->
                 <CheckBox

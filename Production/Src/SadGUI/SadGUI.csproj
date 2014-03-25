@@ -78,6 +78,7 @@
     </ApplicationDefinition>
     <Compile Include="DefaultControlCheckBox.cs" />
     <Compile Include="DelegateCommand.cs" />
+    <Compile Include="LauncherConnectViewModel.cs" />
     <Compile Include="LauncherViewModel.cs" />
     <Compile Include="mizaWindows\CameraUserControl.xaml.cs">
       <DependentUpon>CameraUserControl.xaml</DependentUpon>

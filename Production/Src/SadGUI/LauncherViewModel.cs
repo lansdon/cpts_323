@@ -15,15 +15,15 @@ namespace SadGUI
     class LauncherViewModel : ViewModelBase
     {
 
-        
-        
 
-        private ILauncher m_launcher;
+
+        static private LauncherViewModel _instance;
+        static private ILauncher m_launcher;
         private int _phi, _theta;
         private uint _missileCount;
-        public LauncherViewModel(ILauncher launcher)
+        public LauncherViewModel()
         {
-            m_launcher = launcher;
+            changeLauncher(0);
             _phi = 0;
             _theta = 0;
             _missileCount = m_launcher.getMissleCount();
@@ -35,8 +35,27 @@ namespace SadGUI
             ReloadCommand = new DelegateCommand(reload);
             CalibrateCommand = new DelegateCommand(calibrate);
         }
-        
-           
+       
+        static public LauncherViewModel Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new LauncherViewModel();
+                }
+                return _instance;
+            }
+        }
+           public void changeLauncher(int value)
+           {
+               if (m_launcher != null)
+               {
+                   m_launcher = LauncherFactory.NewLauncher((LauncherType)value);
+               }
+               else
+                    m_launcher = LauncherFactory.NewLauncher((LauncherType)0);
+           }
        
         public uint missileCount
         {
