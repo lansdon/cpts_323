@@ -13,7 +13,7 @@ namespace SadGUI
         private bool IsChecked;
         public DefaultControlCheckBox()
         {
-            IsChecked = false;
+            IsChecked = true;
         }
 
         public bool DefaultControl_CheckBox_IsChecked
@@ -33,11 +33,11 @@ namespace SadGUI
         {
             if (IsChecked == true)
             {
-                ContentController.SetContentToController("BottomLeft_CC", new launcherUserControl());
+                ContentController.SetContentToController("BottomLeft_CC", new LauncherUsercontrolWithButtons());
             }
             else
             {
-                ContentController.SetContentToController("BottomLeft_CC", new LauncherUsercontrolWithButtons());
+                ContentController.SetContentToController("BottomLeft_CC", new launcherUserControl());
             }
 
         }
