@@ -11,12 +11,23 @@ namespace SadGUI
     public class TwitterFeedCheckBox: ViewModelBase
     {
         private bool IsChecked;
+        static private TwitterFeedCheckBox _instance;
 
         public TwitterFeedCheckBox()
         {
             IsChecked = false;
         }
-
+        static public TwitterFeedCheckBox instance
+        {
+            get
+            {
+                if (_instance == null)
+                    _instance = new TwitterFeedCheckBox();
+                
+                
+                return _instance; }
+            
+        }
         public bool TwitterFeed_CheckBox_IsChecked
         {
             get
@@ -27,9 +38,14 @@ namespace SadGUI
             {
                 IsChecked = value;
                 Process_CheckBox();
+                OnPropertyChanged("TwitterFeed_CheckBox_IsChecked");
             }
         }
-
+        //not needed if everything is static
+        public void helper(bool value)
+        {
+            TwitterFeed_CheckBox_IsChecked = value;
+        }
         private void Process_CheckBox()
         {
             if (IsChecked == true)

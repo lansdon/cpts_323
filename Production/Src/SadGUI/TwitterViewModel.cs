@@ -27,11 +27,13 @@ namespace SadGUI
         }
         public void Ok()
         {
-            //do something special with the _serverIP.
+            
+            TwitterFeedCheckBox.instance.TwitterFeed_CheckBox_IsChecked = false;
         }
         public void Cancel()
         {
-            //do something special.
+            
+            TwitterFeedCheckBox.instance.TwitterFeed_CheckBox_IsChecked = false;
         }
         public ICommand OkCommand { get; set; }
         public ICommand CancelCommand { get; set; }

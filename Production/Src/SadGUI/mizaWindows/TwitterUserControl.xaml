@@ -6,7 +6,7 @@
              mc:Ignorable="d" 
              Background="White"
              d:DesignHeight="300" d:DesignWidth="300"
-             DataContext="{Binding TwitterViewModel}">
+             DataContext="{Binding TWITTER}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50*"/>
