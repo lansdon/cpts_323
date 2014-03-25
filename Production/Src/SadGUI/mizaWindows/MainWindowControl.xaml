@@ -25,10 +25,7 @@
             DataContext="{Binding TargetsViewModel}"/>
 
         <!--Launcher Control Panel-->
-        <MyWindows:LauncherUsercontrolWithButtons
-            Grid.Row="1"
-            Grid.Column="0"
-            />
+        <Frame Grid.Row="1" Grid.Column="0" x:Name="BottomLeftFrame"/>
 
         <!--DataContext="{Binding LauncherViewModel}"-->
 
@@ -42,7 +39,5 @@
             Grid.Row="0"
             Grid.Column="1"/>
         
-        <StackPanel x:Name="BottomLeft" Grid.Row="0" Grid.Column="1" IsEnabled="False"/>
-
     </Grid>
 </UserControl>
