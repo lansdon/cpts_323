@@ -27,6 +27,7 @@ namespace SadGUI.mizaWindows
         public TargetUserControl()
         {
             InitializeComponent();
+            LoadTargetsFromFile("targets.ini");
         }
 
         private void OpenFileCommand(object sender, RoutedEventArgs e)
@@ -46,41 +47,25 @@ namespace SadGUI.mizaWindows
 
                 // Open document 
                 string filename = dlg.FileName;
-                FileTargetLoader fLoader = FileLoaderFactory.GetFileLoader(SadLibrary.FileLoader.FileLoaderTypes.FILE_INI, filename);
-                Target_Manager.Instance.Target_List = fLoader.Parse();
-
-                Targets = new ObservableCollection<TargetViewModel>();
-                foreach (var target in Target_Manager.Instance.Target_List)
-                {
-                    Targets.Add(new TargetViewModel(target));
-                }
-                TargetListBox.Items.Clear();
-
-                AddNewTarget = new DelegateCommand(AddTarget);
-
-                var t = new Target();
-                t.Name = "this is a target";
- //               TargetsViewModel = new TargetViewModel(t);
-
-
+                LoadTargetsFromFile(filename);
             }
         }
 
-        private void AddTarget()
-        {
-            var newTarget = new Target();
-            newTarget.Name = "asdfasdf";
-
-            Targets.Add(new TargetViewModel(newTarget));
-        }
-
-
-//        public TargetViewModel TargetsViewModel { get; set; }
-
-        public ObservableCollection<TargetViewModel> Targets
+         public ObservableCollection<TargetViewModel> Targets
         { get; private set; }
 
-        public ICommand AddNewTarget { get; private set; }
+        private void LoadTargetsFromFile(string filename) 
+        {
+            FileTargetLoader fLoader = FileLoaderFactory.GetFileLoader(SadLibrary.FileLoader.FileLoaderTypes.FILE_INI, filename);
+            Target_Manager.Instance.Target_List = fLoader.Parse();
+
+            Targets = new ObservableCollection<TargetViewModel>();
+            foreach (var target in Target_Manager.Instance.Target_List)
+            {
+                Targets.Add(new TargetViewModel(target));
+            }
+            TargetListBox.ItemsSource = Targets;
+        }
 
     }
 }

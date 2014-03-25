@@ -20,21 +20,21 @@ namespace SadGUI
         {
             MainWindow window = new MainWindow();
 
-            // Make targets!!
-            LoadTargetsFromFile("targets.ini");
+            //// Make targets!!
+            //LoadTargetsFromFile("targets.ini");
 
             ILauncher launcher = LauncherFactory.NewLauncher((LauncherType)0);
 
-            MainViewModel viewModel = new MainViewModel(launcher, Target_Manager.Instance.Target_List);
+            MainViewModel viewModel = new MainViewModel(launcher);
             window.DataContext = viewModel;
             window.ShowDialog();
         }
 
-        void LoadTargetsFromFile(string filename)
-        {
-            FileTargetLoader fLoader = FileLoaderFactory.GetFileLoader(SadLibrary.FileLoader.FileLoaderTypes.FILE_INI, filename);
-            Target_Manager.Instance.Target_List = fLoader.Parse();
-        }
+        //void LoadTargetsFromFile(string filename)
+        //{
+        //    FileTargetLoader fLoader = FileLoaderFactory.GetFileLoader(SadLibrary.FileLoader.FileLoaderTypes.FILE_INI, filename);
+        //    Target_Manager.Instance.Target_List = fLoader.Parse();
+        //}
 
     }
 }

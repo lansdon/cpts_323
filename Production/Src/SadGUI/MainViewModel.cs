@@ -19,19 +19,8 @@ namespace SadGUI
         private string m_name;
         private double m_xPosition;
         
-        public MainViewModel(ILauncher launcher, IEnumerable<Target> targets)
+        public MainViewModel(ILauncher launcher)
         {
-           // m_launcher = launcher;
-           
-
-            Targets = new ObservableCollection<TargetViewModel>();
-            foreach (var target in targets)
-            {
-                Targets.Add(new TargetViewModel(target));
-            }
-
-            AddNewTarget = new DelegateCommand(AddTarget);
-
             var t = new Target();
             t.Name = "this is a target";
             TargetsViewModel = new TargetViewModel(t);
@@ -41,21 +30,13 @@ namespace SadGUI
             TwitterFeedCheckBox = new TwitterFeedCheckBox();
         }
 
-        private void AddTarget()
-        {
-            var newTarget = new Target();
-            newTarget.Name = "asdfasdf";
-
-            Targets.Add(new TargetViewModel(newTarget));
-        }
-
         public TargetViewModel TargetsViewModel { get; set; }
 
-        public ObservableCollection<TargetViewModel> Targets
-        { get; private set; }
+        //public ObservableCollection<TargetViewModel> Targets
+        //{ get; private set; }
 
         public LauncherViewModel LauncherViewModel { get; set; }
-        public ICommand AddNewTarget { get; private set; }
+        //public ICommand AddNewTarget { get; private set; }
 
         public VideoCheckBox VideoCheckBox { get; set; }
 
