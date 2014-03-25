@@ -186,7 +186,8 @@
     </PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PreBuildEvent>xcopy  "$(SolutionDir)\packages\EmguCV.221.x86.1.0\opencv\*.dll" "$(TargetDir)\"  /y/s/f/i</PreBuildEvent>
+    <PreBuildEvent>xcopy  "$(SolutionDir)\packages\EmguCV.221.x86.1.0\opencv\*.dll" "$(TargetDir)\"  /y/s/f/i
+xcopy  "$(SolutionDir)\targets.ini" "$(TargetDir)\"  /y/s/f/i</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

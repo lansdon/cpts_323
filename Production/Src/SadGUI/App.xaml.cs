@@ -7,7 +7,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
-
+using SadLibrary.FileLoader;
 
 namespace SadGUI
 {
@@ -20,36 +20,21 @@ namespace SadGUI
         {
             MainWindow window = new MainWindow();
 
-
             // Make targets!!
-            var targets = new List<Target>();
-            for (int i = 0; i < 20; i++)
-            {
-                var t = new Target();
-                t.Name = "target " + i;
-                t.X = i;
-                t.Y = i + 1;
-                t.Z = i + 3;
-                t.Points = i * 20;
-                if((i%2)==0)
-                {
-                    t.Friend = true;
-                    t.Alive = false;
-                }
-                else
-                {
-                    t.Friend = false;
-                    t.Alive = true;
-                }
-                t.FlashRate = 2000;
-                targets.Add(t);
-            }
+            LoadTargetsFromFile("targets.ini");
 
             ILauncher launcher = LauncherFactory.NewLauncher((LauncherType)1);
 
-            MainViewModel viewModel = new MainViewModel(launcher, targets);
+            MainViewModel viewModel = new MainViewModel(launcher, Target_Manager.Instance.Target_List);
             window.DataContext = viewModel;
             window.ShowDialog();
         }
+
+        void LoadTargetsFromFile(string filename)
+        {
+            FileTargetLoader fLoader = FileLoaderFactory.GetFileLoader(SadLibrary.FileLoader.FileLoaderTypes.FILE_INI, filename);
+            Target_Manager.Instance.Target_List = fLoader.Parse();
+        }
+
     }
 }
