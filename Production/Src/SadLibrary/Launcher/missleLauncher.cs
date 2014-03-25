@@ -473,7 +473,7 @@ namespace SadLibrary.Launcher
 
 
         //Function to convert x, y to a theta for spherical coordinates.
-        double toTheta(double x, double y)
+        public double toTheta(double x, double y)
         {
             if (x >= 0)
                 return (Math.Atan2(x, y) * (HALF_CIRCLE / Math.PI));
@@ -482,7 +482,7 @@ namespace SadLibrary.Launcher
         }
 
         //function to convert the x, y, z to phi for spherical coordinates.
-        double toPhi(double x, double y, double z)
+        public double toPhi(double x, double y, double z)
         {
             double squaredRoot = Math.Sqrt((x * x) + (y * y));
             if (z >= 0)
