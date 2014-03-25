@@ -4,13 +4,16 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="60" d:DesignWidth="600">
+             d:DesignHeight="60" d:DesignWidth="600"
+             DataContext="{Binding TargetViewModel}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="15*"/>
             <!--Row 1 Catagory Panel-->
             <RowDefinition Height="85*"/>
             <!--Row 2 Target Panel-->
+            <RowDefinition Height="15*"/>
+
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Grid.Column="1">
             <Grid.ColumnDefinitions>
@@ -51,11 +54,14 @@
                         <Label Content="{Binding Friend}" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         <Label Content="{Binding CordsToString}" Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         <Label Content="{Binding FlashRate}" Grid.Column="5" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    </Grid>
+                     </Grid>
 
                     <!--<MyWindows:TargetUserControl  HorizontalAlignment="Stretch"/>-->
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+        <Button Grid.Column="1" Grid.Row="3" Command="{Binding Path=OpenFileCommand}">
+            Load new target ini file
+        </Button>
     </Grid>
 </UserControl>
