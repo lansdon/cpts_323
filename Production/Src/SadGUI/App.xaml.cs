@@ -23,7 +23,7 @@ namespace SadGUI
             // Make targets!!
             LoadTargetsFromFile("targets.ini");
 
-            ILauncher launcher = LauncherFactory.NewLauncher((LauncherType)1);
+            ILauncher launcher = LauncherFactory.NewLauncher((LauncherType)0);
 
             MainViewModel viewModel = new MainViewModel(launcher, Target_Manager.Instance.Target_List);
             window.DataContext = viewModel;

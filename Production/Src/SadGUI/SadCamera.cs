@@ -59,7 +59,7 @@ namespace SadGUI
             {
                 try
                 {
-                    _capture = new Capture();
+                    //_capture = new Capture();
                     _cameraDisabled = false;
                 }
                 catch

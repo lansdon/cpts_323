@@ -91,15 +91,26 @@
     <Compile Include="mizaWindows\LauncherUsercontrolWithButtons.xaml.cs">
       <DependentUpon>LauncherUsercontrolWithButtons.xaml</DependentUpon>
     </Compile>
+    <Compile Include="mizaWindows\MainWindowControl.xaml.cs">
+      <DependentUpon>MainWindowControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="mizaWindows\ServerUserControl.xaml.cs">
+      <DependentUpon>ServerUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="mizaWindows\TargetUserControl.xaml.cs">
       <DependentUpon>TargetUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="mizaWindows\TargetViewControl.xaml.cs">
       <DependentUpon>TargetViewControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="mizaWindows\TwitterUserControl.xaml.cs">
+      <DependentUpon>TwitterUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SadCamera.cs" />
+    <Compile Include="ServerViewModel.cs" />
     <Compile Include="TargetViewModel.cs" />
     <Compile Include="TwitterFeedCheckBox.cs" />
+    <Compile Include="TwitterViewModel.cs" />
     <Compile Include="VideoCheckBox.cs" />
     <Compile Include="ViewModelBase.cs" />
     <Page Include="mizaWindows\CameraUserControl.xaml">
@@ -131,11 +142,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="mizaWindows\MainWindowControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="mizaWindows\ServerUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="mizaWindows\TargetUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="mizaWindows\TargetViewControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="mizaWindows\TwitterUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
