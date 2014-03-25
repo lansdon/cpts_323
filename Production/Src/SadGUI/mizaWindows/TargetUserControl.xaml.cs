@@ -64,6 +64,7 @@ namespace SadGUI.mizaWindows
             Targets = new ObservableCollection<TargetViewModel>();
             foreach (var target in Target_Manager.Instance.Target_List)
             {
+                target.Alive = true;
                 Targets.Add(new TargetViewModel(target));
             }
             TargetListBox.ItemsSource = Targets;
