@@ -24,12 +24,10 @@ namespace SadGUI.mizaWindows
         {
             InitializeComponent();
 
-            SetBottomLeftFrame(new launcherUserControl());
-        }
-
-        public void SetBottomLeftFrame(Control newFrame)
-        {
-            BottomLeftFrame.NavigationService.Navigate(newFrame);
+            ContentControllerManager.Instance().SetContentToController(TopLeft_CC, new CameraUserControl());
+            ContentControllerManager.Instance().SetContentToController(BottomLeft_CC, new launcherUserControl());
+            ContentControllerManager.Instance().SetContentToController(TopRight_CC, new TargetUserControl());
+            ContentControllerManager.Instance().SetContentToController(BottomRight_CC, new CheckBoxUserControls());
         }
     }
 }

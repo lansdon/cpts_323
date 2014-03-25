@@ -7,6 +7,7 @@
              xmlns:MyWindows="clr-namespace:SadGUI.mizaWindows"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
+    
     <!--Main Grid Definition-->
     <Grid>
         <Grid.RowDefinitions>
@@ -19,25 +20,27 @@
         </Grid.ColumnDefinitions>
         
         <!--Video Window Panel Place Holder-->
-        <MyWindows:CameraUserControl
+        <ContentControl
             Grid.Row="0"
             Grid.Column="0"
-            DataContext="{Binding TargetsViewModel}"/>
+            Name="TopLeft_CC"/>
 
         <!--Launcher Control Panel-->
-        <Frame Grid.Row="1" Grid.Column="0" x:Name="BottomLeftFrame"/>
-
-        <!--DataContext="{Binding LauncherViewModel}"-->
-
-        <!--User CheckBox Control Panel-->
-        <MyWindows:CheckBoxUserControls
+        <ContentControl
             Grid.Row="1"
-            Grid.Column="1"/>
+            Grid.Column="0"
+            Name="BottomLeft_CC"/>
 
         <!--Target Information Panel-->
-        <MyWindows:TargetUserControl
+        <ContentControl
             Grid.Row="0"
-            Grid.Column="1"/>
-        
+            Grid.Column="1"
+            Name="TopRight_CC"/>
+
+        <!--User CheckBox Control Panel-->
+        <ContentControl
+            Grid.Row="1"
+            Grid.Column="1"
+            Name="BottomRight_CC"/>
     </Grid>
 </UserControl>
