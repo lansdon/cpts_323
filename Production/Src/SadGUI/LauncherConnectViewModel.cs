@@ -1,37 +1,38 @@
-﻿using SadLibrary.Launcher;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SadGUI;
+using SadGUI.mizaWindows;
 
 namespace SadGUI
 {
-    class LauncherConnectViewModel : ViewModelBase
+    public class LauncherConnectViewModel : ViewModelBase
     {
-        private bool IsChecked;
+        private bool _IsChecked;
         public LauncherConnectViewModel()
         {
-            IsChecked = false;
+            _IsChecked = false;
         }
 
         public bool LauncherConnect_CheckBox_IsChecked
         {
             get
             {
-                return IsChecked;
+                return _IsChecked;
             }
             set
             {
-                IsChecked = value;
+                _IsChecked = value;
                 Process_CheckBox();
-                OnPropertyChanged("LauncherConnect_CheckBox_IsChecked");
+                //OnPropertyChanged("LauncherConnect_CheckBox_IsChecked");
             }
         }
 
         private void Process_CheckBox()
         {
-            if (IsChecked == true)
+            if (_IsChecked == true)
             {
                 LauncherViewModel.Instance.changeLauncher(1);
             }

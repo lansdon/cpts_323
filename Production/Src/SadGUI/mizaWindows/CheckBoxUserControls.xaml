@@ -73,6 +73,7 @@
                         VerticalAlignment="Center"
                         FontSize="15"
                         FontWeight="Bold"
+                    IsThreeState="False"
                     IsChecked="{Binding LauncherConnect_CheckBox_IsChecked, Mode=TwoWay}"/>
 
                 <!--Default Control Options:  Unchecked uses slide bar controls, checked uses UDLR controls-->

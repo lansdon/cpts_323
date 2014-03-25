@@ -21,10 +21,11 @@ namespace SadGUI
         
         public MainViewModel(ILauncher launcher)
         {
+            LCVM = new LauncherConnectViewModel();
             var t = new Target();
             t.Name = "this is a target";
             TargetsViewModel = new TargetViewModel(t);
-            LauncherViewModel = new LauncherViewModel();
+            LauncherViewModel = LauncherViewModel.Instance;
             VideoCheckBox = new VideoCheckBox();
             DefaultControlCheckBox = new DefaultControlCheckBox();
             TwitterFeedCheckBox = new TwitterFeedCheckBox();
@@ -39,7 +40,7 @@ namespace SadGUI
         //public ICommand AddNewTarget { get; private set; }
 
         public VideoCheckBox VideoCheckBox { get; set; }
-
+        public LauncherConnectViewModel LCVM { get; set; }
         public DefaultControlCheckBox DefaultControlCheckBox { get; set; }
 
         public TwitterFeedCheckBox TwitterFeedCheckBox { get; set; }
