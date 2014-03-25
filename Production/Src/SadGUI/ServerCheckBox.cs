@@ -3,21 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SadGUI;
 using SadGUI.mizaWindows;
+using SadGUI;
+
 
 namespace SadGUI
 {
-    public class TwitterFeedCheckBox: ViewModelBase
+    public class ServerCheckBox: ViewModelBase
     {
         private bool IsChecked;
-
-        public TwitterFeedCheckBox()
+        public ServerCheckBox()
         {
             IsChecked = false;
         }
 
-        public bool TwitterFeed_CheckBox_IsChecked
+        public bool ServerControl_CheckBox_IsChecked
         {
             get
             {
@@ -34,12 +34,13 @@ namespace SadGUI
         {
             if (IsChecked == true)
             {
-                ContentController.SetContentToController("RightCheckBoxPanel", new TwitterUserControl());
+                ContentController.SetContentToController("RightCheckBoxPanel", new ServerUserControl());
             }
             else
             {
                 ContentController.SetContentToController("RightCheckBoxPanel", new DefaultUserControl());
             }
+
         }
     }
 }

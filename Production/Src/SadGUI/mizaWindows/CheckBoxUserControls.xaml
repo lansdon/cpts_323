@@ -53,16 +53,19 @@
                         FontSize="15"
                         FontWeight="Bold"
                         IsThreeState="False"
-                        IsChecked="{Binding TwitterFeedCheckBox, Mode=TwoWay}"/>
+                        IsChecked="{Binding TwitterFeed_CheckBox_IsChecked, Mode=TwoWay}"/>
 
                 <!--Server Options: Connect/Disconnect/Setup-->
                 <CheckBox
+                        DataContext="{Binding ServerCheckBox}"
                         Grid.Row="2"
                         Content="Server Connect"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
                         FontSize="15"
-                        FontWeight="Bold"/>
+                        FontWeight="Bold"
+                        IsThreeState="False"
+                        IsChecked="{Binding ServerControl_CheckBox_IsChecked}"/>
 
                 <!--Launcher Options: Connect/Disconnect/Setup-->
                 <CheckBox
