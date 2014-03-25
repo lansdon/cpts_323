@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
+             Background="White"
              d:DesignHeight="300" d:DesignWidth="300"
              DataContext="{Binding TwitterViewModel}">
     <Grid>
@@ -12,7 +13,11 @@
             <RowDefinition Height="20*"/>
         </Grid.RowDefinitions>
         <Label Grid.Row="0"
-               Content="Input Twitter Feed:" Margin="45,67,100,123"
+               HorizontalAlignment="Center"
+               FontSize="20"
+               FontWeight="ExtraBold"
+               Margin="0,60,0,60"
+               Content="Input Twitter Feed:"
                />
         <TextBox Text="{Binding TwitterFeed}"
                  Grid.Row="0"
