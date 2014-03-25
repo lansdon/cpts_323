@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="60" d:DesignWidth="600"
-             DataContext="{Binding TargetViewModel}">
+             >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="15*"/>
@@ -32,6 +32,7 @@
             <Label Grid.Column="6" Content="Flash Rate" VerticalAlignment="Center" HorizontalAlignment="Left"/>
         </Grid>
         <ListBox
+                Name="TargetListBox"
                 Grid.Column="0" 
                 Grid.Row="1"
                  HorizontalContentAlignment="Stretch"
@@ -60,7 +61,7 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button Grid.Column="1" Grid.Row="3" Command="{Binding Path=OpenFileCommand}">
+        <Button Grid.Column="1" Grid.Row="3" Click="OpenFileCommand" Command="{Binding Path=OpenFileCommand}" Name="OpenFileButton">
             Load new target ini file
         </Button>
     </Grid>
