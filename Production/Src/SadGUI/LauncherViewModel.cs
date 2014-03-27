@@ -107,14 +107,15 @@ namespace SadGUI
         }
             public void FireAt(double x, double y, double z)
             {
-                MoveToCoords(x,y,z);
-                Fire();
+                m_launcher.fireAt(x, y, z);
+//                MoveToCoords(x,y,z);
+//                Fire();
             }
         public void MoveToCoords(double x, double y, double z)
         {
-            //m_launcher.moveCoords(x, y, z);
-            phi = (int)m_launcher.toPhi(x, y, z);
-            theta = (int)m_launcher.toTheta(x, y);
+            m_launcher.moveCoords(x, y, z);
+//            phi = (int)m_launcher.toPhi(x, y, z);
+//            theta = (int)m_launcher.toTheta(x, y);
         }
         public void Fire()
         {

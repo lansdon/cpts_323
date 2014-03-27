@@ -65,8 +65,6 @@ namespace SadLibrary.Launcher
             setCommandQueueIsLoading(false);
         }
 
-
-
         public void reload()
         {
             missileCount = MAX_MISSILE_COUNT;
@@ -178,12 +176,16 @@ namespace SadLibrary.Launcher
 
         public void moveTo(double theta, double phi)
         {
+            bool commandQueueAlreadyBlocked = commandQueueLoadInProgress;
             if (myTheta == 0 && myPhi == 0)
             {
                 setCommandQueueIsLoading(true); // allows us to add commands in sequence without processing
                 moveTheta(theta);
                 movePhi(phi);
-                processCommandQueue();
+
+                // This will allow us to continue attaching commands outside of this function.
+                if(!commandQueueAlreadyBlocked)
+                    processCommandQueue();
             }
             else
             {
@@ -207,7 +209,9 @@ namespace SadLibrary.Launcher
                 setCommandQueueIsLoading(true); // allows us to add commands in sequence without processing
                 moveTheta(theta);
                 movePhi(phi);
-                processCommandQueue();
+                // This will allow us to continue attaching commands outside of this function.
+                if (!commandQueueAlreadyBlocked)
+                    processCommandQueue();
             }           
         }
         public void fire()
@@ -236,7 +240,6 @@ namespace SadLibrary.Launcher
             command_reset();
             myPhi = 0;
             myTheta = 0;
-            
         }
         
         
@@ -268,40 +271,32 @@ namespace SadLibrary.Launcher
             this.UP[1] = 2;
             this.UP[2] = 2;
 
-
             this.DOWN = new byte[10];
             this.DOWN[1] = 2;
             this.DOWN[2] = 1;
-
 
             this.LEFT = new byte[10];
             this.LEFT[1] = 2;
             this.LEFT[2] = 4;
 
-
             this.RIGHT = new byte[10];
             this.RIGHT[1] = 2;
             this.RIGHT[2] = 8;
-
 
             this.FIRE = new byte[10];
             this.FIRE[1] = 2;
             this.FIRE[2] = 0x10;
 
-
             this.STOP = new byte[10];
             this.STOP[1] = 2;
             this.STOP[2] = 0x20;
-
 
             this.LED_ON = new byte[9];
             this.LED_ON[1] = 3;
             this.LED_ON[2] = 1;
 
-
             this.LED_OFF = new byte[9];
             this.LED_OFF[1] = 3;
-
 
             this.USB = new UsbHidPort();
             this.USB.ProductId = 0;
@@ -310,15 +305,12 @@ namespace SadLibrary.Launcher
             this.USB.OnSpecifiedDeviceRemoved += new EventHandler(this.USB_OnSpecifiedDeviceRemoved);
             this.USB.OnDataRecieved += new DataRecievedEventHandler(this.USB_OnDataRecieved);
             this.USB.OnSpecifiedDeviceArrived += new EventHandler(this.USB_OnSpecifiedDeviceArrived);
-
-
-            
+     
             this.USB.VID_List[0] = 0xa81;
             this.USB.PID_List[0] = 0x701;
             this.USB.VID_List[1] = 0x2123;
             this.USB.PID_List[1] = 0x1010;
             this.USB.ID_List_Cnt = 2;
-
 
             IntPtr handle = new IntPtr();
             this.USB.RegisterHandle(handle);
@@ -329,12 +321,10 @@ namespace SadLibrary.Launcher
             calibrate();
         }
 
-
         private void command_Stop()
         {
             this.SendUSBData(this.STOP);
         }
-
 
         private void command_switchLED(Boolean turnOn)
         {
@@ -352,9 +342,6 @@ namespace SadLibrary.Launcher
             }
         }
 
-
-
-
         private void command_reset()
         {
             if (DevicePresent)
@@ -368,7 +355,6 @@ namespace SadLibrary.Launcher
                 reload();
             }
         }
-
 
         private void processCommandQueue()
         {
@@ -400,10 +386,10 @@ namespace SadLibrary.Launcher
                 });
 
                 m_Busy = true;
-                commandThread.RunWorkerAsync();
+                if (commandThread.IsBusy == false)
+                    commandThread.RunWorkerAsync();
             }
         }
-
 
         private void SendUSBData(byte[] Data)
         {
@@ -411,16 +397,12 @@ namespace SadLibrary.Launcher
             {
                 this.USB.SpecifiedDevice.SendData(Data);
             }
-       
         }
-
-        
 
         private void USB_OnDataRecieved(object sender, DataRecievedEventArgs args)
         {
            
         }
-
 
         private void USB_OnSpecifiedDeviceArrived(object sender, EventArgs e)
         {
@@ -432,13 +414,11 @@ namespace SadLibrary.Launcher
             }
         }
 
-
         private void USB_OnSpecifiedDeviceRemoved(object sender, EventArgs e)
         {
             this.DevicePresent = false;
             m_Busy = false;
         }
-
 
         //Function to convert x, y to a theta for spherical coordinates.
         public double toTheta(double x, double y)
@@ -458,8 +438,6 @@ namespace SadLibrary.Launcher
             else
                 return (90 - (HALF_CIRCLE -( Math.Atan2( squaredRoot,z) * (HALF_CIRCLE / Math.PI))));
         }
-
-
 
         public uint getMissleCount()
         {
