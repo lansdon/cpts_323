@@ -31,11 +31,17 @@ namespace SadLibrary.Launcher
         int HALF_CIRCLE = 180, FULL_CIRCLE = 360, MAX_UP = 30, MAX_DOWN = 8, MAX_LEFT = -135, MAX_RIGHT = 135;
         public bool m_Busy { get; private set; }
         private Queue<LauncherCommand> commandQueue;
-        BackgroundWorker commandThread;
+        private BackgroundWorker commandThread;
+        private bool commandQueueLoadInProgress;
 
         private void AddCommandToQueue(LauncherCommand newCommand)
         {
             AddCommandsToQueue(new LauncherCommand[] { newCommand });
+        }
+
+        private void setCommandQueueIsLoading(bool isLoading)
+        {
+            commandQueueLoadInProgress = isLoading;
         }
 
         private void AddCommandsToQueue(LauncherCommand[] newCommands)
@@ -46,14 +52,20 @@ namespace SadLibrary.Launcher
             {
                 commandQueue.Enqueue(cmd);
             }
-            processCommandQueue();
+
+            // If we're waiting for other commands to be added, don't process yet.
+            if (commandQueueLoadInProgress == false)
+                processCommandQueue();
         }
 
         public void ClearCommandQueue()
         {
             commandQueue.Clear();
             m_Busy = false;
+            setCommandQueueIsLoading(false);
         }
+
+
 
         public void reload()
         {
@@ -104,7 +116,6 @@ namespace SadLibrary.Launcher
                     if (myTheta < MAX_LEFT)
                         myTheta = MAX_LEFT;
                 }
-
             }
         }
         public void movePhi(double phi)
@@ -138,11 +149,10 @@ namespace SadLibrary.Launcher
         }
         public void moveBy(double theta, double phi)
         {
-
+            setCommandQueueIsLoading(true); // allows us to add commands in sequence without processing
             moveTheta(theta);
             movePhi(phi);
- 
-
+            processCommandQueue();
         }
         public void moveCoords(double x, double y, double z)
         {
@@ -153,9 +163,10 @@ namespace SadLibrary.Launcher
         {
             if (myTheta == 0 && myPhi == 0)
             {
+                setCommandQueueIsLoading(true); // allows us to add commands in sequence without processing
                 moveTheta(theta);
                 movePhi(phi);
-                
+                processCommandQueue();
             }
             else
             {
@@ -176,10 +187,10 @@ namespace SadLibrary.Launcher
                     phi -= FULL_CIRCLE;
                 }
 
-
+                setCommandQueueIsLoading(true); // allows us to add commands in sequence without processing
                 moveTheta(theta);
-
                 movePhi(phi);
+                processCommandQueue();
             }
 
            
@@ -202,9 +213,10 @@ namespace SadLibrary.Launcher
 
         public void fireAt(double x, double y, double z)
         {
- //           m_Busy = true;
+            setCommandQueueIsLoading(true); // allows us to add commands in sequence without processing
             moveCoords(x, y, z);
             fire();
+            processCommandQueue();
         }
 
         public void calibrate()
@@ -350,7 +362,6 @@ namespace SadLibrary.Launcher
         {
             if (DevicePresent)
             {
-
                 // what to do in the background thread
                 commandThread.DoWork += new DoWorkEventHandler(
                 delegate(object o, DoWorkEventArgs args)
@@ -373,6 +384,7 @@ namespace SadLibrary.Launcher
                     this.SendUSBData(this.STOP);
                     this.command_switchLED(false);
                     m_Busy = false;
+                    setCommandQueueIsLoading(false);
                 });
 
                 m_Busy = true;
