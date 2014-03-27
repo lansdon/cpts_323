@@ -42,7 +42,14 @@ namespace SadLibrary.Launcher
         {
             Console.WriteLine("Moving right! sir!");
         }
-
+        public void moveTheta(double theta)
+        {
+            Console.WriteLine("Moving to {0} Sir!", theta);
+        }
+        public void movePhi(double phi)
+        {
+            Console.WriteLine("Moving to {0} Sir!", phi);
+        }
         public void moveBy(double theta, double phi)
         {
             Console.WriteLine("Moving to {0}, {1}! Sir!", theta, phi);

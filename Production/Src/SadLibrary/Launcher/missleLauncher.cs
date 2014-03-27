@@ -76,8 +76,7 @@ namespace SadLibrary.Launcher
         {
             command_Right((int)degreeDelay);
         }
-
-        public void moveBy(double theta, double phi)
+        public void moveTheta(double theta)
         {
             if (theta < HALF_CIRCLE && theta > 0)
             {
@@ -105,7 +104,9 @@ namespace SadLibrary.Launcher
                 }
 
             }
-
+        }
+        public void movePhi(double phi)
+        {
             if (phi < HALF_CIRCLE && phi > 0)
             {
                 command_Up((int)(phi * degreeDelay));
@@ -132,6 +133,12 @@ namespace SadLibrary.Launcher
                 }
 
             }
+        }
+        public void moveBy(double theta, double phi)
+        {
+
+            moveTheta(theta);
+            movePhi(phi);
  
 
         }
@@ -144,57 +151,8 @@ namespace SadLibrary.Launcher
         {
             if (myTheta == 0 && myPhi == 0)
             {
-                if (theta < HALF_CIRCLE && theta > 0)
-                {
-                    command_Right((int)((theta) * degreeDelay));
-                    myTheta += theta;
-                    if (myTheta > MAX_RIGHT)
-                        myTheta = MAX_RIGHT;
-                }
-                else
-                {
-                    if (theta <= 0)
-                    {
-                        theta = theta * (-1);
-                        command_Left((int)((theta) * degreeDelay));
-                        myTheta -= theta;
-                        if (myTheta < MAX_LEFT)
-                            myTheta = MAX_LEFT;
-                    }
-                    else
-                    {
-                        command_Left((int)((FULL_CIRCLE - theta) * degreeDelay));
-                        myTheta -= FULL_CIRCLE - theta;
-                        if (myTheta < MAX_LEFT)
-                            myTheta = MAX_LEFT;
-                    }
-                    
-                }
-                if (phi < HALF_CIRCLE && phi > 0)
-                {
-                    command_Up((int)(phi * degreeDelay));
-                    myPhi += phi;
-                    if (myPhi > MAX_UP)
-                        myPhi = MAX_UP;
-                }
-                else if (phi > 300 || phi <= 0)
-                {
-                    if (phi <= 0)
-                    {
-                        phi = phi * (-1);
-                        command_Down((int)((phi) * degreeDelay));
-                        myPhi -= phi;
-                        if (myPhi < -MAX_DOWN)
-                            myPhi = -MAX_DOWN;
-                    }
-                    else
-                    {
-                        command_Down((int)((FULL_CIRCLE - phi) * degreeDelay));
-                        myPhi -= FULL_CIRCLE - phi;
-                        if (myPhi < -MAX_DOWN)
-                            myPhi = -MAX_DOWN;
-                    }
-                }
+                moveTheta(theta);
+                movePhi(phi);
                 
             }
             else
@@ -215,59 +173,9 @@ namespace SadLibrary.Launcher
                 {
                     phi -= FULL_CIRCLE;
                 }
-                if (theta < HALF_CIRCLE && theta > 0)
-                {
-                    command_Right((int)((theta) * degreeDelay));
-                    myTheta += theta;
-                    if (myTheta > MAX_RIGHT)
-                        myTheta = MAX_RIGHT;
-                }
-                else
-                {
-                    if (theta <= 0)
-                    {
-                        theta = theta * (-1);
-                        command_Left((int)((theta) * degreeDelay));
-                        myTheta -= theta;
-                        if (myTheta < MAX_LEFT)
-                            myTheta = MAX_LEFT;
-                    }
-                    else
-                    {
-                        command_Left((int)((FULL_CIRCLE - theta) * degreeDelay));
-                        myTheta -= FULL_CIRCLE - theta;
-                        if (myTheta < MAX_LEFT)
-                            myTheta = MAX_LEFT;
-                    }
-                    
-                }
-               
-                if (phi < HALF_CIRCLE && phi > 0)
-                {
-                    command_Up((int)(phi * degreeDelay));
-                    myPhi += phi;
-                    if (myPhi > MAX_UP)
-                        myPhi = MAX_UP;
-                }
-                else 
-                {
-                    if (phi <= 0)
-                    {
-                        phi = phi * (-1);
-                        command_Down((int)((phi) * degreeDelay));
-                        myPhi -= phi;
-                        if (myPhi < -MAX_DOWN)
-                            myPhi = -MAX_DOWN;
-                    }
-                    else
-                    {
-                        command_Down((int)((FULL_CIRCLE - phi) * degreeDelay));
-                        myPhi -= FULL_CIRCLE - phi;
-                        if (myPhi < -MAX_DOWN)
-                            myPhi = -MAX_DOWN;
-                    }
-                    
-                }
+                moveTheta(theta);
+
+                movePhi(phi);
             }
 
            

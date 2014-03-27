@@ -25,5 +25,7 @@ namespace SadLibrary.Launcher
         void setMissileCount(uint value);
         double toPhi(double x,double y,double z);
         double toTheta(double x, double y);
+        void moveTheta(double theta);
+        void movePhi(double phi);
     }
 }
