@@ -59,7 +59,7 @@ namespace SadGUI
            }
        public void ClearQueue()
            {
-           //clear the command queue
+               m_launcher.ClearCommandQueue();
            }
         public uint missileCount
         {

@@ -22,7 +22,10 @@ namespace SadLibrary.Launcher
             calibrate();
             reload();
         }
+        private void ClearCommandQueue()
+        {
 
+        }
         public void moveUp()
         {
             Console.WriteLine("Moving up! Sir!");

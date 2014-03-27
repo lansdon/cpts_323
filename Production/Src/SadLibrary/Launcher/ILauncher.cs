@@ -27,5 +27,6 @@ namespace SadLibrary.Launcher
         double toTheta(double x, double y);
         void moveTheta(double theta);
         void movePhi(double phi);
+        private void ClearCommandQueue();
     }
 }

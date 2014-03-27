@@ -168,13 +168,15 @@ namespace SadLibrary.Launcher
                     theta -= FULL_CIRCLE;
                 }
                 if (myPhi < HALF_CIRCLE)
-                phi = phi - myPhi;
-            else
-                phi = phi + myPhi;
+                    phi = phi - myPhi;
+                else
+                    phi = phi + myPhi;
                 if (phi > FULL_CIRCLE)
                 {
                     phi -= FULL_CIRCLE;
                 }
+
+
                 moveTheta(theta);
 
                 movePhi(phi);
