@@ -10,6 +10,17 @@ using UsbLibrary;
 
 namespace SadLibrary.Launcher
 {
+    public class LauncherCommand 
+    { 
+        public LauncherCommand(byte[] commandData, int durationMilliseconds)
+        {
+            cmdData = commandData;
+            durationMs = durationMilliseconds;
+        }
+        public int durationMs { get; set; }    // How many seconds to delay when running this command.
+        public byte[] cmdData { get; set; }               // The command send over USB.  ie: self.FIRE;
+    }
+
     public class missileLauncher : ILauncher
     {
         protected double myPhi, myTheta;
@@ -19,7 +30,28 @@ namespace SadLibrary.Launcher
         public string name = "";
         int HALF_CIRCLE = 180, FULL_CIRCLE = 360, MAX_UP = 30, MAX_DOWN = 8, MAX_LEFT = -135, MAX_RIGHT = 135;
         public bool m_Busy { get; private set; }
-     
+        private Queue<LauncherCommand> commandQueue;
+        BackgroundWorker commandThread;
+
+        private void AddCommandToQueue(LauncherCommand newCommand)
+        {
+            AddCommandsToQueue(new LauncherCommand[] { newCommand });
+        }
+
+        private void AddCommandsToQueue(LauncherCommand[] newCommands)
+        {
+            if (m_Busy) return;
+
+            foreach(LauncherCommand cmd in newCommands) 
+            {
+                commandQueue.Enqueue(cmd);
+            }
+        }
+
+        private void ClearCommandQueue()
+        {
+            commandQueue.Clear();
+        }
 
         public void reload()
         {
@@ -353,6 +385,10 @@ namespace SadLibrary.Launcher
 
             IntPtr handle = new IntPtr();
             this.USB.RegisterHandle(handle);
+
+            commandQueue = new Queue<LauncherCommand>();
+            commandThread = new BackgroundWorker();
+
             calibrate();
         }
 
@@ -363,37 +399,34 @@ namespace SadLibrary.Launcher
         }
 
 
-        private void command_Right(int degrees)
+        private void command_Right(int duration)
         {
-  //          m_Busy = true;
-            this.moveMissileLauncher(this.RIGHT, degrees);
+
+            AddCommandToQueue(new LauncherCommand(this.RIGHT, duration));
         }
 
 
-        public void command_Left(int degrees)
+        public void command_Left(int duration)
         {
- //           m_Busy = true;
-            this.moveMissileLauncher(this.LEFT, degrees);
+            AddCommandToQueue(new LauncherCommand(this.LEFT, duration));
         }
 
 
-        private void command_Up(int degrees)
+        private void command_Up(int duration)
         {
- //           m_Busy = true;
-            this.moveMissileLauncher(this.UP, degrees);
+            AddCommandToQueue(new LauncherCommand(this.UP, duration));
         }
 
 
-        private void command_Down(int degrees)
+        private void command_Down(int duration)
         {
- //           m_Busy = true;
-            this.moveMissileLauncher(this.DOWN, degrees);
+            AddCommandToQueue(new LauncherCommand(this.DOWN, duration));
         }
 
 
         private void command_Fire()
         {
-            this.moveMissileLauncher(this.FIRE, 5000);
+            AddCommandToQueue(new LauncherCommand(this.DOWN, 5000));
         }
 
 
@@ -420,50 +453,50 @@ namespace SadLibrary.Launcher
         {
             if (DevicePresent)
             {
-                this.moveMissileLauncher(this.LEFT, 5500);
-                this.moveMissileLauncher(this.RIGHT, 2750);
-                this.moveMissileLauncher(this.UP, 2000);
-                this.moveMissileLauncher(this.DOWN, 600);
-
+                AddCommandsToQueue(new LauncherCommand[] {
+                    new LauncherCommand(this.LEFT, 5500),
+                    new LauncherCommand(this.RIGHT, 2750), 
+                    new LauncherCommand(this.UP, 2000),
+                    new LauncherCommand(this.DOWN, 600) 
+                });
                 reload();
             }
         }
 
 
-        private void moveMissileLauncher(byte[] Data, int interval)
+ //       private void moveMissileLauncher(byte[] Data, int interval)
+        private void moveMissileLauncher()
         {
-            if (DevicePresent && !m_Busy)
+            if (DevicePresent)
             {
-                m_Busy = true;
-
-                BackgroundWorker bw = new BackgroundWorker();
 
                 // what to do in the background thread
-                bw.DoWork += new DoWorkEventHandler(
+                commandThread.DoWork += new DoWorkEventHandler(
                 delegate(object o, DoWorkEventArgs args)
                 {
                     BackgroundWorker b = o as BackgroundWorker;
-
-                    m_Busy = true;
-                    this.command_switchLED(true);
-                    this.SendUSBData(Data);
-                    Thread.Sleep(interval);
+                    while(commandQueue.Count() > 0)
+                    {
+                        m_Busy = true;
+                        LauncherCommand cmd = commandQueue.Dequeue();
+                        this.command_switchLED(true);
+                        this.SendUSBData(cmd.cmdData);
+                        Thread.Sleep(cmd.durationMs);
+                    }                      
                 });
 
                 // what to do when worker completes its task (notify the user)
-                bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(
+                commandThread.RunWorkerCompleted += new RunWorkerCompletedEventHandler(
                 delegate(object o, RunWorkerCompletedEventArgs args)
                 {
-                    //                Dispatcher.Invoke((Action<Image<Bgr, Byte>>)(obj => _image.Source = null), null as Image<Bgr, Byte>);
                     this.SendUSBData(this.STOP);
                     this.command_switchLED(false);
                     m_Busy = false;
                 });
 
-                bw.RunWorkerAsync();
+                m_Busy = true;
+                commandThread.RunWorkerAsync();
             }
-
-
         }
 
 
