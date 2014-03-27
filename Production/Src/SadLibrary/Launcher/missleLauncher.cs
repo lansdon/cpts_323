@@ -61,28 +61,28 @@ namespace SadLibrary.Launcher
         }
         public void moveUp()
         {
-            command_Up((int)degreeDelay);
-        }
+            AddCommandToQueue(new LauncherCommand(this.UP, (int)degreeDelay));
+         }
 
         public void moveDown()
         {
-            command_Down((int)degreeDelay);
+            AddCommandToQueue(new LauncherCommand(this.DOWN, (int)degreeDelay));
         }
 
         public void moveLeft()
         {
-            command_Left((int)degreeDelay);
+            AddCommandToQueue(new LauncherCommand(this.LEFT, (int)degreeDelay));
         }
 
         public void moveRight()
         {
-            command_Right((int)degreeDelay);
+            AddCommandToQueue(new LauncherCommand(this.RIGHT, (int)degreeDelay));
         }
         public void moveTheta(double theta)
         {
             if (theta < HALF_CIRCLE && theta > 0)
             {
-                command_Right((int)((theta) * degreeDelay));
+                AddCommandToQueue(new LauncherCommand(this.RIGHT, (int)((theta) * degreeDelay)));
                 myTheta += theta;
                 if (myTheta > MAX_RIGHT)
                     myTheta = MAX_RIGHT;
@@ -92,14 +92,14 @@ namespace SadLibrary.Launcher
                 if (theta <= 0)
                 {
                     theta = theta * (-1);
-                    command_Left((int)((theta) * degreeDelay));
+                    AddCommandToQueue(new LauncherCommand(this.LEFT, (int)degreeDelay));
                     myTheta -= theta;
                     if (myTheta < MAX_LEFT)
                         myTheta = MAX_LEFT;
                 }
                 else
                 {
-                    command_Left((int)((FULL_CIRCLE - theta) * degreeDelay));
+                    AddCommandToQueue(new LauncherCommand(this.LEFT, (int)((FULL_CIRCLE - theta) * degreeDelay)));
                     myTheta -= FULL_CIRCLE - theta;
                     if (myTheta < MAX_LEFT)
                         myTheta = MAX_LEFT;
@@ -111,7 +111,7 @@ namespace SadLibrary.Launcher
         {
             if (phi < HALF_CIRCLE && phi > 0)
             {
-                command_Up((int)(phi * degreeDelay));
+                AddCommandToQueue(new LauncherCommand(this.UP, (int)(phi * degreeDelay)));
                 myPhi += phi;
                 if (myPhi > MAX_UP)
                     myPhi = MAX_UP;
@@ -121,14 +121,14 @@ namespace SadLibrary.Launcher
                 if (phi <= 0)
                 {
                     phi = phi * (-1);
-                    command_Down((int)((phi) * degreeDelay));
+                    AddCommandToQueue(new LauncherCommand(this.DOWN, (int)(phi * degreeDelay)));
                     myPhi -= phi;
                     if (myPhi < -MAX_DOWN)
                         myPhi = -MAX_DOWN;
                 }
                 else
                 {
-                    command_Down((int)((FULL_CIRCLE - phi) * degreeDelay));
+                    AddCommandToQueue(new LauncherCommand(this.DOWN, (int)((FULL_CIRCLE - phi) * degreeDelay)));
                     myPhi -= FULL_CIRCLE - phi;
                     if (myPhi < -MAX_DOWN)
                         myPhi = -MAX_DOWN;
@@ -188,7 +188,8 @@ namespace SadLibrary.Launcher
         {
             if (missileCount > 0)
             {
-                command_Fire();
+                AddCommandsToQueue(self.FIRE, 5000);
+ //               command_Fire();
                 --missileCount;
             }
             else
@@ -309,37 +310,6 @@ namespace SadLibrary.Launcher
         }
 
 
-        private void command_Right(int duration)
-        {
-
-            AddCommandToQueue(new LauncherCommand(this.RIGHT, duration));
-        }
-
-
-        public void command_Left(int duration)
-        {
-            AddCommandToQueue(new LauncherCommand(this.LEFT, duration));
-        }
-
-
-        private void command_Up(int duration)
-        {
-            AddCommandToQueue(new LauncherCommand(this.UP, duration));
-        }
-
-
-        private void command_Down(int duration)
-        {
-            AddCommandToQueue(new LauncherCommand(this.DOWN, duration));
-        }
-
-
-        private void command_Fire()
-        {
-            AddCommandToQueue(new LauncherCommand(this.DOWN, 5000));
-        }
-
-
         private void command_switchLED(Boolean turnOn)
         {
             if (DevicePresent)
@@ -374,7 +344,6 @@ namespace SadLibrary.Launcher
         }
 
 
- //       private void moveMissileLauncher(byte[] Data, int interval)
         private void processCommandQueue()
         {
             if (DevicePresent)
