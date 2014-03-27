@@ -92,6 +92,15 @@ namespace SadLibrary.Launcher
         }
         public void moveTheta(double theta)
         {
+            if (myTheta > HALF_CIRCLE)
+                theta = myTheta + theta;
+            else
+                theta = theta - myTheta;
+            if (theta > FULL_CIRCLE)
+            {
+                theta -= FULL_CIRCLE;
+            }
+            
             if (theta < HALF_CIRCLE && theta > 0)
             {
                 AddCommandToQueue(new LauncherCommand(this.RIGHT, (int)((theta) * degreeDelay)));
@@ -104,7 +113,7 @@ namespace SadLibrary.Launcher
                 if (theta <= 0)
                 {
                     theta = theta * (-1);
-                    AddCommandToQueue(new LauncherCommand(this.LEFT, (int)degreeDelay));
+                    AddCommandToQueue(new LauncherCommand(this.LEFT, (int)((theta) * degreeDelay)));
                     myTheta -= theta;
                     if (myTheta < MAX_LEFT)
                         myTheta = MAX_LEFT;
@@ -120,6 +129,14 @@ namespace SadLibrary.Launcher
         }
         public void movePhi(double phi)
         {
+            if (myPhi < HALF_CIRCLE)
+                phi = phi - myPhi;
+            else
+                phi = phi + myPhi;
+            if (phi > FULL_CIRCLE)
+            {
+                phi -= FULL_CIRCLE;
+            }
             if (phi < HALF_CIRCLE && phi > 0)
             {
                 AddCommandToQueue(new LauncherCommand(this.UP, (int)(phi * degreeDelay)));
@@ -191,18 +208,13 @@ namespace SadLibrary.Launcher
                 moveTheta(theta);
                 movePhi(phi);
                 processCommandQueue();
-            }
-
-           
-               
-           
+            }           
         }
         public void fire()
         {
             if (missileCount > 0)
             {
                 AddCommandToQueue(new LauncherCommand(this.FIRE, 5000));
- //               command_Fire();
                 --missileCount;
             }
             else
