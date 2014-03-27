@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -17,7 +18,7 @@ namespace SadLibrary.Launcher
         public uint MAX_MISSILE_COUNT = 4;
         public string name = "";
         int HALF_CIRCLE = 180, FULL_CIRCLE = 360, MAX_UP = 30, MAX_DOWN = 8, MAX_LEFT = -135, MAX_RIGHT = 135;
-
+        public bool m_Busy { get; private set; }
      
 
         public void reload()
@@ -46,7 +47,6 @@ namespace SadLibrary.Launcher
 
         public void moveBy(double theta, double phi)
         {
-            
             if (theta < HALF_CIRCLE && theta > 0)
             {
                 command_Right((int)((theta) * degreeDelay));
@@ -257,6 +257,7 @@ namespace SadLibrary.Launcher
 
         public void fireAt(double x, double y, double z)
         {
+ //           m_Busy = true;
             moveCoords(x, y, z);
             fire();
         }
@@ -291,6 +292,7 @@ namespace SadLibrary.Launcher
 
         public missileLauncher()
         {
+            m_Busy = false;
             name = "Oblitzerater";
 
             this.UP = new byte[10];
@@ -363,24 +365,28 @@ namespace SadLibrary.Launcher
 
         private void command_Right(int degrees)
         {
+  //          m_Busy = true;
             this.moveMissileLauncher(this.RIGHT, degrees);
         }
 
 
         public void command_Left(int degrees)
         {
+ //           m_Busy = true;
             this.moveMissileLauncher(this.LEFT, degrees);
         }
 
 
         private void command_Up(int degrees)
         {
+ //           m_Busy = true;
             this.moveMissileLauncher(this.UP, degrees);
         }
 
 
         private void command_Down(int degrees)
         {
+ //           m_Busy = true;
             this.moveMissileLauncher(this.DOWN, degrees);
         }
 
@@ -414,7 +420,6 @@ namespace SadLibrary.Launcher
         {
             if (DevicePresent)
             {
-                
                 this.moveMissileLauncher(this.LEFT, 5500);
                 this.moveMissileLauncher(this.RIGHT, 2750);
                 this.moveMissileLauncher(this.UP, 2000);
@@ -427,14 +432,38 @@ namespace SadLibrary.Launcher
 
         private void moveMissileLauncher(byte[] Data, int interval)
         {
-            if (DevicePresent)
+            if (DevicePresent && !m_Busy)
             {
-                this.command_switchLED(true);
-                this.SendUSBData(Data);
-                Thread.Sleep(interval);
-                this.SendUSBData(this.STOP);
-                this.command_switchLED(false);
+                m_Busy = true;
+
+                BackgroundWorker bw = new BackgroundWorker();
+
+                // what to do in the background thread
+                bw.DoWork += new DoWorkEventHandler(
+                delegate(object o, DoWorkEventArgs args)
+                {
+                    BackgroundWorker b = o as BackgroundWorker;
+
+                    m_Busy = true;
+                    this.command_switchLED(true);
+                    this.SendUSBData(Data);
+                    Thread.Sleep(interval);
+                });
+
+                // what to do when worker completes its task (notify the user)
+                bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(
+                delegate(object o, RunWorkerCompletedEventArgs args)
+                {
+                    //                Dispatcher.Invoke((Action<Image<Bgr, Byte>>)(obj => _image.Source = null), null as Image<Bgr, Byte>);
+                    this.SendUSBData(this.STOP);
+                    this.command_switchLED(false);
+                    m_Busy = false;
+                });
+
+                bw.RunWorkerAsync();
             }
+
+
         }
 
 
@@ -449,7 +478,6 @@ namespace SadLibrary.Launcher
 
         
 
-
         private void USB_OnDataRecieved(object sender, DataRecievedEventArgs args)
         {
            
@@ -459,6 +487,7 @@ namespace SadLibrary.Launcher
         private void USB_OnSpecifiedDeviceArrived(object sender, EventArgs e)
         {
             this.DevicePresent = true;
+            m_Busy = false;
             if (this.USB.ProductId == 0x1010)
             {
                 this.command_switchLED(true);
@@ -469,6 +498,7 @@ namespace SadLibrary.Launcher
         private void USB_OnSpecifiedDeviceRemoved(object sender, EventArgs e)
         {
             this.DevicePresent = false;
+            m_Busy = false;
         }
 
 
