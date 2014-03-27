@@ -34,6 +34,7 @@ namespace SadGUI
             RightCommand = new DelegateCommand(Right);
             ReloadCommand = new DelegateCommand(reload);
             CalibrateCommand = new DelegateCommand(calibrate);
+            ClearQueueCommand = new DelegateCommand(ClearQueue);
         }
        
         static public LauncherViewModel Instance
@@ -56,7 +57,10 @@ namespace SadGUI
                else
                     m_launcher = LauncherFactory.NewLauncher((LauncherType)0);
            }
-       
+       public void ClearQueue()
+           {
+           //clear the command queue
+           }
         public uint missileCount
         {
             get { return (_missileCount); }
@@ -153,6 +157,7 @@ namespace SadGUI
         public ICommand LeftCommand { get; set; }
         public ICommand ReloadCommand { get; set; }
         public ICommand CalibrateCommand { get; set; }
+        public ICommand ClearQueueCommand { get; set; }
        
     }
 }
