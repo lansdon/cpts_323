@@ -32,7 +32,11 @@
                 <ColumnDefinition Width="80*"/>
                 <ColumnDefinition Width="50*"/>
             </Grid.ColumnDefinitions>
-
+            <Button Grid.Column="1"
+            Grid.Row="0"
+                    Margin="15"
+                    Content="Clear Queue"
+                    Command="{Binding ClearQueueCommand}"/>
 
             <Button
                 Grid.Column="1"
@@ -46,14 +50,23 @@
                 Grid.Row="2" 
                 Text="{Binding Path=theta, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 HorizontalAlignment="Center"
-                VerticalAlignment="Bottom"
-                ></TextBox>
+                VerticalAlignment="Bottom"/>
+            <Label Grid.Column="1"
+                   Grid.Row="2"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Content="Theta"/>
             <TextBox
                 Grid.Column="2" 
                 Grid.Row="1" 
                 Text="{Binding Path=phi, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 HorizontalAlignment="Right"
-                VerticalAlignment="Center"></TextBox>
+                VerticalAlignment="Center"/>
+            <Label Grid.Column="2"
+                   Grid.Row="1"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Content="Phi"/>
             <Button 
                 Grid.Column="0" 
                 Grid.Row="0" 
@@ -74,8 +87,7 @@
             HorizontalAlignment="Center"
             AutoToolTipPlacement="BottomRight"    
             Value="{Binding Path=phi, Mode=TwoWay}"
-            SmallChange="1" ToolTip="{Binding theta, StringFormat=\{0:D\}}"
-            />
+            SmallChange="1" ToolTip="{Binding theta, StringFormat=\{0:D\}}"/>
         <Slider Name="HorizontalSlider"
             Grid.Column="0"
             Grid.Row="1"
@@ -85,15 +97,19 @@
             AutoToolTipPlacement="BottomRight"
             
             Value="{Binding Path=theta, Mode=TwoWay, NotifyOnTargetUpdated=True, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"
-            SmallChange="1" VerticalAlignment="Center"
-            />
+            SmallChange="1" VerticalAlignment="Center"/>
         <Label Content="{Binding Path=missileCount}"
                Grid.Column="1"
                Grid.Row="1"
-               VerticalAlignment="Center"
-               HorizontalAlignment="Center">
-            
-        </Label>
+               VerticalAlignment="Bottom"
+               HorizontalAlignment="Center"/>
+        <TextBlock Text="Missile Count"
+               TextWrapping="Wrap"
+               Grid.Column="1"
+               Grid.Row="1"
+               VerticalAlignment="Top"
+               HorizontalAlignment="Center"/>
+
 
     </Grid>
 </UserControl>
