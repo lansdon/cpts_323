@@ -22,7 +22,7 @@ namespace SadLibrary.Launcher
             calibrate();
             reload();
         }
-        private void ClearCommandQueue()
+        public void ClearCommandQueue()
         {
 
         }

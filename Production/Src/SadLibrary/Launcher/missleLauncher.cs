@@ -49,7 +49,7 @@ namespace SadLibrary.Launcher
             processCommandQueue();
         }
 
-        private void ClearCommandQueue()
+        public void ClearCommandQueue()
         {
             commandQueue.Clear();
             m_Busy = false;
@@ -190,7 +190,7 @@ namespace SadLibrary.Launcher
         {
             if (missileCount > 0)
             {
-                AddCommandsToQueue(self.FIRE, 5000);
+                AddCommandToQueue(new LauncherCommand(this.FIRE, 5000));
  //               command_Fire();
                 --missileCount;
             }
