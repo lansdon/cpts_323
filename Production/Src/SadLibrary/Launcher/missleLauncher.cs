@@ -7,7 +7,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using UsbLibrary;
 
-
 namespace SadLibrary.Launcher
 {
     public class LauncherCommand 
@@ -32,7 +31,7 @@ namespace SadLibrary.Launcher
         public bool m_Busy { get; private set; }
         private Queue<LauncherCommand> commandQueue;
         private BackgroundWorker commandThread;
-        private bool commandQueueLoadInProgress;
+        private bool commandQueueLoadInProgress;  // call this first to chain commands together. then call processQueue
 
         private void AddCommandToQueue(LauncherCommand newCommand)
         {
@@ -46,7 +45,8 @@ namespace SadLibrary.Launcher
 
         private void AddCommandsToQueue(LauncherCommand[] newCommands)
         {
-            if (m_Busy) return;
+            // Uncomment this line if we want to only process one sequence of commands at a time.
+ //           if (m_Busy) return;
 
             foreach(LauncherCommand cmd in newCommands) 
             {
@@ -371,6 +371,7 @@ namespace SadLibrary.Launcher
                         LauncherCommand cmd = commandQueue.Dequeue();
                         this.command_switchLED(true);
                         this.SendUSBData(cmd.cmdData);
+//                        UpdateLauncherViewModel(cmd);
                         Thread.Sleep(cmd.durationMs);
                     }                      
                 });
@@ -390,6 +391,16 @@ namespace SadLibrary.Launcher
                     commandThread.RunWorkerAsync();
             }
         }
+
+        //  This will update the View Model variables when a command is given (instead of when it's queued.)
+        //private void UpdateLauncherViewModel(LauncherCommand cmd)
+        //{
+        //    LauncherViewModel lvm = LauncherViewModel.instance;
+        //    if (cmd.cmdData == this.FIRE)
+        //    {
+
+        //    }
+        //}
 
         private void SendUSBData(byte[] Data)
         {
