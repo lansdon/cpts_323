@@ -46,11 +46,13 @@ namespace SadLibrary.Launcher
             {
                 commandQueue.Enqueue(cmd);
             }
+            processCommandQueue();
         }
 
         private void ClearCommandQueue()
         {
             commandQueue.Clear();
+            m_Busy = false;
         }
 
         public void reload()
@@ -373,7 +375,7 @@ namespace SadLibrary.Launcher
 
 
  //       private void moveMissileLauncher(byte[] Data, int interval)
-        private void moveMissileLauncher()
+        private void processCommandQueue()
         {
             if (DevicePresent)
             {
