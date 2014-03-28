@@ -213,7 +213,9 @@
     <Content Include="..\..\LauncherClient\packages\EmguCV.221.x64.1.5\opencv\ZedGraph.dll">
       <Link>ZedGraph.dll</Link>
     </Content>
+    <Resource Include="Resources\Brony_Pony.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

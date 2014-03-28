@@ -4,10 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             Background="LightGray"
              Opacity=".9"
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        <Label Content="{Binding Name}" Opacity="10" Foreground="Black"/>
+        <Label Content="{Binding Name}" Opacity="10" Foreground="White"/>
     </Grid>
 </UserControl>

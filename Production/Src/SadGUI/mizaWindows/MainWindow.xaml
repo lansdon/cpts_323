@@ -5,7 +5,7 @@
         Title="MainWindow" Height="600" Width="800"
         WindowState="Normal"
         WindowStyle="ThreeDBorderWindow">
-
-    <MyWindow:MainWindowControl x:Name="MainWindowControl" />
+    
+    <MyWindow:MainWindowControl x:Name="MainWindowControl"/>
 
 </Window>

@@ -4,7 +4,6 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             Background="White"
              d:DesignHeight="300" d:DesignWidth="300"
              DataContext="{Binding TWITTER}">
     <Grid>
@@ -17,6 +16,7 @@
                FontSize="20"
                FontWeight="ExtraBold"
                Margin="0,60,0,60"
+                Foreground="White"
                Content="Input Twitter Feed:"
                />
         <TextBox Text="{Binding TwitterFeed}"

@@ -6,14 +6,14 @@
              xmlns:controls="clr-namespace:SadGUI"
              xmlns:MyWindows="clr-namespace:SadGUI.mizaWindows"
              mc:Ignorable="d"
-             Background="White"
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
         <TextBlock
             VerticalAlignment="Center"
             HorizontalAlignment="Center"
             FontWeight="ExtraBold"
-            FontSize="40" 
+            FontSize="40"
+            Foreground="White"
             Text="TEAM MIZU"/>
     </Grid>
 </UserControl>

@@ -7,8 +7,7 @@
              xmlns:MyWindows="clr-namespace:SadGUI.mizaWindows"
              mc:Ignorable="d" 
              d:DesignHeight="300"
-             d:DesignWidth="700"
-             Background="White">
+             d:DesignWidth="700">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width= "30*"/>
@@ -35,6 +34,7 @@
                         Name="VideoCheckBox"
                         Grid.Row="0" 
                         Content="Video On/Off"
+                        Foreground="White"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
                         FontSize="15"
@@ -48,6 +48,7 @@
                         Name="TwitterFeedCheckBox"
                         Grid.Row="1"
                         Content="Twitter Feed"
+                        Foreground="White"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
                         FontSize="15"
@@ -60,6 +61,7 @@
                         DataContext="{Binding ServerCB}"
                         Grid.Row="2"
                         Content="Server Connect"
+                        Foreground="White"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
                         FontSize="15"
@@ -72,6 +74,7 @@
                     DataContext="{Binding LCVM}"
                         Grid.Row="3"
                         Content="Launcher Connect"
+                        Foreground="White"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
                         FontSize="15"
@@ -85,6 +88,7 @@
                         Name="DefaultControlsCheckBox"
                         Grid.Row="4"
                         Content="Default Controls"
+                        Foreground="White"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
                         FontSize="15"

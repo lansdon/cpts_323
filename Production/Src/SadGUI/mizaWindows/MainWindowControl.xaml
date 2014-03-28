@@ -7,9 +7,12 @@
              xmlns:MyWindows="clr-namespace:SadGUI.mizaWindows"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    
+
     <!--Main Grid Definition-->
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Resources/Brony_Pony.png"/>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="50*"/><!--Row 1-->
             <RowDefinition Height="50*"/> <!--Row 2-->
