@@ -75,6 +75,34 @@
               LastKnownName="IComponentConnector"
               LastKnownLocation="Package6_1340.uml" />
           </interfaceRealization>
+          <dependency
+            Id="e6f07741-5e8a-4973-bb8c-b56e261d1da9">
+            <classMoniker
+              Id="6f72fc6a-213a-454b-bd75-f81441d4305d"
+              LastKnownName="TargetUserControl"
+              LastKnownLocation="Package5_1340.uml" />
+          </dependency>
+          <dependency
+            Id="e7960cf5-69f4-4a52-8e80-c81d1a055898">
+            <classMoniker
+              Id="73396c40-5cf8-421a-939f-7c011588012c"
+              LastKnownName="CameraUserControl"
+              LastKnownLocation="Package5_1340.uml" />
+          </dependency>
+          <dependency
+            Id="7c4cd0a8-64e2-48e3-9c4a-31f4553cf6e6">
+            <classMoniker
+              Id="d5b3ec3c-9978-400a-bfab-af71587edcfb"
+              LastKnownName="launcherUserControl"
+              LastKnownLocation="Package5_1340.uml" />
+          </dependency>
+          <dependency
+            Id="3071b444-781a-4a9d-86f5-19a906fc1d3f">
+            <classMoniker
+              Id="2cc77586-2afa-46f5-ab40-c3a59a6cae5d"
+              LastKnownName="CheckBoxUserControls"
+              LastKnownLocation="Package5_1340.uml" />
+          </dependency>
         </suppliersInternal>
         <generalsInternal>
           <generalization
@@ -738,6 +766,47 @@
               LastKnownLocation="Package2_1340.uml" />
           </generalization>
         </generalsInternal>
+        <targetEnds>
+          <association
+            Id="6cc787ed-40c5-46fd-9dc0-f8fb3bde779c"
+            isDerived="false"
+            sourceEndRoleName="launcherUserControl"
+            targetEndRoleName="LauncherViewModel"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="90571dba-25c8-499b-a7f8-74f8e669a424"
+              LastKnownName="LauncherViewModel"
+              LastKnownLocation="Package_1340.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="939433a5-8ce8-486e-9b63-d693bfd247c4"
+                  name="launcherUserControl"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="96b9e1ba-26e6-4450-b095-c5b19c9b3cf6"
+                  name="LauncherViewModel"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
         <ownedAttributesInternal>
           <property
             Id="ef7acfbf-1cd7-4015-8092-29213983a107"
@@ -2095,6 +2164,45 @@
                       value="1" />
                   </upperValueInternal>
                 </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="71fd74a7-2245-4d8f-a9b4-de91945aab28"
+            isDerived="false"
+            sourceEndRoleName="TargetUserControl"
+            targetEndRoleName="TargetViewModel"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="145a40d3-81e2-41b3-8614-eaa58fb8a4a4"
+              LastKnownName="TargetViewModel"
+              LastKnownLocation="Package_1340.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="72855e66-f3e4-438b-816e-169e95306c40"
+                  name="TargetUserControl"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="5441fce9-ded3-4f6b-8947-203606f97e79"
+                  name="TargetViewModel"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>
@@ -4389,6 +4497,164 @@
               LastKnownLocation="Package2_1340.uml" />
           </generalization>
         </generalsInternal>
+        <targetEnds>
+          <association
+            Id="3cd20d06-7487-42e9-a043-848a80233e8a"
+            isDerived="false"
+            sourceEndRoleName="CheckBoxUserControls"
+            targetEndRoleName="DefaultUserControl"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="3a9fb72b-5c66-4c26-94c3-3aae138e2232"
+              LastKnownName="DefaultUserControl"
+              LastKnownLocation="Package5_1340.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="b637b1c0-ca19-410f-970a-918503141a10"
+                  name="CheckBoxUserControls"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Shared"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="889af0c4-9bd8-463f-95d7-4ad67367ba4e"
+                  name="DefaultUserControl"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="232979fb-c906-475b-83ed-d42c88c968e0"
+            isDerived="false"
+            sourceEndRoleName="CheckBoxUserControls"
+            targetEndRoleName="TwitterUserControl"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="3cb30024-b5a6-4ca6-80b9-d6fea3bc76e3"
+              LastKnownName="TwitterUserControl"
+              LastKnownLocation="Package5_1340.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="2223646f-e8a0-4b3b-b48e-6038f4cf1596"
+                  name="CheckBoxUserControls"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Shared"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="6aa49ca8-332d-46d1-9245-514e71df3023"
+                  name="TwitterUserControl"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="423ce1c1-ed82-410b-b127-94bd929ddedf"
+            isDerived="false"
+            sourceEndRoleName="CheckBoxUserControls"
+            targetEndRoleName="ServerUserControl"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="8d2d0c9b-e2dd-4fb1-a618-a7bcbb01e857"
+              LastKnownName="ServerUserControl"
+              LastKnownLocation="Package5_1340.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="eadcadd9-e70e-4212-822f-1e468a2a57d8"
+                  name="CheckBoxUserControls"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Shared"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="58b59f30-c352-4cd1-bace-f502e1ab8dec"
+                  name="ServerUserControl"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="541c00c7-6e88-4ba8-9665-f589e4281133"
+            isDerived="false"
+            sourceEndRoleName="CheckBoxUserControls"
+            targetEndRoleName="LauncherUsercontrolWithButtons"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="fd0870b9-299e-4459-8f32-e30ec5201380"
+              LastKnownName="LauncherUsercontrolWithButtons"
+              LastKnownLocation="Package5_1340.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="372a1cea-d33c-4fbd-b867-cca1790d0eb5"
+                  name="CheckBoxUserControls"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Shared"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="60851ba0-4fe3-48c8-9d22-dc1b5a61ef02"
+                  name="LauncherUsercontrolWithButtons"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
         <ownedAttributesInternal>
           <property
             Id="4aa9bcc7-5671-4dca-8e50-94d59a619985"

@@ -48,15 +48,15 @@ namespace SadGUI
                 return _instance;
             }
         }
-           public void changeLauncher(int value)
-           {
-               if (m_launcher != null)
-               {
-                   m_launcher = LauncherFactory.NewLauncher((LauncherType)value);
-               }
-               else
-                    m_launcher = LauncherFactory.NewLauncher((LauncherType)0);
-           }
+        public void changeLauncher(int value)
+        {
+            if (m_launcher != null)
+            {
+                m_launcher = LauncherFactory.NewLauncher((LauncherType)value);
+            }
+            else
+                m_launcher = LauncherFactory.NewLauncher((LauncherType)0);
+        }
        public void ClearQueue()
            {
                m_launcher.ClearCommandQueue();
@@ -66,14 +66,10 @@ namespace SadGUI
             get { return (_missileCount); }
             set
             {
-
                if(_missileCount > 0 || value == 4)
                    _missileCount = value;
-               
-                   
+                           
                OnPropertyChanged("missileCount");
-               
-
             }
         }
         public void calibrate()

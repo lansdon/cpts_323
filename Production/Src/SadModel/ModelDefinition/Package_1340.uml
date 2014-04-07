@@ -438,6 +438,15 @@
             </propertyInstances>
           </stereotypeInstance>
         </appliedStereotypesInternal>
+        <suppliersInternal>
+          <dependency
+            Id="3e74564b-c156-42a2-b889-3dcdbe6ae29c">
+            <classMoniker
+              Id="d245d46b-91ea-42fc-9987-f6ec14a45a0d"
+              LastKnownName="MainWindowControl"
+              LastKnownLocation="Package5_1340.uml" />
+          </dependency>
+        </suppliersInternal>
         <ownedAttributesInternal>
           <property
             Id="3da4d8cf-b897-4850-8828-6a88b8ad9892"
@@ -3324,6 +3333,58 @@
                       Id="f7472f76-e896-4eeb-80af-7c3201761e81"
                       name="Upper"
                       value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="5a018e2d-4d65-41d2-8a25-7072d7d66726"
+            isDerived="false"
+            sourceEndRoleName="LauncherViewModel"
+            targetEndRoleName="DelegateCommand"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="5bd2281f-5e2e-4b75-a62b-252d850b9df2"
+              LastKnownName="DelegateCommand"
+              LastKnownLocation="Package_1340.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="2697e601-aef6-4a5a-a9fa-677931147783"
+                  name="LauncherViewModel"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Composite"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="76d074ff-2a36-4b11-a06d-cfd882fe2934"
+                  name="DelegateCommand"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="true">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="7aaac696-279d-4a61-b0c9-b070a4d99f9c"
+                      name="Lower"
+                      value="10*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="148c0b55-5cc6-464d-bedd-2b0ab1922897"
+                      name="Upper"
+                      value="10*" />
                   </upperValueInternal>
                 </memberEnd>
               </associationHasOwnedEnds>
@@ -8629,6 +8690,97 @@
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>
+          <association
+            Id="c3bc5594-934e-4a3b-9465-5f99c950322e"
+            isDerived="false"
+            sourceEndRoleName="TwitterViewModel"
+            targetEndRoleName="TwitterUserControl"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="3cb30024-b5a6-4ca6-80b9-d6fea3bc76e3"
+              LastKnownName="TwitterUserControl"
+              LastKnownLocation="Package5_1340.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="5d6287b3-e708-4dab-a134-e72e4fb3e79c"
+                  name="TwitterViewModel"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="fbddae73-ee27-4939-ad60-17e61583ac5a"
+                  name="TwitterUserControl"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="8c6da5fa-cff8-4aa2-b8aa-57e8d6a2ffd0"
+            isDerived="false"
+            sourceEndRoleName="TwitterViewModel"
+            targetEndRoleName="DelegateCommand"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="5bd2281f-5e2e-4b75-a62b-252d850b9df2"
+              LastKnownName="DelegateCommand"
+              LastKnownLocation="Package_1340.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="93c8cf83-89f0-4579-8e3e-effb14b67309"
+                  name="TwitterViewModel"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Composite"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="749a18eb-fe3e-4250-a493-c0eeb1b4fbda"
+                  name="DelegateCommand"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="true">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="313869d5-3804-44ec-a473-2efc7031b125"
+                      name="Lower"
+                      value="2" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="7f52c126-bbc0-4eff-b31a-73dbaa0593b7"
+                      name="Upper"
+                      value="2" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
         </targetEnds>
         <ownedAttributesInternal>
           <property
@@ -9194,6 +9346,15 @@
             </propertyInstances>
           </stereotypeInstance>
         </appliedStereotypesInternal>
+        <suppliersInternal>
+          <dependency
+            Id="703b61b2-1260-45c4-aa96-f72429b8f5af">
+            <classMoniker
+              Id="a2520ac0-e879-426d-8116-a38249a0de90"
+              LastKnownName="SadCamera"
+              LastKnownLocation="Package_1340.uml" />
+          </dependency>
+        </suppliersInternal>
         <generalsInternal>
           <generalization
             Id="0135002b-cab1-4664-8a7b-7876185dfbee"
@@ -10338,6 +10499,58 @@
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>
+          <association
+            Id="e54e6093-32c3-4eda-9efe-827b37061ce7"
+            isDerived="false"
+            sourceEndRoleName="ServerViewModel"
+            targetEndRoleName="DelegateCommand"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="5bd2281f-5e2e-4b75-a62b-252d850b9df2"
+              LastKnownName="DelegateCommand"
+              LastKnownLocation="Package_1340.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="a732f2da-6ffb-4a00-b447-1a5d1ac86c36"
+                  name="ServerViewModel"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Composite"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="abb16fce-ce18-4b7e-b712-22a3e8972444"
+                  name="DelegateCommand"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="true">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="ba79889c-17db-4dba-a581-005c57453960"
+                      name="Lower"
+                      value="2" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="6780b331-ccbd-4d2a-802f-d5ba220c87cc"
+                      name="Upper"
+                      value="2" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
         </targetEnds>
         <ownedAttributesInternal>
           <property
@@ -10922,6 +11135,47 @@
               LastKnownLocation="Package1_1340.uml" />
           </generalization>
         </generalsInternal>
+        <targetEnds>
+          <association
+            Id="b3894be9-42d0-4166-9aac-d79559a67ecd"
+            isDerived="false"
+            sourceEndRoleName="MainWindow"
+            targetEndRoleName="ContentController"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="c79a2bf9-9178-4568-b5df-ed381a7f9ca2"
+              LastKnownName="ContentController"
+              LastKnownLocation="Package_1340.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="59a97bbf-cc56-4f9f-a1eb-0332777521fb"
+                  name="MainWindow"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Composite"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="db6beef7-c8dd-4960-a783-ce4c03743630"
+                  name="ContentController"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="true" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
         <ownedAttributesInternal>
           <property
             Id="c395e57a-96c8-4f47-b193-153b1b181e1b"
@@ -12746,6 +13000,47 @@
               LastKnownLocation="Package2_1340.uml" />
           </generalization>
         </generalsInternal>
+        <targetEnds>
+          <association
+            Id="6569b18e-eb76-496c-8107-46c9e47d229b"
+            isDerived="false"
+            sourceEndRoleName="TargetViewControl"
+            targetEndRoleName="TargetViewModel"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="145a40d3-81e2-41b3-8614-eaa58fb8a4a4"
+              LastKnownName="TargetViewModel"
+              LastKnownLocation="Package_1340.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="3d30e8b4-f281-46a2-bde9-9d95ae60e285"
+                  name="TargetViewControl"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="b17af08e-17c9-4bba-98ef-3e425cc089a2"
+                  name="TargetViewModel"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
         <ownedAttributesInternal>
           <property
             Id="2baf0568-4dd0-421a-b8b0-1c733e2aaa88"
