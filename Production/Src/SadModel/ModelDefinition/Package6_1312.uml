@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
   dslVersion="1.0.0.0"
   Id="2fb0d33c-acd5-477e-a9b5-48fb8dc79372"
   name="Launcher"
@@ -1277,6 +1277,29 @@
             </propertyInstances>
           </stereotypeInstance>
         </appliedStereotypesInternal>
+        <suppliersInternal>
+          <dependency
+            Id="d61acb70-17ea-413a-adc1-b9c7b1021d8b">
+            <interfaceMoniker
+              Id="8897afba-3d0f-4b30-984f-601b2de811f4"
+              LastKnownName="ILauncher"
+              LastKnownLocation="Package6_1312.uml" />
+          </dependency>
+          <dependency
+            Id="c25f3f57-9a9b-4c87-99b8-8c8eeb96ba94">
+            <classMoniker
+              Id="2fc8dc47-e367-4c60-9d3b-f3dfccf48af2"
+              LastKnownName="mockLauncher"
+              LastKnownLocation="Package6_1312.uml" />
+          </dependency>
+          <dependency
+            Id="896b6882-6ad3-4e14-b6fa-cb609e7b79c2">
+            <classMoniker
+              Id="f0e799a2-cc6e-4d4e-a546-8372638945af"
+              LastKnownName="missileLauncher"
+              LastKnownLocation="Package6_1312.uml" />
+          </dependency>
+        </suppliersInternal>
         <ownedOperationsInternal>
           <operation
             Id="cce1a411-b3d3-4f23-b029-43d8d5ccb360"
