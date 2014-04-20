@@ -91,12 +91,33 @@
     <Content Include="ModelDefinition\Package_1341.uml">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="SADActivityDiagram1.activitydiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="SADActivityDiagram1.activitydiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>SADActivityDiagram1.activitydiagram</DependentUpon>
+    </Content>
+    <Content Include="SADComponentDiagram1.componentdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="SADComponentDiagram1.componentdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>SADComponentDiagram1.componentdiagram</DependentUpon>
+    </Content>
     <Content Include="SadGUIUML.classdiagram">
       <SubType>Content</SubType>
     </Content>
     <Content Include="SadGUIUML.classdiagram.layout">
       <SubType>Content</SubType>
       <DependentUpon>SadGUIUML.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="SADUseCaseDiagram.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="SADUseCaseDiagram.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>SADUseCaseDiagram.usecasediagram</DependentUpon>
     </Content>
     <Content Include="UMLClassDiagram1.classdiagram">
       <SubType>Content</SubType>
