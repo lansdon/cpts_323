@@ -80,6 +80,7 @@
     <Compile Include="ContentControllerManager.cs" />
     <Compile Include="DefaultControlCheckBox.cs" />
     <Compile Include="DelegateCommand.cs" />
+    <Compile Include="ImageProcessor.cs" />
     <Compile Include="LauncherConnectViewModel.cs" />
     <Compile Include="LauncherViewModel.cs" />
     <Compile Include="mizaWindows\CameraUserControl.xaml.cs">

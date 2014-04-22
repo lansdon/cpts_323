@@ -26,9 +26,11 @@ namespace SadGUI
         private System.Windows.Controls.Image _image = null;
         private bool _cameraOn = false;
         private bool _cameraDisabled = false;
+        private ImageProcessor imgProcessor;
 
         public SadCamera()
         {
+            imgProcessor = new ImageProcessor();
         }
 
         public bool isOn()
@@ -96,7 +98,8 @@ namespace SadGUI
 
                     if (currentFrame != null)
                     {
-                        grayFrame = currentFrame.Convert<Gray, Byte>();
+                        imgProcessor.ProcessImage(ref currentFrame);
+ //                       grayFrame = currentFrame.Convert<Gray, Byte>();
                         Dispatcher.Invoke((Action<Image<Bgr, Byte>>)(obj => _image.Source = ToBitmapSource(obj)), currentFrame as Image<Bgr, Byte>);
                     }
                     Thread.Sleep(1000 / 30);
