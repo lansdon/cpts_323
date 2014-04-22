@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
-             DataContext="{Binding Path=ServerVM}">
+             DataContext="{Binding Path=GSVM}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50*"/>
@@ -15,6 +15,7 @@
                  Background="Transparent"
                  Margin="10"
                  ItemsSource="{Binding Path=games}"
+                 SelectedIndex="{Binding Path=SelectedIndex}"
                  Foreground="White"/>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -23,6 +24,7 @@
             </Grid.ColumnDefinitions>
             <Button Grid.Column="0"
                     Content="OK"
+                    Command="{Binding Path=OkCommand}"
                     Margin="15,20"/>
             <Button Grid.Column="1"
                     Content="Cancel"

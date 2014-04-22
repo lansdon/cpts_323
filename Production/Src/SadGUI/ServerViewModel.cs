@@ -14,14 +14,10 @@ namespace SadGUI
     {
         private string _serverIP;
         private string _serverPort;
-        public ObservableCollection<string> games { get; set; }
+        
         public ServerViewModel()
         {
-            games = new ObservableCollection<string>();
-            games.Add("game 1");
-            games.Add("game 2");
-            games.Add("game 3");
-            games.Add("game 4");
+            
             OkCommand = new DelegateCommand(Ok);
             CancelCommand = new DelegateCommand(Cancel);
         }

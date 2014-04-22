@@ -33,8 +33,9 @@ namespace SadGUI
             ServerVM = new ServerViewModel();
             TWITTER = new TwitterViewModel();
             ServerCB = ServerCheckBox.instance;
+            GSVM = new GameSelectionViewModel();
         }
-
+        public GameSelectionViewModel GSVM { get; set; }
         public TargetViewModel TargetsViewModel { get; set; }
         public ServerCheckBox ServerCB { get; set; }
         //public ObservableCollection<TargetViewModel> Targets
