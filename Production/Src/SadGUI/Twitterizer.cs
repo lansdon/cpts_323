@@ -63,7 +63,7 @@ namespace Twitter
 
             if (File.Exists(FilePath))
             {
-                using (var xml = new XmlTextReader(Path.Combine(Environment.CurrentDirectory, FilePath)))
+                using (var xml = new XmlTextReader(Path.Combine(Environment.CurrentDirectory, "Resources/" + FilePath)))
                 {
                     XmlSerializer AccessToken = new XmlSerializer(typeof(OAuthAccessToken));
                     XmlSerializer UserToken = new XmlSerializer(typeof(ConsumerToken));
