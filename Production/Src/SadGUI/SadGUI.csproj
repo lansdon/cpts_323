@@ -102,6 +102,9 @@
     <Compile Include="mizaWindows\DefaultUserControl.xaml.cs">
       <DependentUpon>DefaultUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="mizaWindows\gameSelectionView.xaml.cs">
+      <DependentUpon>gameSelectionView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="mizaWindows\launcherUserControl.xaml.cs">
       <DependentUpon>launcherUserControl.xaml</DependentUpon>
     </Compile>
@@ -141,6 +144,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="mizaWindows\DefaultUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="mizaWindows\gameSelectionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
