@@ -25,10 +25,12 @@
             <Button Grid.Column="0"
                     Content="OK"
                     Command="{Binding Path=OkCommand}"
-                    Margin="15,20"/>
+                    Margin="15,20"
+                    IsDefault="True"/>
             <Button Grid.Column="1"
                     Content="Cancel"
-                    Margin="15,20"/>
+                    Margin="15,20"
+                    Command="{Binding Path=CancelCommand}"/>
         </Grid>
               
     </Grid>

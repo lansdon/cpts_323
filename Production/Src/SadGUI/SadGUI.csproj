@@ -91,6 +91,7 @@
     <Compile Include="DefaultControlCheckBox.cs" />
     <Compile Include="DelegateCommand.cs" />
     <Compile Include="GameSelectionViewModel.cs" />
+    <Compile Include="GameStartViewModel.cs" />
     <Compile Include="ImageProcessor.cs" />
     <Compile Include="LauncherConnectViewModel.cs" />
     <Compile Include="LauncherViewModel.cs" />
@@ -106,6 +107,9 @@
     </Compile>
     <Compile Include="mizaWindows\gameSelectionView.xaml.cs">
       <DependentUpon>gameSelectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="mizaWindows\gameStartView.xaml.cs">
+      <DependentUpon>gameStartView.xaml</DependentUpon>
     </Compile>
     <Compile Include="mizaWindows\launcherUserControl.xaml.cs">
       <DependentUpon>launcherUserControl.xaml</DependentUpon>
@@ -150,6 +154,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="mizaWindows\gameSelectionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="mizaWindows\gameStartView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

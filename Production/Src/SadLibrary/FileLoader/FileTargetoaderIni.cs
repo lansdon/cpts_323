@@ -52,7 +52,7 @@ namespace SadLibrary.FileLoader
                 // NAME
                 else if (currentAttributeNum == TargetFields.F_NAME && lineId == "name") 
                 {
-                    currentTarget.Name = lineValue;
+                    currentTarget.name = lineValue;
                     currentAttributeNum++;
                 } 
                 
@@ -62,7 +62,7 @@ namespace SadLibrary.FileLoader
                     double x = -1.0;
                     if (Double.TryParse(lineValue, out x))
                     {
-                        currentTarget.X = x;
+                        currentTarget.x = x;
                         currentAttributeNum++;
                     }
                     else error = true;
@@ -74,7 +74,7 @@ namespace SadLibrary.FileLoader
                     double y = -1.0;
                     if (Double.TryParse(lineValue, out y))
                     {
-                        currentTarget.Y = y;
+                        currentTarget.y = y;
                         currentAttributeNum++;
                     }
                     else error = true;
@@ -86,7 +86,7 @@ namespace SadLibrary.FileLoader
                     double z = -1.0;
                     if (Double.TryParse(lineValue, out z))
                     {
-                        currentTarget.Z = z;
+                        currentTarget.z = z;
                         currentAttributeNum++;
                     }
                     else error = true;
@@ -103,7 +103,7 @@ namespace SadLibrary.FileLoader
                         int points = 0;
                         if (Int32.TryParse(lineValue, out points))
                         {
-                            currentTarget.Points = points;
+                            currentTarget.points = points;
                         }
                         else error = true;
                         currentAttributeNum++;

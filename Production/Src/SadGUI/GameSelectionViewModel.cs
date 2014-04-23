@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SadGUI.mizaWindows;
+using SadLibrary.Targets;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -13,17 +15,18 @@ namespace SadGUI
     {
         private int _selectedIndex;
         public ObservableCollection<string> games { get; set; }
-        
+        IGameServer gameserver;
         public GameSelectionViewModel()
         {
             Mediator.Instance.Register("to games", toGames);
             games = new ObservableCollection<string>();
+            
             OkCommand = new DelegateCommand(Ok);
             CancelCommand = new DelegateCommand(Cancel);
         }
         private void toGames(object parameter)
         {
-            var gameserver = parameter as IGameServer;
+            gameserver = parameter as IGameServer;
             var data = gameserver.RetrieveGameList();
             
             foreach(string game in data)
@@ -44,8 +47,19 @@ namespace SadGUI
                 OnPropertyChanged("SelectedIndex");
             }
         }
-        public void Ok() { Console.WriteLine(_selectedIndex); }
-        public void Cancel() { }
+        public void Ok()
+        {
+            
+            Console.WriteLine(_selectedIndex);
+            Mediator.Instance.SendMessage("Game Name", games[_selectedIndex]);
+            var data = gameserver.RetrieveTargetList(games[_selectedIndex]);
+            Mediator.Instance.SendMessage("Target List", data);
+            ContentController.SetContentToController("RightCheckBoxPanel", new gameStartView());
+        }
+        public void Cancel() {
+            games = new ObservableCollection<string>();
+            ServerCheckBox.instance.ServerControl_CheckBox_IsChecked = false;
+        }
         public ICommand OkCommand { get; set; }
         public ICommand CancelCommand { get; set; }
     }

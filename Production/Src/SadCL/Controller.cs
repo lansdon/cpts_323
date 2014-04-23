@@ -218,7 +218,7 @@ namespace SadCL
                 SadLibrary.Targets.Target target = SadLibrary.Targets.Target_Manager.getTarget(targetName);
                 if (target != null && target.Friend == false)
                 {
-                    launcher.fireAt(target.X, target.Y, target.Z);
+                    launcher.fireAt(target.x, target.y, target.z);
                 }
                 else
                 {

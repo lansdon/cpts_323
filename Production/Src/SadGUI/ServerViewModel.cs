@@ -46,22 +46,32 @@ namespace SadGUI
         public void Ok()
         { 
             GameServerType serverType;
-            IGameServer gameServer;
-            //do something special.
-            //ServerCheckBox.instance.ServerControl_CheckBox_IsChecked = false;
-            if(_serverIP == "mock" || _serverIP == "")
-            {
+            IGameServer gameServer = null;
+           
+            if(_serverIP == "mock" || string.IsNullOrEmpty(_serverIP))
                 serverType = GameServerType.Mock;
-                gameServer = GameServerFactory.Create(serverType, "Team Mizu!!", _serverIP, Convert.ToInt32(_serverPort));
+            else
+                serverType = GameServerType.WebClient;
+
+            if ((gameServer = GameServerFactory.Create(serverType, "Team Mizu!!", _serverIP, Convert.ToInt32(_serverPort))) != null)
+            {
                 Mediator.Instance.SendMessage("to games", gameServer);
+                ContentController.SetContentToController("RightCheckBoxPanel", new gameSelectionView());
+            }
+            else
+            {
+                serverIP = null;
+                serverPort = null;
+                // change label to reflect that server didn't connect
             }
             
-            ContentController.SetContentToController("RightCheckBoxPanel", new gameSelectionView());
 
         }
         public void Cancel()
         {
             //do something special.
+            serverIP = null;
+            serverPort = null;
             ServerCheckBox.instance.ServerControl_CheckBox_IsChecked = false;
         }
         public ICommand OkCommand { get; set; }

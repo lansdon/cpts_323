@@ -22,9 +22,9 @@ namespace SadGUI
         public MainViewModel(ILauncher launcher)
         {
             
-            var t = new Target();
-            t.Name = "this is a target";
-            TargetsViewModel = new TargetViewModel(t);
+            
+            //TargetsViewModel = new TargetViewModel();
+            GameStart = new GameStartViewModel();
             LauncherViewModel = LauncherViewModel.Instance;
             VideoCheckBox = new VideoCheckBox();
             LCVM = new LauncherConnectViewModel();
@@ -36,6 +36,7 @@ namespace SadGUI
             GSVM = new GameSelectionViewModel();
             MEDIONE = Mediator.Instance;
         }
+        public GameStartViewModel GameStart { get; set; }
         public GameSelectionViewModel GSVM { get; set; }
         public TargetViewModel TargetsViewModel { get; set; }
         public ServerCheckBox ServerCB { get; set; }

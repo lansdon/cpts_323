@@ -15,9 +15,9 @@ namespace SadGUI
 {
     public class TargetViewModel : ViewModelBase
     {
-        private Target m_target;
+        private ITarget m_target;
 
-        public TargetViewModel(Target target)
+        public TargetViewModel(ITarget target)
         {
             m_target = target;
 
@@ -27,28 +27,28 @@ namespace SadGUI
         {
             get
             {
-                return m_target.Name;
+                return m_target.name;
             }
 
             set
             {
-                m_target.Name = value;
+                m_target.name = value;
                 OnPropertyChanged("Name");
             }
         }
-        public bool Friend
-        {
-            get
-            {
-                return m_target.Friend;
-            }
+        //public bool Friend
+        //{
+        //    get
+        //    {
+        //        return m_target.Friend;
+        //    }
 
-            set
-            {
-                m_target.Friend = value;
-                OnPropertyChanged("Friend");
-            }
-        }
+        //    set
+        //    {
+        //        m_target. = value;
+        //        OnPropertyChanged("Friend");
+        //    }
+        //}
         public string CordsToString
         {
             get
@@ -61,44 +61,44 @@ namespace SadGUI
                 OnPropertyChanged("CordsToString");
             }
         }
-        public bool Alive
+        //public bool Alive
+        //{
+        //    get
+        //    {
+        //        return m_target.;
+        //    }
+        //    set
+        //    {
+        //        m_target.Alive = value;  
+        //        OnPropertyChanged("Alive");
+        //    }
+        //}
+        public double Points
         {
             get
             {
-                return m_target.Alive;
+                return m_target.points;
             }
             set
             {
-                m_target.Alive = value;  
-                OnPropertyChanged("Alive");
-            }
-        }
-        public int Points
-        {
-            get
-            {
-                return m_target.Points;
-            }
-            set
-            {
-                m_target.Points = value;
+                m_target.points = value;
                 OnPropertyChanged("Points");
             }
         }
-        public int FlashRate
+        public double FlashRate
         {
             get
             {
-                return m_target.FlashRate;
+                return m_target.dutyCycle;
             }
             set
             {
-                m_target.FlashRate = value;
+                m_target.dutyCycle = value;
                 OnPropertyChanged("FlashRate");
             }
         }
 
-        public Target Target() 
+        public ITarget Target() 
         {
             return m_target;
         } 

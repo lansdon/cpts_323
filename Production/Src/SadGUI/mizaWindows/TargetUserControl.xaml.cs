@@ -30,8 +30,42 @@ namespace SadGUI.mizaWindows
             InitializeComponent();
             LoadTargetsFromFile("targets.ini");
             LoadTargetsFromServerButton.IsEnabled = false;
+            Mediator.Instance.Register("Target List", populateTargets);
+            Mediator.Instance.Register("Clear Targets", clearTargets);
         }
-
+        void clearTargets(object p)
+        {
+            Targets = new ObservableCollection<TargetViewModel>();
+            TargetListBox.ItemsSource = Targets;
+        }
+        void populateTargets(object param)
+        {
+            IEnumerable<TargetServerCommunicator.Data.Target> temps = param as IEnumerable<TargetServerCommunicator.Data.Target>;
+            Targets = new ObservableCollection<TargetViewModel>();
+            foreach (var temp in temps)
+            {
+                ITarget mytemp = new Target();
+                mytemp.dutyCycle = temp.dutyCycle;
+                mytemp.hit = temp.hit;
+                mytemp.id = temp.id;
+                mytemp.input = temp.input;
+                mytemp.isMoving = temp.isMoving;
+                mytemp.led = temp.led;
+                mytemp.movingState = temp.movingState;
+                mytemp.name = temp.name;
+                mytemp.points = temp.points;
+                mytemp.spawnRate = temp.spawnRate;
+               // mytemp.startTime = temp.startTime;
+                mytemp.status = temp.status;
+                mytemp.x = temp.x;
+                mytemp.y = temp.y;
+                mytemp.z = temp.z;
+                
+                //target.Alive = true;
+                Targets.Add(new TargetViewModel(mytemp));
+            }
+            TargetListBox.ItemsSource = Targets;
+        }
         private void OpenFileCommand(object sender, RoutedEventArgs e)
         {
             // Configure open file dialog box
@@ -88,8 +122,8 @@ namespace SadGUI.mizaWindows
             // find the item that is the datacontext for this button
             TargetViewModel targetVM = button.DataContext as TargetViewModel;
 
-            Target target = targetVM.Target();
-            LauncherViewModel.Instance.MoveToCoords(target.X, target.Y, target.Z);
+            ITarget target = targetVM.Target();
+            LauncherViewModel.Instance.MoveToCoords(target.x, target.y, target.z);
         }
         private void KillTarget(object sender, RoutedEventArgs e)
         {
@@ -99,10 +133,10 @@ namespace SadGUI.mizaWindows
             // find the item that is the datacontext for this button
             TargetViewModel targetVM = button.DataContext as TargetViewModel;
 
-            Target target = targetVM.Target();
+            ITarget target = targetVM.Target();
            
 
-            LauncherViewModel.Instance.FireAt(target.X, target.Y, target.Z);
+            LauncherViewModel.Instance.FireAt(target.x, target.y, target.z);
         }
 
     }

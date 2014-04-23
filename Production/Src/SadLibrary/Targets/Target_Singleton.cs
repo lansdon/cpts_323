@@ -48,7 +48,7 @@ namespace SadLibrary.Targets
             bool result = false;
             foreach (var target in Instance.Target_List)
             {
-                if (target.Name == Name)
+                if (target.name == Name)
                 {
                     Instance.Target_List.Remove(target);
                     result = true;
@@ -85,7 +85,7 @@ namespace SadLibrary.Targets
             bool result = false;
             foreach (var target in Instance.Target_List)
             {
-                if (target.Name == Name)
+                if (target.name == Name)
                 {
                     target.Alive = true;
                     result = true;
@@ -99,7 +99,7 @@ namespace SadLibrary.Targets
             bool result = false;
             foreach (var target in Instance.Target_List)
             {
-                if (target.Name == Name)
+                if (target.name == Name)
                 {
                     target.Alive = false;
                     result = true;
@@ -122,7 +122,7 @@ namespace SadLibrary.Targets
             Target Temp = null;
             foreach (var target in Instance.Target_List)
             {
-                if (target.Name.ToUpper() == Name.ToUpper())
+                if (target.name.ToUpper() == Name.ToUpper())
                 {
                     Temp = target;
                 }
@@ -140,7 +140,7 @@ namespace SadLibrary.Targets
             int num = 1;
             foreach (var target in Instance.Target_List)
             {
-                Console.WriteLine(num++ + ": " + target.Name);
+                Console.WriteLine(num++ + ": " + target.name);
             }
         }
 
