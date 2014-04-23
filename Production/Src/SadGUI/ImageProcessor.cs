@@ -17,18 +17,24 @@ namespace SadGUI
     {
         private HaarCascade haarCascade = new HaarCascade(@"haarcascade_frontalface_alt_tree.xml");
         private bool busy = false;
+
+        // AUTOMATIC VALUES - These are gathered internally
         private int imageHeight = 0;    // Used for frequent calculations
         private int imageWidth = 0;     // Used for frequent calculations
+
+        // INPUT VALUES - From GUI (used to tune)
         private int horizon = 300;    // Where the back edge of the gameboard is on screen
         private int floor = 0;      // Where the front edge of the board is on screen.
-        private int firstVisibleGridRow = 1;    // Which row in the grid is visible at floor.
-        int visibleGridRows = 0;        // The number of rows we will be referring to.
         private int gridRows = 10;      // TO DO WE NEED TO KNOW THESE VALUES!!
         private int gridColumns = 10;   // TO DO WE NEED TO KNOW THESE VALUES!!
         private int gridLayers = 1;      // TO DO WE NEED TO KNOW THESE VALUES!!
+        private int firstVisibleGridRow = 1;    // Which row in the grid is visible at floor.
+
+        // CALCULATED VALUES - These are used after input is taken and used
         private int rowHeight = 0;      // This is calculated once and used to find position.
         private int colWidth = 0;      // This is calculated once and used to find position.
         private bool setupComplete = false;
+        int visibleGridRows = 0;        // The number of rows we will be referring to.
 
         public ImageProcessor() { }
 
@@ -63,6 +69,13 @@ namespace SadGUI
             colWidth = imageWidth / gridColumns;
         }
 
+        /*
+         * MAIN ENTRYPOINT
+         *  This is the primary function used to process an image.
+         *  This will perform a series of processes on the image
+         *  and prepare it to be displayed. This includes extracting 
+         *  target positioning data from the image.
+         */
         public void ProcessImage(ref Image<Bgr, Byte> image)
         {
             // This will throttle the incoming images
@@ -86,10 +99,13 @@ namespace SadGUI
          */
         private void DrawGrid(ref Image<Bgr, Byte> image)
         {
+            int remainingHeight = floor - horizon;
             for (int i = 0; i <= visibleGridRows; ++i )
             {
-                int y = floor - (i * rowHeight);
+                int rowHeight = (int)((remainingHeight / (visibleGridRows - i + 1)) * ((double)i / visibleGridRows));
+                int y = floor - remainingHeight + rowHeight;
                 image.Draw(new LineSegment2D(new Point(0, y), new Point(imageWidth, y)), new Bgr(50, 255, 50), 1);
+                remainingHeight -= rowHeight;
             }
             for (int i = 0; i <= gridColumns; ++i)
             {
