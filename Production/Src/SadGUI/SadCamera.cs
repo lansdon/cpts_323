@@ -21,6 +21,7 @@ namespace SadGUI
     public class SadCamera : System.Windows.Controls.Image
     {
         static private SadCamera _cameraInstance;
+        static private int frameRate = 1000 / 5;
 
         private Capture _capture = null;
         private System.Windows.Controls.Image _image = null;
@@ -102,7 +103,7 @@ namespace SadGUI
  //                       grayFrame = currentFrame.Convert<Gray, Byte>();
                         Dispatcher.Invoke((Action<Image<Bgr, Byte>>)(obj => _image.Source = ToBitmapSource(obj)), currentFrame as Image<Bgr, Byte>);
                     }
-                    Thread.Sleep(1000 / 30);
+                    Thread.Sleep(frameRate);
                 }
             });
 
