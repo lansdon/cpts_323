@@ -55,7 +55,13 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\LauncherClient\packages\EmguCV.221.x86.1.0\lib\Emgu.Util.dll</HintPath>
     </Reference>
+    <Reference Include="Hammock.ClientProfile">
+      <HintPath>..\..\LauncherClient\packages\TweetSharp.2.3.1\lib\4.0\Hammock.ClientProfile.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\LauncherClient\packages\TweetSharp.2.3.1\lib\4.0\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -67,6 +73,9 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="TweetSharp">
+      <HintPath>..\..\LauncherClient\packages\TweetSharp.2.3.1\lib\4.0\TweetSharp.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
@@ -80,6 +89,7 @@
     <Compile Include="ContentControllerManager.cs" />
     <Compile Include="DefaultControlCheckBox.cs" />
     <Compile Include="DelegateCommand.cs" />
+    <Compile Include="GameSelectionViewModel.cs" />
     <Compile Include="ImageProcessor.cs" />
     <Compile Include="LauncherConnectViewModel.cs" />
     <Compile Include="LauncherViewModel.cs" />
@@ -91,6 +101,9 @@
     </Compile>
     <Compile Include="mizaWindows\DefaultUserControl.xaml.cs">
       <DependentUpon>DefaultUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="mizaWindows\gameSelectionView.xaml.cs">
+      <DependentUpon>gameSelectionView.xaml</DependentUpon>
     </Compile>
     <Compile Include="mizaWindows\launcherUserControl.xaml.cs">
       <DependentUpon>launcherUserControl.xaml</DependentUpon>
@@ -110,6 +123,7 @@
     <Compile Include="mizaWindows\TargetViewControl.xaml.cs">
       <DependentUpon>TargetViewControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Twitterizer.cs" />
     <Compile Include="mizaWindows\TwitterUserControl.xaml.cs">
       <DependentUpon>TwitterUserControl.xaml</DependentUpon>
     </Compile>
@@ -130,6 +144,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="mizaWindows\DefaultUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="mizaWindows\gameSelectionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -193,13 +211,13 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Fakes Include="Fakes\Emgu.CV.fakes" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Resources\Twitterconfig.fig" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
