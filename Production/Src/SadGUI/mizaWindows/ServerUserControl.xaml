@@ -8,38 +8,41 @@
              DataContext="{Binding Path=ServerVM}">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="20*"/>
             <RowDefinition Height="20*"/>
         </Grid.RowDefinitions>
         <Label Grid.Row="0"
                HorizontalAlignment="Center"
+               VerticalAlignment="Bottom"
                FontSize="20"
                FontWeight="ExtraBold"
-               Margin="72,24,74,96"
                Foreground="White"
-               Content="Input Server IP:"/>
+               Content="Input Server IP:" />
         <TextBox Text="{Binding serverIP}"
-                 Grid.Row="0"
+                 Grid.Row="1"
                  Width="100"
-                 VerticalAlignment="Center" Margin="100,60,100,132" />
-        <Label Grid.Row="0"
+                 VerticalAlignment="Top"/>
+        <Label Grid.Row="2"
                HorizontalContentAlignment="Center"
                FontSize="20"
                FontWeight="ExtraBold"
-               Margin="55,82,61,38"
                Foreground="White"
-               Content="Input Server Port:"/>
+               Content="Input Server Port:"
+               VerticalAlignment="Bottom"/>
         <TextBox Text="{Binding serverPort}"
-                 Grid.Row="0"
+                 Grid.Row="3"
                  Width="100"
-                 VerticalAlignment="Center" Margin="100,123,100,69"/>
-        <Grid Grid.Row="1">
+                 VerticalAlignment="Top"/>
+        <Grid Grid.Row="4">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="50*"/>
                 <ColumnDefinition Width="50*"/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Content="OK" Command="{Binding OkCommand}" Margin="20"/>
-            <Button Grid.Column="1" Content="CANCEL" Command="{Binding CancelCommand}" Margin="20"/>
+            <Button Grid.Column="0" Content="OK" Command="{Binding OkCommand}" Margin="15" VerticalAlignment="Top"/>
+            <Button Grid.Column="1" Content="CANCEL" Command="{Binding CancelCommand}" Margin="15" VerticalAlignment="Top"/>
         </Grid>
     </Grid>
 </UserControl>

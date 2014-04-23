@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using TargetServerCommunicator;
 
 namespace SadGUI
 {
@@ -12,15 +13,26 @@ namespace SadGUI
     {
         private int _selectedIndex;
         public ObservableCollection<string> games { get; set; }
+        
         public GameSelectionViewModel()
         {
+            Mediator.Instance.Register("to games", toGames);
             games = new ObservableCollection<string>();
-            games.Add("game 1");
-            games.Add("game 2");
-            games.Add("game 3");
-            games.Add("game 4");
             OkCommand = new DelegateCommand(Ok);
             CancelCommand = new DelegateCommand(Cancel);
+        }
+        private void toGames(object parameter)
+        {
+            var gameserver = parameter as IGameServer;
+            var data = gameserver.RetrieveGameList();
+            
+            foreach(string game in data)
+            {
+                string[] Games = game.Split(',');
+                
+                foreach(string g in Games)
+                     games.Add(g.Trim());
+            }
         }
         public int SelectedIndex
         {

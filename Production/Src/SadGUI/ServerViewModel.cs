@@ -6,6 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using TargetServerCommunicator;
+using TargetServerCommunicator.Servers;
+
+
 
 namespace SadGUI
 {
@@ -40,10 +44,20 @@ namespace SadGUI
             }
         }
         public void Ok()
-        {
+        { 
+            GameServerType serverType;
+            IGameServer gameServer;
             //do something special.
             //ServerCheckBox.instance.ServerControl_CheckBox_IsChecked = false;
+            if(_serverIP == "mock" || _serverIP == "")
+            {
+                serverType = GameServerType.Mock;
+                gameServer = GameServerFactory.Create(serverType, "Team Mizu!!", _serverIP, Convert.ToInt32(_serverPort));
+                Mediator.Instance.SendMessage("to games", gameServer);
+            }
+            
             ContentController.SetContentToController("RightCheckBoxPanel", new gameSelectionView());
+
         }
         public void Cancel()
         {

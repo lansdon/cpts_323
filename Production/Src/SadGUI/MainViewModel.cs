@@ -34,6 +34,7 @@ namespace SadGUI
             TWITTER = new TwitterViewModel();
             ServerCB = ServerCheckBox.instance;
             GSVM = new GameSelectionViewModel();
+            MEDIONE = Mediator.Instance;
         }
         public GameSelectionViewModel GSVM { get; set; }
         public TargetViewModel TargetsViewModel { get; set; }
@@ -51,5 +52,6 @@ namespace SadGUI
         public TwitterFeedCheckBox TwitterFeedCheckBox { get; set; }
 
         public ServerViewModel ServerVM { get; set; }
+        public Mediator MEDIONE { get; set; }
     }
 }
