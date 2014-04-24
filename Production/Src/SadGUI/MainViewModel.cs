@@ -35,7 +35,9 @@ namespace SadGUI
             ServerCB = ServerCheckBox.instance;
             GSVM = new GameSelectionViewModel();
             MEDIONE = Mediator.Instance;
+            TVM = new TargetsViewModel();
         }
+        public TargetsViewModel TVM { get; set; }
         public GameStartViewModel GameStart { get; set; }
         public GameSelectionViewModel GSVM { get; set; }
         public TargetViewModel TargetsViewModel { get; set; }

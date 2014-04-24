@@ -4,7 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="60" d:DesignWidth="600">
+             d:DesignHeight="60" d:DesignWidth="600"
+             DataContext="{Binding Path=TVM}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="15*"/>
@@ -43,7 +44,7 @@
             <Button 
                 Grid.Column="0" 
                 Grid.Row="0" 
-                Click="OpenFileCommand" 
+                
                 Command="{Binding Path=OpenFileCommand}" 
                 Name="OpenFileButton">
                 Load new target ini file
@@ -51,16 +52,16 @@
             <Button 
                 Grid.Column="1" 
                 Grid.Row="0" 
-                Click="ClearTargets" 
-                Command="{Binding Path=ClearTargets}" 
+                
+                Command="{Binding Path=ClearTargetsCommand}" 
                 Name="ClearTargetsButton">
                 Clear Targets
             </Button>
             <Button 
                 Grid.Column="2" 
                 Grid.Row="0" 
-                Click="LoadTargetsFromServer" 
-                Command="{Binding Path=LoadTargetsFromServer}" 
+                
+                Command="{Binding Path=LoadTargetsFromServerCommand}" 
                 Name="LoadTargetsFromServerButton">
                 Load Targets From Server
             </Button>
@@ -73,6 +74,7 @@
                 HorizontalContentAlignment="Stretch"
                 Margin="5"
                 ItemsSource="{Binding Path=Targets}"
+                SelectedIndex="{Binding Path=listBoxSelection}"
                 Background="Transparent">
             
             <ListBox.ItemTemplate>
@@ -95,8 +97,8 @@
                         <Label Foreground="White" FontWeight="Bold" Content="{Binding Friend}" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         <Label Foreground="White" FontWeight="Bold" Content="{Binding CordsToString}" Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         <Label Foreground="White" FontWeight="Bold" Content="{Binding FlashRate}" Grid.Column="5" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                        <Button Content="Target" Grid.Column="6" VerticalAlignment="Center" HorizontalAlignment="Center" Click="MoveToTarget"/>
-                        <Button Content="Kill" Grid.Column="7" VerticalAlignment="Center" HorizontalAlignment="Center" Click="KillTarget"/>
+                        <Button Content="Target" Grid.Column="6" VerticalAlignment="Center" HorizontalAlignment="Center" Command="{Binding Path=MoveToTargetCommand}"/>
+                        <Button Content="Kill" Grid.Column="7" VerticalAlignment="Center" HorizontalAlignment="Center" Command="{Binding Path=KillTargetCommand}"/>
                     </Grid>
 
                     <!--<MyWindows:TargetUserControl  HorizontalAlignment="Stretch"/>-->

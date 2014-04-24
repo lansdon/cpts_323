@@ -18,12 +18,32 @@ namespace SadGUI
     {
         private string _serverIP;
         private string _serverPort;
-        
+        private string _serverIPLabel;
+        private string _serverPortLabel;
         public ServerViewModel()
         {
-            
+            _serverIPLabel = "Input Server IP:";
+            _serverPortLabel = "Input Server Port:";
             OkCommand = new DelegateCommand(Ok);
             CancelCommand = new DelegateCommand(Cancel);
+        }
+        public string serverPortLabel
+        {
+            get { return _serverPortLabel; }
+            set
+            {
+                _serverPortLabel = value;
+                OnPropertyChanged("serverPortLabel");
+            }
+        }
+        public string serverIPLabel
+        {
+            get { return _serverIPLabel; }
+            set
+            {
+                _serverIPLabel = value;
+                OnPropertyChanged("serverIPLabel");
+            }
         }
         public string serverIP
         {
@@ -52,17 +72,19 @@ namespace SadGUI
                 serverType = GameServerType.Mock;
             else
                 serverType = GameServerType.WebClient;
-
-            if ((gameServer = GameServerFactory.Create(serverType, "Team Mizu!!", _serverIP, Convert.ToInt32(_serverPort))) != null)
-            {
+            try
+            {  
+                gameServer = GameServerFactory.Create(serverType, "Team Mizu!!", _serverIP, Convert.ToInt32(_serverPort));
+            
                 Mediator.Instance.SendMessage("to games", gameServer);
                 ContentController.SetContentToController("RightCheckBoxPanel", new gameSelectionView());
             }
-            else
+            catch
             {
                 serverIP = null;
                 serverPort = null;
                 // change label to reflect that server didn't connect
+                serverIPLabel = "Error please try again, server IP:";
             }
             
 
