@@ -23,7 +23,7 @@ namespace SadGUI
             KillTargetCommand = new DelegateCommand(KillTarget);
             ClearTargetsCommand = new DelegateCommand(ClearTargets);
             OpenFileCommand = new DelegateCommand(OpenFile);
-            LoadTargetsFromServerCommand = new DelegateCommand(LoadTargetsFromServer);
+            
             Mediator.Instance.Register("Target List", populateTargets);
             Mediator.Instance.Register("Clear Targets", clearTargets);
         }
@@ -69,6 +69,7 @@ namespace SadGUI
                 Targets.Add(new TargetViewModel(mytemp));
             }
             //TargetListBox.ItemsSource = Targets;
+            Mediator.Instance.SendMessage("TargetsList", Targets);
         }
         private void OpenFile()
         {
@@ -91,7 +92,7 @@ namespace SadGUI
             }
         }
 
-         public ObservableCollection<TargetViewModel> Targets
+        public ObservableCollection<TargetViewModel> Targets
         { get; private set; }
 
         private void LoadTargetsFromFile(string filename) 
@@ -113,10 +114,7 @@ namespace SadGUI
             Targets.Clear();
         }
 
-         private void LoadTargetsFromServer()
-        {
-            // TODO
-        }
+        
 
         private void MoveToTarget()
         {
@@ -127,7 +125,7 @@ namespace SadGUI
             //TargetViewModel targetVM = button.DataContext as TargetViewModel;
 
             //ITarget target = targetVM.Target();
-            //LauncherViewModel.Instance.MoveToCoords(target.x, target.y, target.z);
+            LauncherViewModel.Instance.MoveToCoords(Targets[_listBoxSelection].x, Targets[_listBoxSelection].y, Targets[_listBoxSelection].z);
         }
         private void KillTarget()
         {
@@ -137,12 +135,16 @@ namespace SadGUI
             // find the item that is the datacontext for this button
             //TargetViewModel targetVM = button.DataContext as TargetViewModel;
 
-            //ITarget target = targetVM.Target();
+           // foreach(var target in Targets)
+            {
+                LauncherViewModel.Instance.FireAt(Targets[_listBoxSelection].x, Targets[_listBoxSelection].y, Targets[_listBoxSelection].z);
+
+            }
            
 
-           // LauncherViewModel.Instance.FireAt(target.x, target.y, target.z);
+           // 
         }
-        public ICommand LoadTargetsFromServerCommand { get; set; }
+        
         public ICommand ClearTargetsCommand { get; set; }
         public ICommand OpenFileCommand { get; set; }
         public ICommand MoveToTargetCommand { get; set; }

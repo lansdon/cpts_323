@@ -36,6 +36,33 @@ namespace SadGUI
                 OnPropertyChanged("Name");
             }
         }
+        public double x
+        {
+            get { return m_target.x; }
+            set
+            {
+                m_target.x = value;
+                OnPropertyChanged("x");
+            }
+        }
+        public double y
+        {
+            get { return m_target.y; }
+            set
+            {
+                m_target.y = value;
+                OnPropertyChanged("y");
+            }
+        }
+        public double z
+        {
+            get { return m_target.z; }
+            set
+            {
+                m_target.z = value;
+                OnPropertyChanged("z");
+            }
+        }
         //public bool Friend
         //{
         //    get

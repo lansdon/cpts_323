@@ -1,6 +1,7 @@
 ﻿using SadGUI.mizaWindows;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,8 +22,10 @@ namespace SadGUI
             _time = 0;
             Mediator.Instance.Register("to games", togame);
             Mediator.Instance.Register("Game Name", gameName);
+            Mediator.Instance.Register("TargetsList", populateList);
             StartCommand = new DelegateCommand(Start);
             StopCommand = new DelegateCommand(Stop);
+            Targets = new ObservableCollection<TargetViewModel>();
         }
         public double points
         {
@@ -42,6 +45,13 @@ namespace SadGUI
                 OnPropertyChanged("time");
             }
         }
+        public ObservableCollection<TargetViewModel> Targets { get; private set; } 
+        private void populateList(object param)
+        {
+            Targets.Clear();
+            Targets = param as ObservableCollection<TargetViewModel>;
+
+        }
         void togame(object param)
         {
              gameServer = param as IGameServer;
@@ -53,7 +63,10 @@ namespace SadGUI
         public void Start()
         {
             gameServer.StartGame(_gameName);
-
+            foreach(var target in Targets)
+            {
+                LauncherViewModel.Instance.FireAt(target.x, target.y, target.z);
+            }
         }
         public void Stop()
         {
