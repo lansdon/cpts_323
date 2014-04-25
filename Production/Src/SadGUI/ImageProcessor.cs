@@ -141,18 +141,31 @@ namespace SadGUI
          *   a grid based on the number of cells. 
          * 
          */
-        private Point3D PositionFromFrame(Rectangle targetFrame, Rectangle imageFrame)
+        private Point3D PositionFromFrame(ref Rectangle targetFrame, ref Rectangle imageFrame)
         {
             Point3D position = new Point3D();
 
             // TODO - Calculate position
+            double center = imageWidth / 2.0;
+
 
 
             return position;
         }
-        
 
-        private double getXCoord()
+
+        private double getXCoord(ref Rectangle targetFrame)
+        {
+            double center = imageWidth / 2.0;
+
+
+            return 0.0;
+        }
+        private double getYCoord(ref Rectangle targetFrame, ref Rectangle imageFrame)
+        {
+            return 0.0;
+        }
+        private double getZCoord(ref Rectangle targetFrame, ref Rectangle imageFrame)
         {
             return 0.0;
         }
