@@ -36,7 +36,9 @@ namespace SadGUI
             MEDIONE = Mediator.Instance;
             TWITTERIZER = Twitterizer.Instance;
             Twitterizer.Init(@"Resources/Twitterconfig.fig");
+            TVM = new TargetsViewModel();
         }
+        public TargetsViewModel TVM { get; set; }
         public GameStartViewModel GameStart { get; set; }
         public GameSelectionViewModel GSVM { get; set; }
         public TargetViewModel TargetsViewModel { get; set; }

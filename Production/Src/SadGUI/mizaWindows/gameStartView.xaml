@@ -8,9 +8,10 @@
              DataContext="{Binding Path=GameStart}">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="20*"/>
             <RowDefinition Height="50*"/>
-            <RowDefinition Height="50*"/>
-            <RowDefinition Height="50*"/>
+            <RowDefinition Height="15*"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
             <Grid.RowDefinitions>
