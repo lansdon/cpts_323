@@ -48,9 +48,7 @@ namespace SadGUI
         public ObservableCollection<TargetViewModel> Targets { get; private set; } 
         private void populateList(object param)
         {
-            Targets.Clear();
             Targets = param as ObservableCollection<TargetViewModel>;
-
         }
         void togame(object param)
         {
@@ -62,6 +60,7 @@ namespace SadGUI
         }
         public void Start()
         {
+            //Twitterizer.Instance.SendTweet("Starting game [0]", _gameName);
             gameServer.StartGame(_gameName);
             foreach(var target in Targets)
             {

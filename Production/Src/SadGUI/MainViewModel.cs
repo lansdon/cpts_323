@@ -37,27 +37,21 @@ namespace SadGUI
             TWITTERIZER = Twitterizer.Instance;
             Twitterizer.Init(@"Resources/Twitterconfig.fig");
             TVM = new TargetsViewModel();
+            
         }
         public TargetsViewModel TVM { get; set; }
         public GameStartViewModel GameStart { get; set; }
         public GameSelectionViewModel GSVM { get; set; }
         public TargetViewModel TargetsViewModel { get; set; }
         public ServerCheckBox ServerCB { get; set; }
-        //public ObservableCollection<TargetViewModel> Targets
-        //{ get; private set; }
         public TwitterViewModel TWITTER { get; set; }
         public LauncherViewModel LauncherViewModel { get; set; }
-        //public ICommand AddNewTarget { get; private set; }
-
         public VideoCheckBox VideoCheckBox { get; set; }
         public LauncherConnectViewModel LCVM { get; set; }
         public DefaultControlCheckBox DefaultControlCheckBox { get; set; }
-
         public TwitterFeedCheckBox TwitterFeedCheckBox { get; set; }
-
         public ServerViewModel ServerVM { get; set; }
         public Mediator MEDIONE { get; set; }
-
         public Twitterizer TWITTERIZER { get; set; }
     }
 }

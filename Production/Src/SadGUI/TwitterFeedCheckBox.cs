@@ -37,8 +37,7 @@ namespace SadGUI
             }
             set
             {
-                if (ServerCheckBox.instance.ServerControl_CheckBox_IsChecked == true && value == true)
-                    ServerCheckBox.instance.ServerControl_CheckBox_IsChecked = false;
+               
                 IsChecked = value;
                 Process_CheckBox();
                 OnPropertyChanged("TwitterFeed_CheckBox_IsChecked");

@@ -20,41 +20,44 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="25*"/><!--Row 1-->
             <RowDefinition Height="25*"/><!--Row 2-->
-            <RowDefinition Height="25*"/><!--Row 3-->
-            <RowDefinition Height="5*"/><!--Row 4-->
         </Grid.RowDefinitions>
 
         <!--Video Window Panel Place Holder-->
         <ContentControl
-            Grid.RowSpan="2"
             Grid.Row="0"
             Grid.Column="0"
             Name="TopLeft_CC"/>
 
         <!--Launcher Control Panel-->
         <ContentControl
-            Grid.RowSpan="2"
-            Grid.Row="2"
+            Grid.Row="1"
             Grid.Column="0"
             Name="BottomLeft_CC"/>
 
-        <!--Target Information Panel-->
-        <ContentControl
-            Grid.Row="0"
-            Grid.Column="1"
-            Grid.RowSpan="2"
-            Name="TopRight_CC"/>
+        
 
         <!--User CheckBox Control Panel-->
         <ContentControl
-            Grid.Row="2"
+            Grid.Row="1"
             Grid.Column="1"
             Name="MiddleRight_CC"/>
-
-        <!--User Twitterfeed Panel-->
-        <ContentControl
-            Grid.Row="3"
-            Grid.Column="1"
-            Name="BottomRight_CC"/>
+        
+        <Grid Grid.Column="1"
+        Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30*"/>
+                <RowDefinition Height="50*"/>
+            </Grid.RowDefinitions>
+            
+            <!--User Twitterfeed Panel-->
+            <ContentControl
+                Grid.Row="0"
+                Name="UpperRightTop_CC"/>
+            
+            <!--Target Information Panel-->
+            <ContentControl
+            Grid.Row="1"
+            Name="UpperRightBottom_CC"/>
+        </Grid>
     </Grid>
 </UserControl>
