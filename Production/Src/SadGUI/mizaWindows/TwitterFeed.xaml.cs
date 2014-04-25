@@ -1,9 +1,5 @@
-﻿using SadLibrary.FileLoader;
-using SadLibrary.Launcher;
-using SadLibrary.Targets;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,17 +16,13 @@ using System.Windows.Shapes;
 namespace SadGUI.mizaWindows
 {
     /// <summary>
-    /// Interaction logic for TargetUserControl.xaml
+    /// Interaction logic for TwitterFeed.xaml
     /// </summary>
-    public partial class TargetUserControl : UserControl
+    public partial class TwitterFeed : UserControl
     {
-
-        public TargetUserControl()
+        public TwitterFeed()
         {
             InitializeComponent();
-            
         }
-        
-
     }
 }

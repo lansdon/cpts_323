@@ -22,19 +22,10 @@ namespace SadGUI
         private string _serverPortLabel;
         public ServerViewModel()
         {
-            serverIPLabel = "Input Server IP:";
-            serverPortLabel = "Input Server Port:";
+            _serverIPLabel = "Input Server IP:";
+            _serverPortLabel = "Input Server Port:";
             OkCommand = new DelegateCommand(Ok);
             CancelCommand = new DelegateCommand(Cancel);
-        }
-        public string serverIPLabel
-        {
-            get { return _serverIPLabel; }
-            set
-            {
-                _serverIPLabel = value;
-                OnPropertyChanged("serverIPLabel");
-            }
         }
         public string serverPortLabel
         {
@@ -43,6 +34,15 @@ namespace SadGUI
             {
                 _serverPortLabel = value;
                 OnPropertyChanged("serverPortLabel");
+            }
+        }
+        public string serverIPLabel
+        {
+            get { return _serverIPLabel; }
+            set
+            {
+                _serverIPLabel = value;
+                OnPropertyChanged("serverIPLabel");
             }
         }
         public string serverIP
@@ -72,10 +72,10 @@ namespace SadGUI
                 serverType = GameServerType.Mock;
             else
                 serverType = GameServerType.WebClient;
-
             try
-            {
+            {  
                 gameServer = GameServerFactory.Create(serverType, "Team Mizu!!", _serverIP, Convert.ToInt32(_serverPort));
+            
                 Mediator.Instance.SendMessage("to games", gameServer);
                 ContentController.SetContentToController("RightCheckBoxPanel", new gameSelectionView());
             }
@@ -84,8 +84,7 @@ namespace SadGUI
                 serverIP = null;
                 serverPort = null;
                 // change label to reflect that server didn't connect
-                serverIPLabel = "Error, Please try again, Server IP:";
-                serverPortLabel = "Error, Please try again, Server Port:";
+                serverIPLabel = "Error please try again, server IP:";
             }
             
 

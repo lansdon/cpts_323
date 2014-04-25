@@ -10,9 +10,11 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
 using TweetSharp;
+using SadGUI;
+using System.Collections.ObjectModel;
 
 
-namespace Twitter
+namespace SadGUI
 {
     public class ConsumerToken
     {
@@ -21,19 +23,17 @@ namespace Twitter
         public string consumerSecret { get; set; }
     }
 
-    public class Twitterizer
+    public class Twitterizer: ViewModelBase
     {
         private static Twitterizer instance;
 
         private TwitterService twitterService;
 
-        private List<string> Tweets;
-
-        public bool Active { private get; set; }
+        public static bool Active { private get; set; }
 
         private Twitterizer()
         {
-            Tweets = new List<string>();
+            _Tweets = new ObservableCollection<string>();
         }
 
         public static Twitterizer Instance
@@ -56,14 +56,14 @@ namespace Twitter
                 return;
             }
 
-            Instance.Active = true;
-
             OAuthAccessToken AccessTokenAuth;
             ConsumerToken ClientUserToken;
 
+            //FilePath = Path.Combine(Environment.CurrentDirectory, FilePath);
+
             if (File.Exists(FilePath))
             {
-                using (var xml = new XmlTextReader(Path.Combine(Environment.CurrentDirectory, "Resources/" + FilePath)))
+                using (var xml = new XmlTextReader(FilePath))
                 {
                     XmlSerializer AccessToken = new XmlSerializer(typeof(OAuthAccessToken));
                     XmlSerializer UserToken = new XmlSerializer(typeof(ConsumerToken));
@@ -95,10 +95,16 @@ namespace Twitter
 
         public static IEnumerator<string> GetEnumerator()
         {
-            foreach(var Tweet in Instance.Tweets)
+            foreach(var Tweet in Instance._Tweets)
             {
                 yield return Tweet;
             }
+        }
+
+        public ObservableCollection<string> _Tweets
+        {
+            get;
+            set;
         }
 
         public static void SendTweet(string[] Words)
@@ -110,7 +116,12 @@ namespace Twitter
 
         public static void SendTweet(string Tweet)
         {
-            if (Instance.Active == false)
+            if (Active == false)
+            {
+                return;
+            }
+
+            if (Instance.twitterService == null)
             {
                 return;
             }
@@ -126,7 +137,7 @@ namespace Twitter
             TwitterStatus Result = Instance.twitterService.SendTweet(new SendTweetOptions { Status = Tweet });
             if (Result != null)
             {
-                Instance.Tweets.Add(Tweet);
+                Instance._Tweets.Insert(0,Tweet);
             }
             else
             {
@@ -136,7 +147,7 @@ namespace Twitter
 
         public static void SendTweetWithMedia(string Tweet, Stream img)
         {
-            if (Instance.Active == false)
+            if (Active == false)
             {
                 return;
             }
@@ -148,10 +159,6 @@ namespace Twitter
                 Console.WriteLine("ERROR!  Your tweet must be between 1 and 140 characters!");
                 return;
             }
-
-            //MemoryStream ms = new MemoryStream();
-            //img.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-            //ms.Seek(0, SeekOrigin.Begin);
             Dictionary<string, Stream> Images = new Dictionary<string, Stream> { { "MyPicture", img } };
             SendTweetWithMediaOptions Options = new SendTweetWithMediaOptions();
             Options.Status = Tweet;
@@ -159,7 +166,7 @@ namespace Twitter
             TwitterStatus Result = Instance.twitterService.SendTweetWithMedia(Options);
             if (Result != null)
             {
-                Instance.Tweets.Add(Tweet);
+                Instance._Tweets.Insert(0,Tweet);
             }
             else
             {

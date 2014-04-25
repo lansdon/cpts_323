@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using SadGUI;
 
 namespace SadGUI
 {
@@ -21,8 +22,6 @@ namespace SadGUI
         
         public MainViewModel(ILauncher launcher)
         {
-            
-            
             //TargetsViewModel = new TargetViewModel();
             GameStart = new GameStartViewModel();
             LauncherViewModel = LauncherViewModel.Instance;
@@ -35,7 +34,11 @@ namespace SadGUI
             ServerCB = ServerCheckBox.instance;
             GSVM = new GameSelectionViewModel();
             MEDIONE = Mediator.Instance;
+            TWITTERIZER = Twitterizer.Instance;
+            Twitterizer.Init(@"Resources/Twitterconfig.fig");
+            TVM = new TargetsViewModel();
         }
+        public TargetsViewModel TVM { get; set; }
         public GameStartViewModel GameStart { get; set; }
         public GameSelectionViewModel GSVM { get; set; }
         public TargetViewModel TargetsViewModel { get; set; }
@@ -54,5 +57,7 @@ namespace SadGUI
 
         public ServerViewModel ServerVM { get; set; }
         public Mediator MEDIONE { get; set; }
+
+        public Twitterizer TWITTERIZER { get; set; }
     }
 }

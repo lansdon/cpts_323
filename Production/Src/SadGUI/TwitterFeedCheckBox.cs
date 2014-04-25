@@ -53,11 +53,11 @@ namespace SadGUI
         {
             if (IsChecked == true)
             {
-                ContentController.SetContentToController("RightCheckBoxPanel", new TwitterUserControl());
+                Twitterizer.Active = true;
             }
             else
             {
-                ContentController.SetContentToController("RightCheckBoxPanel", new DefaultUserControl());
+                Twitterizer.Active = false;
             }
         }
     }
