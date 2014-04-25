@@ -20,7 +20,7 @@
                FontSize="20"
                FontWeight="ExtraBold"
                Foreground="White"
-               Content="Input Server IP:" />
+               Content="{Binding Path=serverIPLabel}" />
         <TextBox Text="{Binding serverIP, UpdateSourceTrigger=PropertyChanged}"                 
                  Grid.Row="1"
                  Width="100"
@@ -30,7 +30,7 @@
                FontSize="20"
                FontWeight="ExtraBold"
                Foreground="White"
-               Content="Input Server Port:"
+               Content="{Binding Path=serverPortLabel}"
                VerticalAlignment="Bottom"/>
         <TextBox Text="{Binding serverPort}"
                  Grid.Row="3"

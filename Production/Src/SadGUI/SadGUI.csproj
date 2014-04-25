@@ -136,6 +136,7 @@
     <Compile Include="mizaWindows\TwitterFeed.xaml.cs">
       <DependentUpon>TwitterFeed.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TargetsViewModel.cs" />
     <Compile Include="Twitterizer.cs" />
     <Compile Include="mizaWindows\TwitterUserControl.xaml.cs">
       <DependentUpon>TwitterUserControl.xaml</DependentUpon>
