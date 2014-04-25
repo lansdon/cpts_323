@@ -60,7 +60,8 @@ namespace SadGUI
         }
         public void Start()
         {
-            //Twitterizer.Instance.SendTweet("Starting game [0]", _gameName);
+            string temp = string.Format("Starting game {0}", _gameName);
+            Twitterizer.SendTweet(temp);
             gameServer.StartGame(_gameName);
             foreach(var target in Targets)
             {
