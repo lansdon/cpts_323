@@ -118,25 +118,10 @@ namespace SadGUI
             Application.Current.Dispatcher.Invoke(() => BindingOperations.EnableCollectionSynchronization(Instance._Tweets, new object()));
         }
 
-        public static IEnumerator<string> GetEnumerator()
-        {
-            foreach(var Tweet in Instance._Tweets)
-            {
-                yield return Tweet;
-            }
-        }
-
         public ObservableCollection<string> _Tweets
         {
             get;
             set;
-        }
-
-        public static void SendTweet(string[] Words, Stream img = null)
-        {
-            Words = Words.Where(w => w != Words[0]).ToArray();
-            string Tweet = string.Join(" ", Words);
-            SendTweet(Tweet);
         }
 
         public static void SendTweet(string Tweet, Stream img = null)
@@ -164,18 +149,6 @@ namespace SadGUI
             RunBackgroundworkder();
         }
 
-        public static int GetTweetCount
-        {
-            get
-            {
-                return Instance.Tweet_Que.Count();
-            }
-            set
-            {
-                Instance.OnPropertyChanged("GetTweetCount");
-            }
-        }
-
         private static void RunBackgroundworkder()
         {
             if (Instance.commandThread.IsBusy == false)
@@ -184,11 +157,6 @@ namespace SadGUI
 
         public static void ProcessQue(object sender, DoWorkEventArgs args)
         {
-            Console.WriteLine("In");
-
-            //Instance.commandThread.DoWork += new DoWorkEventHandler(delegate(object o, DoWorkEventArgs args)
-            //{
-            //    BackgroundWorker b = o as BackgroundWorker;
                 while (Instance.Tweet_Que.Count() > 0)
                 {
                     var Tweet = Instance.Tweet_Que.Dequeue();
@@ -216,10 +184,6 @@ namespace SadGUI
                     }
                     Thread.Sleep(10);
                 }
-            //});
-
-            // what to do when worker completes its task (notify the user)
-            Console.WriteLine("Out");
         }
     }
 }
