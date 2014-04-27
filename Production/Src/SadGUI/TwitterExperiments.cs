@@ -17,7 +17,6 @@ namespace SadGUI
         public void Spam()
         {
             Twitterizer.SendTweet("SPAM!!!!!");
-            Console.WriteLine(Twitterizer.GetTweetCount);
         }
 
         public ICommand SpamCommand { get; set; }
