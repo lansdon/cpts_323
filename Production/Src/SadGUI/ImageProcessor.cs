@@ -23,11 +23,11 @@ namespace SadGUI
         private int imageWidth = 0;     // Used for frequent calculations
 
         // INPUT VALUES - From GUI (used to tune)
-        private int horizon = 300;    // Where the back edge of the gameboard is on screen
-        private int floor = 0;      // Where the front edge of the board is on screen.
-        private int gridRows = 10;      // TO DO WE NEED TO KNOW THESE VALUES!!
-        private int gridColumns = 10;   // TO DO WE NEED TO KNOW THESE VALUES!!
-        private int gridLayers = 1;      // TO DO WE NEED TO KNOW THESE VALUES!!
+        private int horizon = 300;              // Where the back edge of the gameboard is on screen
+        private int floor = 0;                  // Where the front edge of the board is on screen.
+        private int gridRows = 10;              // TO DO WE NEED TO KNOW THESE VALUES!!
+        private int gridColumns = 10;           // TO DO WE NEED TO KNOW THESE VALUES!!
+        private int gridLayers = 1;             // TO DO WE NEED TO KNOW THESE VALUES!!
         private int firstVisibleGridRow = 1;    // Which row in the grid is visible at floor.
 
         // CALCULATED VALUES - These are used after input is taken and used
@@ -36,6 +36,12 @@ namespace SadGUI
         private bool setupComplete = false;
         int visibleGridRows = 0;        // The number of rows we will be referring to.
 
+        // HARDCODED SETTINGS
+        private float BOARD_Y_MAX = 48;             // Playing field Y length in inches.
+        private float BOARD_X_MAX = 24;             // Playing field Y length in inches.
+        private float Y_RADIUS_MAX_DISTANCE = 50;   // RADIUS of target when it's furthest away from camera
+        private float Y_RADIUS_MIN_DISTANCE = 150;  // RADIUS of target when it's closest to camera
+        private float Y_INCHES_PER_PIXEL;           // Used to calculate the Y distance using detected image size
         public ImageProcessor() { }
 
         /*
@@ -49,11 +55,24 @@ namespace SadGUI
             imageHeight = image.Height;
             imageWidth = image.Width;
 
-            // Create the grid
+            configureY();
+
             createGrid();
 
             setupComplete = true;
        }
+
+        /*
+         * This will determine the scale for targets size as it relates to distance from camera
+         */
+        private void configureY()
+        {
+            // Need to know the difference in min/max target sizes (in pixels)
+            double targetPixelDelta = Y_RADIUS_MIN_DISTANCE - Y_RADIUS_MAX_DISTANCE;
+            // Find the ratio for inches to pixelDelta
+            double pixelDelta_to_Inches = BOARD_Y_MAX / targetPixelDelta;
+            
+        }
 
         /*
          * We're going to calculate the grid that pixels are mapped on to.
