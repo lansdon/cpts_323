@@ -37,11 +37,17 @@ namespace SadGUI
         int visibleGridRows = 0;        // The number of rows we will be referring to.
 
         // HARDCODED SETTINGS
-        private float BOARD_Y_MAX = 48;             // Playing field Y length in inches.
-        private float BOARD_X_MAX = 24;             // Playing field Y length in inches.
-        private float Y_RADIUS_MAX_DISTANCE = 50;   // RADIUS of target when it's furthest away from camera
-        private float Y_RADIUS_MIN_DISTANCE = 150;  // RADIUS of target when it's closest to camera
-        private float Y_INCHES_PER_PIXEL;           // Used to calculate the Y distance using detected image size
+        private double BOARD_Y_MAX = 48.0;             // Playing field Y length in inches.
+        private double BOARD_X_MAX = 24.0;             // Playing field Y length in inches.
+        private double Y_RADIUS_MAX_DISTANCE = 100.0;   // RADIUS of target when it's furthest away from camera
+        private double Y_RADIUS_MIN_DISTANCE = 150.0;  // RADIUS of target when it's closest to camera
+        private double Y_PIXEL_DELTA_TO_INCHES_MULT;   // Multiply target pixel delta by this num to get Y in inches.
+        private double X_MAX = 20;                     // This is the max value X can have when y=BOARD_Y_MAX as seen by camera
+
+        // Text Overlay
+        Font coordFont = new Font("Arial", 24);
+
+        
         public ImageProcessor() { }
 
         /*
@@ -70,8 +76,7 @@ namespace SadGUI
             // Need to know the difference in min/max target sizes (in pixels)
             double targetPixelDelta = Y_RADIUS_MIN_DISTANCE - Y_RADIUS_MAX_DISTANCE;
             // Find the ratio for inches to pixelDelta
-            double pixelDelta_to_Inches = BOARD_Y_MAX / targetPixelDelta;
-            
+            Y_PIXEL_DELTA_TO_INCHES_MULT = BOARD_Y_MAX / targetPixelDelta;
         }
 
         /*
@@ -110,6 +115,7 @@ namespace SadGUI
             DoTargetDetection(ref image);
             DrawGrid(ref image);
 
+
             busy = false;
         }
 
@@ -134,6 +140,31 @@ namespace SadGUI
 
         }
 
+        private void DrawPositionText(ref Image<Bgr, Byte> image, Rectangle targetFrame, Point3D pos)
+        {
+            Graphics drawing = Graphics.FromImage(image.Bitmap);
+
+            if (pos.Y < 1) pos.Y = 1.0;
+    
+            var vector2 = pos;
+            var vector1 = new Point(0, 1);  // 12 o'clock == 0°, assuming that y goes from bottom to to
+            double angleInRadians = -(Math.Atan2(vector2.Y, vector2.X) - Math.Atan2(vector1.Y, vector1.X));
+            double angleInDegrees = angleInRadians * 180.0 / Math.PI;
+
+            String posText = String.Format("({0},{1},{2}) {3}deg", (int)pos.X, (int)pos.Y, (int)pos.Z, (int)(angleInDegrees));
+
+            //create a brush for the text
+            Brush textBrush = new SolidBrush(Color.Yellow);
+
+            drawing.DrawString(posText, coordFont, textBrush, targetFrame.X + 20, targetFrame.Y-20);
+
+            drawing.Save();
+
+            textBrush.Dispose();
+            drawing.Dispose();
+
+        }
+
         /*
          * Image detection
          */
@@ -145,8 +176,15 @@ namespace SadGUI
 
                 var detectedFaces = grayFrame.DetectHaarCascade(haarCascade)[0];
 
+                Point3D pos;
+//                for (int i = 0; i < detectedFaces.Count(); ++i)
                 foreach (var face in detectedFaces)
+                {
+                    pos = PositionFromFrame(face.rect);
                     image.Draw(face.rect, new Bgr(0, double.MaxValue, 0), 3);
+                    DrawPositionText(ref image, face.rect, pos);
+
+                }
              }
         }
 
@@ -160,32 +198,44 @@ namespace SadGUI
          *   a grid based on the number of cells. 
          * 
          */
-        private Point3D PositionFromFrame(ref Rectangle targetFrame, ref Rectangle imageFrame)
+        private Point3D PositionFromFrame(Rectangle targetFrame)
         {
             Point3D position = new Point3D();
-
-            // TODO - Calculate position
-            double center = imageWidth / 2.0;
-
-
+            position.Y = getYCoord(targetFrame);
+            position.X = getXCoord(targetFrame, position.Y);
+            position.Z = getZCoord(position.Y);
 
             return position;
         }
 
 
-        private double getXCoord(ref Rectangle targetFrame)
+        private double getXCoord(Rectangle targetFrame, double y)
         {
             double center = imageWidth / 2.0;
+            double x = targetFrame.X -center + targetFrame.Width / 2.0;
+ //           double xMax = Math.Sqrt(y*y + )
 
+            return x;
+        }
 
-            return 0.0;
-        }
-        private double getYCoord(ref Rectangle targetFrame, ref Rectangle imageFrame)
+        /*
+         * Find the target radius delta (difference between max size and actual size)
+         * Use that delta with pre-calculated multiplier to determine the y value in inches.
+         */
+        private double getYCoord(Rectangle targetFrame)
         {
-            return 0.0;
+            double targetRadiusDelta = Y_RADIUS_MIN_DISTANCE - targetFrame.Size.Width / 2.0;
+            if(targetRadiusDelta < 0) targetRadiusDelta = Y_RADIUS_MIN_DISTANCE;
+            if(targetRadiusDelta > Y_RADIUS_MIN_DISTANCE-Y_RADIUS_MAX_DISTANCE) targetRadiusDelta =  Y_RADIUS_MIN_DISTANCE-Y_RADIUS_MAX_DISTANCE;
+            double y = targetRadiusDelta * Y_PIXEL_DELTA_TO_INCHES_MULT;
+            Console.WriteLine("Calculated Y = {0}", y);
+            return y;
         }
-        private double getZCoord(ref Rectangle targetFrame, ref Rectangle imageFrame)
+        private double getZCoord(double y)
         {
+            // if the target is > 75% of max distance, angle up slightly.
+            if (y > BOARD_Y_MAX * 0.75)
+                return 1.0;
             return 0.0;
         }
 
