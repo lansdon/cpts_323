@@ -12,6 +12,10 @@ using System.Xml.Serialization;
 using TweetSharp;
 using SadGUI;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Threading;
+using System.Windows.Data;
+using System.Windows;
 
 
 namespace SadGUI
@@ -23,17 +27,30 @@ namespace SadGUI
         public string consumerSecret { get; set; }
     }
 
+    public class TweetInfo
+    {
+        public TweetInfo(string _Tweet = "", Stream _Img = null)
+        {
+            this.Text = _Tweet;
+            this.Img = _Img;
+        }
+        public string Text { get; private set; }
+        public Stream Img { get; private set; }
+    }
+
     public class Twitterizer: ViewModelBase
     {
         private static Twitterizer instance;
-
         private TwitterService twitterService;
+        private Queue<TweetInfo> Tweet_Que;
+        public BackgroundWorker commandThread { get; set; }
 
         public static bool Active { private get; set; }
 
         private Twitterizer()
         {
             _Tweets = new ObservableCollection<string>();
+            Tweet_Que = new Queue<TweetInfo>();
         }
 
         public static Twitterizer Instance
@@ -91,6 +108,14 @@ namespace SadGUI
             Instance.twitterService = new TwitterService(twitterClientInfo);
 
             Instance.twitterService.AuthenticateWith(AccessTokenAuth.Token, AccessTokenAuth.TokenSecret);
+
+            //Handle our threading.
+            Instance.commandThread = new BackgroundWorker();
+            Instance.commandThread.WorkerReportsProgress = false;
+            Instance.commandThread.WorkerSupportsCancellation = false;
+            Instance.commandThread.DoWork += new DoWorkEventHandler(ProcessQue);
+
+            Application.Current.Dispatcher.Invoke(() => BindingOperations.EnableCollectionSynchronization(Instance._Tweets, new object()));
         }
 
         public static IEnumerator<string> GetEnumerator()
@@ -107,14 +132,14 @@ namespace SadGUI
             set;
         }
 
-        public static void SendTweet(string[] Words)
+        public static void SendTweet(string[] Words, Stream img = null)
         {
             Words = Words.Where(w => w != Words[0]).ToArray();
             string Tweet = string.Join(" ", Words);
             SendTweet(Tweet);
         }
 
-        public static void SendTweet(string Tweet)
+        public static void SendTweet(string Tweet, Stream img = null)
         {
             if (Active == false)
             {
@@ -125,8 +150,8 @@ namespace SadGUI
             {
                 return;
             }
-            
-            Tweet = String.Format("[{0}]: {1}", DateTime.Now.ToLongTimeString(), Tweet);
+
+            Tweet = String.Format("[{0}]: {1}", DateTime.Now.ToString("hh:mm:ss:ffff"), Tweet);
 
             if (Tweet.Length > 140 || Tweet.Length <= 0)
             {
@@ -134,44 +159,67 @@ namespace SadGUI
                 return;
             }
 
-            TwitterStatus Result = Instance.twitterService.SendTweet(new SendTweetOptions { Status = Tweet });
-            if (Result != null)
+            Instance.Tweet_Que.Enqueue(new TweetInfo(Tweet, img));
+
+            RunBackgroundworkder();
+        }
+
+        public static int GetTweetCount
+        {
+            get
             {
-                Instance._Tweets.Insert(0,Tweet);
+                return Instance.Tweet_Que.Count();
             }
-            else
+            set
             {
-                Console.WriteLine("ERROR!  The tweet didn't send for some reason...");
+                Instance.OnPropertyChanged("GetTweetCount");
             }
         }
 
-        public static void SendTweetWithMedia(string Tweet, Stream img)
+        private static void RunBackgroundworkder()
         {
-            if (Active == false)
-            {
-                return;
-            }
+            if (Instance.commandThread.IsBusy == false)
+                Instance.commandThread.RunWorkerAsync();
+        }
 
-            Tweet = String.Format("[{0}]: {1}", DateTime.Now.ToLongTimeString(), Tweet);
+        public static void ProcessQue(object sender, DoWorkEventArgs args)
+        {
+            Console.WriteLine("In");
 
-            if (Tweet.Length > 140 || Tweet.Length <= 0)
-            {
-                Console.WriteLine("ERROR!  Your tweet must be between 1 and 140 characters!");
-                return;
-            }
-            Dictionary<string, Stream> Images = new Dictionary<string, Stream> { { "MyPicture", img } };
-            SendTweetWithMediaOptions Options = new SendTweetWithMediaOptions();
-            Options.Status = Tweet;
-            Options.Images = Images;
-            TwitterStatus Result = Instance.twitterService.SendTweetWithMedia(Options);
-            if (Result != null)
-            {
-                Instance._Tweets.Insert(0,Tweet);
-            }
-            else
-            {
-                Console.WriteLine("ERROR!  The tweet didn't send for some reason...");
-            }
+            //Instance.commandThread.DoWork += new DoWorkEventHandler(delegate(object o, DoWorkEventArgs args)
+            //{
+            //    BackgroundWorker b = o as BackgroundWorker;
+                while (Instance.Tweet_Que.Count() > 0)
+                {
+                    var Tweet = Instance.Tweet_Que.Dequeue();
+                    TwitterStatus Result = null;
+                    if (Tweet.Img == null)
+                    {
+                        Result = Instance.twitterService.SendTweet(new SendTweetOptions { Status = Tweet.Text });
+                    }
+                    else
+                    {
+                        Dictionary<string, Stream> Images = new Dictionary<string, Stream> { { "MyPicture", Tweet.Img } };
+                        SendTweetWithMediaOptions Options = new SendTweetWithMediaOptions();
+                        Options.Status = Tweet.Text;
+                        Options.Images = Images;
+
+                        Result = Instance.twitterService.SendTweetWithMedia(Options);
+                    }
+                    if (Result != null)
+                    {
+                        Instance._Tweets.Insert(0, Tweet.Text);
+                    }
+                    else
+                    {
+                        Console.WriteLine("ERROR!  The tweet didn't send for some reason...");
+                    }
+                    Thread.Sleep(10);
+                }
+            //});
+
+            // what to do when worker completes its task (notify the user)
+            Console.WriteLine("Out");
         }
     }
 }

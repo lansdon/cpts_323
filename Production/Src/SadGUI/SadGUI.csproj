@@ -93,6 +93,7 @@
     <Compile Include="ContentControllerManager.cs" />
     <Compile Include="DefaultControlCheckBox.cs" />
     <Compile Include="DelegateCommand.cs" />
+    <Compile Include="DelegateCommandS.cs" />
     <Compile Include="GameSelectionViewModel.cs" />
     <Compile Include="GameStartViewModel.cs" />
     <Compile Include="ImageProcessor.cs" />
@@ -132,10 +133,14 @@
     <Compile Include="mizaWindows\TargetViewControl.xaml.cs">
       <DependentUpon>TargetViewControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="mizaWindows\TwitterExperiment.xaml.cs">
+      <DependentUpon>TwitterExperiment.xaml</DependentUpon>
+    </Compile>
     <Compile Include="mizaWindows\TwitterFeed.xaml.cs">
       <DependentUpon>TwitterFeed.xaml</DependentUpon>
     </Compile>
     <Compile Include="TargetsViewModel.cs" />
+    <Compile Include="TwitterExperiments.cs" />
     <Compile Include="Twitterizer.cs" />
     <Compile Include="mizaWindows\TwitterUserControl.xaml.cs">
       <DependentUpon>TwitterUserControl.xaml</DependentUpon>
@@ -202,6 +207,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="mizaWindows\TargetViewControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="mizaWindows\TwitterExperiment.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
