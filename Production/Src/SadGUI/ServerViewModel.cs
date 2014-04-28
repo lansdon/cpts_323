@@ -75,8 +75,9 @@ namespace SadGUI
             try
             {  
                 gameServer = GameServerFactory.Create(serverType, "Team Mizu!!", _serverIP, Convert.ToInt32(_serverPort));
-            
+                
                 Mediator.Instance.SendMessage("to games", gameServer);
+               
                 ContentController.SetContentToController("RightCheckBoxPanel", new gameSelectionView());
             }
             catch
