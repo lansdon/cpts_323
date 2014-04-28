@@ -287,6 +287,7 @@ xcopy  "$(SolutionDir)\targets.ini" "$(TargetDir)\"  /y/s/f/i
 
 xcopy  "$(SolutionDir)\targets2.ini" "$(TargetDir)\"  /y/s/f/i
 xcopy  "$(SolutionDir)\*.xml" "$(TargetDir)\"  /y/s/f/i
+xcopy  "$(SolutionDir)\*.png" "$(TargetDir)\"  /y/s/f/i
 xcopy  "$(SolutionDir)\packages\EmguCV.221.x86.1.0\haarcascades\*.xml" "$(TargetDir)\" /y/s/f/i
 
 </PreBuildEvent>
