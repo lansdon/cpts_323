@@ -215,19 +215,19 @@ namespace SadGUI
                 using (Image<Gray, float> result = image.MatchTemplate(template, Emgu.CV.CvEnum.TM_TYPE.CV_TM_CCOEFF_NORMED))
                 {
 
-                    // after your call to MatchTemplate
-                    float threshold = 0.08f;
-                    MCvMat thresholdedImage;
-                    result.thresthreshold(result, thresholdedImage, threshold, 255, CV_THRESH_BINARY);
-                    // the above will set pixels to 0 in thresholdedImage if their value in result is lower than the threshold, to 255 if it is larger.
-                    // in C++ it could also be written cv::Mat thresholdedImage = result < threshold;
-                    // Now loop over pixels of thresholdedImage, and draw your matches
-                    for (int r = 0; r < thresholdedImage.rows; ++r) {
-                      for (int c = 0; c < thresholdedImage.cols; ++c) {
-                        if (!thresholdedImage.at<unsigned char>(r, c)) // = thresholdedImage(r,c) == 0
-                          cv::circle(sourceColor, cv::Point(c, r), template.cols/2, CV_RGB(0,255,0), 1);
-                      }
-                    }
+                    //// after your call to MatchTemplate
+                    //float threshold = 0.08f;
+                    //MCvMat thresholdedImage;
+                    //result.threshold(result, thresholdedImage, threshold, 255, CV_THRESH_BINARY);
+                    //// the above will set pixels to 0 in thresholdedImage if their value in result is lower than the threshold, to 255 if it is larger.
+                    //// in C++ it could also be written cv::Mat thresholdedImage = result < threshold;
+                    //// Now loop over pixels of thresholdedImage, and draw your matches
+                    //for (int r = 0; r < thresholdedImage.rows; ++r) {
+                    //  for (int c = 0; c < thresholdedImage.cols; ++c) {
+                    //    if (!thresholdedImage.at<unsigned char>(r, c)) // = thresholdedImage(r,c) == 0
+                    //      cv::circle(sourceColor, cv::Point(c, r), template.cols/2, CV_RGB(0,255,0), 1);
+                    //  }
+                    //}
 
 
                     double[] minValues, maxValues;
