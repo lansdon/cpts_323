@@ -142,6 +142,7 @@
       <DependentUpon>TwitterFeed.xaml</DependentUpon>
     </Compile>
     <Compile Include="TargetsViewModel.cs" />
+    <Compile Include="TimerClass.cs" />
     <Compile Include="TwitterExperiments.cs" />
     <Compile Include="Twitterizer.cs" />
     <Compile Include="mizaWindows\TwitterUserControl.xaml.cs">

@@ -30,7 +30,7 @@ namespace SadGUI
 
         public bool NewTimer(string Name)
         {
-            if (StopWatches.ContainsKey(Name))
+            if (!StopWatches.ContainsKey(Name))
             {
                 StopWatches.Add(Name, new Stopwatch());
                 return true;
@@ -68,11 +68,30 @@ namespace SadGUI
             return false;
         }
 
-        public long ElapsedTime(string Name)
+        public long Elapsedmilliseconds(string Name)
         {
             if (StopWatches.ContainsKey(Name))
             {
                 return StopWatches[Name].ElapsedMilliseconds;
+            }
+            return -1;
+        }
+
+        public double ElapsedNanoseconds(string Name)
+        {
+            // Not sure if this is working correctly.
+            if (StopWatches.ContainsKey(Name))
+            {
+                return (StopWatches[Name].ElapsedTicks / NanosecondPerTick);
+            }
+            return -1;
+        }
+
+        public long ElapsedTicks(string Name)
+        {
+            if (StopWatches.ContainsKey(Name))
+            {
+                return StopWatches[Name].ElapsedTicks;
             }
             return -1;
         }
