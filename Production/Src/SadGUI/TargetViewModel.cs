@@ -63,19 +63,25 @@ namespace SadGUI
                 OnPropertyChanged("z");
             }
         }
-        //public bool Friend
-        //{
-        //    get
-        //    {
-        //        return m_target.Friend;
-        //    }
+        public bool status
+        {
+            get
+            {
+                if (m_target.status == 1)
+                    return true;
+                else
+                    return false;
+            }
 
-        //    set
-        //    {
-        //        m_target. = value;
-        //        OnPropertyChanged("Friend");
-        //    }
-        //}
+            set
+            {
+                if (value == true)
+                    m_target.status = 1;
+                else
+                    m_target.status = 0;
+                OnPropertyChanged("status");
+            }
+        }
         public string CordsToString
         {
             get

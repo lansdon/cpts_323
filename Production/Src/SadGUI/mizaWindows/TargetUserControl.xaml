@@ -94,7 +94,7 @@
                         <Label Foreground="White" FontWeight="Bold" Content="{Binding Name}" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         <Label Foreground="White" FontWeight="Bold" Content="{Binding Alive}" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         <Label Foreground="White" FontWeight="Bold" Content="{Binding Points}" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                        <Label Foreground="White" FontWeight="Bold" Content="{Binding Friend}" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <Label Foreground="White" FontWeight="Bold" Content="{Binding status}" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         <Label Foreground="White" FontWeight="Bold" Content="{Binding CordsToString}" Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         <Label Foreground="White" FontWeight="Bold" Content="{Binding FlashRate}" Grid.Column="5" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         </Grid>

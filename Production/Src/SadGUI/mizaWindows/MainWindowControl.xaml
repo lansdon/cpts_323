@@ -46,6 +46,7 @@
         Grid.Row="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="30*"/>
+                <RowDefinition Height="10*"/>
                 <RowDefinition Height="50*"/>
             </Grid.RowDefinitions>
             
@@ -53,10 +54,13 @@
             <ContentControl
                 Grid.Row="0"
                 Name="UpperRightTop_CC"/>
-            
+            <!--Kill target buttons-->
+            <ContentControl
+                Grid.Row="1"
+                Name="UpperRightMiddle_CC"/>
             <!--Target Information Panel-->
             <ContentControl
-            Grid.Row="1"
+            Grid.Row="2"
             Name="UpperRightBottom_CC"/>
         </Grid>
     </Grid>

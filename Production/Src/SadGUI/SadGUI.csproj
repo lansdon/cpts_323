@@ -115,6 +115,9 @@
     <Compile Include="mizaWindows\gameStartView.xaml.cs">
       <DependentUpon>gameStartView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="mizaWindows\KillButtonsUserControl.xaml.cs">
+      <DependentUpon>KillButtonsUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="mizaWindows\launcherUserControl.xaml.cs">
       <DependentUpon>launcherUserControl.xaml</DependentUpon>
     </Compile>
@@ -171,6 +174,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="mizaWindows\gameStartView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="mizaWindows\KillButtonsUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

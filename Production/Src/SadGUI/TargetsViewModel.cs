@@ -23,7 +23,12 @@ namespace SadGUI
             KillTargetCommand = new DelegateCommand(KillTarget);
             ClearTargetsCommand = new DelegateCommand(ClearTargets);
             OpenFileCommand = new DelegateCommand(OpenFile);
-            
+            KillAllTargetsCommand = new DelegateCommand(killAllTargets);
+            KillAllFriendlyTargetsCommand = new DelegateCommand(killAllFriendlyTargets); 
+            KillAllEnemyTargetsCommand = new DelegateCommand(killAllEnemyTargets);
+
+
+
             Mediator.Instance.Register("Target List", populateTargets);
             Mediator.Instance.Register("Clear Targets", clearTargets);
         }
@@ -108,7 +113,29 @@ namespace SadGUI
             }
             
         }
-
+        private void killAllTargets()
+        {
+            foreach (var target in Targets)
+            {
+                LauncherViewModel.Instance.FireAt(target.x, target.y, target.z);
+            }
+        }
+        private void killAllFriendlyTargets()
+        {
+            foreach (var target in Targets)
+            {
+                if(target.status)
+                    LauncherViewModel.Instance.FireAt(target.x, target.y, target.z);
+            }
+        }
+        private void killAllEnemyTargets()
+        {
+            foreach (var target in Targets)
+            {
+                if (!target.status)
+                    LauncherViewModel.Instance.FireAt(target.x, target.y, target.z);
+            }
+        }
         private void ClearTargets()
         {
             Targets.Clear();
@@ -149,5 +176,8 @@ namespace SadGUI
         public ICommand OpenFileCommand { get; set; }
         public ICommand MoveToTargetCommand { get; set; }
         public ICommand KillTargetCommand { get; set; }
+        public ICommand KillAllTargetsCommand { get; set; }
+        public ICommand KillAllFriendlyTargetsCommand { get; set; }
+        public ICommand KillAllEnemyTargetsCommand { get; set; }
     }
 }
