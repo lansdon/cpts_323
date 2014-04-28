@@ -21,7 +21,7 @@ namespace SadGUI
     public class SadCamera : System.Windows.Controls.Image
     {
         static private SadCamera _cameraInstance;
-        static private int frameRate = 1000 / 5;
+        static private int frameRate = 1000 / 30;
 
         private Capture _capture = null;
         private System.Windows.Controls.Image _image = null;

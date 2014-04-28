@@ -42,8 +42,8 @@ namespace SadGUI
         // HARDCODED SETTINGS
         private double BOARD_Y_MAX = 48.0;             // Playing field Y length in inches.
         private double BOARD_X_MAX = 24.0;             // Playing field Y length in inches.
-        private double Y_RADIUS_MAX_DISTANCE = 100.0;   // RADIUS of target when it's furthest away from camera
-        private double Y_RADIUS_MIN_DISTANCE = 150.0;  // RADIUS of target when it's closest to camera
+        private double Y_RADIUS_MAX_DISTANCE = 50.0;   // RADIUS of target when it's furthest away from camera
+        private double Y_RADIUS_MIN_DISTANCE = 250.0;  // RADIUS of target when it's closest to camera
         private double Y_PIXEL_DELTA_TO_INCHES_MULT;   // Multiply target pixel delta by this num to get Y in inches.
         private double X_MAX = 20;                     // This is the max value X can have when y=BOARD_Y_MAX as seen by camera
 
@@ -205,26 +205,48 @@ namespace SadGUI
                 //    DrawPositionText(ref image, friend.rect, pos);
                 //}
 
- //               Image<Bgr, byte> source = new Image<Bgr, byte>(filepathB); // Image B
-                Image<Bgr, byte> template = new Image<Bgr, byte>("foe.png"); // Image A
+                // FOES
+                Image<Bgr, byte> template = new Image<Bgr, byte>("foe1.png"); // 
                 Image<Bgr, byte> imageToShow = image.Copy();
+
+                int sourceWidth = image.Size.Width;
+                int templateWidth = template.Size.Width;
 
                 using (Image<Gray, float> result = image.MatchTemplate(template, Emgu.CV.CvEnum.TM_TYPE.CV_TM_CCOEFF_NORMED))
                 {
+
+                    // after your call to MatchTemplate
+                    float threshold = 0.08f;
+                    MCvMat thresholdedImage;
+                    result.thresthreshold(result, thresholdedImage, threshold, 255, CV_THRESH_BINARY);
+                    // the above will set pixels to 0 in thresholdedImage if their value in result is lower than the threshold, to 255 if it is larger.
+                    // in C++ it could also be written cv::Mat thresholdedImage = result < threshold;
+                    // Now loop over pixels of thresholdedImage, and draw your matches
+                    for (int r = 0; r < thresholdedImage.rows; ++r) {
+                      for (int c = 0; c < thresholdedImage.cols; ++c) {
+                        if (!thresholdedImage.at<unsigned char>(r, c)) // = thresholdedImage(r,c) == 0
+                          cv::circle(sourceColor, cv::Point(c, r), template.cols/2, CV_RGB(0,255,0), 1);
+                      }
+                    }
+
+
                     double[] minValues, maxValues;
                     Point[] minLocations, maxLocations;
                     result.MinMax(out minValues, out maxValues, out minLocations, out maxLocations);
-
+           
                     // You can try different values of the threshold. I guess somewhere between 0.75 and 0.95 would be good.
-                    if (maxValues[0] > 0.9)
+                    for (int i = 0; i < maxValues.Count(); ++i)
                     {
-                        // This is a match. Do something with it, for example draw a rectangle around it.
-                        Rectangle match = new Rectangle(maxLocations[0], template.Size);
-                        imageToShow.Draw(match, new Bgr(Color.Red), 3);
+                        if (maxValues[i] > 0.50)
+                        {
+                            // This is a match
+                            Rectangle match = new Rectangle(maxLocations[i], template.Size);
+                            pos = PositionFromFrame(match);
+                            image.Draw(match, new Bgr(Color.Red), 3);
+                            DrawPositionText(ref image, match, pos);
+                        }
                     }
                 }
-
-
             }
         }
 
