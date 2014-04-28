@@ -63,8 +63,9 @@
       <HintPath>..\..\LauncherClient\packages\TweetSharp.2.3.1\lib\4.0\Hammock.ClientProfile.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\LauncherClient\packages\Newtonsoft.Json.6.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Visual Studio 2013\Projects\Twitter Homework\packages\TweetSharp.2.3.1\lib\4.0\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -93,6 +94,7 @@
     <Compile Include="ContentControllerManager.cs" />
     <Compile Include="DefaultControlCheckBox.cs" />
     <Compile Include="DelegateCommand.cs" />
+    <Compile Include="DelegateCommandS.cs" />
     <Compile Include="GameSelectionViewModel.cs" />
     <Compile Include="GameStartViewModel.cs" />
     <Compile Include="ImageProcessor.cs" />
@@ -132,10 +134,14 @@
     <Compile Include="mizaWindows\TargetViewControl.xaml.cs">
       <DependentUpon>TargetViewControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="mizaWindows\TwitterExperiment.xaml.cs">
+      <DependentUpon>TwitterExperiment.xaml</DependentUpon>
+    </Compile>
     <Compile Include="mizaWindows\TwitterFeed.xaml.cs">
       <DependentUpon>TwitterFeed.xaml</DependentUpon>
     </Compile>
     <Compile Include="TargetsViewModel.cs" />
+    <Compile Include="TwitterExperiments.cs" />
     <Compile Include="Twitterizer.cs" />
     <Compile Include="mizaWindows\TwitterUserControl.xaml.cs">
       <DependentUpon>TwitterUserControl.xaml</DependentUpon>
@@ -202,6 +208,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="mizaWindows\TargetViewControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="mizaWindows\TwitterExperiment.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

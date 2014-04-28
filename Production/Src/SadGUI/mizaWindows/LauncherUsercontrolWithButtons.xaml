@@ -21,7 +21,7 @@
                 Grid.Column="1"
                 Grid.Row="1"
                 Margin="5"
-                Command="{Binding Path=FireCommand}"               
+                Command="{Binding Path=FireCommand}"
                 >Fire</Button>
         <RepeatButton
                 Grid.Column="0"

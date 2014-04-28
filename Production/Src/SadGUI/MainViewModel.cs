@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using SadGUI;
+using SadGUI.mizaWindows;
 
 namespace SadGUI
 {
@@ -36,6 +37,7 @@ namespace SadGUI
             MEDIONE = Mediator.Instance;
             TWITTERIZER = Twitterizer.Instance;
             Twitterizer.Init(@"Resources/Twitterconfig.fig");
+            TWITTEREXPERIMENTS = new TwitterExperiments();
             TVM = new TargetsViewModel();
             
         }
@@ -53,5 +55,7 @@ namespace SadGUI
         public ServerViewModel ServerVM { get; set; }
         public Mediator MEDIONE { get; set; }
         public Twitterizer TWITTERIZER { get; set; }
+
+        public TwitterExperiments TWITTEREXPERIMENTS { get; set; }
     }
 }
