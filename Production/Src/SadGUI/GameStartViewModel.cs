@@ -50,6 +50,14 @@ namespace SadGUI
         {
             Targets = param as ObservableCollection<TargetViewModel>;
         }
+
+        public void CheckTargets()
+        {
+            foreach(var Target in Targets)
+            {
+                
+            }
+        }
         void togame(object param)
         {
              gameServer = param as IGameServer;

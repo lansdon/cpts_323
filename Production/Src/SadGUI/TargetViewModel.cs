@@ -131,6 +131,19 @@ namespace SadGUI
             }
         }
 
+        public int Hit
+        {
+            get
+            {
+                return m_target.hit;
+            }
+            set
+            {
+                m_target.hit = value;
+                OnPropertyChanged("Hit");
+            }
+        }
+
         public ITarget Target() 
         {
             return m_target;
