@@ -179,16 +179,16 @@ namespace SadGUI
                 Point3D pos;
 
                 // TEMPORARY - FACES
-                var detectedFaces = grayFrame.DetectHaarCascade(haarCascade)[0];
-                foreach (var face in detectedFaces)
-                {
-                    pos = PositionFromFrame(face.rect);
-                    image.Draw(face.rect, new Bgr(0, double.MaxValue, 0), 3);
-                    DrawPositionText(ref image, face.rect, pos);
-                }
+                //var detectedFaces = grayFrame.DetectHaarCascade(haarCascade)[0];
+                //foreach (var face in detectedFaces)
+                //{
+                //    pos = PositionFromFrame(face.rect);
+                //    image.Draw(face.rect, new Bgr(double.MaxValue, double.MaxValue, 0), 3);
+                //    DrawPositionText(ref image, face.rect, pos);
+                //}
 
                 // FOES
-                var detectedFoes = grayFrame.DetectHaarCascade(haarCascade)[0];
+                var detectedFoes = grayFrame.DetectHaarCascade(foeHaarCascade)[0];
                 foreach (var foe in detectedFoes)
                 {
                     pos = PositionFromFrame(foe.rect);
@@ -197,7 +197,7 @@ namespace SadGUI
                 }
 
                 // FRIENDS
-                var detectedFriends = grayFrame.DetectHaarCascade(haarCascade)[0];
+                var detectedFriends = grayFrame.DetectHaarCascade(friendHaarCascade)[0];
                 foreach (var friend in detectedFriends)
                 {
                     pos = PositionFromFrame(friend.rect);
