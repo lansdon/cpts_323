@@ -16,6 +16,9 @@ namespace SadGUI
     public class ImageProcessor
     {
         private HaarCascade haarCascade = new HaarCascade(@"haarcascade_frontalface_alt_tree.xml");
+        private HaarCascade foeHaarCascade = new HaarCascade(@"foe_haarcascade.xml");
+        private HaarCascade friendHaarCascade = new HaarCascade(@"friend_haarcascade.xml");
+
         private bool busy = false;
 
         // AUTOMATIC VALUES - These are gathered internally
@@ -143,10 +146,21 @@ namespace SadGUI
             {
                 Image<Gray, Byte> grayFrame = image.Convert<Gray, Byte>();
 
+                // TEMPORARY - FACES
                 var detectedFaces = grayFrame.DetectHaarCascade(haarCascade)[0];
-
                 foreach (var face in detectedFaces)
-                    image.Draw(face.rect, new Bgr(0, double.MaxValue, 0), 3);
+                    image.Draw(face.rect, new Bgr(66, 77, 66), 3);
+
+                // FOES
+                var detectedFoes = grayFrame.DetectHaarCascade(haarCascade)[0];
+                foreach (var foe in detectedFoes)
+                    image.Draw(foe.rect, new Bgr(0, 0, double.MaxValue), 3);
+
+                // FRIENDS
+                var detectedFriends = grayFrame.DetectHaarCascade(haarCascade)[0];
+                foreach (var friend in detectedFriends)
+                    image.Draw(friend.rect, new Bgr(0, double.MaxValue, 0), 3);
+  
              }
         }
 
