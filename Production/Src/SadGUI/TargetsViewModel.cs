@@ -88,7 +88,7 @@ namespace SadGUI
                 mytemp.y = temp.y;
                 mytemp.z = temp.z;
                 
-                //target.Alive = true;
+                mytemp.Alive = true;
                 Targets.Add(new TargetViewModel(mytemp));
             }
             //TargetListBox.ItemsSource = Targets;

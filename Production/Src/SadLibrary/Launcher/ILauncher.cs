@@ -8,6 +8,7 @@ namespace SadLibrary.Launcher
 {
     public interface ILauncher
     {
+        
         void moveUp();
         void moveDown();
         void moveLeft();

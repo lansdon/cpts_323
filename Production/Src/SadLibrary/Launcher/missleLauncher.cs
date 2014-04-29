@@ -23,6 +23,7 @@ namespace SadLibrary.Launcher
     public class missileLauncher : ILauncher
     {
         protected double myPhi, myTheta;
+      
         protected double degreeDelay = 20;
         public uint missileCount;
         public uint MAX_MISSILE_COUNT = 4;
@@ -458,7 +459,7 @@ namespace SadLibrary.Launcher
         {
             missileCount = value;
         }
-
+       
         public string getName()
         {
             return name;

@@ -82,7 +82,7 @@ namespace SadGUI
             //after 60 sec stop game
             foreach(var target in sortedTargets)
             {
-                if (target.status)
+                if (!target.status)
                     LauncherViewModel.Instance.FireAt(target.x, target.y-2, target.z);
             }
             

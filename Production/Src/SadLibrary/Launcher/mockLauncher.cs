@@ -11,6 +11,7 @@ namespace SadLibrary.Launcher
         public uint missileCount;
         public uint MAX_MISSILE_COUNT = 4;
         public string name = "";
+        
         public void reload()
         {
             missileCount = MAX_MISSILE_COUNT;
@@ -26,6 +27,7 @@ namespace SadLibrary.Launcher
         {
 
         }
+        
         public void moveUp()
         {
             Console.WriteLine("Moving up! Sir!");

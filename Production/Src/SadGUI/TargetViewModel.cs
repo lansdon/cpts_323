@@ -16,7 +16,7 @@ namespace SadGUI
     public class TargetViewModel : ViewModelBase
     {
         private ITarget m_target;
-
+        private bool _Alive;
         public TargetViewModel(ITarget target)
         {
             m_target = target;
@@ -94,18 +94,18 @@ namespace SadGUI
                 OnPropertyChanged("CordsToString");
             }
         }
-        //public bool Alive
-        //{
-        //    get
-        //    {
-        //        return m_target.;
-        //    }
-        //    set
-        //    {
-        //        m_target.Alive = value;  
-        //        OnPropertyChanged("Alive");
-        //    }
-        //}
+        public bool Alive
+        {
+            get
+            {
+                return _Alive;
+            }
+            set
+            {
+                _Alive = value;  
+                OnPropertyChanged("Alive");
+            }
+        }
         public double Points
         {
             get

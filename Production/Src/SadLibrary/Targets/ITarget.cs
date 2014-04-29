@@ -8,6 +8,7 @@ namespace SadLibrary.Targets
 {
     public interface ITarget
     {
+        bool Alive { get; set; }
         int id { get; set; }
         int status { get; set; }
         int hit { get; set; }
