@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ComponentDesigner" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner" xmlns:dm11="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm12="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner"
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm9="http://schemas.microsoft.com/dsltools/UseCaseModel"
   dslVersion="1.0.0.0"
   Id="96f61117-21b4-4af4-be54-778733aa3be4"
   name="SadModel" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
@@ -1976,6 +1976,795 @@
       <executionEvent
         Id="73de1806-99a1-4d0b-ab37-f99bc222e38e"
         name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="7795aaef-d832-4bc2-9f17-37056960f5d0"
+        name="User"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="b4d51da8-3c40-47a3-b442-6005d577fe02"
+            isDerived="false"
+            sourceEndRoleName="User"
+            targetEndRoleName="Select Game"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="f12dadb4-673d-447f-bd8e-eb05b9652d08"
+              LastKnownName="Select Game"
+              LastKnownLocation="SadModel.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="8524a315-6a87-48d5-bc5f-9e35672b385f"
+                  name="User"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="439a52d9-05d5-4bbc-a4bb-54998f18dcaf"
+                  name="Select Game"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="a583cf14-6288-4bda-9a80-c4262275138c"
+            isDerived="false"
+            sourceEndRoleName="User"
+            targetEndRoleName="Start Game"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="da8ad2f9-c9f8-4d4b-be99-4272318df5dc"
+              LastKnownName="Start Game"
+              LastKnownLocation="SadModel.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="2784b1fe-f7e0-4f76-815e-dfad3102fc40"
+                  name="User"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="2eefa230-b38f-425f-bda4-c4f4d8354c32"
+                  name="Start Game"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="0b68a69f-8ab5-4fc6-92c6-a06507440b9d"
+            isDerived="false"
+            sourceEndRoleName="User"
+            targetEndRoleName="Stop Game"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="fe50aa54-92e8-4614-829a-a74e13ba52d7"
+              LastKnownName="Stop Game"
+              LastKnownLocation="SadModel.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="f0b35a85-8c78-41c4-967d-6cab16f6f56d"
+                  name="User"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="512cfefb-9961-4c02-af6d-82445229010f"
+                  name="Stop Game"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="513e552c-4d42-41a0-b71f-32853c3062a7"
+            isDerived="false"
+            sourceEndRoleName="User"
+            targetEndRoleName="Kill all targets"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="cf1b8589-726a-43f7-a3f5-9f39dcea71f1"
+              LastKnownName="Kill all targets"
+              LastKnownLocation="SadModel.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="a3a44dba-d96f-48fd-bcf4-0fb99ad74adf"
+                  name="User"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="16a71d25-8933-4b47-b2fc-19a848d0ed8b"
+                  name="Kill all targets"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="272d07d8-b373-42ac-9a38-009aea501068"
+            isDerived="false"
+            sourceEndRoleName="User"
+            targetEndRoleName="Kill all Friendly targets"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="282afae0-c5de-4b02-903f-c87382e3deac"
+              LastKnownName="Kill all Friendly targets"
+              LastKnownLocation="SadModel.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="0648e8a6-685d-4003-8686-e02e9294738e"
+                  name="User"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="6e6b66d5-ad52-4cdf-ade9-95715b39096e"
+                  name="Kill all Friendly targets"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="6bc792f9-7267-48b4-87b8-2e4f56a111dc"
+            isDerived="false"
+            sourceEndRoleName="User"
+            targetEndRoleName="UseCase1"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="0f83ae14-87cb-4b2c-9790-d4a164bfca3d"
+              LastKnownName="Kill all Enemy Targets"
+              LastKnownLocation="SadModel.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="3d8a40e6-66b4-437f-8cd7-3a9bc5f7bdf2"
+                  name="User"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="ef8b1c4a-6f95-4052-bdc3-98d5d6c18edf"
+                  name="UseCase1"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="4af9e163-56c2-4b40-84e9-fb15b6a99af9"
+            isDerived="false"
+            sourceEndRoleName="User"
+            targetEndRoleName="kill Selected Target"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="02fc2466-5ca6-4179-beb3-1bc66544a7f6"
+              LastKnownName="kill Selected Target"
+              LastKnownLocation="SadModel.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="42d16e21-500c-4013-9333-83fca56f7579"
+                  name="User"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="186489ff-d4dc-404a-af30-3b68060ee5e2"
+                  name="kill Selected Target"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="a96a5a93-5149-43b0-aadc-479a7461ba0a"
+            isDerived="false"
+            sourceEndRoleName="User"
+            targetEndRoleName="Manual control of launcher"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="2e6d6c2d-e6c3-45aa-a3ee-3b617c23c1bd"
+              LastKnownName="Manual control of launcher"
+              LastKnownLocation="SadModel.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="fd441a79-ba9b-44bb-aee8-9d67a83529eb"
+                  name="User"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="36c4f75d-56fc-46eb-b0e3-2e22fb9ccf9b"
+                  name="Manual control of launcher"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="b329b35d-90fb-442a-941f-b2a1e0407ea8"
+        name="Select Server"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="4ea19a35-579d-46df-9799-30570ca34044"
+            isDerived="false"
+            sourceEndRoleName="Select Server"
+            targetEndRoleName="User"
+            isLeaf="false"
+            isAbstract="false">
+            <actorMoniker
+              Id="7795aaef-d832-4bc2-9f17-37056960f5d0"
+              LastKnownName="User"
+              LastKnownLocation="SadModel.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="eb663e14-ceb6-44dd-8e42-5c66a7410f45"
+                  name="Select Server"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="56a68835-34e2-42c5-85dc-1334855d8989"
+                  name="User"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="1c69fa7d-0cfb-4ef9-8025-cc516ac4d531"
+            isDerived="false"
+            sourceEndRoleName="Select Server"
+            targetEndRoleName="Server"
+            isLeaf="false"
+            isAbstract="false">
+            <actorMoniker
+              Id="b5b71072-549d-4f51-8eaf-6c95896a472a"
+              LastKnownName="Server"
+              LastKnownLocation="SadModel.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="d006c83e-2898-4af0-8304-54374d18f5d7"
+                  name="Select Server"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="34c23ba8-200e-4200-bc8f-86de837cb44d"
+                  name="Server"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <subjects>
+          <subsystemMoniker
+            Id="70df1e58-299e-42e6-980d-7966943bf979"
+            LastKnownName="GUI"
+            LastKnownLocation="SadModel.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <subsystem
+        Id="70df1e58-299e-42e6-980d-7966943bf979"
+        name="GUI"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="f12dadb4-673d-447f-bd8e-eb05b9652d08"
+        name="Select Game"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="91d4ee7c-9a04-406a-b20e-18c1559a933f"
+            isDerived="false"
+            sourceEndRoleName="Select Game"
+            targetEndRoleName="Server"
+            isLeaf="false"
+            isAbstract="false">
+            <actorMoniker
+              Id="b5b71072-549d-4f51-8eaf-6c95896a472a"
+              LastKnownName="Server"
+              LastKnownLocation="SadModel.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="b8b9b51f-6205-43b0-845c-661976c1eca8"
+                  name="Select Game"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="47ca0121-8bae-4196-84e5-2a9a9558635e"
+                  name="Server"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <extendedCases>
+          <extend
+            Id="f4adf181-bf75-422c-9948-5697bc275bd5">
+            <useCaseMoniker
+              Id="b38e71ee-3390-4d1d-a433-15000f7eb70b"
+              LastKnownName="Target list"
+              LastKnownLocation="SadModel.uml" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker
+            Id="70df1e58-299e-42e6-980d-7966943bf979"
+            LastKnownName="GUI"
+            LastKnownLocation="SadModel.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="da8ad2f9-c9f8-4d4b-be99-4272318df5dc"
+        name="Start Game"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="390b832b-36a2-43aa-893f-96fc6d8d19d5"
+            isDerived="false"
+            sourceEndRoleName="Start Game"
+            targetEndRoleName="Server"
+            isLeaf="false"
+            isAbstract="false">
+            <actorMoniker
+              Id="b5b71072-549d-4f51-8eaf-6c95896a472a"
+              LastKnownName="Server"
+              LastKnownLocation="SadModel.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="420602f2-9079-4995-ae94-c16a38fd88bf"
+                  name="Start Game"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="5d015708-0ad7-46b1-ab5f-a53c49dd627e"
+                  name="Server"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <subjects>
+          <subsystemMoniker
+            Id="70df1e58-299e-42e6-980d-7966943bf979"
+            LastKnownName="GUI"
+            LastKnownLocation="SadModel.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="fe50aa54-92e8-4614-829a-a74e13ba52d7"
+        name="Stop Game"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="b3adbacb-5a19-4ead-930a-8d66e52efbda"
+            isDerived="false"
+            sourceEndRoleName="Stop Game"
+            targetEndRoleName="Server"
+            isLeaf="false"
+            isAbstract="false">
+            <actorMoniker
+              Id="b5b71072-549d-4f51-8eaf-6c95896a472a"
+              LastKnownName="Server"
+              LastKnownLocation="SadModel.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="a792b1d6-06a5-489b-84e3-a661f8120887"
+                  name="Stop Game"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="2f3c8f95-da89-42f7-9196-b4f7e7f9ae88"
+                  name="Server"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <subjects>
+          <subsystemMoniker
+            Id="70df1e58-299e-42e6-980d-7966943bf979"
+            LastKnownName="GUI"
+            LastKnownLocation="SadModel.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="b5b71072-549d-4f51-8eaf-6c95896a472a"
+        name="Server"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="b38e71ee-3390-4d1d-a433-15000f7eb70b"
+        name="Target list"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="ff72ddde-b997-4dc4-92ab-cd9f47235347"
+        name="PI"
+        isAbstract="false"
+        isLeaf="false">
+        <generalsInternal>
+          <generalization
+            Id="29ef0ed4-dcf6-43bc-b8bf-631e97636c33"
+            isSubstitutable="false">
+            <actorMoniker
+              Id="b5b71072-549d-4f51-8eaf-6c95896a472a"
+              LastKnownName="Server"
+              LastKnownLocation="SadModel.uml" />
+          </generalization>
+        </generalsInternal>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="cf1b8589-726a-43f7-a3f5-9f39dcea71f1"
+        name="Kill all targets"
+        isAbstract="false"
+        isLeaf="false">
+        <suppliersInternal>
+          <dependency
+            Id="df7dbd2f-9337-423e-ab5c-10104cdfecdd">
+            <useCaseMoniker
+              Id="b38e71ee-3390-4d1d-a433-15000f7eb70b"
+              LastKnownName="Target list"
+              LastKnownLocation="SadModel.uml" />
+          </dependency>
+          <dependency
+            Id="15978fb7-d912-4a9f-998a-0c77457e1827">
+            <actorMoniker
+              Id="f4aac76a-acbd-496b-bf4e-e6768bedea14"
+              LastKnownName="Missile Launcher"
+              LastKnownLocation="SadModel.uml" />
+          </dependency>
+        </suppliersInternal>
+        <subjects>
+          <subsystemMoniker
+            Id="70df1e58-299e-42e6-980d-7966943bf979"
+            LastKnownName="GUI"
+            LastKnownLocation="SadModel.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="282afae0-c5de-4b02-903f-c87382e3deac"
+        name="Kill all Friendly targets"
+        isAbstract="false"
+        isLeaf="false">
+        <suppliersInternal>
+          <dependency
+            Id="91ef5480-8c3d-4cc3-bb45-92716345142b">
+            <useCaseMoniker
+              Id="b38e71ee-3390-4d1d-a433-15000f7eb70b"
+              LastKnownName="Target list"
+              LastKnownLocation="SadModel.uml" />
+          </dependency>
+          <dependency
+            Id="f51fa6fb-d00b-49bf-8723-d5cd943aa7ea">
+            <actorMoniker
+              Id="f4aac76a-acbd-496b-bf4e-e6768bedea14"
+              LastKnownName="Missile Launcher"
+              LastKnownLocation="SadModel.uml" />
+          </dependency>
+        </suppliersInternal>
+        <subjects>
+          <subsystemMoniker
+            Id="70df1e58-299e-42e6-980d-7966943bf979"
+            LastKnownName="GUI"
+            LastKnownLocation="SadModel.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="0f83ae14-87cb-4b2c-9790-d4a164bfca3d"
+        name="Kill all Enemy Targets"
+        isAbstract="false"
+        isLeaf="false">
+        <suppliersInternal>
+          <dependency
+            Id="1aed3894-b4f6-4494-b324-1a7f53b13192">
+            <useCaseMoniker
+              Id="b38e71ee-3390-4d1d-a433-15000f7eb70b"
+              LastKnownName="Target list"
+              LastKnownLocation="SadModel.uml" />
+          </dependency>
+          <dependency
+            Id="77f125b8-05dd-4275-8728-136e94314974">
+            <actorMoniker
+              Id="f4aac76a-acbd-496b-bf4e-e6768bedea14"
+              LastKnownName="Missile Launcher"
+              LastKnownLocation="SadModel.uml" />
+          </dependency>
+        </suppliersInternal>
+        <subjects>
+          <subsystemMoniker
+            Id="70df1e58-299e-42e6-980d-7966943bf979"
+            LastKnownName="GUI"
+            LastKnownLocation="SadModel.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="02fc2466-5ca6-4179-beb3-1bc66544a7f6"
+        name="kill Selected Target"
+        isAbstract="false"
+        isLeaf="false">
+        <suppliersInternal>
+          <dependency
+            Id="6117e730-5299-458f-8d7e-656a3b368f48">
+            <useCaseMoniker
+              Id="b38e71ee-3390-4d1d-a433-15000f7eb70b"
+              LastKnownName="Target list"
+              LastKnownLocation="SadModel.uml" />
+          </dependency>
+          <dependency
+            Id="3358430e-d598-4b4b-9254-3d394014cc6e">
+            <actorMoniker
+              Id="f4aac76a-acbd-496b-bf4e-e6768bedea14"
+              LastKnownName="Missile Launcher"
+              LastKnownLocation="SadModel.uml" />
+          </dependency>
+        </suppliersInternal>
+        <subjects>
+          <subsystemMoniker
+            Id="70df1e58-299e-42e6-980d-7966943bf979"
+            LastKnownName="GUI"
+            LastKnownLocation="SadModel.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="2e6d6c2d-e6c3-45aa-a3ee-3b617c23c1bd"
+        name="Manual control of launcher"
+        isAbstract="false"
+        isLeaf="false">
+        <suppliersInternal>
+          <dependency
+            Id="4a106e26-2d4e-45a3-9d30-ea6426454769">
+            <actorMoniker
+              Id="f4aac76a-acbd-496b-bf4e-e6768bedea14"
+              LastKnownName="Missile Launcher"
+              LastKnownLocation="SadModel.uml" />
+          </dependency>
+        </suppliersInternal>
+        <subjects>
+          <subsystemMoniker
+            Id="70df1e58-299e-42e6-980d-7966943bf979"
+            LastKnownName="GUI"
+            LastKnownLocation="SadModel.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="f4aac76a-acbd-496b-bf4e-e6768bedea14"
+        name="Missile Launcher"
+        isAbstract="false"
+        isLeaf="false" />
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType
