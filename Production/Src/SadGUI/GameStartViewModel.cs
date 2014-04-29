@@ -79,7 +79,11 @@ namespace SadGUI
             //send target list to strategy!!
 
             //after 60 sec stop game
-
+            foreach(var target in Targets)
+            {
+                if (target.status)
+                    LauncherViewModel.Instance.FireAt(target.x, target.y, target.z);
+            }
             
         }
         public void Stop()
