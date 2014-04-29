@@ -8,12 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using TargetServerCommunicator;
 
 namespace SadGUI
 {
     class TargetsViewModel : ViewModelBase
     {
         private int _listBoxSelection;
+        private int _score;
         public TargetsViewModel()
         {
             Targets = new ObservableCollection<TargetViewModel>();
@@ -26,11 +28,20 @@ namespace SadGUI
             KillAllTargetsCommand = new DelegateCommand(killAllTargets);
             KillAllFriendlyTargetsCommand = new DelegateCommand(killAllFriendlyTargets); 
             KillAllEnemyTargetsCommand = new DelegateCommand(killAllEnemyTargets);
+            score = 0;
 
-
-
-            Mediator.Instance.Register("Target List", populateTargets);
+            Mediator.Instance.Register("to games", gameServer);
+            Mediator.Instance.Register("Game Name", populateTargets);
             Mediator.Instance.Register("Clear Targets", clearTargets);
+        }
+        public int score
+        {
+            get { return _score; }
+            set
+            {
+                _score = value;
+                OnPropertyChanged("score");
+            }
         }
         public int listBoxSelection
         {
@@ -46,10 +57,17 @@ namespace SadGUI
             Targets.Clear();
             
         }
+        private string gameName { get; set; }
+        private IGameServer gameserver { get; set; }
+        void gameServer(object param)
+        {
+            gameserver = param as IGameServer;
+        }
 
         void populateTargets(object param)
         {
-            IEnumerable<TargetServerCommunicator.Data.Target> temps = param as IEnumerable<TargetServerCommunicator.Data.Target>;
+            gameName = param as string;
+            IEnumerable<TargetServerCommunicator.Data.Target> temps = gameserver.RetrieveTargetList(gameName);//param as IEnumerable<TargetServerCommunicator.Data.Target>;
             
             foreach (var temp in temps)
             {
@@ -118,6 +136,7 @@ namespace SadGUI
             foreach (var target in Targets)
             {
                 LauncherViewModel.Instance.FireAt(target.x, target.y, target.z);
+                score += 50;
             }
         }
         private void killAllFriendlyTargets()
@@ -152,6 +171,7 @@ namespace SadGUI
             //TargetViewModel targetVM = button.DataContext as TargetViewModel;
 
             //ITarget target = targetVM.Target();
+            if(Targets.Count!=0)
             LauncherViewModel.Instance.MoveToCoords(Targets[_listBoxSelection].x, Targets[_listBoxSelection].y, Targets[_listBoxSelection].z);
         }
         private void KillTarget()
@@ -164,6 +184,7 @@ namespace SadGUI
 
            // foreach(var target in Targets)
             {
+                if(Targets.Count!=0)
                 LauncherViewModel.Instance.FireAt(Targets[_listBoxSelection].x, Targets[_listBoxSelection].y, Targets[_listBoxSelection].z);
 
             }

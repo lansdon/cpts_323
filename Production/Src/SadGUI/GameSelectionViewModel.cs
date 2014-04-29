@@ -52,12 +52,11 @@ namespace SadGUI
             
             Console.WriteLine(_selectedIndex);
             Mediator.Instance.SendMessage("Game Name", games[_selectedIndex]);
-            var data = gameserver.RetrieveTargetList(games[_selectedIndex]);
-            Mediator.Instance.SendMessage("Target List", data);
+           
             ContentController.SetContentToController("RightCheckBoxPanel", new gameStartView());
         }
         public void Cancel() {
-            games = new ObservableCollection<string>();
+            games.Clear();
             ServerCheckBox.instance.ServerControl_CheckBox_IsChecked = false;
         }
         public ICommand OkCommand { get; set; }

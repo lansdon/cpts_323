@@ -4,8 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300"
-             DataContext="{Binding Path=GameStart}">
+             d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="20*"/>
@@ -22,12 +21,15 @@
                    Content="Score"
                    HorizontalContentAlignment="Center"
                    Foreground="White"/>
-            <Label Grid.Row="1"
-                   Content="{Binding Path=points}"
+            <Grid Grid.Row="1"
+                  DataContext="{Binding Path=TVM}">
+            <Label Content="{Binding Path=score}"
                    HorizontalContentAlignment="Center"
                    Foreground="White"/>
+            </Grid>
         </Grid>
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="1"
+              DataContext="{Binding Path=GameStart}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="50*"/>
                 <RowDefinition Height="50*"/>
@@ -41,7 +43,12 @@
                    HorizontalContentAlignment="Center"
                    Foreground="White"/>
         </Grid>
-        <Grid Grid.Row="2">
+        <Grid Grid.Row="2"
+              DataContext="{Binding Path=GameStart}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50*"/>
+                <RowDefinition Height="50*"/>
+            </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="50*"/>
                 <ColumnDefinition Width="50*"/>
@@ -55,6 +62,11 @@
                     Command="{Binding Path=StopCommand}"
                     Content="Stop"
                     Margin="15,25"/>
+            <Button Grid.Row="1"
+                    Grid.ColumnSpan="2"
+                    Content="Restart"
+                    Command="{Binding Path=resetCommand}"
+                    Margin="90,25"/>
         </Grid>
     </Grid>
 </UserControl>

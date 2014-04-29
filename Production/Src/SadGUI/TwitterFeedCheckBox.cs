@@ -53,12 +53,12 @@ namespace SadGUI
             if (IsChecked == true)
             {
                 Twitterizer.Active = true;
-                ContentController.SetContentToController("RightCheckBoxPanel", new TwitterExperiment());
+                //ContentController.SetContentToController("RightCheckBoxPanel", new TwitterExperiment());
             }
             else
             {
                 Twitterizer.Active = false;
-                ContentController.SetContentToController("RightCheckBoxPanel", new DefaultUserControl());
+               // ContentController.SetContentToController("RightCheckBoxPanel", new DefaultUserControl());
             }
         }
     }
