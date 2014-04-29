@@ -56,6 +56,11 @@ namespace SadGUI
         // Text Overlay
         Font coordFont = new Font("Arial", 24);
 
+        // Sample Targets (Image Templates)
+        Image<Bgr, byte> foeTemplate = new Image<Bgr, byte>("foe1.png"); // 
+//        Image<Bgr, byte> template = new Image<Bgr, byte>("foe1.png"); // 
+        List<TargetResult> targetList = new List<TargetResult>();
+
         
         public ImageProcessor() { }
 
@@ -184,7 +189,6 @@ namespace SadGUI
             }
             public Point3D pos;
             public Rectangle rect;
-
          };
 
         /*
@@ -194,55 +198,14 @@ namespace SadGUI
         {
             if (image != null)
             {
-               Image<Bgr, byte> template = new Image<Bgr, byte>("foe1.png"); // 
-                Image<Gray, Byte> grayFrame = image.Convert<Gray, Byte>();
-                Image<Gray, Byte> grayTemplate = template.Convert<Gray, Byte>();
-                Point3D pos;
+//                Image<Bgr, Byte> template = new Image<Bgr, byte>("foe1.png"); // 
+ //               Image<Gray, Byte> grayFrame = image.Convert<Gray, Byte>();
+ //               Image<Gray, Byte> grayTemplate = template.Convert<Gray, Byte>();
+ //               Point3D pos;
 
                 // FOES
-                 Image<Bgr, byte> imageToShow = image.Copy();
+                DetectTargets(ref image, foeTemplate);
 
-                int sourceWidth = image.Size.Width;
-                int templateWidth = template.Size.Width;
-
-                // You can try different values of the threshold. I guess somewhere between 0.75 and 0.95 would be good.
-                List<TargetResult> targetList = new List<TargetResult>();
-                double minThreshold = .50;
-
-                int incrementRowAmount = 50;
-                int rowCount = ((image.Height - grayTemplate.Height) / incrementRowAmount);
-                int colCount = ((image.Width - grayTemplate.Width) / incrementRowAmount);
-
-                for (int r = 0; r < rowCount; ++r) 
-                {
-                    for (int c = 0; c < colCount; ++c)
-                    {
-                        using (Image<Gray, Byte> testArea = new Image<Gray, Byte>(image.Width, image.Height))
-                        {
-                            CvInvoke.cvCopy(grayFrame.Convert<Gray, Byte>(), testArea, IntPtr.Zero);
-                            testArea.ROI = new Rectangle(c * incrementRowAmount, r * incrementRowAmount, grayTemplate.Width, grayTemplate.Height);
-                            
-                            using (Image<Gray, float> result = testArea.MatchTemplate(grayTemplate, TM_TYPE.CV_TM_CCOEFF_NORMED))
-                            {
-                                double[] minValues, maxValues;
-                                Point[] minLocations, maxLocations;
-                                result.MinMax(out minValues, out maxValues, out minLocations, out maxLocations);
-                                if (maxValues[0] > minThreshold)
-                                {
-                                    // This is a match
-                                    Rectangle match = testArea.ROI;
-                                    pos = PositionFromFrame(match);
-                                    if (!ContainsPoint(targetList, pos, 50.0))
-                                    {
-                                        targetList.Add(new TargetResult(pos, match));
-                                        image.Draw(match, new Bgr(Color.Red), 3);
-                                        DrawPositionText(ref image, match, pos);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
             }
         }
 
@@ -259,41 +222,59 @@ namespace SadGUI
                 return false;
             }
 
-           Point Object_Location = new Point();
-           private bool Detect_objects(Image<Gray, Byte> Input_Image, Image<Gray, Byte> object_Image)
+           private void DetectTargets(ref Image<Bgr, Byte> image, Image<Bgr, Byte> template)
            {
-               Point dftSize = new Point(Input_Image.Width + (object_Image.Width * 2), Input_Image.Height + (object_Image.Height * 2));
-               bool Success = false;
-               using (Image<Gray, Byte> pad_array = new Image<Gray, Byte>(dftSize.X, dftSize.Y))
+               if (image != null && template != null)
                {
-                   //copy centre
-                   pad_array.ROI = new Rectangle(object_Image.Width, object_Image.Height, Input_Image.Width, Input_Image.Height);
-                   CvInvoke.cvCopy(Input_Image.Convert<Gray, Byte>(), pad_array, IntPtr.Zero);
+                   Image<Gray, Byte> grayFrame = image.Convert<Gray, Byte>();
+                   Image<Gray, Byte> grayTemplate = template.Convert<Gray, Byte>();
+                   Point3D pos;
 
-                   //CvInvoke.cvShowImage("pad_array", pad_array);
-                   pad_array.ROI = (new Rectangle(0, 0, dftSize.X, dftSize.Y));
-                   using (Image<Gray, float> result_Matrix = pad_array.MatchTemplate(object_Image, TM_TYPE.CV_TM_CCOEFF_NORMED))
+                   // FOES
+                   Image<Bgr, byte> imageToShow = image.Copy();
+
+                   int sourceWidth = image.Size.Width;
+                   int templateWidth = template.Size.Width;
+
+                   // You can try different values of the threshold. I guess somewhere between 0.75 and 0.95 would be good.
+                   List<TargetResult> targetList = new List<TargetResult>();
+                   double minThreshold = .70;
+
+                   int incrementRowAmount = 20;
+                   int rowCount = ((image.Height - grayTemplate.Height) / incrementRowAmount);
+                   int colCount = ((image.Width - grayTemplate.Width) / incrementRowAmount);
+
+                   for (int r = 0; r < rowCount; ++r)
                    {
-                       result_Matrix.ROI = new Rectangle(object_Image.Width, object_Image.Height, Input_Image.Width, Input_Image.Height);
-
-                       Point[] MAX_Loc, Min_Loc;
-                       double[] min, max;
-                       result_Matrix.MinMax(out min, out max, out Min_Loc, out MAX_Loc);
-
-                       using (Image<Gray, double> RG_Image = result_Matrix.Convert<Gray, double>().Copy())
+                       for (int c = 0; c < colCount; ++c)
                        {
-                           //#TAG WILL NEED TO INCREASE SO THRESHOLD AT LEAST 0.8
-
-                           if (max[0] > 0.4)
+                           using (Image<Gray, Byte> testArea = new Image<Gray, Byte>(image.Width, image.Height))
                            {
-                               Object_Location = MAX_Loc[0];
-                               Success = true;
+                               CvInvoke.cvCopy(grayFrame.Convert<Gray, Byte>(), testArea, IntPtr.Zero);
+                               testArea.ROI = new Rectangle(c * incrementRowAmount, r * incrementRowAmount, grayTemplate.Width, grayTemplate.Height);
+
+                               using (Image<Gray, float> result = testArea.MatchTemplate(grayTemplate, TM_TYPE.CV_TM_CCOEFF_NORMED))
+                               {
+                                   double[] minValues, maxValues;
+                                   Point[] minLocations, maxLocations;
+                                   result.MinMax(out minValues, out maxValues, out minLocations, out maxLocations);
+                                   if (maxValues[0] > minThreshold)
+                                   {
+                                       // This is a match
+                                       Rectangle match = testArea.ROI;
+                                       pos = PositionFromFrame(match);
+                                       if (!ContainsPoint(targetList, pos, 50.0))
+                                       {
+                                           targetList.Add(new TargetResult(pos, match));
+                                           image.Draw(match, new Bgr(Color.Red), 3);
+                                           DrawPositionText(ref image, match, pos);
+                                       }
+                                   }
+                               }
                            }
                        }
-
                    }
                }
-               return Success;
            }
 
         /*
