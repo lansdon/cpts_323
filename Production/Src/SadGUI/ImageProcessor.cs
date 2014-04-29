@@ -1,13 +1,19 @@
-﻿using Emgu.CV;
-using Emgu.CV.Structure;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media.Media3D;
-
+using System.Diagnostics;
+using System.Runtime.InteropServices;
+using Emgu.CV;
+using Emgu.CV.CvEnum;
+using Emgu.CV.Features2D;
+using Emgu.CV.Structure;
+using Emgu.CV.Util;
+using Emgu.CV.GPU;
+using Emgu.Util;
 
 namespace SadGUI
 {
@@ -168,6 +174,19 @@ namespace SadGUI
 
         }
 
+
+        public class TargetResult
+        {
+            public TargetResult(Point3D p, Rectangle r)
+            {
+                pos = p;
+                rect = r;
+            }
+            public Point3D pos;
+            public Rectangle rect;
+
+         };
+
         /*
          * Image detection
          */
@@ -175,81 +194,107 @@ namespace SadGUI
         {
             if (image != null)
             {
+               Image<Bgr, byte> template = new Image<Bgr, byte>("foe1.png"); // 
                 Image<Gray, Byte> grayFrame = image.Convert<Gray, Byte>();
+                Image<Gray, Byte> grayTemplate = template.Convert<Gray, Byte>();
                 Point3D pos;
 
-                // TEMPORARY - FACES
-                //var detectedFaces = grayFrame.DetectHaarCascade(haarCascade)[0];
-                //foreach (var face in detectedFaces)
-                //{
-                //    pos = PositionFromFrame(face.rect);
-                //    image.Draw(face.rect, new Bgr(double.MaxValue, double.MaxValue, 0), 3);
-                //    DrawPositionText(ref image, face.rect, pos);
-                //}
-
                 // FOES
-                //var detectedFoes = grayFrame.DetectHaarCascade(foeHaarCascade)[0];
-                //foreach (var foe in detectedFoes)
-                //{
-                //    pos = PositionFromFrame(foe.rect);
-                //    image.Draw(foe.rect, new Bgr(0, 0, double.MaxValue), 3);
-                //    DrawPositionText(ref image, foe.rect, pos);
-                //}
-
-                //// FRIENDS
-                //var detectedFriends = grayFrame.DetectHaarCascade(friendHaarCascade)[0];
-                //foreach (var friend in detectedFriends)
-                //{
-                //    pos = PositionFromFrame(friend.rect);
-                //    image.Draw(friend.rect, new Bgr(0, double.MaxValue, 0), 3);
-                //    DrawPositionText(ref image, friend.rect, pos);
-                //}
-
-                // FOES
-                Image<Bgr, byte> template = new Image<Bgr, byte>("foe1.png"); // 
-                Image<Bgr, byte> imageToShow = image.Copy();
+                 Image<Bgr, byte> imageToShow = image.Copy();
 
                 int sourceWidth = image.Size.Width;
                 int templateWidth = template.Size.Width;
 
-                using (Image<Gray, float> result = image.MatchTemplate(template, Emgu.CV.CvEnum.TM_TYPE.CV_TM_CCOEFF_NORMED))
+                // You can try different values of the threshold. I guess somewhere between 0.75 and 0.95 would be good.
+                List<TargetResult> targetList = new List<TargetResult>();
+                double minThreshold = .50;
+
+                int incrementRowAmount = 50;
+                int rowCount = ((image.Height - grayTemplate.Height) / incrementRowAmount);
+                int colCount = ((image.Width - grayTemplate.Width) / incrementRowAmount);
+
+                for (int r = 0; r < rowCount; ++r) 
                 {
-
-                    //// after your call to MatchTemplate
-                    //float threshold = 0.08f;
-                    //MCvMat thresholdedImage;
-                    //result.threshold(result, thresholdedImage, threshold, 255, CV_THRESH_BINARY);
-                    //// the above will set pixels to 0 in thresholdedImage if their value in result is lower than the threshold, to 255 if it is larger.
-                    //// in C++ it could also be written cv::Mat thresholdedImage = result < threshold;
-                    //// Now loop over pixels of thresholdedImage, and draw your matches
-                    //for (int r = 0; r < thresholdedImage.rows; ++r) {
-                    //  for (int c = 0; c < thresholdedImage.cols; ++c) {
-                    //    if (!thresholdedImage.at<unsigned char>(r, c)) // = thresholdedImage(r,c) == 0
-                    //      cv::circle(sourceColor, cv::Point(c, r), template.cols/2, CV_RGB(0,255,0), 1);
-                    //  }
-                    //}
-
-
-                    double[] minValues, maxValues;
-                    Point[] minLocations, maxLocations;
-                    result.MinMax(out minValues, out maxValues, out minLocations, out maxLocations);
-           
-                    // You can try different values of the threshold. I guess somewhere between 0.75 and 0.95 would be good.
-                    for (int i = 0; i < maxValues.Count(); ++i)
+                    for (int c = 0; c < colCount; ++c)
                     {
-                        if (maxValues[i] > 0.50)
+                        using (Image<Gray, Byte> testArea = new Image<Gray, Byte>(image.Width, image.Height))
                         {
-                            // This is a match
-                            Rectangle match = new Rectangle(maxLocations[i], template.Size);
-                            pos = PositionFromFrame(match);
-                            image.Draw(match, new Bgr(Color.Red), 3);
-                            DrawPositionText(ref image, match, pos);
+                            CvInvoke.cvCopy(grayFrame.Convert<Gray, Byte>(), testArea, IntPtr.Zero);
+                            testArea.ROI = new Rectangle(c * incrementRowAmount, r * incrementRowAmount, grayTemplate.Width, grayTemplate.Height);
+                            
+                            using (Image<Gray, float> result = testArea.MatchTemplate(grayTemplate, TM_TYPE.CV_TM_CCOEFF_NORMED))
+                            {
+                                double[] minValues, maxValues;
+                                Point[] minLocations, maxLocations;
+                                result.MinMax(out minValues, out maxValues, out minLocations, out maxLocations);
+                                if (maxValues[0] > minThreshold)
+                                {
+                                    // This is a match
+                                    Rectangle match = testArea.ROI;
+                                    pos = PositionFromFrame(match);
+                                    if (!ContainsPoint(targetList, pos, 50.0))
+                                    {
+                                        targetList.Add(new TargetResult(pos, match));
+                                        image.Draw(match, new Bgr(Color.Red), 3);
+                                        DrawPositionText(ref image, match, pos);
+                                    }
+                                }
+                            }
                         }
                     }
                 }
             }
         }
 
+           public bool ContainsPoint(List<TargetResult> list, Point3D p, double pixelVariationAmount) // variation meains +/- that many pixels considered a match.
+            {
+                foreach(var result in list) 
+                {
+                    if( (result.pos.X > p.X - pixelVariationAmount && result.pos.X < p.X + pixelVariationAmount) &&
+                         (result.pos.Y > p.Y - pixelVariationAmount && result.pos.Y < p.Y + pixelVariationAmount)  )
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+
+           Point Object_Location = new Point();
+           private bool Detect_objects(Image<Gray, Byte> Input_Image, Image<Gray, Byte> object_Image)
+           {
+               Point dftSize = new Point(Input_Image.Width + (object_Image.Width * 2), Input_Image.Height + (object_Image.Height * 2));
+               bool Success = false;
+               using (Image<Gray, Byte> pad_array = new Image<Gray, Byte>(dftSize.X, dftSize.Y))
+               {
+                   //copy centre
+                   pad_array.ROI = new Rectangle(object_Image.Width, object_Image.Height, Input_Image.Width, Input_Image.Height);
+                   CvInvoke.cvCopy(Input_Image.Convert<Gray, Byte>(), pad_array, IntPtr.Zero);
+
+                   //CvInvoke.cvShowImage("pad_array", pad_array);
+                   pad_array.ROI = (new Rectangle(0, 0, dftSize.X, dftSize.Y));
+                   using (Image<Gray, float> result_Matrix = pad_array.MatchTemplate(object_Image, TM_TYPE.CV_TM_CCOEFF_NORMED))
+                   {
+                       result_Matrix.ROI = new Rectangle(object_Image.Width, object_Image.Height, Input_Image.Width, Input_Image.Height);
+
+                       Point[] MAX_Loc, Min_Loc;
+                       double[] min, max;
+                       result_Matrix.MinMax(out min, out max, out Min_Loc, out MAX_Loc);
+
+                       using (Image<Gray, double> RG_Image = result_Matrix.Convert<Gray, double>().Copy())
+                       {
+                           //#TAG WILL NEED TO INCREASE SO THRESHOLD AT LEAST 0.8
+
+                           if (max[0] > 0.4)
+                           {
+                               Object_Location = MAX_Loc[0];
+                               Success = true;
+                           }
+                       }
+
+                   }
+               }
+               return Success;
+           }
 
         /*
          * This function will try to estimate the grid location of a target based on it's frame size
