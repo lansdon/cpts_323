@@ -35,13 +35,9 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DocaLabs.Http.Client">
-      <HintPath>..\packages\DocaLabs.Http.Client.3.0.0.0\lib\DocaLabs.Http.Client.dll</HintPath>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\TweetSharp-Unofficial.2.3.1.2\lib\4.0\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="DocaLabs.Http.Client.Extension.NewtonSoft">
-      <HintPath>..\packages\DocaLabs.Http.Client.with.NewtonSoft.Json.Serializer.3.0.0.0\lib\DocaLabs.Http.Client.Extension.NewtonSoft.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -60,9 +56,6 @@
     <Compile Include="Servers\IGameServer.cs" />
     <Compile Include="Servers\MockGameServerInterface.cs" />
     <Compile Include="Servers\WebClientGameServerInterface.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
