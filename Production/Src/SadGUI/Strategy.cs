@@ -12,8 +12,14 @@ namespace SadGUI
     {
         public Strategy()
         {
+            Mediator.Instance.Register("TargetsList", theList);
             Mediator.Instance.Register("Run Strategy", GetStrategy);
             Mediator.Instance.Register("Camera", CameraMode);
+        }
+        void theList(object param)
+        {
+            IEnumerable<Target> list = param as IEnumerable<Target>;
+            GetStrategy(list);
         }
         public void GetStrategy(object list)
         {
