@@ -73,7 +73,7 @@
                 Grid.Row="1"
                 HorizontalContentAlignment="Stretch"
                 Margin="5"
-                ItemsSource="{Binding Path=Targets}"
+                ItemsSource="{Binding Path=CurrentTargetList}"
                 SelectedIndex="{Binding Path=listBoxSelection}"
                 Background="Transparent">
             
