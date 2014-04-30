@@ -82,6 +82,8 @@ namespace SadGUI
             setupComplete = true;
 
 
+            Mediator.Instance.Register("GetNumberOfTargets", SendTargetsToMediator);
+
             // TESTING
             //for(int i = 0; i < imageHeight; i+= 50)
             //{
@@ -89,6 +91,14 @@ namespace SadGUI
             //    getYCoord(test);
             //}
        }
+
+
+        void SendTargetsToMediator(object targetCountObject)
+        {
+            int targetCount = (int)targetCountObject;
+
+            Mediator.Instance.SendMessage("Camera", targetList);
+        }
 
         /*
          * This will determine the scale for targets size as it relates to distance from camera

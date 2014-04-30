@@ -1,5 +1,6 @@
 ﻿using SadLibrary.FileLoader;
 using SadLibrary.Targets;
+using SadLibrary.Launcher;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -33,6 +34,7 @@ namespace SadGUI
             Mediator.Instance.Register("to games", gameServer);
             Mediator.Instance.Register("Game Name", populateTargets);
             Mediator.Instance.Register("Clear Targets", clearTargets);
+
         }
         public int score
         {
