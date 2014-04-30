@@ -58,14 +58,14 @@
       </relativeChildShapes>
     </lifelineShape>
     <lifelineShape Id="2f0386b0-df29-4576-b840-f8fc95ec98bd" absoluteBounds="6.5833334922790527, 1, 0.15, 7" visible="true" visualStyleMode="Modified">
-      <lifelineMoniker Id="ff076fe3-4c84-4bcb-90f2-109ac6dfa86e" LastKnownName="Start  Game" />
+      <lifelineMoniker Id="ff076fe3-4c84-4bcb-90f2-109ac6dfa86e" LastKnownName="Start Game" />
       <relativeChildShapes>
         <umlLifelineHeadShape Id="1126ec8f-437c-43f4-8e76-814003e84ad9" absoluteBounds="6.1583334922790529, 0.6, 1, 0.4" customColor="White" visualStyleMode="Modified">
-          <lifelineMoniker Id="ff076fe3-4c84-4bcb-90f2-109ac6dfa86e" LastKnownName="Start  Game" />
+          <lifelineMoniker Id="ff076fe3-4c84-4bcb-90f2-109ac6dfa86e" LastKnownName="Start Game" />
           <relativeChildShapes />
         </umlLifelineHeadShape>
         <lifelineHoverShape Id="0ff5b0f9-e8f0-4ae6-ae01-81f583f2c9ec" absoluteBounds="6.5833334922790527, 1, 0, 7">
-          <lifelineMoniker Id="ff076fe3-4c84-4bcb-90f2-109ac6dfa86e" LastKnownName="Start  Game" />
+          <lifelineMoniker Id="ff076fe3-4c84-4bcb-90f2-109ac6dfa86e" LastKnownName="Start Game" />
         </lifelineHoverShape>
         <umlExecutionSpecificationShape Id="31e1fc60-ccd3-4fbe-80d0-8bb333f48240" absoluteBounds="6.5833334922790527, 4.3541666666666661, 0.15, 0.55" customColor="184, 204, 215" visualStyleMode="Modified">
           <behaviorExecutionSpecificationMoniker Id="3435c2ac-6747-407a-adad-d75f4f05a00a" LastKnownName="BehaviorExecutionSpecification6" />
