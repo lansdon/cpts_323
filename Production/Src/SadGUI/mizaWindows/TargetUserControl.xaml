@@ -91,11 +91,11 @@
                             <ColumnDefinition Width="20*"/>
                             <ColumnDefinition Width="20*"/>
                         </Grid.ColumnDefinitions>
-                        <Label Foreground="White" FontWeight="Bold" Content="{Binding Name}" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <Label Foreground="White" FontWeight="Bold" Content="{Binding name}" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         <Label Foreground="White" FontWeight="Bold" Content="{Binding Alive}" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                        <Label Foreground="White" FontWeight="Bold" Content="{Binding Points}" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <Label Foreground="White" FontWeight="Bold" Content="{Binding points}" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         <Label Foreground="White" FontWeight="Bold" Content="{Binding status}" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                        <Label Foreground="White" FontWeight="Bold" Content="{Binding CordsToString}" Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <Label Foreground="White" FontWeight="Bold" Content="{Binding coordsToString}" Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         <Label Foreground="White" FontWeight="Bold" Content="{Binding FlashRate}" Grid.Column="5" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         </Grid>
 

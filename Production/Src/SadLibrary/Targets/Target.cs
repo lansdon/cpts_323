@@ -21,6 +21,7 @@ namespace SadLibrary.Targets
             string temp = string.Format("({0}, {1}, {2})",_x,_y,_z);
             return temp;
         }
+        public string coordsToString { get { return cordsToString(); } set { stringToCords(value); } }
         public void stringToCords(string input)
         {
             char[] seperators = new char[]{'X','Y','Z',':',',','(',')',' '};

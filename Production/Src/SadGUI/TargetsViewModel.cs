@@ -18,7 +18,7 @@ namespace SadGUI
         private int _score;
         public TargetsViewModel()
         {
-            Targets = new ObservableCollection<ITarget>();
+            Targets = new ObservableCollection<Target>();
             //LoadTargetsFromFile("targets.ini");
             //LoadTargetsFromServerButton.IsEnabled = false;
             MoveToTargetCommand = new DelegateCommand(MoveToTarget);
@@ -71,7 +71,7 @@ namespace SadGUI
             
             foreach (var temp in temps)
             {
-                ITarget mytemp = new Target();
+                Target mytemp = new Target();
                 mytemp.dutyCycle = temp.dutyCycle;
                 mytemp.hit = temp.hit;
                 mytemp.id = temp.id;
@@ -89,7 +89,7 @@ namespace SadGUI
                 mytemp.z = temp.z;
                 
                 mytemp.Alive = true;
-                Targets.Add(mytemp);
+                Targets.Add((mytemp));
             }
             //TargetListBox.ItemsSource = Targets;
             Mediator.Instance.SendMessage("TargetsList", Targets);
@@ -115,7 +115,7 @@ namespace SadGUI
             }
         }
 
-        public ObservableCollection<ITarget> Targets
+        public ObservableCollection<Target> Targets
         { get; private set; }
 
         private void LoadTargetsFromFile(string filename) 
@@ -135,7 +135,7 @@ namespace SadGUI
         {
             foreach (var target in Targets)
             {
-                LauncherViewModel.Instance.FireAt(target.x, target.y, target.z);
+                LauncherViewModel.Instance.FireAt(target.x, 2 + target.y, target.z);
                 score += 50;
             }
         }
@@ -144,7 +144,7 @@ namespace SadGUI
             foreach (var target in Targets)
             {
                 if(target.status == 1)
-                    LauncherViewModel.Instance.FireAt(target.x, target.y, target.z);
+                    LauncherViewModel.Instance.FireAt(target.x, 2 + target.y, target.z);
             }
         }
         private void killAllEnemyTargets()
@@ -152,7 +152,7 @@ namespace SadGUI
             foreach (var target in Targets)
             {
                 if (target.status==0)
-                    LauncherViewModel.Instance.FireAt(target.x, target.y, target.z);
+                    LauncherViewModel.Instance.FireAt(target.x, 2 + target.y, target.z);
             }
         }
         private void ClearTargets()
@@ -172,7 +172,7 @@ namespace SadGUI
 
             //ITarget target = targetVM.Target();
             if(Targets.Count!=0)
-            LauncherViewModel.Instance.MoveToCoords(Targets[_listBoxSelection].x, Targets[_listBoxSelection].y, Targets[_listBoxSelection].z);
+            LauncherViewModel.Instance.MoveToCoords(Targets[_listBoxSelection].x,2+ Targets[_listBoxSelection].y, Targets[_listBoxSelection].z);
         }
         private void KillTarget()
         {
@@ -185,7 +185,7 @@ namespace SadGUI
            // foreach(var target in Targets)
             {
                 if(Targets.Count!=0)
-                LauncherViewModel.Instance.FireAt(Targets[_listBoxSelection].x, Targets[_listBoxSelection].y, Targets[_listBoxSelection].z);
+                LauncherViewModel.Instance.FireAt(Targets[_listBoxSelection].x,2+ Targets[_listBoxSelection].y, Targets[_listBoxSelection].z);
 
             }
            

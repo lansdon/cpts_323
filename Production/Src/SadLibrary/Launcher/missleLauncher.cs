@@ -178,34 +178,7 @@ namespace SadLibrary.Launcher
         public void moveTo(double theta, double phi)
         {
             bool commandQueueAlreadyBlocked = commandQueueLoadInProgress;
-            if (myTheta == 0 && myPhi == 0)
-            {
-                setCommandQueueIsLoading(true); // allows us to add commands in sequence without processing
-                moveTheta(theta);
-                movePhi(phi);
-
-                // This will allow us to continue attaching commands outside of this function.
-                if(!commandQueueAlreadyBlocked)
-                    processCommandQueue();
-            }
-            else
-            {
-                if (myTheta > HALF_CIRCLE)
-                    theta = myTheta + theta;
-                else
-                    theta = theta - myTheta; 
-                if(theta>FULL_CIRCLE)
-                {
-                    theta -= FULL_CIRCLE;
-                }
-                if (myPhi < HALF_CIRCLE)
-                    phi = phi - myPhi;
-                else
-                    phi = phi + myPhi;
-                if (phi > FULL_CIRCLE)
-                {
-                    phi -= FULL_CIRCLE;
-                }
+                     
 
                 setCommandQueueIsLoading(true); // allows us to add commands in sequence without processing
                 moveTheta(theta);
@@ -213,7 +186,7 @@ namespace SadLibrary.Launcher
                 // This will allow us to continue attaching commands outside of this function.
                 if (!commandQueueAlreadyBlocked)
                     processCommandQueue();
-            }           
+                       
         }
         public void fire()
         {
@@ -435,20 +408,20 @@ namespace SadLibrary.Launcher
         //Function to convert x, y to a theta for spherical coordinates.
         public double toTheta(double x, double y)
         {
-            if (x >= 0)
+            //if (x >= 0)
                 return (Math.Atan2(x, y) * (HALF_CIRCLE / Math.PI));
-            else
-                return (HALF_CIRCLE - (Math.Atan2(x, y) * (HALF_CIRCLE / Math.PI)));
+           // else
+               // return (HALF_CIRCLE - (Math.Atan2(x, y) * (HALF_CIRCLE / Math.PI)));
         }
 
         //function to convert the x, y, z to phi for spherical coordinates.
         public double toPhi(double x, double y, double z)
         {
             double squaredRoot = Math.Sqrt((x * x) + (y * y));
-            if (z >= 0)
+           // if (z >= 0)
                 return (90 - (Math.Atan2(squaredRoot,z ) * (HALF_CIRCLE / Math.PI)));
-            else
-                return (90 - (HALF_CIRCLE -( Math.Atan2( squaredRoot,z) * (HALF_CIRCLE / Math.PI))));
+          //  else
+             //   return (90 - (HALF_CIRCLE -( Math.Atan2( squaredRoot,z) * (HALF_CIRCLE / Math.PI))));
         }
 
         public uint getMissleCount()
