@@ -357,7 +357,7 @@ namespace SadLibrary.Launcher
                         // Target Update hack, it's so ugly... 
                         if (cmd.cmdData == FIRE)
                         {
-                            Mediator
+                            Mediator.Instance.SendMessage("Update Targets", null);
                         }
                     }                      
                 });

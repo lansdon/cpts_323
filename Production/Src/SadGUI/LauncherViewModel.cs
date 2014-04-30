@@ -15,8 +15,6 @@ namespace SadGUI
     public class LauncherViewModel : ViewModelBase
     {
 
-
-
         static private LauncherViewModel _instance;
         static private ILauncher m_launcher;
         private int _phi, _theta;
