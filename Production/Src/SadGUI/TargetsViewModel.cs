@@ -1,4 +1,5 @@
-﻿using SadLibrary.FileLoader;
+
+using SadLibrary.FileLoader;
 using SadLibrary.Targets;
 using SadLibrary.Launcher;
 using System;
@@ -9,14 +10,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+<<<<<<< HEAD
 using SadLibrary;
 using System.Windows.Data;
+=======
+>>>>>>> 262226f99069d8ab923b0d775f803300b14b4546
 using TargetServerCommunicator;
 using SadLibrary;
 using System.Windows.Data;
 using TargetServerCommunicator;
 using SadLibrary;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 262226f99069d8ab923b0d775f803300b14b4546
 
 namespace SadGUI
 {
