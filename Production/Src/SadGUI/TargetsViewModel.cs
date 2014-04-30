@@ -9,15 +9,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
-<<<<<<< HEAD
+using SadLibrary;
+using System.Windows.Data;
 using TargetServerCommunicator;
 using SadLibrary;
 using System.Windows.Data;
-
-=======
 using TargetServerCommunicator;
 using SadLibrary;
->>>>>>> 0ee9b058a6b84149f72c1cb492fcf136dc60d8d6
+
 
 namespace SadGUI
 {

@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using TargetServerCommunicator;
 using TargetServerCommunicator.Servers;
-using SadLibrary;
 
 namespace SadGUI
 {
