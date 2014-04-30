@@ -14,6 +14,7 @@ using Emgu.CV.Structure;
 using Emgu.CV.Util;
 using Emgu.CV.GPU;
 using Emgu.Util;
+using SadLibrary;
 
 namespace SadGUI
 {
