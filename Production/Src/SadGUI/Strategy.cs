@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Media3D;
 
 namespace SadGUI
 {
@@ -69,11 +70,11 @@ namespace SadGUI
         }
         private void CameraMode(object value)
         {
-            IEnumerable<ITarget> list = value as IEnumerable<ITarget>;
-            var sortedList = list.OrderBy(c => c.x);
-            foreach (var target in sortedList)
+            IEnumerable<Point3D> list = value as IEnumerable<Point3D>;
+            var sortedList = list.OrderBy(c => c.X);
+            foreach (var position in sortedList)
             {
-                LauncherViewModel.Instance.FireAt(target.x, 4+target.y, target.z);
+                LauncherViewModel.Instance.FireAt(position.X, 4+position.Y, position.Z);
             }
             
         }
