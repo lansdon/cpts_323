@@ -34,7 +34,6 @@ namespace SadLibrary.Launcher
         private BackgroundWorker commandThread;
         private bool commandQueueLoadInProgress;  // call this first to chain commands together. then call processQueue
 
-        FireCommandCompletedDelegate fireDelegate; 
 
         private void AddCommandToQueue(LauncherCommand newCommand)
         {
@@ -67,10 +66,6 @@ namespace SadLibrary.Launcher
             m_Busy = false;
             setCommandQueueIsLoading(false);
         }
-
-        // Declare a delegate type for processing a book:
-        public delegate void FireCommandCompletedDelegate();
-
 
         public void reload()
         {
