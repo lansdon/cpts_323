@@ -1,4 +1,5 @@
-﻿using SadLibrary.FileLoader;
+
+using SadLibrary.FileLoader;
 using SadLibrary.Targets;
 using SadLibrary.Launcher;
 using System;
@@ -9,6 +10,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using TargetServerCommunicator;
+using SadLibrary;
+using System.Windows.Data;
 using TargetServerCommunicator;
 using SadLibrary;
 
@@ -32,6 +36,8 @@ namespace SadGUI
             KillAllFriendlyTargetsCommand = new DelegateCommand(killAllFriendlyTargets); 
             KillAllEnemyTargetsCommand = new DelegateCommand(killAllEnemyTargets);
             score = 0;
+
+            Application.Current.Dispatcher.Invoke(() => BindingOperations.EnableCollectionSynchronization(CurrentTargetList, new object()));
 
             Mediator.Instance.Register("to games", gameServer);
             Mediator.Instance.Register("Game Name", populateTargets);
