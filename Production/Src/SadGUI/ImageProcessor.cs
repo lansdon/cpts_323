@@ -32,7 +32,7 @@ namespace SadGUI
         private int imageWidth = 0;     // Used for frequent calculations
 
         // INPUT VALUES - From GUI (used to tune)
-        private int horizon = 300;              // Where the back edge of the gameboard is on screen
+        private int horizon = 100;              // Where the back edge of the gameboard is on screen
         private int floor = 0;                  // Where the front edge of the board is on screen.
         private int gridRows = 10;              // TO DO WE NEED TO KNOW THESE VALUES!!
         private int gridColumns = 10;           // TO DO WE NEED TO KNOW THESE VALUES!!
@@ -80,6 +80,14 @@ namespace SadGUI
             createGrid();
 
             setupComplete = true;
+
+
+            // TESTING
+            //for(int i = 0; i < imageHeight; i+= 50)
+            //{
+            //    Rectangle test = new Rectangle(0, i, 10, 10);
+            //    getYCoord(test);
+            //}
        }
 
         /*
@@ -122,7 +130,7 @@ namespace SadGUI
 
             // One time setting of height/width. 
             // This assumes the size will not change!!
-            //if(!setupComplete) 
+            if(!setupComplete) 
                 init(ref image);
 
             // Sequential Processing here
@@ -170,7 +178,7 @@ namespace SadGUI
             //create a brush for the text
             Brush textBrush = new SolidBrush(Color.Yellow);
 
-            drawing.DrawString(posText, coordFont, textBrush, targetFrame.X + 20, targetFrame.Y-20);
+            drawing.DrawString(posText, coordFont, textBrush, targetFrame.X + 20, targetFrame.Y-30);
 
             drawing.Save();
 
@@ -310,15 +318,36 @@ namespace SadGUI
          * Find the target radius delta (difference between max size and actual size)
          * Use that delta with pre-calculated multiplier to determine the y value in inches.
          */
+        //private double getYCoord(Rectangle targetFrame)
+        //{
+        //    double targetRadiusDelta = Y_RADIUS_MIN_DISTANCE - targetFrame.Size.Width / 2.0;
+        //    if (targetRadiusDelta < 0) targetRadiusDelta = Y_RADIUS_MIN_DISTANCE;
+        //    if (targetRadiusDelta > Y_RADIUS_MIN_DISTANCE - Y_RADIUS_MAX_DISTANCE) targetRadiusDelta = Y_RADIUS_MIN_DISTANCE - Y_RADIUS_MAX_DISTANCE;
+        //    double y = targetRadiusDelta * Y_PIXEL_DELTA_TO_INCHES_MULT;
+        //    Console.WriteLine("Calculated Y = {0}", y);
+        //    return y;
+        //}
+        /*
+         * Find the target radius delta (difference between max size and actual size)
+         * Use that delta with pre-calculated multiplier to determine the y value in inches.
+         */
         private double getYCoord(Rectangle targetFrame)
-        {
-            double targetRadiusDelta = Y_RADIUS_MIN_DISTANCE - targetFrame.Size.Width / 2.0;
-            if(targetRadiusDelta < 0) targetRadiusDelta = Y_RADIUS_MIN_DISTANCE;
-            if(targetRadiusDelta > Y_RADIUS_MIN_DISTANCE-Y_RADIUS_MAX_DISTANCE) targetRadiusDelta =  Y_RADIUS_MIN_DISTANCE-Y_RADIUS_MAX_DISTANCE;
-            double y = targetRadiusDelta * Y_PIXEL_DELTA_TO_INCHES_MULT;
+        {   
+            double validAreaSize = imageHeight - horizon;
+            double yMultiplier = validAreaSize / BOARD_Y_MAX;
+
+            // The horizon is the edge of the game board. If we're byond that set it to the max
+            double adjustedY = targetFrame.Y + targetFrame.Height;
+            if (adjustedY < horizon) adjustedY = horizon;
+
+            double y = ((double)imageHeight - adjustedY) / yMultiplier;
+            if (y < 1.0) y = 1.0;
+//            targetFrame.Y = (int)y;
             Console.WriteLine("Calculated Y = {0}", y);
             return y;
         }
+
+        
         private double getZCoord(double y)
         {
             // if the target is > 75% of max distance, angle up slightly.
