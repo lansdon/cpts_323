@@ -18,7 +18,7 @@ namespace SadGUI
         private int _score;
         public TargetsViewModel()
         {
-            Targets = new ObservableCollection<TargetViewModel>();
+            Targets = new ObservableCollection<ITarget>();
             //LoadTargetsFromFile("targets.ini");
             //LoadTargetsFromServerButton.IsEnabled = false;
             MoveToTargetCommand = new DelegateCommand(MoveToTarget);
@@ -89,7 +89,7 @@ namespace SadGUI
                 mytemp.z = temp.z;
                 
                 mytemp.Alive = true;
-                Targets.Add(new TargetViewModel(mytemp));
+                Targets.Add(mytemp);
             }
             //TargetListBox.ItemsSource = Targets;
             Mediator.Instance.SendMessage("TargetsList", Targets);
@@ -115,7 +115,7 @@ namespace SadGUI
             }
         }
 
-        public ObservableCollection<TargetViewModel> Targets
+        public ObservableCollection<ITarget> Targets
         { get; private set; }
 
         private void LoadTargetsFromFile(string filename) 
@@ -127,7 +127,7 @@ namespace SadGUI
             foreach (var target in Target_Manager.Instance.Target_List)
             {
                 target.Alive = true;
-                Targets.Add(new TargetViewModel(target));
+                Targets.Add((target));
             }
             
         }
@@ -143,7 +143,7 @@ namespace SadGUI
         {
             foreach (var target in Targets)
             {
-                if(target.status)
+                if(target.status == 1)
                     LauncherViewModel.Instance.FireAt(target.x, target.y, target.z);
             }
         }
@@ -151,7 +151,7 @@ namespace SadGUI
         {
             foreach (var target in Targets)
             {
-                if (!target.status)
+                if (target.status==0)
                     LauncherViewModel.Instance.FireAt(target.x, target.y, target.z);
             }
         }
