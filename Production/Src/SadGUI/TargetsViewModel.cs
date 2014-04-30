@@ -20,7 +20,7 @@ namespace SadGUI
         private double _score;
         public TargetsViewModel()
         {
-            CurrentTargetsList = new ObservableCollection<Target>();
+            CurrentTargetList = new ObservableCollection<Target>();
             PreviousTargetList = new ObservableCollection<Target>();
             //LoadTargetsFromFile("targets.ini");
             //LoadTargetsFromServerButton.IsEnabled = false;
@@ -58,7 +58,7 @@ namespace SadGUI
         }
         void clearTargets(object p)
         {
-            CurrentTargetsList.Clear();
+            CurrentTargetList.Clear();
             
         }
         private string gameName { get; set; }
@@ -72,7 +72,7 @@ namespace SadGUI
         {
             foreach (var oldTarget in PreviousTargetList)
             {
-                foreach (var newTarget in CurrentTargetsList )
+                foreach (var newTarget in CurrentTargetList )
                 {
                     if (oldTarget.id == newTarget.id && oldTarget.hit != newTarget.hit)
                     {
@@ -85,7 +85,7 @@ namespace SadGUI
 
         public void UpdateTargets(object _object)
         {
-            PreviousTargetList = CurrentTargetsList;
+            PreviousTargetList = CurrentTargetList;
 
             IEnumerable<TargetServerCommunicator.Data.Target> temps = gameserver.RetrieveTargetList(gameName);//param as IEnumerable<TargetServerCommunicator.Data.Target>;
 
@@ -109,7 +109,7 @@ namespace SadGUI
                 mytemp.z = temp.z;
 
                 mytemp.Alive = true;
-                CurrentTargetsList.Add((mytemp));
+                CurrentTargetList.Add((mytemp));
             }
 
             CheckTargetsforHits();
@@ -140,10 +140,10 @@ namespace SadGUI
                 mytemp.z = temp.z;
                 
                 mytemp.Alive = true;
-                CurrentTargetsList.Add((mytemp));
+                CurrentTargetList.Add((mytemp));
             }
             //TargetListBox.ItemsSource = Targets;
-            Mediator.Instance.SendMessage("TargetsList", CurrentTargetsList);
+            Mediator.Instance.SendMessage("TargetsList", CurrentTargetList);
         }
         private void OpenFile()
         {
@@ -166,7 +166,7 @@ namespace SadGUI
             }
         }
 
-        public ObservableCollection<Target> CurrentTargetsList { get; private set; }
+        public ObservableCollection<Target> CurrentTargetList { get; private set; }
 
         private ObservableCollection<Target> PreviousTargetList { get; set; }
 
@@ -175,17 +175,17 @@ namespace SadGUI
             FileTargetLoader fLoader = FileLoaderFactory.GetFileLoader(SadLibrary.FileLoader.FileLoaderTypes.FILE_INI, filename);
             Target_Manager.Instance.Target_List = fLoader.Parse();
 
-            CurrentTargetsList.Clear();
+            CurrentTargetList.Clear();
             foreach (var target in Target_Manager.Instance.Target_List)
             {
                 target.Alive = true;
-                CurrentTargetsList.Add((target));
+                CurrentTargetList.Add((target));
             }
             
         }
         private void killAllTargets()
         {
-            foreach (var target in CurrentTargetsList)
+            foreach (var target in CurrentTargetList)
             {
                 LauncherViewModel.Instance.FireAt(target.x, 4 + target.y, target.z);
                 score += 50;
@@ -193,7 +193,7 @@ namespace SadGUI
         }
         private void killAllFriendlyTargets()
         {
-            foreach (var target in CurrentTargetsList)
+            foreach (var target in CurrentTargetList)
             {
                 if(target.status == 1)
                     LauncherViewModel.Instance.FireAt(target.x, 4 + target.y, target.z);
@@ -201,7 +201,7 @@ namespace SadGUI
         }
         private void killAllEnemyTargets()
         {
-            foreach (var target in CurrentTargetsList)
+            foreach (var target in CurrentTargetList)
             {
                 if (target.status==0)
                     LauncherViewModel.Instance.FireAt(target.x, 4 + target.y, target.z);
@@ -209,7 +209,7 @@ namespace SadGUI
         }
         private void ClearTargets()
         {
-            CurrentTargetsList.Clear();
+            CurrentTargetList.Clear();
         }
 
         
@@ -223,8 +223,8 @@ namespace SadGUI
             //TargetViewModel targetVM = button.DataContext as TargetViewModel;
 
             //ITarget target = targetVM.Target();
-            if(CurrentTargetsList.Count!=0)
-            LauncherViewModel.Instance.MoveToCoords(CurrentTargetsList[_listBoxSelection].x,2+ CurrentTargetsList[_listBoxSelection].y, CurrentTargetsList[_listBoxSelection].z);
+            if(CurrentTargetList.Count!=0)
+            LauncherViewModel.Instance.MoveToCoords(CurrentTargetList[_listBoxSelection].x,2+ CurrentTargetList[_listBoxSelection].y, CurrentTargetList[_listBoxSelection].z);
         }
         private void KillTarget()
         {
@@ -236,8 +236,8 @@ namespace SadGUI
 
            // foreach(var target in Targets)
             {
-                if(CurrentTargetsList.Count!=0)
-                LauncherViewModel.Instance.FireAt(CurrentTargetsList[_listBoxSelection].x,2+ CurrentTargetsList[_listBoxSelection].y, CurrentTargetsList[_listBoxSelection].z);
+                if(CurrentTargetList.Count!=0)
+                LauncherViewModel.Instance.FireAt(CurrentTargetList[_listBoxSelection].x,2+ CurrentTargetList[_listBoxSelection].y, CurrentTargetList[_listBoxSelection].z);
 
             }
            
