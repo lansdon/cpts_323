@@ -71,6 +71,7 @@
     <Compile Include="Launcher\LauncherFactory.cs" />
     <Compile Include="Launcher\missleLauncher.cs" />
     <Compile Include="Launcher\mockLauncher.cs" />
+    <Compile Include="Mediator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Targets\ITarget.cs" />
     <Compile Include="Targets\Target.cs" />

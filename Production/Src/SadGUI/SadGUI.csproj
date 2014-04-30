@@ -99,7 +99,6 @@
     <Compile Include="ImageProcessor.cs" />
     <Compile Include="LauncherConnectViewModel.cs" />
     <Compile Include="LauncherViewModel.cs" />
-    <Compile Include="Mediator.cs" />
     <Compile Include="mizaWindows\CameraUserControl.xaml.cs">
       <DependentUpon>CameraUserControl.xaml</DependentUpon>
     </Compile>
