@@ -1,25 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner" xmlns:dm11="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ComponentDesigner" xmlns:dm12="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm13="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner" dslVersion="1.0.0.0" Id="3f8e70a1-1e50-43f5-8f3d-72ec73422327" name="SADUseCaseDiagram" linkedPackageId="2bf5b7fa-8c52-4231-b2d5-cd0cb4804061" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
-  <profileInstances>
-    <packageHasProfileInstances Id="67265d7b-e780-48f2-8076-22a8d3d5e83d">
-      <profileInstance Id="077c6797-23ff-461e-b525-7f9779a14d0a" name="StandardProfileL2">
-        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
-      </profileInstance>
-      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
-    </packageHasProfileInstances>
-    <packageHasProfileInstances Id="7da1106f-73c0-484c-b12f-c1ebaea3aa30">
-      <profileInstance Id="ae053a5b-01d4-4dae-9f69-76e018427c60" name="StandardProfileL3">
-        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
-      </profileInstance>
-      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
-    </packageHasProfileInstances>
-    <packageHasProfileInstances Id="d78f00a1-41f4-4201-93ba-6baeae81a746">
-      <profileInstance Id="f7d338f8-b706-4709-b33e-e023b15c4b1a" name="CSharpProfile">
-        <elementDefinition Id="588d23ae-04af-48b9-b8ec-70742770f81f" />
-      </profileInstance>
-      <elementDefinition Id="839bef6e-4be9-4bc1-944d-106c4d724706" />
-    </packageHasProfileInstances>
-  </profileInstances>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="3f8e70a1-1e50-43f5-8f3d-72ec73422327" name="SADUseCaseDiagram" linkedPackageId="2bf5b7fa-8c52-4231-b2d5-cd0cb4804061" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
   <packagedElements>
     <useCaseModelRootHasTypes>
       <actor Id="2ad5bfb1-91fd-4688-954e-4a904a9a4753" name="User" isAbstract="false" isLeaf="false">
@@ -402,5 +382,25 @@
   </packagedElements>
   <package Id="2bf5b7fa-8c52-4231-b2d5-cd0cb4804061" name="SadModel">
     <elementDefinition Id="96f61117-21b4-4af4-be54-778733aa3be4" />
+    <profileInstances>
+      <packageHasProfileInstances Id="67265d7b-e780-48f2-8076-22a8d3d5e83d">
+        <profileInstance Id="077c6797-23ff-461e-b525-7f9779a14d0a" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="7da1106f-73c0-484c-b12f-c1ebaea3aa30">
+        <profileInstance Id="ae053a5b-01d4-4dae-9f69-76e018427c60" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="d78f00a1-41f4-4201-93ba-6baeae81a746">
+        <profileInstance Id="f7d338f8-b706-4709-b33e-e023b15c4b1a" name="CSharpProfile">
+          <elementDefinition Id="588d23ae-04af-48b9-b8ec-70742770f81f" />
+        </profileInstance>
+        <elementDefinition Id="839bef6e-4be9-4bc1-944d-106c4d724706" />
+      </packageHasProfileInstances>
+    </profileInstances>
   </package>
 </useCaseModelRoot>
