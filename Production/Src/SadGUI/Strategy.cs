@@ -20,6 +20,7 @@ namespace SadGUI
             if (Targets.ElementAt(0).x < -12 || Targets.ElementAt(0).x > 12 || Targets.ElementAt(0).y < 0 || Targets.ElementAt(0).y > 48)
             {
                 //get list from camera sending the number of targets to camera
+                Mediator.Instance.SendMessage("GetNumberOfTargets", Targets.Count());
             }
             else
             {
@@ -39,6 +40,7 @@ namespace SadGUI
                     if(outstandin)
                     {
                         //find highest point, use go big or go home strategy
+                        GoBigOrGoHome(Targets);
                     }
                     else
                     {
@@ -48,19 +50,23 @@ namespace SadGUI
             }
            
         }
+        private void GoBigOrGoHome(IEnumerable<ITarget> list)
+        {
+            var sortedList = list.OrderByDescending(c => c.points);
+        }
         private void CameraMode(object value)
         {
             IEnumerable<ITarget> list = value as IEnumerable<ITarget>;
             var sortedList = list.OrderBy(c => c.x);
             foreach (var target in sortedList)
             {
-                LauncherViewModel.Instance.FireAt(target.x, target.y - 2, target.z);
+                LauncherViewModel.Instance.FireAt(target.x, 4+target.y, target.z);
             }
-
+            
         }
         private void bestPoints(IEnumerable<ITarget> list)
         {
-
+            var sortedList = list.OrderBy(c => c.spawnRate);
         }
     }
 }

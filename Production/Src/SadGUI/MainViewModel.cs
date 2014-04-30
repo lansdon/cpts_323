@@ -34,7 +34,7 @@ namespace SadGUI
             TWITTER = new TwitterViewModel();
             ServerCB = ServerCheckBox.instance;
             GSVM = new GameSelectionViewModel();
-            MEDIONE = Mediator.Instance;
+            //MEDIONE = Mediator.Instance;
             TWITTERIZER = Twitterizer.Instance;
             Twitterizer.Init(@"Resources/Twitterconfig.fig");
             TWITTEREXPERIMENTS = new TwitterExperiments();
@@ -53,7 +53,7 @@ namespace SadGUI
         public DefaultControlCheckBox DefaultControlCheckBox { get; set; }
         public TwitterFeedCheckBox TwitterFeedCheckBox { get; set; }
         public ServerViewModel ServerVM { get; set; }
-        public Mediator MEDIONE { get; set; }
+        //public Mediator MEDIONE { get; set; }
         public Twitterizer TWITTERIZER { get; set; }
 
         public TwitterExperiments TWITTEREXPERIMENTS { get; set; }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SadGUI
 {
-    class Mediator
+    public class Mediator
     {
         private static Mediator _instance = new Mediator();
         private readonly Dictionary<string, List<Action<object>>> callbacks = new Dictionary<string, List<Action<object>>>();
