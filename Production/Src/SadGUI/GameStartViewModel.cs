@@ -1,4 +1,5 @@
 ﻿using SadGUI.mizaWindows;
+using SadLibrary.Targets;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -28,7 +29,7 @@ namespace SadGUI
             StartCommand = new DelegateCommand(Start);
             StopCommand = new DelegateCommand(Stop);
             resetCommand = new DelegateCommand(reset);
-            Targets = new ObservableCollection<TargetViewModel>();
+            //Targets = new IEnumerable<ITarget>();
         }
         public double points
         {
@@ -48,10 +49,10 @@ namespace SadGUI
                 OnPropertyChanged("time");
             }
         }
-        public ObservableCollection<TargetViewModel> Targets { get; private set; } 
+        public IEnumerable<ITarget> Targets { get; private set; } 
         private void populateList(object param)
         {
-            Targets = param as ObservableCollection<TargetViewModel>;
+            Targets = param as IEnumerable<ITarget>;
         }
 
         public void CheckTargets()
@@ -82,7 +83,7 @@ namespace SadGUI
             //after 60 sec stop game
             foreach(var target in sortedTargets)
             {
-                if (!target.status)
+                if (target.status == 0)
                     LauncherViewModel.Instance.FireAt(target.x, target.y-2, target.z);
             }
             
