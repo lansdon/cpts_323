@@ -135,7 +135,7 @@ namespace SadGUI
         {
             foreach (var target in Targets)
             {
-                LauncherViewModel.Instance.FireAt(target.x, 2 + target.y, target.z);
+                LauncherViewModel.Instance.FireAt(target.x, 4 + target.y, target.z);
                 score += 50;
             }
         }
@@ -144,7 +144,7 @@ namespace SadGUI
             foreach (var target in Targets)
             {
                 if(target.status == 1)
-                    LauncherViewModel.Instance.FireAt(target.x, 2 + target.y, target.z);
+                    LauncherViewModel.Instance.FireAt(target.x, 4 + target.y, target.z);
             }
         }
         private void killAllEnemyTargets()
@@ -152,7 +152,7 @@ namespace SadGUI
             foreach (var target in Targets)
             {
                 if (target.status==0)
-                    LauncherViewModel.Instance.FireAt(target.x, 2 + target.y, target.z);
+                    LauncherViewModel.Instance.FireAt(target.x, 4 + target.y, target.z);
             }
         }
         private void ClearTargets()

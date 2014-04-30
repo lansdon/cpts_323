@@ -84,7 +84,7 @@ namespace SadGUI
             foreach(var target in sortedTargets)
             {
                 if (target.status == 0)
-                    LauncherViewModel.Instance.FireAt(target.x, 2+target.y, target.z);
+                    LauncherViewModel.Instance.FireAt(target.x, 4+target.y, target.z);
             }
             
         }
