@@ -13,6 +13,7 @@ using SadLibrary;
 using System.Windows.Data;
 using TargetServerCommunicator;
 
+
 namespace SadGUI
 {
     class TargetsViewModel : ViewModelBase
