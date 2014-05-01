@@ -6,9 +6,11 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using TargetServerCommunicator;
+using System.Timers;
 
 
 namespace SadGUI
@@ -20,6 +22,9 @@ namespace SadGUI
         private double _time;
         IGameServer gameServer;
         string _gameName;
+
+        private System.Timers.Timer timer;
+
         public GameStartViewModel()
         {
             _running = false;
@@ -32,7 +37,28 @@ namespace SadGUI
             StopCommand = new DelegateCommand(Stop);
             resetCommand = new DelegateCommand(reset);
             //Targets = new IEnumerable<ITarget>();
+
+            Mediator.Instance.Register("Start Timer", StartGameTimer);
+
         }
+
+        public void StartGameTimer(object param)
+        {
+            timer = new System.Timers.Timer();
+            timer.Interval = 60000;
+            timer.Elapsed += new ElapsedEventHandler(GameTimerEnd);
+            timer.Start();
+            Twitterizer.SendTweet("\"{0}\" has begun!  Ready, SHOOT!");
+        }
+
+        public void GameTimerEnd(object source, ElapsedEventArgs e)
+        {
+            Twitterizer.SendTweet("Time is up!  The current game has ended!");
+            timer.Stop();
+            timer.Close();
+        }
+
+
         public double points
         {
             get { return _points; }
