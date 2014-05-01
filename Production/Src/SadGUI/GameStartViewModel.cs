@@ -24,7 +24,7 @@ namespace SadGUI
         string _gameName;
 
         private System.Timers.Timer timer;
-
+        private System.Timers.Timer timer2;
         public GameStartViewModel()
         {
             _running = false;
@@ -49,10 +49,10 @@ namespace SadGUI
         }
         void StartGameTimer(object param)
         {
-            System.Timers.Timer timer2 = new System.Timers.Timer();
+             timer2 = new System.Timers.Timer();
             
             timer = new System.Timers.Timer();
-            timer2.Interval = 10;
+            timer2.Interval = 1000;
             timer.Interval = 60000;
             timer2.Elapsed += new ElapsedEventHandler(displayTime);
             timer.Elapsed += new ElapsedEventHandler(GameTimerEnd);
@@ -63,16 +63,15 @@ namespace SadGUI
         private void displayTime(object source, ElapsedEventArgs e)
         {
 
-            time += 0.01;
+            time += 1;
+          
         }
 
         void GameTimerEnd(object source, ElapsedEventArgs e)
         {
-            Twitterizer.SendTweet("Time is up!  The current game has ended!");
-            Mediator.Instance.SendMessage("End Game", 0);
-            timer.Stop();
             
-            timer.Close();
+            Mediator.Instance.SendMessage("End Game", 0);
+           
 
         }
 
@@ -137,6 +136,11 @@ namespace SadGUI
         public void Stop()
         {
             //if timer running stop it
+            timer.Stop();
+            timer2.Stop();
+            timer.Close();
+            timer2.Close();
+            Twitterizer.SendTweet("Time is up!  The current game has ended!");
             gameServer.StopRunningGame();
             _running = false;
             
