@@ -21,13 +21,11 @@ namespace SadGUI
         static private LauncherViewModel _instance;
         static private ILauncher m_launcher;
         private int _phi, _theta;
-        private uint _missileCount;
         public LauncherViewModel()
         {
             changeLauncher(0);
             _phi = 0;
             _theta = 0;
-            _missileCount = m_launcher.getMissleCount();
             FireCommand = new DelegateCommand(Fire);
             UpCommand = new DelegateCommand(Up);
             DownCommand = new DelegateCommand(Down);
@@ -64,17 +62,17 @@ namespace SadGUI
            }
         public uint missileCount
         {
-            get { return (_missileCount); }
+            get { return (m_launcher.getMissleCount()); }
             set
             {
-               if(_missileCount > 0 || value == 4)
-                   _missileCount = value;
+              // if(m_launcher.getMissleCount() > 0 || value == 4)
+              //    m_launcher.setMissileCount(m_launcher.getMissleCount() - 1);
 
-               if (_missileCount == 0)
-               {
-                   MessageBox.Show("Reload missiles!");
-                   reload();
-               }
+              //if (m_launcher.getMissleCount() == 0)
+              //{
+              //    MessageBox.Show("Reload missiles!");
+              //    reload();
+              //}
 
                OnPropertyChanged("missileCount");
             }
@@ -110,8 +108,8 @@ namespace SadGUI
         }
         public void FireAt(double x, double y, double z)
         {
-            missileCount--;
-            m_launcher.fireAt(x, y, z);
+             m_launcher.fireAt(x, y, z);
+             missileCount = 0;
         }
         public void MoveToCoords(double x, double y, double z)
         {
@@ -120,12 +118,12 @@ namespace SadGUI
         public void Fire()
         {
             m_launcher.fire();
-            missileCount--;
+            missileCount = 0;
         }
         public void reload()
         {
             m_launcher.reload();
-            missileCount = 4;
+            missileCount = 0;
         }
         public void Up()
         {

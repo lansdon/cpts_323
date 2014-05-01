@@ -89,35 +89,39 @@ namespace SadGUI
 
         public void UpdateTargets(object _object)
         {
-            PreviousTargetList = CurrentTargetList;
-
-            IEnumerable<TargetServerCommunicator.Data.Target> temps = gameserver.RetrieveTargetList(gameName);//param as IEnumerable<TargetServerCommunicator.Data.Target>;
-
-            foreach (var temp in temps)
+            if(gameName != null)
             {
-                Target mytemp = new Target();
-                mytemp.dutyCycle = temp.dutyCycle;
-                mytemp.hit = temp.hit;
-                mytemp.id = temp.id;
-                mytemp.input = temp.input;
-                mytemp.isMoving = temp.isMoving;
-                mytemp.led = temp.led;
-                mytemp.movingState = temp.movingState;
-                mytemp.name = temp.name;
-                mytemp.points = temp.points;
-                mytemp.spawnRate = temp.spawnRate;
-                // mytemp.startTime = temp.startTime;
-                mytemp.status = temp.status;
-                mytemp.x = temp.x;
-                mytemp.y = temp.y;
-                mytemp.z = temp.z;
+                PreviousTargetList = CurrentTargetList;
 
-                mytemp.Alive = true;
-                CurrentTargetList.Add((mytemp));
+                IEnumerable<TargetServerCommunicator.Data.Target> temps = gameserver.RetrieveTargetList(gameName);//param as IEnumerable<TargetServerCommunicator.Data.Target>;
+
+                foreach (var temp in temps)
+                {
+                    Target mytemp = new Target();
+                    mytemp.dutyCycle = temp.dutyCycle;
+                    mytemp.hit = temp.hit;
+                    mytemp.id = temp.id;
+                    mytemp.input = temp.input;
+                    mytemp.isMoving = temp.isMoving;
+                    mytemp.led = temp.led;
+                    mytemp.movingState = temp.movingState;
+                    mytemp.name = temp.name;
+                    mytemp.points = temp.points;
+                    mytemp.spawnRate = temp.spawnRate;
+                    // mytemp.startTime = temp.startTime;
+                    mytemp.status = temp.status;
+                    mytemp.x = temp.x;
+                    mytemp.y = temp.y;
+                    mytemp.z = temp.z;
+
+                    mytemp.Alive = true;
+                    CurrentTargetList.Add((mytemp));
+                }
+
+                CheckTargetsforHits();
             }
 
-            CheckTargetsforHits();
-        }
+         }
 
         private void populateTargets(object param)
         {

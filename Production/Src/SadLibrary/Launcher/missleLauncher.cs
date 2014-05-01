@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using UsbLibrary;
+using System.Windows;
+using System.Windows.Forms;
 
 namespace SadLibrary.Launcher
 {
@@ -191,15 +193,7 @@ namespace SadLibrary.Launcher
         }
         public void fire()
         {
-            if (missileCount > 0)
-            {
-                AddCommandToQueue(new LauncherCommand(this.FIRE, 5000));
-                --missileCount;
-            }
-            else
-            {
-                Console.WriteLine("I just can’t do it cap’tin, we just don’t have tha power");
-            }
+           AddCommandToQueue(new LauncherCommand(this.FIRE, 5000));
         }
 
         public void fireAt(double x, double y, double z)
@@ -354,8 +348,14 @@ namespace SadLibrary.Launcher
                             // Target Update hack, it's so ugly... 
                             if (cmd.cmdData == FIRE)
                             {
+                                --missileCount;
                                 Mediator.Instance.SendMessage("Update Targets", null);
                             }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Reload missiles!");
+                            reload();
                         }
                     }                      
                 });

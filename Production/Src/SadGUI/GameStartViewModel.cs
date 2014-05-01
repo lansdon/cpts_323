@@ -137,9 +137,11 @@ namespace SadGUI
         public void Stop()
         {
             //if timer running stop it
-            gameServer.StopRunningGame();
+            if(gameServer != null)
+            {
+                gameServer.StopRunningGame();
+            }
             _running = false;
-            
         }
         public void reset()
         {
