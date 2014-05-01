@@ -8,6 +8,9 @@ using System.ComponentModel;
 using System.Windows.Input;
 using System.Windows.Controls.Primitives;
 using System.Threading;
+using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows;
 
 
 namespace SadGUI
@@ -66,7 +69,13 @@ namespace SadGUI
             {
                if(_missileCount > 0 || value == 4)
                    _missileCount = value;
-                           
+
+               if (_missileCount == 0)
+               {
+                   MessageBox.Show("Reload missiles!");
+                   reload();
+               }
+
                OnPropertyChanged("missileCount");
             }
         }
