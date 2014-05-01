@@ -31,7 +31,7 @@ namespace SadGUI
 
     class Strategy
     {
-        private List<Target> sortedList;
+        private IEnumerable<Target> sortedList;
         public Strategy()
         {
             Mediator.Instance.Register("TargetsList", theList);
@@ -91,6 +91,7 @@ namespace SadGUI
                 }
 
                 // 3) Count the targets that have respawn time < 5 seconds. They will divide the remaining rapid fire shots.
+                List<Target> finalTargetList = new List<Target>();
                 foreach(var target in Targets)
                 {
                     if(target.status == 0)
@@ -99,15 +100,16 @@ namespace SadGUI
                         {
                             for(int i = 0; i < targetsWithFastRespawn / (10-(Targets.Count() - targetsWithFastRespawn)); ++i)
                             {
-                                sortedList.Add(target);
+                                finalTargetList.Add(target);
                             }
                         }
                         else
                         {
-                            sortedList.Add(target);
+                            finalTargetList.Add(target);
                         }
                     }
                 }
+                sortedList = finalTargetList;
             }       
         }
 
