@@ -18,14 +18,15 @@ namespace SadGUI
 
     public class StrategyResult 
     {
-        StrategyResult(String sName)
+        public StrategyResult(String sName)
         {
             name = sName;
+            estimatedMaxPoints = 0;
         }
 
         String name;
-        List<Target> targets;
-        int estimatedMaxPoints;
+        public List<Target> targets;
+        public double estimatedMaxPoints;
     }
 
     class Strategy
@@ -86,9 +87,31 @@ namespace SadGUI
             }
            
         }
-        private void GoBigOrGoHome(IEnumerable<Target> list)
+       private StrategyResult GoBigOrGoHome(IEnumerable<Target> list)
         {
-            sortedList = list.OrderByDescending(c => c.points);
+            var tempsortedList = list.OrderByDescending(c => c.points);
+           StrategyResult strat = new StrategyResult("Go Big or Go Home");
+		foreach(var temp in tempsortedList)
+		{
+			Target t = new Target();
+			if(temp.spawnRate < 6)
+			{
+				t= temp;
+				strat.targets.Add(t);
+                strat.estimatedMaxPoints += t.points;
+                strat.targets.Add(t);
+                strat.estimatedMaxPoints += t.points;
+				
+			}
+            else
+            {
+                t= temp;
+                strat.targets.Add(t);
+                strat.estimatedMaxPoints += t.points;
+            }
+		}
+           return strat;
+
         }
         private void CameraMode(object value)
         {
