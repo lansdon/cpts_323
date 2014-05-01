@@ -18,14 +18,14 @@ namespace SadGUI
 
     public class StrategyResult 
     {
-        StrategyResult(String sName)
+        public StrategyResult(String sName)
         {
             name = sName;
         }
 
-        String name;
-        List<Target> targets;
-        int estimatedMaxPoints;
+        public String name;
+        public List<Target> targets;
+        public int estimatedMaxPoints;
     }
 
     class Strategy
@@ -109,6 +109,27 @@ namespace SadGUI
             var TempsortedList = list.OrderBy(c => c.spawnRate);
         }
 
+        private StrategyResult SpawnCamper(IEnumerable<Target> targets)
+        {
+            double largestViableSpawnRate = 30.0;
+            double shortestSpawnRate = 100000000000.0;
+            
+            StrategyResult result = new StrategyResult("Spawn Camper");
 
+            bool foundSpawnRate = false;
+
+            foreach(var target in targets)
+            {
+                if (target.spawnRate < largestViableSpawnRate && target.spawnRate < shortestSpawnRate)
+                {
+                    foundSpawnRate = true;
+                    shortestSpawnRate = target.spawnRate;
+                    result.estimatedMaxPoints = (int)(60.0 / shortestSpawnRate) * (int)target.points;
+
+                }
+            }
+
+            return result;
+        }
     }
 }
