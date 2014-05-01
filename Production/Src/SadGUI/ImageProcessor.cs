@@ -363,7 +363,7 @@ namespace SadGUI
             double y = ((double)imageHeight - adjustedY) / yMultiplier;
             if (y < 1.0) y = 1.0;
 //            targetFrame.Y = (int)y;
-            Console.WriteLine("Calculated Y = {0}", y);
+//            Console.WriteLine("Calculated Y = {0}", y);
             return y;
         }
 

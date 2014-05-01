@@ -26,7 +26,7 @@ namespace SadLibrary.Launcher
       
         protected double degreeDelay = 20;
         public uint missileCount;
-        public uint MAX_MISSILE_COUNT = 4;
+        public uint MAX_MISSILE_COUNT = 10; // TEMP FIX THIS TO 4!!!!!!!
         public string name = "";
         int HALF_CIRCLE = 180, FULL_CIRCLE = 360, MAX_UP = 30, MAX_DOWN = 8, MAX_LEFT = -135, MAX_RIGHT = 135;
         public bool m_Busy { get; private set; }
@@ -361,6 +361,8 @@ namespace SadLibrary.Launcher
                 commandThread.RunWorkerCompleted += new RunWorkerCompletedEventHandler(
                 delegate(object o, RunWorkerCompletedEventArgs args)
                 {
+                    Mediator.Instance.SendMessage("End Game", 0);
+
                     this.SendUSBData(this.STOP);
                     this.command_switchLED(false);
                     m_Busy = false;
