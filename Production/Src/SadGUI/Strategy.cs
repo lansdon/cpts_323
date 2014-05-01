@@ -15,6 +15,19 @@ using System.Windows.Media.Media3D;
 
 namespace SadGUI
 {
+
+    public class StrategyResult 
+    {
+        StrategyResult(String sName)
+        {
+            name = sName;
+        }
+
+        String name;
+        List<Target> targets;
+        int estimatedMaxPoints;
+    }
+
     class Strategy
     {
         private IEnumerable<Target> sortedList;
@@ -95,5 +108,7 @@ namespace SadGUI
         {
             var TempsortedList = list.OrderBy(c => c.spawnRate);
         }
+
+
     }
 }
