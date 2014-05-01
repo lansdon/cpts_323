@@ -107,7 +107,7 @@ namespace SadGUI
             _running = true;
             //send target list to strategy!!
             //var sortedTargets = Targets.OrderBy(c => c.x);
-            Mediator.Instance.SendMessage("game start", 0);
+            Mediator.Instance.SendMessage("start game", 0);
             //after 60 sec stop game
             //foreach(var target in sortedTargets)
             //{
