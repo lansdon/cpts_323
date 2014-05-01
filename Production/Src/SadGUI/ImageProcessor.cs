@@ -63,7 +63,10 @@ namespace SadGUI
         List<TargetResult> targetList = new List<TargetResult>();
 
         
-        public ImageProcessor() { }
+        public ImageProcessor() 
+        {
+            Mediator.Instance.Register("GetNumberOfTargets", SendTargetsToMediator);
+        }
 
         /*
          * This will take the image and overlay a HUD on top of it.
@@ -83,7 +86,7 @@ namespace SadGUI
             setupComplete = true;
 
 
-            Mediator.Instance.Register("GetNumberOfTargets", SendTargetsToMediator);
+ //           Mediator.Instance.Register("GetNumberOfTargets", SendTargetsToMediator);
 
             // TESTING
             //for(int i = 0; i < imageHeight; i+= 50)
@@ -97,8 +100,14 @@ namespace SadGUI
         void SendTargetsToMediator(object targetCountObject)
         {
             int targetCount = (int)targetCountObject;
+            List<Point3D> result = new List<Point3D>();
+            result.Add(new Point3D(5, 20, 1));
+            foreach (var targetResult in targetList)
+            {
+                result.Add(targetResult.pos);
+            }
 
-            Mediator.Instance.SendMessage("Camera", targetList);
+            Mediator.Instance.SendMessage("Camera", result);
         }
 
         /*

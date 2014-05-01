@@ -80,14 +80,14 @@ namespace SadGUI
             gameServer.StartGame(_gameName);
             _running = true;
             //send target list to strategy!!
-            var sortedTargets = Targets.OrderBy(c => c.x);
-           
+            //var sortedTargets = Targets.OrderBy(c => c.x);
+            Mediator.Instance.SendMessage("game start", null);
             //after 60 sec stop game
-            foreach(var target in sortedTargets)
-            {
-                if (target.status == 0)
-                    LauncherViewModel.Instance.FireAt(target.x, 4+target.y, target.z);
-            }
+            //foreach(var target in sortedTargets)
+            //{
+            //    if (target.status == 0)
+            //        LauncherViewModel.Instance.FireAt(target.x, 4+target.y, target.z);
+            //}
             
         }
         public void Stop()

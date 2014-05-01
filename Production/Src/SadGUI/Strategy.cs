@@ -11,16 +11,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Media3D;
 
 namespace SadGUI
 {
     class Strategy
     {
+        private IEnumerable<Target> sortedList;
         public Strategy()
         {
             Mediator.Instance.Register("TargetsList", theList);
             Mediator.Instance.Register("Run Strategy", GetStrategy);
             Mediator.Instance.Register("Camera", CameraMode);
+            Mediator.Instance.Register("start game", startGame);
+        }
+        private void startGame(object par)
+        {
+            foreach(var target in sortedList)
+            {
+                LauncherViewModel.Instance.FireAt(target.x, 4 + target.y, target.z);
+            }
         }
         void theList(object param)
         {
@@ -29,7 +39,7 @@ namespace SadGUI
         }
         public void GetStrategy(object list)
         {
-            IEnumerable<ITarget> Targets = list as IEnumerable<ITarget>;
+            IEnumerable<Target> Targets = list as IEnumerable<Target>;
             if (Targets.ElementAt(0).x < -12 || Targets.ElementAt(0).x > 12 || Targets.ElementAt(0).y < 0 || Targets.ElementAt(0).y > 48)
             {
                 //get list from camera sending the number of targets to camera
@@ -63,23 +73,27 @@ namespace SadGUI
             }
            
         }
-        private void GoBigOrGoHome(IEnumerable<ITarget> list)
+        private void GoBigOrGoHome(IEnumerable<Target> list)
         {
-            var sortedList = list.OrderByDescending(c => c.points);
+            sortedList = list.OrderByDescending(c => c.points);
         }
         private void CameraMode(object value)
         {
-            IEnumerable<ITarget> list = value as IEnumerable<ITarget>;
-            var sortedList = list.OrderBy(c => c.x);
-            foreach (var target in sortedList)
+            IEnumerable<Point3D> list = value as IEnumerable<Point3D>;
+            List<Target> Tlist = new List<Target>();
+            foreach (var position in list)
             {
-                LauncherViewModel.Instance.FireAt(target.x, 4+target.y, target.z);
+                Target Tar = new Target();
+                Tar.x = position.X;
+                Tar.y = position.Y;
+                Tar.z = position.Z;
+                Tlist.Add(Tar);
             }
-            
+            sortedList = Tlist.OrderBy(c => c.x);
         }
-        private void bestPoints(IEnumerable<ITarget> list)
+        private void bestPoints(IEnumerable<Target> list)
         {
-            var sortedList = list.OrderBy(c => c.spawnRate);
+            var TempsortedList = list.OrderBy(c => c.spawnRate);
         }
     }
 }
