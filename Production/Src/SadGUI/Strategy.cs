@@ -24,7 +24,7 @@ namespace SadGUI
             estimatedMaxPoints = 0;
         }
 
-        String name;
+        public String name;
         public List<Target> targets;
         public double estimatedMaxPoints;
     }
@@ -49,11 +49,12 @@ namespace SadGUI
         void theList(object param)
         {
             IEnumerable<Target> list = param as IEnumerable<Target>;
-            GetStrategy(list);
+            GetStrategy(list.Where(c => c.status == 0));
         }
         public void GetStrategy(object list)
         {
             IEnumerable<Target> Targets = list as IEnumerable<Target>;
+
             if (Targets.ElementAt(0).x < -12 || Targets.ElementAt(0).x > 12 || Targets.ElementAt(0).y < 0 || Targets.ElementAt(0).y > 48)
             {
                 //get list from camera sending the number of targets to camera
@@ -61,32 +62,57 @@ namespace SadGUI
             }
             else
             {
-                if(Targets.ElementAt(0).spawnRate>0)
+                // Super Strategy
+                /*
+                 * 1) Shoot from left to right. (minimize the play in launcher movement when it goes back and forth)
+                 * 2) Count the targets that have respawn time > 5 seconds. They will be shot at once.
+                 * 3) Count the targets that have respawn time < 5 seconds. They will divide the remaining rapid fire shots.
+                 * 
+                 * Example 3 enemy targets.  1 has respawn time 10.0 seconds. (> 5)  2 are < 5
+                 * In 60 second game, we will assume 10 shots (given reloads) 
+                 * 1 shot for Target 1... leaves 9 shots remaining. Those are divided among other two. target 2 gets 5, target three gets 4.
+                 */ 
+                //check for outstanding points else left to right
+
+                // 1) Sort the list left to right
+                var tempsortedList = Targets.OrderByDescending(c => c.x).Reverse();
+
+                // 2) Count the targets that have respawn time > 5 seconds. They will be shot at once.
+                int targetsWithFastRespawn = 0;
+                foreach(var target in Targets)
                 {
-                    //run algo for highest posible points or run spawn camping strategy
+                    if(target.status == 0)
+                    {
+                        if(target.spawnRate < 5.0)
+                        {
+                            ++targetsWithFastRespawn;
+                        }
+                    }
                 }
-                else
+
+                // 3) Count the targets that have respawn time < 5 seconds. They will divide the remaining rapid fire shots.
+                List<Target> finalTargetList = new List<Target>();
+                foreach(var target in Targets)
                 {
-                    //check for outstanding points else left to right
-                    bool outstandin = false;
-                    foreach(var target in Targets)
+                    if(target.status == 0)
                     {
-                        if (target.points > 10000)
-                            outstandin = true;
-                    }
-                    if(outstandin)
-                    {
-                        //find highest point, use go big or go home strategy
-                        GoBigOrGoHome(Targets);
-                    }
-                    else
-                    {
-                        //sort list left to right
+                        if(target.spawnRate < 5.0)
+                        {
+                            for(int i = 0; i < targetsWithFastRespawn / (10-(Targets.Count() - targetsWithFastRespawn)); ++i)
+                            {
+                                finalTargetList.Add(target);
+                            }
+                        }
+                        else
+                        {
+                            finalTargetList.Add(target);
+                        }
                     }
                 }
-            }
-           
+                sortedList = finalTargetList;
+            }       
         }
+
        private StrategyResult GoBigOrGoHome(IEnumerable<Target> list)
         {
             var tempsortedList = list.OrderByDescending(c => c.points);
@@ -132,6 +158,5 @@ namespace SadGUI
             var TempsortedList = list.OrderBy(c => c.spawnRate);
         }
 
-
-    }
+     }
 }
