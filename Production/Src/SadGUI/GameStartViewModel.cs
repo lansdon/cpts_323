@@ -79,7 +79,7 @@ namespace SadGUI
         {
             
             Mediator.Instance.SendMessage("End Game", 0);
-           
+            Twitterizer.SendTweet("Time is up!  The current game has ended!");
 
         }
 
@@ -144,7 +144,6 @@ namespace SadGUI
             if(gameServer != null && _running)
             {
                 gameServer.StopRunningGame();
-                Twitterizer.SendTweet("Time is up!  The current game has ended!");
                 _running = false;
                 points += 60 - time;
                 Mediator.Instance.SendMessage("Adjust Score", points);

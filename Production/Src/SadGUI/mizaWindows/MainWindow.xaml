@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:MyWindow="clr-namespace:SadGUI.mizaWindows"
         Title="MainWindow" Height="600" Width="800"
-        WindowState="Normal"
+        WindowState="Maximized"
         WindowStyle="ThreeDBorderWindow">
     
     <MyWindow:MainWindowControl x:Name="MainWindowControl"/>
