@@ -13,11 +13,6 @@ using SadLibrary;
 using System.Windows.Data;
 using TargetServerCommunicator;
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 1637b154cabe9c5ffb38220b549c1c0d0b8e56ed
-
 namespace SadGUI
 {
     class TargetsViewModel : ViewModelBase
