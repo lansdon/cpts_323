@@ -38,20 +38,20 @@ namespace SadGUI
             resetCommand = new DelegateCommand(reset);
             //Targets = new IEnumerable<ITarget>();
 
-            Mediator.Instance.Register("Start Timer", StartGameTimer);
+            Mediator.Instance.Register("start game", StartGameTimer);
 
         }
 
-        public void StartGameTimer(object param)
+        void StartGameTimer(object param)
         {
             timer = new System.Timers.Timer();
             timer.Interval = 60000;
             timer.Elapsed += new ElapsedEventHandler(GameTimerEnd);
             timer.Start();
-            Twitterizer.SendTweet("\"{0}\" has begun!  Ready, SHOOT!");
+            Twitterizer.SendTweet(string.Format("\"{0}\" has begun!  Ready, SHOOT!", _gameName));
         }
 
-        public void GameTimerEnd(object source, ElapsedEventArgs e)
+        void GameTimerEnd(object source, ElapsedEventArgs e)
         {
             Twitterizer.SendTweet("Time is up!  The current game has ended!");
             timer.Stop();
@@ -107,7 +107,7 @@ namespace SadGUI
             _running = true;
             //send target list to strategy!!
             //var sortedTargets = Targets.OrderBy(c => c.x);
-            Mediator.Instance.SendMessage("game start", null);
+            Mediator.Instance.SendMessage("game start", 0);
             //after 60 sec stop game
             //foreach(var target in sortedTargets)
             //{
