@@ -287,7 +287,8 @@ namespace SadLibrary.Launcher
             commandQueue = new Queue<LauncherCommand>();
             commandThread = new BackgroundWorker();
 
-            calibrate();
+            reload();
+   //         calibrate();
         }
 
         private void command_Stop()
@@ -350,12 +351,14 @@ namespace SadLibrary.Launcher
                             {
                                 --missileCount;
                                 Mediator.Instance.SendMessage("Update Targets", null);
+                   
                             }
                         }
                         else
                         {
                             MessageBox.Show("Reload missiles!");
                             reload();
+                            Mediator.Instance.SendMessage("Update Targets", null);
                         }
                     }                      
                 });
@@ -364,29 +367,24 @@ namespace SadLibrary.Launcher
                 commandThread.RunWorkerCompleted += new RunWorkerCompletedEventHandler(
                 delegate(object o, RunWorkerCompletedEventArgs args)
                 {
-                    Mediator.Instance.SendMessage("End Game", 0);
-
                     this.SendUSBData(this.STOP);
                     this.command_switchLED(false);
+
                     m_Busy = false;
                     setCommandQueueIsLoading(false);
+
+                    if (commandQueue.Count() == 0)
+                    {
+                        Mediator.Instance.SendMessage("End Game", 0);
+                    }
                 });
 
                 m_Busy = true;
                 if (commandThread.IsBusy == false)
                     commandThread.RunWorkerAsync();
+
             }
         }
-
-        //  This will update the View Model variables when a command is given (instead of when it's queued.)
-        //private void UpdateLauncherViewModel(LauncherCommand cmd)
-        //{
-        //    LauncherViewModel lvm = LauncherViewModel.instance;
-        //    if (cmd.cmdData == this.FIRE)
-        //    {
-
-        //    }
-        //}
 
         private void SendUSBData(byte[] Data)
         {

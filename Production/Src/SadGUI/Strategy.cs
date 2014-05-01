@@ -44,6 +44,8 @@ namespace SadGUI
             }
             // This will instantly stop the game getting the default 60 points... 
             else {
+                Twitterizer.SendTweet("Happy ending stwategy! We quit! +60");
+
                 Mediator.Instance.SendMessage("End Game", 0);
             }
         }
@@ -53,6 +55,7 @@ namespace SadGUI
             IEnumerable<Target> list = param as IEnumerable<Target>;
             GetStrategy(list);
             LauncherViewModel.Instance.calibrate();
+            Mediator.Instance.SendMessage("Reset Score", 0);
         }
         public void GetStrategy(object list)
         {

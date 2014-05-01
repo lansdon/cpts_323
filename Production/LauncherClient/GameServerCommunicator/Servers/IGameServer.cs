@@ -28,5 +28,6 @@ namespace TargetServerCommunicator
         /// <param name="teamName"></param>
         /// <returns></returns>
         IEnumerable<string> RetrieveGameList();
+
     }
 }

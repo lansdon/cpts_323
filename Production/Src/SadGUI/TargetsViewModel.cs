@@ -41,6 +41,19 @@ namespace SadGUI
             Mediator.Instance.Register("Game Name", populateTargets);
             Mediator.Instance.Register("Clear Targets", clearTargets);
             Mediator.Instance.Register("Update Targets", UpdateTargets);
+            Mediator.Instance.Register("Adjust Score", AdjustScore);
+            Mediator.Instance.Register("Reset Score", ResetScore);
+
+        }
+
+        void ResetScore(object p)
+        {
+            score = 0;
+        }
+
+        void AdjustScore(object p) {
+            double newScore = (double)p;
+            score += newScore;
         }
         public double score
         {
@@ -119,6 +132,7 @@ namespace SadGUI
                 }
 
                 CheckTargetsforHits();
+                LauncherViewModel.Instance.missileCount = 0;
             }
 
          }

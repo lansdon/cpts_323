@@ -44,20 +44,11 @@ namespace SadGUI
         }
         private void gameEnd(object p)
         {
-            LauncherViewModel.Instance.ClearQueue();
             Stop();
         }
         void StartGameTimer(object param)
         {
-             timer2 = new System.Timers.Timer();
-            
-            timer = new System.Timers.Timer();
-            timer2.Interval = 1000;
-            timer.Interval = 60000;
-            timer2.Elapsed += new ElapsedEventHandler(displayTime);
-            timer.Elapsed += new ElapsedEventHandler(GameTimerEnd);
-            timer2.Start();
-            timer.Start();
+            startTimers();
             Twitterizer.SendTweet(string.Format("\"{0}\" has begun!  Ready, SHOOT!", _gameName));
         }
         private void displayTime(object source, ElapsedEventArgs e)
@@ -67,6 +58,23 @@ namespace SadGUI
           
         }
 
+        void startTimers()
+        {
+            if (timer2 != null)
+                timer2.Stop();
+            if (timer != null)
+                timer.Stop();
+
+            timer2 = new System.Timers.Timer();
+            timer2.Interval = 1000;
+            timer2.Elapsed += new ElapsedEventHandler(displayTime);
+            timer2.Start();
+
+            timer = new System.Timers.Timer();
+            timer.Interval = 60000;
+            timer.Elapsed += new ElapsedEventHandler(GameTimerEnd);
+            timer.Start();
+        }
         void GameTimerEnd(object source, ElapsedEventArgs e)
         {
             
@@ -117,6 +125,9 @@ namespace SadGUI
         }
         public void Start()
         {
+            points = 0;
+            Mediator.Instance.SendMessage("Reset Score", points);
+            time = 0;
             string temp = string.Format("Starting game {0}", _gameName);
             Console.WriteLine(temp);
             Twitterizer.SendTweet(temp);
@@ -125,28 +136,30 @@ namespace SadGUI
             //send target list to strategy!!
             //var sortedTargets = Targets.OrderBy(c => c.x);
             Mediator.Instance.SendMessage("start game", 0);
-            //after 60 sec stop game
-            //foreach(var target in sortedTargets)
-            //{
-            //    if (target.status == 0)
-            //        LauncherViewModel.Instance.FireAt(target.x, 4+target.y, target.z);
-            //}
-            
+
         }
         public void Stop()
         {
             //if timer running stop it
-            if(gameServer != null)
+            if(gameServer != null && _running)
             {
                 gameServer.StopRunningGame();
+                Twitterizer.SendTweet("Time is up!  The current game has ended!");
+                _running = false;
+                points += 60 - time;
+                Mediator.Instance.SendMessage("Adjust Score", points);
             }
-            timer.Stop();
-            timer2.Stop();
-            timer.Close();
-            timer2.Close();
-            Twitterizer.SendTweet("Time is up!  The current game has ended!");
-            gameServer.StopRunningGame();
-            _running = false;
+            if (timer != null)
+            {
+                timer.Stop();
+                timer.Close();
+            }
+            if (timer2 != null)
+            {
+                timer2.Stop();
+                timer2.Close();
+            }
+            LauncherViewModel.Instance.ClearQueue();
         }
         public void reset()
         {
