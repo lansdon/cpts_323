@@ -144,6 +144,7 @@ namespace SadGUI
             if(gameServer != null && _running)
             {
                 gameServer.StopRunningGame();
+                Twitterizer.SendTweet("Game ended");
                 _running = false;
                 points += 60 - time;
                 Mediator.Instance.SendMessage("Adjust Score", points);
@@ -167,6 +168,9 @@ namespace SadGUI
                 ContentController.SetContentToController("RightCheckBoxPanel", new gameSelectionView());
                 Mediator.Instance.SendMessage("Clear Targets", null);
                 //reset score and timer
+                points = 0;
+                Mediator.Instance.SendMessage("Reset Score", points);
+                time = 0;
             }
         }
         public ICommand StartCommand { get; set; }

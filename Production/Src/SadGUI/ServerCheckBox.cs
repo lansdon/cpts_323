@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SadGUI.mizaWindows;
 using SadGUI;
+using SadLibrary;
 
 
 namespace SadGUI
@@ -52,6 +53,7 @@ namespace SadGUI
             }
             else
             {
+                Mediator.Instance.SendMessage("server cancel", null);
                 ContentController.SetContentToController("RightCheckBoxPanel", new DefaultUserControl());
             }
 

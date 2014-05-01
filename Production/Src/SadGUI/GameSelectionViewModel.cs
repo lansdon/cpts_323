@@ -22,9 +22,13 @@ namespace SadGUI
         {
             Mediator.Instance.Register("to games", toGames);
             games = new ObservableCollection<string>();
-            
+            Mediator.Instance.Register("server cancel", CancelServer);
             OkCommand = new DelegateCommand(Ok);
             CancelCommand = new DelegateCommand(Cancel);
+        }
+        private void CancelServer(object p)
+        {
+            games.Clear();
         }
         private void toGames(object parameter)
         {
@@ -53,11 +57,14 @@ namespace SadGUI
         {
             
             Console.WriteLine(_selectedIndex);
+            if (_selectedIndex < 0)
+                _selectedIndex = 0;
             Mediator.Instance.SendMessage("Game Name", games[_selectedIndex]);
            
             ContentController.SetContentToController("RightCheckBoxPanel", new gameStartView());
         }
         public void Cancel() {
+          
             games.Clear();
             ServerCheckBox.instance.ServerControl_CheckBox_IsChecked = false;
         }
