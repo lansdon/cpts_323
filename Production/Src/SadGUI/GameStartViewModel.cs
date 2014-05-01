@@ -38,7 +38,7 @@ namespace SadGUI
             resetCommand = new DelegateCommand(reset);
             //Targets = new IEnumerable<ITarget>();
 
-            Mediator.Instance.Register("Start Timer", StartGameTimer);
+            Mediator.Instance.Register("game start", StartGameTimer);
 
         }
 
@@ -107,7 +107,7 @@ namespace SadGUI
             _running = true;
             //send target list to strategy!!
             //var sortedTargets = Targets.OrderBy(c => c.x);
-            Mediator.Instance.SendMessage("game start", null);
+            Mediator.Instance.SendMessage("game start", 0);
             //after 60 sec stop game
             //foreach(var target in sortedTargets)
             //{
