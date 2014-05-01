@@ -26,7 +26,7 @@ namespace SadLibrary.Launcher
       
         protected double degreeDelay = 20;
         public uint missileCount;
-        public uint MAX_MISSILE_COUNT = 10; // TEMP FIX THIS TO 4!!!!!!!
+        public uint MAX_MISSILE_COUNT = 4;
         public string name = "";
         int HALF_CIRCLE = 180, FULL_CIRCLE = 360, MAX_UP = 30, MAX_DOWN = 8, MAX_LEFT = -135, MAX_RIGHT = 135;
         public bool m_Busy { get; private set; }
@@ -343,16 +343,19 @@ namespace SadLibrary.Launcher
                     while(commandQueue.Count() > 0)
                     {
                         m_Busy = true;
-                        LauncherCommand cmd = commandQueue.Dequeue();
-                        this.command_switchLED(true);
-                        this.SendUSBData(cmd.cmdData);
-//                        UpdateLauncherViewModel(cmd);
-                        Thread.Sleep(cmd.durationMs);
-
-                        // Target Update hack, it's so ugly... 
-                        if (cmd.cmdData == FIRE)
+                        if( missileCount > 0 )
                         {
-                            Mediator.Instance.SendMessage("Update Targets", null);
+                            LauncherCommand cmd = commandQueue.Dequeue();
+                            this.command_switchLED(true);
+                            this.SendUSBData(cmd.cmdData);
+                            //                        UpdateLauncherViewModel(cmd);
+                            Thread.Sleep(cmd.durationMs);
+
+                            // Target Update hack, it's so ugly... 
+                            if (cmd.cmdData == FIRE)
+                            {
+                                Mediator.Instance.SendMessage("Update Targets", null);
+                            }
                         }
                     }                      
                 });
