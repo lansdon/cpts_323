@@ -39,23 +39,41 @@ namespace SadGUI
             //Targets = new IEnumerable<ITarget>();
 
             Mediator.Instance.Register("start game", StartGameTimer);
+            Mediator.Instance.Register("End Game", gameEnd);
 
         }
-
+        private void gameEnd(object p)
+        {
+            LauncherViewModel.Instance.ClearQueue();
+            Stop();
+        }
         void StartGameTimer(object param)
         {
+            System.Timers.Timer timer2 = new System.Timers.Timer();
+            
             timer = new System.Timers.Timer();
+            timer2.Interval = 10;
             timer.Interval = 60000;
+            timer2.Elapsed += new ElapsedEventHandler(displayTime);
             timer.Elapsed += new ElapsedEventHandler(GameTimerEnd);
+            timer2.Start();
             timer.Start();
             Twitterizer.SendTweet(string.Format("\"{0}\" has begun!  Ready, SHOOT!", _gameName));
+        }
+        private void displayTime(object source, ElapsedEventArgs e)
+        {
+
+            time += 0.01;
         }
 
         void GameTimerEnd(object source, ElapsedEventArgs e)
         {
             Twitterizer.SendTweet("Time is up!  The current game has ended!");
+            Mediator.Instance.SendMessage("End Game", 0);
             timer.Stop();
+            
             timer.Close();
+
         }
 
 
