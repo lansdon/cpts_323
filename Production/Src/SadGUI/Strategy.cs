@@ -21,16 +21,17 @@ namespace SadGUI
         public StrategyResult(String sName)
         {
             name = sName;
+            estimatedMaxPoints = 0;
         }
 
         public String name;
         public List<Target> targets;
-        public int estimatedMaxPoints;
+        public double estimatedMaxPoints;
     }
 
     class Strategy
     {
-        private IEnumerable<Target> sortedList;
+        private List<Target> sortedList;
         public Strategy()
         {
             Mediator.Instance.Register("TargetsList", theList);
@@ -48,11 +49,12 @@ namespace SadGUI
         void theList(object param)
         {
             IEnumerable<Target> list = param as IEnumerable<Target>;
-            GetStrategy(list);
+            GetStrategy(list.Where(c => c.status == 0));
         }
         public void GetStrategy(object list)
         {
             IEnumerable<Target> Targets = list as IEnumerable<Target>;
+
             if (Targets.ElementAt(0).x < -12 || Targets.ElementAt(0).x > 12 || Targets.ElementAt(0).y < 0 || Targets.ElementAt(0).y > 48)
             {
                 //get list from camera sending the number of targets to camera
@@ -60,35 +62,80 @@ namespace SadGUI
             }
             else
             {
-                if(Targets.ElementAt(0).spawnRate>0)
+                // Super Strategy
+                /*
+                 * 1) Shoot from left to right. (minimize the play in launcher movement when it goes back and forth)
+                 * 2) Count the targets that have respawn time > 5 seconds. They will be shot at once.
+                 * 3) Count the targets that have respawn time < 5 seconds. They will divide the remaining rapid fire shots.
+                 * 
+                 * Example 3 enemy targets.  1 has respawn time 10.0 seconds. (> 5)  2 are < 5
+                 * In 60 second game, we will assume 10 shots (given reloads) 
+                 * 1 shot for Target 1... leaves 9 shots remaining. Those are divided among other two. target 2 gets 5, target three gets 4.
+                 */ 
+                //check for outstanding points else left to right
+
+                // 1) Sort the list left to right
+                var tempsortedList = Targets.OrderByDescending(c => c.x).Reverse();
+
+                // 2) Count the targets that have respawn time > 5 seconds. They will be shot at once.
+                int targetsWithFastRespawn = 0;
+                foreach(var target in Targets)
                 {
-                    //run algo for highest posible points or run spawn camping strategy
+                    if(target.status == 0)
+                    {
+                        if(target.spawnRate < 5.0)
+                        {
+                            ++targetsWithFastRespawn;
+                        }
+                    }
                 }
-                else
+
+                // 3) Count the targets that have respawn time < 5 seconds. They will divide the remaining rapid fire shots.
+                foreach(var target in Targets)
                 {
-                    //check for outstanding points else left to right
-                    bool outstandin = false;
-                    foreach(var target in Targets)
+                    if(target.status == 0)
                     {
-                        if (target.points > 10000)
-                            outstandin = true;
-                    }
-                    if(outstandin)
-                    {
-                        //find highest point, use go big or go home strategy
-                        GoBigOrGoHome(Targets);
-                    }
-                    else
-                    {
-                        //sort list left to right
+                        if(target.spawnRate < 5.0)
+                        {
+                            for(int i = 0; i < targetsWithFastRespawn / (10-(Targets.Count() - targetsWithFastRespawn)); ++i)
+                            {
+                                sortedList.Add(target);
+                            }
+                        }
+                        else
+                        {
+                            sortedList.Add(target);
+                        }
                     }
                 }
-            }
-           
+            }       
         }
-        private void GoBigOrGoHome(IEnumerable<Target> list)
+
+       private StrategyResult GoBigOrGoHome(IEnumerable<Target> list)
         {
-            sortedList = list.OrderByDescending(c => c.points);
+            var tempsortedList = list.OrderByDescending(c => c.points);
+           StrategyResult strat = new StrategyResult("Go Big or Go Home");
+		foreach(var temp in tempsortedList)
+		{
+			Target t = new Target();
+			if(temp.spawnRate < 6)
+			{
+				t= temp;
+				strat.targets.Add(t);
+                strat.estimatedMaxPoints += t.points;
+                strat.targets.Add(t);
+                strat.estimatedMaxPoints += t.points;
+				
+			}
+            else
+            {
+                t= temp;
+                strat.targets.Add(t);
+                strat.estimatedMaxPoints += t.points;
+            }
+		}
+           return strat;
+
         }
         private void CameraMode(object value)
         {
@@ -109,27 +156,5 @@ namespace SadGUI
             var TempsortedList = list.OrderBy(c => c.spawnRate);
         }
 
-        private StrategyResult SpawnCamper(IEnumerable<Target> targets)
-        {
-            double largestViableSpawnRate = 30.0;
-            double shortestSpawnRate = 100000000000.0;
-            
-            StrategyResult result = new StrategyResult("Spawn Camper");
-
-            bool foundSpawnRate = false;
-
-            foreach(var target in targets)
-            {
-                if (target.spawnRate < largestViableSpawnRate && target.spawnRate < shortestSpawnRate)
-                {
-                    foundSpawnRate = true;
-                    shortestSpawnRate = target.spawnRate;
-                    result.estimatedMaxPoints = (int)(60.0 / shortestSpawnRate) * (int)target.points;
-
-                }
-            }
-
-            return result;
-        }
-    }
+     }
 }
