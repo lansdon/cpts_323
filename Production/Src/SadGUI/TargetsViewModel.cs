@@ -106,6 +106,8 @@ namespace SadGUI
             {
                 PreviousTargetList = CurrentTargetList;
 
+                CurrentTargetList.Clear();
+
                 IEnumerable<TargetServerCommunicator.Data.Target> temps = gameserver.RetrieveTargetList(gameName);//param as IEnumerable<TargetServerCommunicator.Data.Target>;
 
                 foreach (var temp in temps)
