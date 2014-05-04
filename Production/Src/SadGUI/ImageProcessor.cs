@@ -90,25 +90,25 @@ namespace SadGUI
             setupComplete = true;
 
             // POSITION TEST TARGETS
-            Rectangle fLeft = new Rectangle(100, 300, 100, 100);
-            Rectangle fCenter = new Rectangle(270, 300, 100, 100);
-            Rectangle fRight = new Rectangle(520, 300, 100, 100);
+            Rectangle fLeft = new Rectangle(100, 300, 85, 85);
+            Rectangle fCenter = new Rectangle(270, 300, 85, 85);
+            Rectangle fRight = new Rectangle(520, 300, 85, 85);
 
             targetList.Add(new TargetResult(PositionFromFrame(fLeft), fLeft));
             targetList.Add(new TargetResult(PositionFromFrame(fCenter), fCenter));
             targetList.Add(new TargetResult(PositionFromFrame(fRight), fRight));
 
-            Rectangle midleft = new Rectangle(100, 180, 100, 100);
-            Rectangle midcenter = new Rectangle(270, 180, 100, 100);
-            Rectangle midright = new Rectangle(520, 180, 100, 100);
+            Rectangle midleft = new Rectangle(100, 180, 85, 85);
+            Rectangle midcenter = new Rectangle(270, 180, 85, 85);
+            Rectangle midright = new Rectangle(520, 180, 85, 85);
 
             targetList.Add(new TargetResult(PositionFromFrame(midleft), midleft));
             targetList.Add(new TargetResult(PositionFromFrame(midcenter), midcenter));
             targetList.Add(new TargetResult(PositionFromFrame(midright), midright));
 
-            Rectangle backleft = new Rectangle(100, 40, 100, 100);
-            Rectangle backcenter = new Rectangle(270, 40, 100, 100);
-            Rectangle backright = new Rectangle(520, 40, 100, 100);
+            Rectangle backleft = new Rectangle(100, 40, 85, 85);
+            Rectangle backcenter = new Rectangle(270, 40, 85, 85);
+            Rectangle backright = new Rectangle(520, 40, 85, 85);
 
             targetList.Add(new TargetResult(PositionFromFrame(backleft),backleft));
             targetList.Add(new TargetResult(PositionFromFrame(backcenter),backcenter));
@@ -312,7 +312,7 @@ namespace SadGUI
 
                 // You can try different values of the threshold. I guess somewhere between 0.75 and 0.95 would be good.
 //                  List<TargetResult> targetList = new List<TargetResult>();
-                double minThreshold = .35;
+                double minThreshold = .15;
 
                 int incrementRowAmount = 20;
                 int rowCount = ((image.Height - grayTemplate.Height) / incrementRowAmount);
