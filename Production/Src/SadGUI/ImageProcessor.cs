@@ -314,9 +314,9 @@ namespace SadGUI
 
                 // You can try different values of the threshold. I guess somewhere between 0.75 and 0.95 would be good.
 //                  List<TargetResult> targetList = new List<TargetResult>();
-                double minThreshold = .55;
+                double minThreshold = .60;
 
-                int incrementRowAmount = 10;
+                int incrementRowAmount = 20;
                 int rowCount = ((image.Height - grayTemplate.Height) / incrementRowAmount);
                 int colCount = ((image.Width - grayTemplate.Width) / incrementRowAmount);
 
