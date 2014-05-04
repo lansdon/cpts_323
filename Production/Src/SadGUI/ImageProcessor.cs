@@ -60,6 +60,7 @@ namespace SadGUI
 
         // Detection Mode
         private bool bDetectionMode = false;
+        int currentFrame = 0;       // used to throttle processing
 
         // Text Overlay
         Font coordFont = new Font("Arial", 24);
@@ -271,14 +272,14 @@ namespace SadGUI
         {
             if (image != null)
             {
-                if (bDetectionMode)
+                if (bDetectionMode && (++currentFrame) % 15 == 0)
                 {
                     // Reset the list
                     targetList.Clear();
 
                     // FOES
                     DetectTargets(ref image, foeTemplate);
-
+                    currentFrame = 0;
                 }
 
             }
@@ -316,7 +317,7 @@ namespace SadGUI
 //                  List<TargetResult> targetList = new List<TargetResult>();
                 double minThreshold = .60;
 
-                int incrementRowAmount = 20;
+                int incrementRowAmount = 10;
                 int rowCount = ((image.Height - grayTemplate.Height) / incrementRowAmount);
                 int colCount = ((image.Width - grayTemplate.Width) / incrementRowAmount);
 
