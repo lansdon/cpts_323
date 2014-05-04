@@ -65,7 +65,7 @@ namespace SadGUI
         Font coordFont = new Font("Arial", 24);
 
         // Sample Targets (Image Templates)
-        Image<Gray, byte> foeTemplate = new Image<Bgr, byte>("foe1.png").Convert<Gray, byte>(); // 
+        Image<Gray, byte> foeTemplate = new Image<Bgr, byte>("foe_gray_back.png").Convert<Gray, byte>(); // 
 //        Image<Bgr, byte> template = new Image<Bgr, byte>("foe1.png"); // 
 
         // Local List of targets. This will be drawn on the screen even when we're not actively looking for targets.
