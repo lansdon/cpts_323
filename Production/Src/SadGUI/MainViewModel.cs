@@ -39,7 +39,7 @@ namespace SadGUI
             Twitterizer.Init(@"Resources/Twitterconfig.fig");
             TWITTEREXPERIMENTS = new TwitterExperiments();
             TVM = new TargetsViewModel();
-            imageProcessor = new ImageProcessor(); 
+//            imageProcessor = new ImageProcessor(); 
             TheStrategy = new Strategy();
             
         }
@@ -58,7 +58,7 @@ namespace SadGUI
         //public Mediator MEDIONE { get; set; }
         public Twitterizer TWITTERIZER { get; set;}
         public Strategy TheStrategy { get; set; }
-        public ImageProcessor imageProcessor { get; set; }
+//        public ImageProcessor imageProcessor { get; set; }
 
         public TwitterExperiments TWITTEREXPERIMENTS { get; set; }
     }

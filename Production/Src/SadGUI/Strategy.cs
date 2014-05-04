@@ -30,7 +30,7 @@ namespace SadGUI
         {
             Mediator.Instance.Register("TargetsList", theList);
             Mediator.Instance.Register("Run Strategy", GetStrategy);
-            Mediator.Instance.Register("Camera", CameraMode);
+            Mediator.Instance.Register("SetCoordListFromCamera", CameraMode);
             Mediator.Instance.Register("start game", startGame);
         }
         private void startGame(object par)
@@ -64,7 +64,7 @@ namespace SadGUI
             if (Targets.ElementAt(0).x < -12 || Targets.ElementAt(0).x > 12 || Targets.ElementAt(0).y < 0 || Targets.ElementAt(0).y > 48)
             {
                 //get list from camera sending the number of targets to camera
-                Mediator.Instance.SendMessage("GetNumberOfTargets", Targets.Count());
+                Mediator.Instance.SendMessage("DetectTargetsFromCamera", Targets.Count());
             }
             else
             {
@@ -140,9 +140,11 @@ namespace SadGUI
         {
             IEnumerable<Point3D> list = value as IEnumerable<Point3D>;
             List<Target> Tlist = new List<Target>();
+            int i = 0;
             foreach (var position in list)
             {
                 Target Tar = new Target();
+                Tar.name = "Visually Acquired Target" + ++i;
                 Tar.x = position.X;
                 Tar.y = position.Y;
                 Tar.z = position.Z;
