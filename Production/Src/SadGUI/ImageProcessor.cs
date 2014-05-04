@@ -65,8 +65,10 @@ namespace SadGUI
         Font coordFont = new Font("Arial", 24);
 
         // Sample Targets (Image Templates)
-        Image<Gray, byte> foeTemplate = new Image<Bgr, byte>("foe_gray_back.png").Convert<Gray, byte>(); // 
-//        Image<Bgr, byte> template = new Image<Bgr, byte>("foe1.png"); // 
+//        const String foeFilename = "foe_orig.png";
+//        const String foeFilename = "foe1.png";
+        const String foeFilename = "foe_gray_back_small.png";
+        Image<Gray, byte> foeTemplate = new Image<Bgr, byte>(foeFilename).Convert<Gray, byte>(); // 
 
         // Local List of targets. This will be drawn on the screen even when we're not actively looking for targets.
         List<TargetResult> targetList = new List<TargetResult>();
@@ -312,9 +314,9 @@ namespace SadGUI
 
                 // You can try different values of the threshold. I guess somewhere between 0.75 and 0.95 would be good.
 //                  List<TargetResult> targetList = new List<TargetResult>();
-                double minThreshold = .15;
+                double minThreshold = .55;
 
-                int incrementRowAmount = 20;
+                int incrementRowAmount = 10;
                 int rowCount = ((image.Height - grayTemplate.Height) / incrementRowAmount);
                 int colCount = ((image.Width - grayTemplate.Width) / incrementRowAmount);
 
@@ -337,7 +339,7 @@ namespace SadGUI
                                     // This is a match
                                     Rectangle match = testArea.ROI;
                                     pos = PositionFromFrame(match);
-                                    if (!ContainsPoint(targetList, pos, 50.0))
+                                    if (!ContainsPoint(targetList, pos, 2.0))
                                     {
                                         targetList.Add(new TargetResult(pos, match));
                                         //image.Draw(match, new Bgr(Color.Red), 3);
