@@ -35,7 +35,7 @@ namespace SadGUI
 
         // INPUT VALUES - From GUI (used to tune)
         private int horizon = 100;              // Where the back edge of the gameboard is on screen
-        private int floor = 0;                  // Where the front edge of the board is on screen.
+        private int floor = 400;                  // Where the front edge of the board is on screen.
         private int gridRows = 48;              // TO DO WE NEED TO KNOW THESE VALUES!!
         private int gridColumns = 14;           // TO DO WE NEED TO KNOW THESE VALUES!!
         private int gridLayers = 1;             // TO DO WE NEED TO KNOW THESE VALUES!!
@@ -134,7 +134,7 @@ namespace SadGUI
 
             int targetCount = (int)targetCountObject;
             List<Point3D> result = new List<Point3D>();
-            result.Add(new Point3D(5, 20, 1));
+//            result.Add(new Point3D(5, 20, 1));
             foreach (var targetResult in targetList)
             {
                 result.Add(targetResult.pos);
@@ -160,7 +160,7 @@ namespace SadGUI
          */
         private void createGrid() 
         {
-            floor = imageHeight;
+//            floor = imageHeight;
             visibleGridRows = (gridRows >= firstVisibleGridRow ?  gridRows - firstVisibleGridRow + 1 : 1); // > 0 !!
             int boardHeight = (horizon <= floor ?  floor - horizon : 0);
             rowHeight = boardHeight / visibleGridRows;
@@ -315,7 +315,7 @@ namespace SadGUI
 
                 // You can try different values of the threshold. I guess somewhere between 0.75 and 0.95 would be good.
 //                  List<TargetResult> targetList = new List<TargetResult>();
-                double minThreshold = .60;
+                double minThreshold = .55;
 
                 int incrementRowAmount = 10;
                 int rowCount = ((image.Height - grayTemplate.Height) / incrementRowAmount);
@@ -397,7 +397,7 @@ namespace SadGUI
             // Setup - Figure out the ratio imposed by Y value
             // Y=1 -> MAX X = 4.
             double MAX_Y_SCREEN_RATIO_FOR_X = 365.0;// / 851.0;  // (from sample image, 365 pixels is size of entire width of game board)
-            double MIN_Y_SCREEN_RATIO_FOR_X = 807.0;// / 851.0;
+            double MIN_Y_SCREEN_RATIO_FOR_X = 900.0;// / 851.0;
             double xDelta = MIN_Y_SCREEN_RATIO_FOR_X - MAX_Y_SCREEN_RATIO_FOR_X;
             double xMultiplier = y / xDelta;
             double xPixelPos = targetFrame.X - center + targetFrame.Width / 2.0;
@@ -426,14 +426,14 @@ namespace SadGUI
          */
         private double getYCoord(Rectangle targetFrame)
         {   
-            double validAreaSize = imageHeight - horizon;
+            double validAreaSize = floor - horizon;
             double yMultiplier = validAreaSize / BOARD_Y_MAX;
 
             // The horizon is the edge of the game board. If we're byond that set it to the max
             double adjustedY = targetFrame.Y + targetFrame.Height;
             if (adjustedY < horizon) adjustedY = horizon;
 
-            double y = ((double)imageHeight - adjustedY) / yMultiplier;
+            double y = ((double)floor - adjustedY) / yMultiplier;
             if (y < 1.0) y = 1.0;
 //            targetFrame.Y = (int)y;
 //            Console.WriteLine("Calculated Y = {0}", y);
