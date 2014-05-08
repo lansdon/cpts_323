@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm9="http://schemas.microsoft.com/dsltools/UseCaseModel"
+﻿<?xml version="1.0" encoding="utf-8"?>
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm9="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner"
   dslVersion="1.0.0.0"
   Id="96f61117-21b4-4af4-be54-778733aa3be4"
   name="SadModel" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
@@ -11,6 +11,10 @@
     <comment
       Id="30e495c9-708e-410e-a171-c2505409b0d6">
       <body>Select Command</body>
+    </comment>
+    <comment
+      Id="c5770e4b-8b48-4b17-b628-86a9f2db0ade">
+      <body>Camera runs on seperate thread which stops when camera is stopped.</body>
     </comment>
   </ownedCommentsInternal>
   <referencesInternal>
@@ -513,14 +517,6 @@
                   LastKnownLocation="SadModel.uml" />
               </controlFlow>
               <controlFlow
-                Id="e981beae-7788-4613-871a-730ced584bd7"
-                isLeaf="false">
-                <opaqueActionMoniker
-                  Id="7e7bef4d-6038-432a-a462-176a107173e9"
-                  LastKnownName="Camera Toggle"
-                  LastKnownLocation="SadModel.uml" />
-              </controlFlow>
-              <controlFlow
                 Id="cd1e0d4d-a15e-47e6-b7cc-013ba32cbe10"
                 isLeaf="false">
                 <opaqueActionMoniker
@@ -534,6 +530,14 @@
                 <opaqueActionMoniker
                   Id="b8f6db45-7957-4d05-916f-e018baefc58a"
                   LastKnownName="Launcher Controls"
+                  LastKnownLocation="SadModel.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="017b3ec0-93e8-48ff-b911-0e31b6904e89"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="7e7bef4d-6038-432a-a462-176a107173e9"
+                  LastKnownName="Camera Toggle"
                   LastKnownLocation="SadModel.uml" />
               </controlFlow>
             </flowNodeTargets>
@@ -724,7 +728,7 @@
                 isLeaf="false">
                 <sendSignalActionMoniker
                   Id="8ea627f8-6d48-4241-90fa-8c971611cf2b"
-                  LastKnownName="Signal Start Camera"
+                  LastKnownName="Signal Start Camera (thread)"
                   LastKnownLocation="SadModel.uml" />
               </controlFlow>
               <controlFlow
@@ -754,15 +758,15 @@
           </joinNode>
           <sendSignalAction
             Id="8ea627f8-6d48-4241-90fa-8c971611cf2b"
-            name="Signal Start Camera"
+            name="Signal Start Camera (thread)"
             isLeaf="false">
             <flowNodeTargets>
               <controlFlow
-                Id="38395ec2-f37c-4431-b010-7a4aeca3128a"
+                Id="e99dc9b5-e956-4122-8282-562acf22741f"
                 isLeaf="false">
-                <joinNodeMoniker
-                  Id="bb1f92bc-7871-4e8e-9a19-39d0588db065"
-                  LastKnownName="Join1"
+                <forkNodeMoniker
+                  Id="87c5b840-194a-45b0-bac4-82287e54b37f"
+                  LastKnownName="Fork1"
                   LastKnownLocation="SadModel.uml" />
               </controlFlow>
             </flowNodeTargets>
@@ -841,11 +845,11 @@
             isLeaf="false">
             <flowNodeTargets>
               <controlFlow
-                Id="9dbadf3c-11eb-46b5-8cd5-c837763368bd"
+                Id="82ed1a1b-6c54-49f7-9450-78940dad6d4d"
                 isLeaf="false">
-                <activityFinalNodeMoniker
-                  Id="c9e7d3af-e76e-4843-a09c-cd582b437ce1"
-                  LastKnownName="ActivityFinal5"
+                <forkNodeMoniker
+                  Id="58dd4b4d-b984-4023-bf5b-3f1a6f5ad9ba"
+                  LastKnownName="Fork2"
                   LastKnownLocation="SadModel.uml" />
               </controlFlow>
             </flowNodeTargets>
@@ -854,6 +858,88 @@
             Id="c9e7d3af-e76e-4843-a09c-cd582b437ce1"
             name="ActivityFinal5"
             isLeaf="false" />
+          <forkNode
+            Id="87c5b840-194a-45b0-bac4-82287e54b37f"
+            name="Fork1"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="15744d37-3618-4e4b-bf65-3af7903478c5"
+                isLeaf="false">
+                <joinNodeMoniker
+                  Id="bb1f92bc-7871-4e8e-9a19-39d0588db065"
+                  LastKnownName="Join1"
+                  LastKnownLocation="SadModel.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </forkNode>
+          <forkNode
+            Id="58dd4b4d-b984-4023-bf5b-3f1a6f5ad9ba"
+            name="Fork2"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="f4db620e-2679-4ae5-9721-53e86d3d6ffd"
+                isLeaf="false">
+                <joinNodeMoniker
+                  Id="7d5c1aec-ce64-4ed9-83d8-797e42d3f7c0"
+                  LastKnownName="Join2"
+                  LastKnownLocation="SadModel.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+            <objectFlowTargets>
+              <objectFlow
+                Id="64954775-37e4-49e5-bd1f-bb866723b46b"
+                isLeaf="false"
+                isMulticast="false"
+                isMultireceive="false">
+                <objectNodeMoniker
+                  Id="85d29c5f-da66-46fd-a915-79bcfd9b63fd"
+                  LastKnownName="Command Queue"
+                  LastKnownLocation="SadModel.uml" />
+              </objectFlow>
+            </objectFlowTargets>
+          </forkNode>
+          <joinNode
+            Id="7d5c1aec-ce64-4ed9-83d8-797e42d3f7c0"
+            name="Join2"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="93d1b66d-e936-42dd-8fbe-3469d2ef3b40"
+                isLeaf="false">
+                <activityFinalNodeMoniker
+                  Id="c9e7d3af-e76e-4843-a09c-cd582b437ce1"
+                  LastKnownName="ActivityFinal5"
+                  LastKnownLocation="SadModel.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </joinNode>
+          <objectNode
+            Id="85d29c5f-da66-46fd-a915-79bcfd9b63fd"
+            name="Command Queue"
+            isLeaf="false"
+            ordering="Unordered"
+            isControlType="false">
+            <objectFlowTargets>
+              <objectFlow
+                Id="47f05e12-feee-4b51-a806-49e1d2ccc990"
+                isLeaf="false"
+                isMulticast="false"
+                isMultireceive="false">
+                <joinNodeMoniker
+                  Id="7d5c1aec-ce64-4ed9-83d8-797e42d3f7c0"
+                  LastKnownName="Join2"
+                  LastKnownLocation="SadModel.uml" />
+              </objectFlow>
+            </objectFlowTargets>
+            <upperBound>
+              <literalInteger
+                Id="1ba1ce78-ce6b-47e6-ac96-4cdbb550255e"
+                name="2147483647"
+                value="2147483647" />
+            </upperBound>
+          </objectNode>
         </nodes>
       </activity>
     </packageHasNamedElement>
@@ -2766,7 +2852,7 @@
         isAbstract="false"
         isLeaf="false" />
     </packageHasNamedElement>
-        <packageHasNamedElement>
+    <packageHasNamedElement>
       <component
         Id="cfef4336-fd10-4bf6-a7b5-c3405a49535e"
         name="Component1"

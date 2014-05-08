@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<activityRootModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" dslVersion="1.0.0.0" Id="b1326bea-5688-4836-ae1b-3fe1f53ab1c1" name="SADActivityDiagram1" linkedPackageId="9662a9a8-264a-4ade-bfa4-6bd30b84f516" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner">
+<activityRootModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="b1326bea-5688-4836-ae1b-3fe1f53ab1c1" name="SADActivityDiagram1" linkedPackageId="9662a9a8-264a-4ade-bfa4-6bd30b84f516" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner">
   <ownedCommentsInternal>
     <comment Id="4d8912ca-adb9-43f2-a984-e8c17163669c">
       <elementDefinition Id="47d0f01e-ebc9-4581-8deb-b713dbfe6802" />
@@ -8,6 +8,10 @@
     <comment Id="3a22b358-e5c8-41ff-b683-b3234522bd21">
       <elementDefinition Id="30e495c9-708e-410e-a171-c2505409b0d6" />
       <body>Select Command</body>
+    </comment>
+    <comment Id="e63456b7-d6cd-4b7d-acf9-240f93234b50">
+      <elementDefinition Id="c5770e4b-8b48-4b17-b628-86a9f2db0ade" />
+      <body>Camera runs on seperate thread which stops when camera is stopped.</body>
     </comment>
   </ownedCommentsInternal>
   <packagedElements>
@@ -44,10 +48,6 @@
                 <opaqueActionMoniker Id="99bd3242-b5a6-48a2-929f-278669563eb3" LastKnownName="Launcher Toggle" />
                 <elementDefinition Id="2db197e4-b4f8-4265-a08e-22defba042db" />
               </controlFlow>
-              <controlFlow Id="9771679b-9840-4b11-a936-ffed03f69c77" isLeaf="false">
-                <opaqueActionMoniker Id="6f62d77c-7bcf-4bd2-ac49-99413ec75023" LastKnownName="Camera Toggle" />
-                <elementDefinition Id="e981beae-7788-4613-871a-730ced584bd7" />
-              </controlFlow>
               <controlFlow Id="bcc6d567-99d6-4a41-908a-cfb77b5fb1db" isLeaf="false">
                 <opaqueActionMoniker Id="bfea3126-a86f-4685-94bf-65d3c014a650" LastKnownName="Start Game" />
                 <elementDefinition Id="cd1e0d4d-a15e-47e6-b7cc-013ba32cbe10" />
@@ -55,6 +55,10 @@
               <controlFlow Id="d1109841-a2d8-4282-a7dd-75a356214afb" isLeaf="false">
                 <opaqueActionMoniker Id="8c42ab73-f556-4933-b30e-1b67b0f026ba" LastKnownName="Launcher Controls" />
                 <elementDefinition Id="9b85a46f-b1e3-442d-9fc4-1a3eeec453fc" />
+              </controlFlow>
+              <controlFlow Id="33155055-341b-4ba0-b883-2af4785bdf4d" isLeaf="false">
+                <opaqueActionMoniker Id="6f62d77c-7bcf-4bd2-ac49-99413ec75023" LastKnownName="Camera Toggle" />
+                <elementDefinition Id="017b3ec0-93e8-48ff-b911-0e31b6904e89" />
               </controlFlow>
             </flowNodeTargets>
           </decisionNode>
@@ -170,7 +174,7 @@
             <elementDefinition Id="6274d2ee-6cf5-4f7d-a10b-9ed9cb0b9132" />
             <flowNodeTargets>
               <controlFlow Id="0948c768-36f1-48d3-bebf-4eeb2324e1c2" isLeaf="false">
-                <sendSignalActionMoniker Id="9e040230-418b-4a52-b3c2-7e0addba9c4f" LastKnownName="Signal Start Camera" />
+                <sendSignalActionMoniker Id="9e040230-418b-4a52-b3c2-7e0addba9c4f" LastKnownName="Signal Start Camera (thread)" />
                 <elementDefinition Id="a318e780-f479-4886-8e29-315d9178051b" />
               </controlFlow>
               <controlFlow Id="d49d97da-55b1-4c33-a5e5-a323543d563c" isLeaf="false">
@@ -188,12 +192,12 @@
               </controlFlow>
             </flowNodeTargets>
           </joinNode>
-          <sendSignalAction Id="9e040230-418b-4a52-b3c2-7e0addba9c4f" name="Signal Start Camera" isLeaf="false">
+          <sendSignalAction Id="9e040230-418b-4a52-b3c2-7e0addba9c4f" name="Signal Start Camera (thread)" isLeaf="false">
             <elementDefinition Id="8ea627f8-6d48-4241-90fa-8c971611cf2b" />
             <flowNodeTargets>
-              <controlFlow Id="1697841a-d6f8-4a5f-886a-09c3a09b4894" isLeaf="false">
-                <joinNodeMoniker Id="6af93828-2063-4714-9e70-21e56ee9ae53" LastKnownName="Join1" />
-                <elementDefinition Id="38395ec2-f37c-4431-b010-7a4aeca3128a" />
+              <controlFlow Id="19c30022-6602-48be-8c12-973707123e46" isLeaf="false">
+                <forkNodeMoniker Id="84fa9240-7149-423c-adfe-1c90a9c5591e" LastKnownName="Fork1" />
+                <elementDefinition Id="e99dc9b5-e956-4122-8282-562acf22741f" />
               </controlFlow>
             </flowNodeTargets>
           </sendSignalAction>
@@ -242,15 +246,62 @@
           <sendSignalAction Id="67a8a8f6-d226-4a3e-9ac1-66b72ed831c5" name="Send command to launcher." isLeaf="false">
             <elementDefinition Id="572fc6b7-4859-477e-9d53-351c714eff80" />
             <flowNodeTargets>
-              <controlFlow Id="beb8198d-4354-474e-ba62-39636d201c09" isLeaf="false">
-                <activityFinalNodeMoniker Id="330b3e39-fe2d-43cd-86ef-c5e87bc2a717" LastKnownName="ActivityFinal5" />
-                <elementDefinition Id="9dbadf3c-11eb-46b5-8cd5-c837763368bd" />
+              <controlFlow Id="3119c9d4-7dfd-4966-842d-21be6d53976f" isLeaf="false">
+                <forkNodeMoniker Id="b47c4c07-a1cd-46c5-b2c1-b6432fee4d3d" LastKnownName="Fork2" />
+                <elementDefinition Id="82ed1a1b-6c54-49f7-9450-78940dad6d4d" />
               </controlFlow>
             </flowNodeTargets>
           </sendSignalAction>
           <activityFinalNode Id="330b3e39-fe2d-43cd-86ef-c5e87bc2a717" name="ActivityFinal5" isLeaf="false">
             <elementDefinition Id="c9e7d3af-e76e-4843-a09c-cd582b437ce1" />
           </activityFinalNode>
+          <forkNode Id="84fa9240-7149-423c-adfe-1c90a9c5591e" name="Fork1" isLeaf="false">
+            <elementDefinition Id="87c5b840-194a-45b0-bac4-82287e54b37f" />
+            <flowNodeTargets>
+              <controlFlow Id="f0299f7d-da3d-4124-a9e4-4615958948e2" isLeaf="false">
+                <joinNodeMoniker Id="6af93828-2063-4714-9e70-21e56ee9ae53" LastKnownName="Join1" />
+                <elementDefinition Id="15744d37-3618-4e4b-bf65-3af7903478c5" />
+              </controlFlow>
+            </flowNodeTargets>
+          </forkNode>
+          <forkNode Id="b47c4c07-a1cd-46c5-b2c1-b6432fee4d3d" name="Fork2" isLeaf="false">
+            <elementDefinition Id="58dd4b4d-b984-4023-bf5b-3f1a6f5ad9ba" />
+            <flowNodeTargets>
+              <controlFlow Id="9290c0bc-3f9c-4f8d-b822-0b5f55e46ae2" isLeaf="false">
+                <joinNodeMoniker Id="7c59e680-371e-4485-9f05-98371a591bc5" LastKnownName="Join2" />
+                <elementDefinition Id="f4db620e-2679-4ae5-9721-53e86d3d6ffd" />
+              </controlFlow>
+            </flowNodeTargets>
+            <objectFlowTargets>
+              <objectFlow Id="d3fcf9e7-54bb-451c-bd76-eb7bbbdcaaf4" isLeaf="false" isMulticast="false" isMultireceive="false">
+                <objectNodeMoniker Id="f0a8013b-5876-4802-8d0f-624d92c88ef7" LastKnownName="Command Queue" />
+                <elementDefinition Id="64954775-37e4-49e5-bd1f-bb866723b46b" />
+              </objectFlow>
+            </objectFlowTargets>
+          </forkNode>
+          <joinNode Id="7c59e680-371e-4485-9f05-98371a591bc5" name="Join2" isLeaf="false">
+            <elementDefinition Id="7d5c1aec-ce64-4ed9-83d8-797e42d3f7c0" />
+            <flowNodeTargets>
+              <controlFlow Id="4e311e66-dcad-42dd-b768-b1b2ed77cb54" isLeaf="false">
+                <activityFinalNodeMoniker Id="330b3e39-fe2d-43cd-86ef-c5e87bc2a717" LastKnownName="ActivityFinal5" />
+                <elementDefinition Id="93d1b66d-e936-42dd-8fbe-3469d2ef3b40" />
+              </controlFlow>
+            </flowNodeTargets>
+          </joinNode>
+          <objectNode Id="f0a8013b-5876-4802-8d0f-624d92c88ef7" name="Command Queue" isLeaf="false" ordering="Unordered" isControlType="false">
+            <elementDefinition Id="85d29c5f-da66-46fd-a915-79bcfd9b63fd" />
+            <objectFlowTargets>
+              <objectFlow Id="faebce6a-397a-4801-9924-d8eeca10ca6d" isLeaf="false" isMulticast="false" isMultireceive="false">
+                <joinNodeMoniker Id="7c59e680-371e-4485-9f05-98371a591bc5" LastKnownName="Join2" />
+                <elementDefinition Id="47f05e12-feee-4b51-a806-49e1d2ccc990" />
+              </objectFlow>
+            </objectFlowTargets>
+            <upperBound>
+              <literalInteger Id="37e4160c-48df-4bda-a10b-95ad8b50f77b" name="2147483647" value="2147483647">
+                <elementDefinition Id="1ba1ce78-ce6b-47e6-ac96-4cdbb550255e" />
+              </literalInteger>
+            </upperBound>
+          </objectNode>
         </nodes>
       </activity>
     </activityRootModelHasActivity>
