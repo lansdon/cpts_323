@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm9="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel" xmlns:dm11="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ComponentDesigner" xmlns:dm12="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm13="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner"
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ComponentDesigner"
   dslVersion="1.0.0.0"
   Id="96f61117-21b4-4af4-be54-778733aa3be4"
   name="SadModel" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
@@ -3130,22 +3130,65 @@
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
-        <suppliersInternal>
-          <dependency
-            Id="63b97cea-115c-45d0-96cb-15da9cc05850">
-            <componentMoniker
-              Id="8106490b-91a7-49b9-9681-312a6d8ddde2"
-              LastKnownName=" Target Interface"
-              LastKnownLocation="SadModel.uml" />
-          </dependency>
-          <dependency
-            Id="c7ba6192-1aca-433a-8dca-1caed25f5b19">
-            <componentMoniker
-              Id="13f7e467-14a9-405e-ad18-e08ee9c7d127"
-              LastKnownName="Game Control Interface"
-              LastKnownLocation="SadModel.uml" />
-          </dependency>
-        </suppliersInternal>
+        <ownedAttributesInternal>
+          <providedInterface
+            Id="971bfad3-f37a-4d2d-9f1b-c266f5622870"
+            name="Port1"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false"
+            isService="false"
+            isBehavior="false">
+            <type_NamedElement>
+              <interfaceMoniker
+                Id="1ba31972-b950-4711-be19-28a68bb6bce6"
+                LastKnownName="Server"
+                LastKnownLocation="SadModel.uml" />
+            </type_NamedElement>
+          </providedInterface>
+          <requiredInterface
+            Id="b69215d3-ad4a-4ffc-a4ea-14a861f530f1"
+            name="Port2"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false"
+            isService="false"
+            isBehavior="false">
+            <type_NamedElement>
+              <interfaceMoniker
+                Id="f1b435bc-ece0-4be3-aa8f-0c0ff1df6564"
+                LastKnownName="Server"
+                LastKnownLocation="SadModel.uml" />
+            </type_NamedElement>
+          </requiredInterface>
+          <providedInterface
+            Id="89ca61fb-d2d9-41ad-8447-fe5a87fa86f6"
+            name="Port3"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false"
+            isService="false"
+            isBehavior="false">
+            <type_NamedElement>
+              <interfaceMoniker
+                Id="244e3f3b-90c9-494e-8ca2-b4dcab774ebe"
+                LastKnownName="Server"
+                LastKnownLocation="SadModel.uml" />
+            </type_NamedElement>
+          </providedInterface>
+        </ownedAttributesInternal>
       </component>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -3168,7 +3211,29 @@
         name="Missile Launcher"
         isAbstract="false"
         isLeaf="false"
-        isActiveClass="false" />
+        isActiveClass="false">
+        <ownedAttributesInternal>
+          <providedInterface
+            Id="9a95689a-2f2e-45d0-bc9c-fdd83a1ddd29"
+            name="Port1"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false"
+            isService="false"
+            isBehavior="false">
+            <type_NamedElement>
+              <interfaceMoniker
+                Id="19082c7b-3118-46d4-8ae6-9d7d3ac696a4"
+                LastKnownName="Miaaile Launcher"
+                LastKnownLocation="SadModel.uml" />
+            </type_NamedElement>
+          </providedInterface>
+        </ownedAttributesInternal>
+      </component>
     </packageHasNamedElement>
     <packageHasNamedElement>
       <Interface
@@ -3212,7 +3277,143 @@
         name="GUI"
         isAbstract="false"
         isLeaf="false"
-        isActiveClass="false" />
+        isActiveClass="false">
+        <ownedAttributesInternal>
+          <requiredInterface
+            Id="9ea6e5c5-f1ee-41c0-a1b2-99db5dcde90b"
+            name="Port1"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false"
+            isService="false"
+            isBehavior="false">
+            <type_NamedElement>
+              <interfaceMoniker
+                Id="d9daba7d-7b6f-4633-bbc8-ad2ce48fa048"
+                LastKnownName="Target Interface"
+                LastKnownLocation="SadModel.uml" />
+            </type_NamedElement>
+          </requiredInterface>
+          <requiredInterface
+            Id="247b0244-20f5-4824-9525-6de2f8010071"
+            name="Port2"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false"
+            isService="false"
+            isBehavior="false">
+            <type_NamedElement>
+              <interfaceMoniker
+                Id="91535b75-3073-4eda-b0f7-158264d29b71"
+                LastKnownName="Twitter Interface"
+                LastKnownLocation="SadModel.uml" />
+            </type_NamedElement>
+          </requiredInterface>
+          <requiredInterface
+            Id="320baeeb-aec7-4766-8690-48c2a9166b50"
+            name="Port3"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false"
+            isService="false"
+            isBehavior="false">
+            <type_NamedElement>
+              <interfaceMoniker
+                Id="0dc3004a-a74c-4bac-8330-8abe62059a37"
+                LastKnownName="Canera Interface"
+                LastKnownLocation="SadModel.uml" />
+            </type_NamedElement>
+          </requiredInterface>
+          <requiredInterface
+            Id="ee37afc5-deac-4a0d-a799-e6b2d8eec916"
+            name="Port4"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false"
+            isService="false"
+            isBehavior="false">
+            <type_NamedElement>
+              <interfaceMoniker
+                Id="d2451bdb-02df-405a-b98f-f12d0c439c34"
+                LastKnownName="User Control Interface"
+                LastKnownLocation="SadModel.uml" />
+            </type_NamedElement>
+          </requiredInterface>
+          <requiredInterface
+            Id="8b31a842-7bff-414f-89fb-3c523c14deb0"
+            name="Port5"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false"
+            isService="false"
+            isBehavior="false">
+            <type_NamedElement>
+              <interfaceMoniker
+                Id="fa117bc5-2fbb-4afe-ad2b-62cedd91169c"
+                LastKnownName="Missile Launcher Control Interface"
+                LastKnownLocation="SadModel.uml" />
+            </type_NamedElement>
+          </requiredInterface>
+          <requiredInterface
+            Id="d5cf0bc0-7698-4e3e-a93e-a817a4b20f6c"
+            name="Port6"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false"
+            isService="false"
+            isBehavior="false">
+            <type_NamedElement>
+              <interfaceMoniker
+                Id="000f59fd-7d9f-49b5-90c6-d0d175cb90b3"
+                LastKnownName="Game Control Interface"
+                LastKnownLocation="SadModel.uml" />
+            </type_NamedElement>
+          </requiredInterface>
+          <requiredInterface
+            Id="3bbc17ef-e79f-4df3-a6c5-37d48a935836"
+            name="Port7"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false"
+            isService="false"
+            isBehavior="false">
+            <type_NamedElement>
+              <interfaceMoniker
+                Id="21203497-c7f0-411f-bf24-977cbaabf217"
+                LastKnownName="Server Control Interface"
+                LastKnownLocation="SadModel.uml" />
+            </type_NamedElement>
+          </requiredInterface>
+        </ownedAttributesInternal>
+      </component>
     </packageHasNamedElement>
     <packageHasNamedElement>
       <component
@@ -3221,22 +3422,46 @@
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
-        <suppliersInternal>
-          <dependency
-            Id="7957f4fa-750f-4262-9e0e-34d2530bf19c">
-            <componentMoniker
-              Id="00c66d1f-a3b5-4e01-804a-320ae4a67eb2"
-              LastKnownName="GUI"
-              LastKnownLocation="SadModel.uml" />
-          </dependency>
-          <dependency
-            Id="49dab216-a70f-44c9-b411-97250ac78f2f">
-            <componentMoniker
-              Id="e23711a6-97fa-45a0-9509-2a6b7c8726b1"
-              LastKnownName="Missile Launcher"
-              LastKnownLocation="SadModel.uml" />
-          </dependency>
-        </suppliersInternal>
+        <ownedAttributesInternal>
+          <providedInterface
+            Id="c908d69e-0010-42d5-8521-68ebf5a8bf09"
+            name="Port1"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false"
+            isService="false"
+            isBehavior="false">
+            <type_NamedElement>
+              <interfaceMoniker
+                Id="fc2362f3-8d58-49d2-8967-8c6d4956cb69"
+                LastKnownName="Target Interface"
+                LastKnownLocation="SadModel.uml" />
+            </type_NamedElement>
+          </providedInterface>
+          <requiredInterface
+            Id="8f07e554-9ab2-44b7-bb1d-eba218f24de7"
+            name="Port2"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false"
+            isService="false"
+            isBehavior="false">
+            <type_NamedElement>
+              <interfaceMoniker
+                Id="ae668ac6-fdc7-4e10-a1f0-fd5bc2c7b63b"
+                LastKnownName="Target Interface"
+                LastKnownLocation="SadModel.uml" />
+            </type_NamedElement>
+          </requiredInterface>
+        </ownedAttributesInternal>
       </component>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -3246,15 +3471,27 @@
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
-        <suppliersInternal>
-          <dependency
-            Id="4af0a61f-97bd-493c-a6c0-02a4aa4b85f7">
-            <componentMoniker
-              Id="00c66d1f-a3b5-4e01-804a-320ae4a67eb2"
-              LastKnownName="GUI"
-              LastKnownLocation="SadModel.uml" />
-          </dependency>
-        </suppliersInternal>
+        <ownedAttributesInternal>
+          <providedInterface
+            Id="2fd867d2-7230-4ff8-b7a1-69859278fcbe"
+            name="Port1"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false"
+            isService="false"
+            isBehavior="false">
+            <type_NamedElement>
+              <interfaceMoniker
+                Id="f0e49eb2-6e7c-41c4-80ad-a380a6cbf5bf"
+                LastKnownName="Twitter Interface"
+                LastKnownLocation="SadModel.uml" />
+            </type_NamedElement>
+          </providedInterface>
+        </ownedAttributesInternal>
       </component>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -3264,15 +3501,27 @@
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
-        <suppliersInternal>
-          <dependency
-            Id="160203f2-5e87-416f-bbe8-84ad9c58c537">
-            <componentMoniker
-              Id="00c66d1f-a3b5-4e01-804a-320ae4a67eb2"
-              LastKnownName="GUI"
-              LastKnownLocation="SadModel.uml" />
-          </dependency>
-        </suppliersInternal>
+        <ownedAttributesInternal>
+          <providedInterface
+            Id="bfcaed20-097d-414f-bf4c-a5da2ea4f989"
+            name="Port1"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false"
+            isService="false"
+            isBehavior="false">
+            <type_NamedElement>
+              <interfaceMoniker
+                Id="f63d8e87-4532-49a6-ab96-01d27291d1cc"
+                LastKnownName="Camera Interface"
+                LastKnownLocation="SadModel.uml" />
+            </type_NamedElement>
+          </providedInterface>
+        </ownedAttributesInternal>
       </component>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -3284,20 +3533,53 @@
         isActiveClass="false">
         <suppliersInternal>
           <dependency
-            Id="dbae0b9d-c272-407a-a65c-5e7de1539296">
+            Id="b9d9c802-d416-4ab4-8d88-2317f507e7eb">
             <componentMoniker
-              Id="00c66d1f-a3b5-4e01-804a-320ae4a67eb2"
-              LastKnownName="GUI"
-              LastKnownLocation="SadModel.uml" />
-          </dependency>
-          <dependency
-            Id="0ae23a83-6bc3-4c56-88bd-1450c379ea99">
-            <componentMoniker
-              Id="e23711a6-97fa-45a0-9509-2a6b7c8726b1"
-              LastKnownName="Missile Launcher"
+              Id="b1515980-6623-4415-b8a0-7d9ebb8018d4"
+              LastKnownName="User Control Interface"
               LastKnownLocation="SadModel.uml" />
           </dependency>
         </suppliersInternal>
+        <ownedAttributesInternal>
+          <providedInterface
+            Id="5342a4ab-8ffa-4d34-9a57-199a467deaa1"
+            name="Port1"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false"
+            isService="false"
+            isBehavior="false">
+            <type_NamedElement>
+              <interfaceMoniker
+                Id="4655a8c9-1b02-477f-a56b-f3cad5c74c82"
+                LastKnownName="Missile Launcher Control Interface"
+                LastKnownLocation="SadModel.uml" />
+            </type_NamedElement>
+          </providedInterface>
+          <requiredInterface
+            Id="7ce78261-e9f9-4518-a07b-2141f684321d"
+            name="Port2"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false"
+            isService="false"
+            isBehavior="false">
+            <type_NamedElement>
+              <interfaceMoniker
+                Id="876da847-8df4-472b-80c9-cf0548cbe87f"
+                LastKnownName="Missile Launcher Control Interface"
+                LastKnownLocation="SadModel.uml" />
+            </type_NamedElement>
+          </requiredInterface>
+        </ownedAttributesInternal>
       </component>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -3307,15 +3589,46 @@
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
-        <suppliersInternal>
-          <dependency
-            Id="b82cc8ff-5de8-4e83-9314-a6ff4c4b768f">
-            <componentMoniker
-              Id="00c66d1f-a3b5-4e01-804a-320ae4a67eb2"
-              LastKnownName="GUI"
-              LastKnownLocation="SadModel.uml" />
-          </dependency>
-        </suppliersInternal>
+        <ownedAttributesInternal>
+          <providedInterface
+            Id="763771a0-bb26-4551-8ef5-deafe4b2aae5"
+            name="Port1"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false"
+            isService="false"
+            isBehavior="false">
+            <type_NamedElement>
+              <interfaceMoniker
+                Id="267fd844-0326-4481-9928-3746c1972350"
+                LastKnownName="Game Control Inteface"
+                LastKnownLocation="SadModel.uml" />
+            </type_NamedElement>
+          </providedInterface>
+          <requiredInterface
+            Id="8309c4c2-bc62-4e96-b5aa-e0a6f4ed43bc"
+            name="Port2"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false"
+            isService="false"
+            isBehavior="false">
+            <type_NamedElement>
+              <interfaceMoniker
+                Id="614fde74-240e-42fc-92f7-f5d6a6b196a1"
+                LastKnownName="Game Control Interface"
+                LastKnownLocation="SadModel.uml" />
+            </type_NamedElement>
+          </requiredInterface>
+        </ownedAttributesInternal>
       </component>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -3325,29 +3638,27 @@
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
-        <suppliersInternal>
-          <dependency
-            Id="a007f650-3885-4511-a71d-300eecf227a8">
-            <componentMoniker
-              Id="00c66d1f-a3b5-4e01-804a-320ae4a67eb2"
-              LastKnownName="GUI"
-              LastKnownLocation="SadModel.uml" />
-          </dependency>
-          <dependency
-            Id="32d44316-2923-480e-aa26-f0d9cbe9d956">
-            <componentMoniker
-              Id="e23711a6-97fa-45a0-9509-2a6b7c8726b1"
-              LastKnownName="Missile Launcher"
-              LastKnownLocation="SadModel.uml" />
-          </dependency>
-          <dependency
-            Id="19badb5b-cb5a-455c-a3d9-e8ae5c1b3e9f">
-            <componentMoniker
-              Id="437039f4-b952-47c7-ae7c-e9669b113d53"
-              LastKnownName="Missile Launcher Control Interface"
-              LastKnownLocation="SadModel.uml" />
-          </dependency>
-        </suppliersInternal>
+        <ownedAttributesInternal>
+          <providedInterface
+            Id="6ca6f35d-b0ea-4bfa-b00e-eb5da78a7f01"
+            name="Port1"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false"
+            isService="false"
+            isBehavior="false">
+            <type_NamedElement>
+              <interfaceMoniker
+                Id="4560a247-4435-4ad8-9906-485d03dd3ed7"
+                LastKnownName="User Control Interface"
+                LastKnownLocation="SadModel.uml" />
+            </type_NamedElement>
+          </providedInterface>
+        </ownedAttributesInternal>
       </component>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -3357,22 +3668,46 @@
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
-        <suppliersInternal>
-          <dependency
-            Id="7b153a60-1cc8-4ee6-9a9d-9b863c65fba9">
-            <componentMoniker
-              Id="00c66d1f-a3b5-4e01-804a-320ae4a67eb2"
-              LastKnownName="GUI"
-              LastKnownLocation="SadModel.uml" />
-          </dependency>
-          <dependency
-            Id="15afb821-fa95-46bf-a210-8e8a80f93b8a">
-            <componentMoniker
-              Id="fd037e4a-a211-41b7-bc36-fe5006ce1fe8"
-              LastKnownName="Server"
-              LastKnownLocation="SadModel.uml" />
-          </dependency>
-        </suppliersInternal>
+        <ownedAttributesInternal>
+          <providedInterface
+            Id="53ab55e3-050d-4ad8-829a-db0f2bbb226e"
+            name="Port1"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false"
+            isService="false"
+            isBehavior="false">
+            <type_NamedElement>
+              <interfaceMoniker
+                Id="dac93a4f-7313-4a4d-8276-4864790a7db4"
+                LastKnownName="Server Control interface"
+                LastKnownLocation="SadModel.uml" />
+            </type_NamedElement>
+          </providedInterface>
+          <providedInterface
+            Id="2c7a89b3-c9b9-4d64-bad0-d8a2407fa26f"
+            name="Port2"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false"
+            isService="false"
+            isBehavior="false">
+            <type_NamedElement>
+              <interfaceMoniker
+                Id="4d2f5bbd-b945-4acf-b328-9890a5f63ffe"
+                LastKnownName="Server Control Interface"
+                LastKnownLocation="SadModel.uml" />
+            </type_NamedElement>
+          </providedInterface>
+        </ownedAttributesInternal>
       </component>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -3424,6 +3759,167 @@
       <executionEvent
         Id="76fc9a02-a6f8-4f4e-8ca2-51dfeb650d53"
         name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="d9daba7d-7b6f-4633-bbc8-ad2ce48fa048"
+        name="Target Interface"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="91535b75-3073-4eda-b0f7-158264d29b71"
+        name="Twitter Interface"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="0dc3004a-a74c-4bac-8330-8abe62059a37"
+        name="Canera Interface"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="d2451bdb-02df-405a-b98f-f12d0c439c34"
+        name="User Control Interface"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="fa117bc5-2fbb-4afe-ad2b-62cedd91169c"
+        name="Missile Launcher Control Interface"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="000f59fd-7d9f-49b5-90c6-d0d175cb90b3"
+        name="Game Control Interface"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="21203497-c7f0-411f-bf24-977cbaabf217"
+        name="Server Control Interface"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="fc2362f3-8d58-49d2-8967-8c6d4956cb69"
+        name="Target Interface"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="f0e49eb2-6e7c-41c4-80ad-a380a6cbf5bf"
+        name="Twitter Interface"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="f63d8e87-4532-49a6-ab96-01d27291d1cc"
+        name="Camera Interface"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="4560a247-4435-4ad8-9906-485d03dd3ed7"
+        name="User Control Interface"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="4655a8c9-1b02-477f-a56b-f3cad5c74c82"
+        name="Missile Launcher Control Interface"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="267fd844-0326-4481-9928-3746c1972350"
+        name="Game Control Inteface"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="dac93a4f-7313-4a4d-8276-4864790a7db4"
+        name="Server Control interface"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="614fde74-240e-42fc-92f7-f5d6a6b196a1"
+        name="Game Control Interface"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="1ba31972-b950-4711-be19-28a68bb6bce6"
+        name="Server"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="f5361482-11b6-43c9-b501-fad0eb9dc443"
+        name="Interface5"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="ae668ac6-fdc7-4e10-a1f0-fd5bc2c7b63b"
+        name="Target Interface"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="4d2f5bbd-b945-4acf-b328-9890a5f63ffe"
+        name="Server Control Interface"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="f1b435bc-ece0-4be3-aa8f-0c0ff1df6564"
+        name="Server"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="244e3f3b-90c9-494e-8ca2-b4dcab774ebe"
+        name="Server"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="19082c7b-3118-46d4-8ae6-9d7d3ac696a4"
+        name="Miaaile Launcher"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="876da847-8df4-472b-80c9-cf0548cbe87f"
+        name="Missile Launcher Control Interface"
+        isAbstract="false"
+        isLeaf="false" />
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType
