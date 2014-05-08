@@ -19,12 +19,11 @@
         <ListBox 
             Grid.Row="0"
             Grid.Column="0"
+            ClipToBounds="True"
             HorizontalAlignment="Left"
-            VerticalAlignment="Top"
             Foreground="White"
             Background="Transparent"
-            ItemsSource="{Binding Path=_Tweets}"/>
-            
-        
+            ItemsSource="{Binding Path=_Tweets}"
+            ScrollViewer.VerticalScrollBarVisibility="Visible"/>        
     </Grid>
 </UserControl>
