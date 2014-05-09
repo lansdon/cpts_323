@@ -174,18 +174,19 @@ namespace SadLibrary.Launcher
             processCommandQueue();
         }
         public void moveCoords(double x, double y, double z)
-        {
+        {   
             moveTo(toTheta(x, y), toPhi(x, y, z));
         }
 
         public void moveTo(double theta, double phi)
         {
             bool commandQueueAlreadyBlocked = commandQueueLoadInProgress;
-                     
 
                 setCommandQueueIsLoading(true); // allows us to add commands in sequence without processing
-                moveTheta(theta);
-                movePhi(phi);
+                if (Math.Abs(theta - myTheta) > 1)
+                    moveTheta(theta);
+                if (Math.Abs(phi - myPhi) > 1)
+                    movePhi(phi);
                 // This will allow us to continue attaching commands outside of this function.
                 if (!commandQueueAlreadyBlocked)
                     processCommandQueue();

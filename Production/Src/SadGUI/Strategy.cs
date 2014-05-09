@@ -89,13 +89,28 @@ namespace SadGUI
             // 1) Sort the list left to right
             Targets.OrderByDescending(c => c.x);
 
+            List<Target> expensiveTargets = new List<Target>();
+            // Temp remove cheap targets
+            foreach (var target in Targets)
+            {
+                if (target.status == 0)
+                {
+                    if ( target.points > 50)
+                    {
+                        expensiveTargets.Add(target);
+                    }
+                }
+            }
+
+            Targets = expensiveTargets;
+
             // 2) Count the targets that have respawn time > 5 seconds. They will be shot at once.
             int targetsWithFastRespawn = 0;
             foreach(var target in Targets)
             {
                 if(target.status == 0)
                 {
-                    if(target.spawnRate > 0.0 && target.spawnRate < 5.0)
+                    if (target.spawnRate > 0.0)
                     {
                         ++targetsWithFastRespawn;
                     }
@@ -108,9 +123,9 @@ namespace SadGUI
             {
                 if(target.status == 0)
                 {
-                    if (target.spawnRate > 0.0 && target.spawnRate < 5.0)
+                    if (target.spawnRate > 0.0)
                     {
-                        for(int i = 0; i <=  (10-(Targets.Count() - targetsWithFastRespawn)) / targetsWithFastRespawn; ++i)
+                        for(int i = 0; i <=  (8-(Targets.Count() - targetsWithFastRespawn)) / targetsWithFastRespawn; ++i)
                         {
                             finalTargetList.Add(target);
                         }
@@ -152,8 +167,12 @@ namespace SadGUI
             }
             sortedList = Tlist;
             sortedList.OrderBy(c => c.x);
+
+
+            IEnumerable<Target> Targets = Tlist;
+            buildTargetListFromSourceList(sortedList);
         }
 
-
+ 
      }
 }
